@@ -1,0 +1,21 @@
+{
+"well": {
+"adjective": {"synonyms": ["good", "fit", "healthy", "advisable", "asymptomatic", "cured", "fortunate", "healed", "recovered", "symptomless",], "antonyms": ["ill",]},
+"adverb": {"synonyms": ["good", "easily", "considerably", "substantially", "intimately", "advantageously", "comfortably",], "antonyms": ["badly", "disadvantageously", "ill",]},
+"noun": {"synonyms": ["wellspring", "fountainhead", "compartment", "excavation", "shaft", "source", "vessel",], "antonyms": []},
+"verb": {"synonyms": ["swell", "come up", "rise", "rise up", "surface",], "antonyms": []},
+},
+"pretty": {
+"adjective": {"synonyms": ["bad", "beautiful",], "antonyms": []},
+"adverb": {"synonyms": ["jolly",], "antonyms": []},
+},
+"cool": {
+"adjective": {"synonyms": ["coolheaded", "nerveless", "cold", "unagitated", "unemotional", "unfriendly", "air-conditioned", "air-cooled", "caller", "chill", "chilly", "cold", "composed", "fashionable", "precooled", "stylish", "unqualified", "unresponsive", "water-cooled",], "antonyms": ["warm",]},
+"noun": {"synonyms": ["aplomb", "assuredness", "poise", "sang-froid", "calm", "calmness", "cold", "coldness", "composure", "equanimity", "frigidity", "frigidness", "low temperature",], "antonyms": []},
+"verb": {"synonyms": ["chill", "cool down", "cool off", "alter", "change", "change state", "modify", "turn",], "antonyms": ["heat",]},
+},
+"love": {
+"noun": {"synonyms": ["passion", "beloved", "dear", "dearest", "honey", "sexual love", "erotic love", "lovemaking", "making love", "love life", "concupiscence", "emotion", "eros", "loved one", "lover", "object", "physical attraction", "score", "sex", "sex activity", "sexual activity", "sexual desire", "sexual practice",], "antonyms": ["hate",]},
+"verb": {"synonyms": ["love", "enjoy", "roll in the hay", "make out", "make love", "sleep with", "get laid", "have sex", "know", "do it", "be intimate", "have intercourse", "have it away", "have it off", "screw", "jazz", "eff", "hump", "lie with", "bed", "have a go at it", "bang", "get it on", "bonk", "copulate", "couple", "like", "mate", "pair",], "antonyms": ["hate",]},
+},
+}
