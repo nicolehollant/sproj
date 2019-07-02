@@ -1,0 +1,25 @@
+version: '3.0'
+
+# services/containers
+services:
+  vue: # name of service
+    build: frontend # dir of dockerfile
+    ports:
+    - "8080:80" # map ports
+
+  python:
+    container_name: python
+    restart: always
+    environment:
+    - MONGOPORT=27017
+    build: backend
+    ports:
+    - "3000:3000"
+    links: # link service to database
+    - database
+  
+  database:
+    container_name: database
+    image: mongo:3.6-xenial
+    ports:
+    - "27019:27017"

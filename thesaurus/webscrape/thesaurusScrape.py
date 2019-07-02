@@ -37,7 +37,7 @@ class ThesaurusScraper:
         synonyms["verb"], antonyms["verb"] = self.processSection("verb", soup)
         # store the synonyms and antonyms in a result dictionary
         result = {word: {"synonyms": synonyms, "antonyms": antonyms}}
-        pprint(result, compact=True)
+        # pprint(result, compact=True)
         return result
 
     '''
@@ -83,7 +83,7 @@ class ThesaurusScraper:
                     for antonym in curAntonyms:
                         antonymsList.append(antonym.text.strip())
                 # loop over all <ul> in this section, add all contained synonyms and antonyms
-                for unorderedList in curSection.find_all("ul"):
+                for unorderedList in thisSection.find_all("ul"):
                     for synonym in unorderedList.find_all("li"):
                         synonymsList.append(synonym.text.strip())
             # filter out all antonyms from the synonyms list
@@ -110,7 +110,7 @@ class ThesaurusScraper:
     '''
     def run(self):
         for word in self.words:
-            word = word.strip()
+            word = word.lower().strip()
             synonyms = self.scrapeByWord(word)
             self.write(synonyms, f"thesaurus/thesaurus-{word[0]}.json", True)
         self.fixJson()
@@ -132,7 +132,7 @@ class ThesaurusScraper:
                     with open('./thesaurus/'+filename.name, "w") as f:
                         f.write("[\n" + filestr + "\n]")
 
-    def makeThesaursus(self):
+    def makeThesaurus(self):
         directory = os.scandir('./thesaurus')
         thesaurus = {}
         '''
@@ -152,15 +152,16 @@ class ThesaurusScraper:
                     filestr = ""
                     with open('./thesaurus/'+filename.name, "r") as f:
                         currentList = json.load(f)
-                        for word in currentList.keys():
-                            entry = currentList[word]
+                        for entry in currentList:
+                            word = list(entry.keys())[0]
                             if word not in thesaurus:
-                                thesaurus[word] = entry
-        with open('./thesaurus/thesaurus-final.json', "w") as f:
-            json.dump(thesaurus, f, indent=2)
+                                thesaurus.update(entry)
+        with open('./thesaurus/final/thesaurus-final.json', "w") as f:
+            json.dump(thesaurus, f, indent=2, sort_keys=True)
 
 
 if __name__ == "__main__":
     scraper = ThesaurusScraper()
-    scraper.run()
+    # scraper.run()
+    scraper.makeThesaurus()
     

@@ -22,7 +22,7 @@ There may be protections against web scraping in place that we ought to honor, o
 
 ### Scraping the site
 
-Web scraping for purposes such as gathering content from a page is a basic process: get the raw HTML of the page and retrieve what you want. Due to the ubiquity of HTTP requests and string processing, we can use just about anything we want for building our scraper. We will be using Python for its simplicity in our project, although we will create something similar in a bash script for demonstration.
+Web scraping for purposes such as gathering content from a page is a basic process: get the raw HTML of the page and retrieve what you want. Due to the ubiquity of HTTP requests and string processing, we can use just about anything we want for building our scraper. We will be using Python for its simplicity in our project, although we will create something similar in a bash script as a proof of concept for demonstration.
 
 We are using the `requests` module to get the HTML for each page and `bs4` for our HTML parsing. I am running Ubuntu on my computer, and thus have access to the `words` file present across Unix operating systems: this is a raw text file with a collection of words each on their own line. This will be the basis of our thesaurus. We will first reduce this file by removing all entries with apostrophes with `fixWords.py` whose essence is:
 
@@ -33,8 +33,13 @@ if word.find("'") == -1:
 
 Now that we have the words we will use to construct our thesaurus, we may do exactly that. Each page takes the form of the same base url followed by the word, this makes for easy access. We go through word-by-word in our reduced file, make a GET request for that word, and then aggregate all the word's synonyms and antonyms by part of speech. There's just one little trick to this process: the antonyms were not a concrete section, but rather one of several possible subsections under each part of speech. To circumvent this issue, we just have to do some checks to make sure that any present antonym section belongs to the part of speech we are considering and not a later-occuring part of speech. We allow the addition of antonyms to the synonym list and remove them prior to returning; this allows for us to have less rigorous checks in adding synonyms.
 
-As I only have so much RAM, and Python is rather resource hungry, we segment our data by first letter. We will restructure our data into one object, but we will do this after collecting all of our data. We may naively write each dictionary to its corresponding JSON file and correct the result. This allows us to keep less in memory, which may otherwise present itself as a problem.
+There was an earlier version of this scraper that did not deal with antonyms. This catch is attributed to Ariadne, who--when I showed her my progress--brought up the word "beautiful" which had "ugly" as the first entry under the synonym section. This prompted quite a refactoring, and we should now be free of these bugs. The basis of this refactoring has largely been tested against "beautiful" and "well" which both have antonyms in the thesaurus, and "well" had all the parts of speech.
 
+As I only have so much RAM, and Python can be rather resource hungry, we segment our data by first letter. We will restructure our data into one object, but we will do this after collecting all of our data. We may naively write each dictionary to its corresponding JSON file and correct the result. This allows us to keep less in memory, which may otherwise present itself as a problem. 
+
+Then, upon building our thesaurus, we may move to the next part. We would like to store this in a database and create an API to interface with this.
+
+Sidenote: while it didn't change anything significant, it's worth noting!
 
 <!-- 
     Note to self, 
@@ -42,5 +47,4 @@ As I only have so much RAM, and Python is rather resource hungry, we segment our
         # synonyms = self.scrapeByWord("beautiful")
         # synonyms = self.scrapeByWord("well")
     because they played a big role in the antonyms stuff (shout out ariadne?)
-
  -->
