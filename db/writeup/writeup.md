@@ -18,6 +18,16 @@ vim /etc/ssh/sshd_config    (set "PermitRootLogin" to "no")
 
 Of course, we'll make a nice `ssh` config on our personal machine for our convenience. We'd like to save the hassle of keeping track of IP addresses and users and keys, so we'll make another entry to be able to simply run `ssh sproj`.
 
+## Quick Firewall stuff
+
+Gonna need to allow access to our droplet
+```sh
+sudo ufw reload
+sudo ufw allow 8080 (8000, 80, 3000)
+
+
+```
+
 ## The big whale upstairs
 
 There is certainly a warranted section on Docker.

@@ -1,15 +1,45 @@
-version: '3.0'
+# version: '3.0'
 
-# services/containers
+# # services/containers
+# services:
+#   vue: # name of service
+#     build: frontend # dir of dockerfile
+#     ports:
+#     - "8080:80" # map ports
+
+#   python:
+#     container_name: python
+#     restart: always
+#     environment:
+#     - MONGOPORT=27017
+#     build: backend
+#     ports:
+#     - "3000:3000"
+#     links: # link service to database
+#     - database
+  
+#   database:
+#     container_name: database
+#     image: mongo:3.6-xenial
+#     ports:
+#     - "27019:27017"
+
+
+version: '3'
 services:
+  
   vue: # name of service
     build: frontend # dir of dockerfile
+    restart: unless-stopped
+    tty: true
     ports:
-    - "8080:80" # map ports
+    - "80:80" # map ports
+    networks:
+      - app-network
 
   python:
     container_name: python
-    restart: always
+    restart: unless-stopped
     environment:
     - MONGOPORT=27017
     build: backend
@@ -17,9 +47,33 @@ services:
     - "3000:3000"
     links: # link service to database
     - database
-  
-  database:
-    container_name: database
-    image: mongo:3.6-xenial
+    networks:
+      - app-network
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
     ports:
-    - "27019:27017"
+      - "80:80"
+      - "443:443"
+    networks:
+      - app-network
+
+  #MySQL Service
+  database:
+    image: mongo:3.6-xenial
+    container_name: database
+    restart: unless-stopped
+    tty: true
+    ports:
+    - "27017:27017"
+    networks:
+    - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
