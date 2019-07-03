@@ -9,6 +9,6 @@ FROM nginx:1.15.3
 COPY --from=build-stage /usr/src/app/dist /usr/share/nginx/html/dist
 RUN rm /etc/nginx/conf.d/default.conf
 COPY  nginx.conf /etc/nginx/conf.d/app.conf
-EXPOSE 80
+EXPOSE 8080
 WORKDIR /etc/nginx
 CMD ["nginx", "-g", "daemon off;"]
