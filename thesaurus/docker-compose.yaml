@@ -33,7 +33,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-    - "80:80" # map ports
+    - "8080:8080" # map ports
     networks:
       - app-network
 
