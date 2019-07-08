@@ -24,7 +24,7 @@ services:
   #   - database
   #   networks:
   #     - app-network
-  
+
   api:
     container_name: api
     restart: unless-stopped
@@ -57,7 +57,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-    - "27019:27017"
+    - "27017:27017"
     networks:
     - app-network
 
