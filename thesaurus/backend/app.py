@@ -18,7 +18,7 @@ mongo = PyMongo(app)
 def get_default():
   return jsonify({'result' : "Sproj backend!"})
 
-@app.route('/api/', methods=['GET'])
+@app.route('/v1/api/', methods=['GET'])
 def get_api():
     result = {
         "Welcome Message": "Welcome to the thesaurus API",

@@ -1,79 +1,67 @@
-# version: '3.0'
-
-# # services/containers
-# services:
-#   vue: # name of service
-#     build: frontend # dir of dockerfile
-#     ports:
-#     - "8080:80" # map ports
-
-#   python:
-#     container_name: python
-#     restart: always
-#     environment:
-#     - MONGOPORT=27017
-#     build: backend
-#     ports:
-#     - "3000:3000"
-#     links: # link service to database
-#     - database
-  
-#   database:
-#     container_name: database
-#     image: mongo:3.6-xenial
-#     ports:
-#     - "27019:27017"
-
-
 version: '3'
+
 services:
-  
+  # Frontend Service
   vue: # name of service
     build: frontend # dir of dockerfile
     restart: unless-stopped
     tty: true
     ports:
-    - "8080:8080" # map ports
+    - "8080:80" # map ports
     networks:
-      - app-network
+    - app-network
 
-  python:
-    container_name: python
+  # Backend Service
+  # python:
+  #   container_name: python
+  #   restart: unless-stopped
+  #   environment:
+  #   - MONGOPORT=27017
+  #   build: backend
+  #   ports:
+  #   - "3000:3000"
+  #   links: # link service to database
+  #   - database
+  #   networks:
+  #     - app-network
+  
+  api:
+    container_name: api
     restart: unless-stopped
     environment:
     - MONGOPORT=27017
-    build: backend
+    build: gobackend
     ports:
-    - "3000:3000"
-      #    links: # link service to database
-      #- database
+    - "3000:12345"
+    links: # link service to database
+    - database
     networks:
-      - app-network
+    - app-network
 
-  #Nginx Service
+  # Nginx Service
   webserver:
     image: nginx:alpine
     container_name: webserver
     restart: unless-stopped
     tty: true
     ports:
-      - "80:80"
-      - "443:443"
+    - "81:81"
+    - "443:443"
     networks:
-      - app-network
+    - app-network
 
-  #MySQL Service
-  # database:
-          #image: mongo:3.6-xenial
-    #container_name: database
-    #restart: unless-stopped
-    #tty: true
-    #ports:
-            #- "27017:27017"
-      #    networks:
-            #    - app-network
+  # Mongo Service
+  database:
+    image: mongo:3.6-xenial
+    container_name: database
+    restart: unless-stopped
+    tty: true
+    ports:
+    - "27019:27017"
+    networks:
+    - app-network
 
-#Docker Networks
+# Networks
 networks:
   app-network:
     driver: bridge
