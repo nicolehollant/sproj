@@ -1,3 +1,5 @@
+# pls do this so u stop using all our storage
+# https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169
 version: '3'
 
 services:
@@ -11,20 +13,6 @@ services:
     networks:
     - app-network
 
-  # Backend Service
-  # python:
-  #   container_name: python
-  #   restart: unless-stopped
-  #   environment:
-  #   - MONGOPORT=27017
-  #   build: backend
-  #   ports:
-  #   - "3000:3000"
-  #   links: # link service to database
-  #   - database
-  #   networks:
-  #     - app-network
-
   api:
     container_name: api
     restart: unless-stopped
@@ -32,7 +20,7 @@ services:
     - MONGOPORT=27017
     build: gobackend
     ports:
-    - "3000:12345"
+    - "3000:3000"
     links: # link service to database
     - database
     networks:
@@ -45,7 +33,8 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-    - "80:80"
+    - "80:80" # for the server
+    # - "81:80" # for me locally
     - "443:443"
     networks:
     - app-network
@@ -57,7 +46,8 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-    - "27017:27017"
+    # - "27018:27017" # my laptop
+    - "27017:27017" # my server
     networks:
     - app-network
 

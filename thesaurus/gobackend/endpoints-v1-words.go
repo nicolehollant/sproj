@@ -13,7 +13,6 @@ import (
 // GetWord - Access entries in the collection!
 func GetWord(response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Getting word!")
-	response.Header().Set("content-type", "application/json")
 	var entry ThesaurusEntry
 	_ = json.NewDecoder(request.Body).Decode(&entry)
 

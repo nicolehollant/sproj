@@ -13,7 +13,6 @@ import (
 // CreateWord - Add entries to the collection!
 func CreateWord(response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Creating word!")
-	response.Header().Set("content-type", "application/json")
 	var entry ThesaurusEntry
 	_ = json.NewDecoder(request.Body).Decode(&entry)
 
@@ -70,7 +69,6 @@ func CreateWord(response http.ResponseWriter, request *http.Request) {
 // GetAllWords - Add entries to the collection!
 func GetAllWords(response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Getting words!")
-	response.Header().Set("content-type", "application/json")
 
 	hasCreds := CheckAdminCreds(request)
 	if hasCreds != nil {
@@ -117,7 +115,6 @@ func GetAllWords(response http.ResponseWriter, request *http.Request) {
 // UpdateWord - Update entries in the collection!
 func UpdateWord(response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Updating word!")
-	response.Header().Set("content-type", "application/json")
 	var entry ThesaurusEntry
 	_ = json.NewDecoder(request.Body).Decode(&entry)
 
@@ -174,7 +171,6 @@ func UpdateWord(response http.ResponseWriter, request *http.Request) {
 // DeleteWord - Remove entries from the collection!
 func DeleteWord(response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Deleting word!")
-	response.Header().Set("content-type", "application/json")
 	var entry ThesaurusEntry
 	_ = json.NewDecoder(request.Body).Decode(&entry)
 
