@@ -12,7 +12,7 @@
 
 .navlink{
     color: rgb(63, 17, 40);
-    @apply text-xl font-hairline cursor-pointer;
+    @apply text-xl cursor-pointer;
 }
 .router-link-active{
     @apply text-pink-100 font-semibold;

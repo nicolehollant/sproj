@@ -19,7 +19,7 @@
       <div class="max-w-3xl m-auto">
 
         <div v-if="notEmpty(entry[key])">
-        <h2 class="text-semilight text-2xl my-4 text-left font-hairline capitalize">{{ key }}</h2>
+        <h2 class="text-semilight text-2xl my-4 text-left capitalize">{{ key }}</h2>
         <div class="nym-box-wrapper bg-pink-900 pt-2 pb-8 rounded">
           <div v-for="pos in Object.keys(entry[key])" :key="pos+entry.key">
             <div v-if="entry[key][pos].length > 0" class="mx-4 md:mx-8">
@@ -62,6 +62,7 @@ export default {
       console.log("Getting something")
       let prod = true;
       let url = `http://localhost:3000/thesaurus/api/v1/words/${this.m_word.trim()}`;
+	if(prod) url = `http://67.205.167.246:3000/thesaurus/api/v1/words/${this.m_word.trim().toLowerCase()}`;
       fetch(url, {
         method: 'GET',
         headers: {
