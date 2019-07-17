@@ -11,5 +11,6 @@ FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=builder /go/bin/main .
-EXPOSE 12345
+# EXPOSE 12345
+EXPOSE 3000
 CMD ["./main"] 

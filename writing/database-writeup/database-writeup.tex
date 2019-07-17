@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage[leftmargin = 1in, rightmargin = 0in, vskip = 0in]{quoting}
+\usepackage{microtype}
+\usepackage{amssymb, amsthm, amsmath, amsfonts}
+\usepackage{ wasysym }
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.98}
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily,
+    backgroundcolor=\color{backcolour},
+    frame=lrbt,
+    breakatwhitespace=false,      
+    framexleftmargin=16pt, 
+    framexrightmargin=16pt,   
+    framextopmargin=8pt,
+    framexbottommargin=8pt,
+    breaklines=true,                 
+    keepspaces=false,                 
+    numbersep=0pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=1
+}
+\lstset{style=mystyle}
+\newcommand{\blockquotespacing}{\blockspaced}
+\newcommand{\prose}{.25in}
+\newcommand{\poetry}{0in}
+\newcommand{\singlespaced}{\setstretch{1}\vspace{\baselineskip}}
+\newcommand{\blockspaced}{\setstretch{1.3}\vspace{\baselineskip}}
+\newcommand{\doublespaced}{}
+\newenvironment{blockquote}[1][\prose]{\setlength{\parindent}{#1}\begin{quoting}\blockquotespacing}{\end{quoting}}
+\begin{document}
+\setstretch{2}
+\noindent
+
+\noindent{\Huge DB Writeup}\\
+
+
+\noindent{\LARGE What's all this then}\\
+
+I'd like to keep all the thesaurus entries in a database, and be able to interface with that via some API. While we could do everything locally and save some of the configuration headache, we also would hardly be able to use it. So, in the pursuit of functionality, we'll need a server to put this on. I chose [DigitalOcean](https://www.digitalocean.com), a popular cloud services platform among other names like AWS and Azure. Surely we will also be using DigitalOcean for hosting the rest of this as well :)\\
+
+\noindent{\LARGE Don't be root!}\\
+
+It should go without saying that it's wise to stray from doing all things as \texttt{root}. As default, we can only \texttt{ssh} into \texttt{root}, so we must add a user! We'll still need root access, so we'll be sure to add our new user to the \texttt{sudo} group. Then to finish this setup, we must patch up our \texttt{ssh} configuration: we want to \texttt{ssh} into the new user and disable \texttt{ssh} into \texttt{root}.\\
+\begin{lstlisting}[language=sh]
+ssh root@<IP_ADDRESS>
+adduser <USERNAME>
+usermod -aG sudo <USERNAME> 
+rsync --archive --chown=<USERNAME>:<USERNAME> ~/.ssh /home/<USERNAME> 
+vim /etc/ssh/sshd_config    (set "PermitRootLogin" to "no")
+\end{lstlisting}
+Of course, we'll make a nice \texttt{ssh} config on our personal machine for our convenience. We'd like to save the hassle of keeping track of IP addresses and users and keys, so we'll make another entry to be able to simply run \texttt{ssh sproj}.\\
+
+\noindent{\LARGE The big whale upstairs}\\
+
+There is certainly a warranted section on Docker. Docker is the Kleenex of containers: it's a wildly popular open source project for working with containers. Cointainers are an industry-molding alternative to virtual machines for running system-agnostic programs. If you've written software in the past few years, you've almost certainly seen some sort of depiction of the difference between virtualization and containerization, but in case you haven't, we can go into it. First off, the picture as promised:\\
+!\href{https://blog.netapp.com/wp-content/uploads/2016/03/Screen-Shot-2018-03-20-at-9.24.09-AM-1024x548.png}{Dockerization vs Containerization}\\
+While a picture is worth a thousand words, a picture with words may warrant a few extra. On each side we have a layer of apps on top of their dependencies that is running on top of some infrastructure. The apps and bins/libs are our binaries/executables/processes along with their source-code/libraries/etc that we are used to writing and running in our day-to-day as programmers. The infrastructure is just that: the silicon and bare metal that we are running on top of. That surmises the local development experience, and I'll trust you are familiar with the woes of your program working like a charm on your personal machine, but playing anything but nicely when you have to run it on another computer.\\
+The ``it worked on \textit{my} computer'' dilemma is what virtualization and containerization are here to address. If we can encapsulate these processes and dependencies and abstract them from the contents of the machine they reside in, we should have platform-independent programs. Virtual machines tackle this by building entire guest operating systems on top of a hypervisor (also known as a virtual machine monitor), which serves to channel access to hardware and thus allow for multiple operating systems to run on one host operating system.\\
+However, operating systems are quite large, and there is a lot of waste with virtualization. With the industry going towards cloud computing, we needed smaller, faster solutions. Containerization seeks to leverage the host operating system, and rather than keep several guest-os instances, we have a single container runtime environment.\\
+It's a similar solution to that which the JVM provided in the 1990's. And, since I couldn't help but mention the JVM, I can't stop myself from mentioning that there's great interest in scrapping it in the context of containerization: if we are running in containers, do we need to keep the JVM around? JetBrains is producing Quarkus for doing ahead-of-time compiling for making Java more container-friendly. More container-friendly is--of course--a euphimism for ``Java containers are gigantic and slow'': while even an amateur (read: me) can get containers down to a handful of megabytes (the beginnings of my frontend, proxy, and api are all just about 20MB), it's quite rare to see a Java image less than around 80MB.\\
+This may not seem like a big deal, we are only talking on the order of megabytes. But in the days where serverless architecture/microservices are growing in popularity, there is an ever-increasing need for quick cold-start times (starting an idle container, should none be active and available). Serverless computing being a platform in which cloud providers provision your resources, and the customer is charged for active time rather than paying for a more traditional flat-rate server. This is attractive, as it is anything but wasteful, but if a request is made, there's always a chance that your containers are down, and they must be reinitialized to fullfill the request. If we can optimize our containers, we'll save time and money and our user-experience!\\
+This tangent on a direction the software engineering industry is headed ought to demonstrate the appeal of containers: serverless wouldn't even be a fever dream if we only had VMs.\\
+
+\noindent{\Large Building My Containers (Thesaurus)}\\
+
+With containerization, the name of the game is modularity. So we generally aspire to have per-process containers. Thus my one webapp comprised of a frontend, a backend, a database, and a server/reverse-proxy has four containers: one for each aspect. And with inter-container dependecies, one would think that things would get confusing. This is where docker-compose comes in. This is a tool that allows for the definitions/instructions for multiple containers. This is a dev-ops dream, where I can deploy my application with a single command (and preserve my volumes!). It's configured in a \texttt{yaml} file and maps nicely to standard docker cli arguments: we specify things like \texttt{Dockerfile} location, port forwarding, networds, container dependencies, volumes, environment variables and more!\\
+I'll touch a bit on how I made my various containers, and then configuring my compose file. It's far simpler than it sounds.\\
+
+\noindent{\large Go Backend Dockerfile}\\
+
+Golang compiles to binaries per OS, which is excellent news for us! If we can compile to binaries, we don't need to keep all the installation business around, so we simply copy over the source code, install the packages, and compile as a build stage. Then, we can copy over the executable to a smaller base image, expose our port, and run! It's a process similar to a writing standard shell script, and we are generally concerned with the resulting size. This was an example of a multistage Dockerfile, where we separate the compilation stage from the runner stage; this is quite common as a measure of reducing image size.\\
+
+\noindent{\large Vue Frontend Dockerfile}\\
+
+The dockerfile for the frontend is similarly simple. We copy over the source code, install all the dependencies, and build our app. Then we follow our Golang footsteps and run from a smaller nginx image. This is a good point to mention the repetition within many Dockerfiles; you may note that we are separating installing the Vue CLI tools from installing all the node dependencies. This is because docker gives intermediate image tags per layer (each line in the Dockerfile), which we may run from.\\
+
+\noindent{\large Mongo and Nginx}\\
+
+The MongoDB and Nginx containers are as easy as can be. We simply change nothing from the base images! This is part of the beauty of being a part of a vibrant open source community.\\
+
+\noindent{\large The Composition}\\
+
+Within our docker-compose file, we naturally define a service for each previously mentioned aspect. The common bits are that each service is given the location of the Dockerfile or image, all are set to restart unless-stopped (as I will just be deploying a single instance of this), each is gicen a pseudo tty incase anything goes amuck, everything is given some sort of port mapping, and everything is added to a network. Outsude of this, we link the backend to the database, and we are good to go! From here we can build our cluster and tear it down at will.\\
+\end{document}
