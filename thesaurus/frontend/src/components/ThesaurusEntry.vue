@@ -62,7 +62,7 @@ export default {
       console.log("Getting something")
       let prod = true;
       let url = `http://localhost:3000/thesaurus/api/v1/words/${this.m_word.trim()}`;
-	if(prod) url = `http://67.205.167.246:3000/thesaurus/api/v1/words/${this.m_word.trim().toLowerCase()}`;
+	if(prod) url = `http://sproj.api.colehollant.com/thesaurus/api/v1/words/${this.m_word.trim().toLowerCase()}`;
       fetch(url, {
         method: 'GET',
         headers: {
