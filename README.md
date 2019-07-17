@@ -1,6 +1,10 @@
 # sproj
 Senior Project BABYYYYY
 
+## Stuff that's live:
+Frontend - http://sproj.colehollant.com
+Backend - http://sproj.api.colehollant.com
+
 
 # TODO:
 
@@ -20,3 +24,4 @@ Senior Project BABYYYYY
      * What if I don't even do this?? Can i just stay with naive bayes? Can I just do rf or some shit? I'm already gonna work out the probability stuff
      * Consider kmc !!!! gotta pretend i care about linalg and separatrices or whatever
      * i only kno what a tensor is in my noggin
+
