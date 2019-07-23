@@ -35,7 +35,7 @@ services:
     ports:
     # - "80:80" # for the server
     - "81:80" # for me locally
-    - "443:443"
+    - "445:443"
     networks:
     - app-network
 
