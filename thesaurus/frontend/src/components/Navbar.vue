@@ -1,23 +1,27 @@
 <template>
-    <div class="wrapper w-full shadow-lg p-8">
-        <header class="m-auto max-w-5xl flex align-center justify-around items-center">
-            <router-link exact to="/" class="navlink">Home</router-link>
-            <router-link to="/thesaurus" class="navlink">Thesaurus</router-link>
-            <router-link to="/about" class="navlink">About</router-link>
-        </header>
+    <div class="navbar">
+        <nav class="navbar--link__wrapper">
+            <router-link exact to="/" class="navbar--link">Home</router-link>
+            <router-link to="/thesaurus" class="navbar--link">Thesaurus</router-link>
+            <router-link to="/about" class="navbar--link">About</router-link>
+        </nav>
     </div>
 </template>
 
 <style lang="postcss">
-
-.navlink{
+.navbar {
+    border-top: 4px solid rgba(216, 69, 145, 1);
+    background-color: rgb(117, 42, 81);
+    @apply w-full shadow-lg p-8;
+}
+.navbar--link__wrapper {
+    @apply m-auto max-w-5xl flex justify-around items-center;
+}
+.navbar--link{
     color: rgb(63, 17, 40);
     @apply text-xl cursor-pointer;
 }
 .router-link-active{
     @apply text-pink-100 font-semibold;
-}
-.wrapper{
-    background-color: rgb(117, 42, 81);
 }
 </style>

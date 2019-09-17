@@ -18,6 +18,8 @@ vim /etc/ssh/sshd_config    (set "PermitRootLogin" to "no")
 
 Of course, we'll make a nice `ssh` config on our personal machine for our convenience. We'd like to save the hassle of keeping track of IP addresses and users and keys, so we'll make another entry to be able to simply run `ssh sproj`.
 
+Note, we'll have to do this per system, as per [this bad boy](https://www.digitalocean.com/community/questions/error-permission-denied-publickey-when-i-try-to-ssh)
+
 ## The big whale upstairs
 
 There is certainly a warranted section on Docker. Docker is the Kleenex of containers: it's a wildly popular open source project for working with containers. Cointainers are an industry-molding alternative to virtual machines for running system-agnostic programs. If you've written software in the past few years, you've almost certainly seen some sort of depiction of the difference between virtualization and containerization, but in case you haven't, we can go into it. First off, the picture as promised:

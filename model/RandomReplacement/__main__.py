@@ -1,4 +1,4 @@
-from RandomReplacement.model import *
+from RandomReplacement.model import Model
 import re
 
 model = Model()

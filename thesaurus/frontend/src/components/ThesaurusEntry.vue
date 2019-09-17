@@ -1,50 +1,50 @@
 <template>
   <div class="hello" :key="wordkey">
     <div>
-      <input type="text" v-model="m_word" v-on:keyup.enter="fetchWord"
-        class="word-input text-3xl mt-10 mb-4 font-bold uppercase text-pink-200 text-center bg-transparent border-b-2 border-solid border-pink-500 outline-none"
-      />
+      <input type="text" v-model="m_word" v-on:keyup.enter="fetchWord" class="word-input"/>
     </div>
-    <button type="submit" @click="fetchWord"
-      class="submit-button outline-none border-2 border-solid border-pink-500 rounded-full py-1 px-4 focus:outline-none cursor-pointer text-pink-300 text-xl font-bold hover:bg-pink-900 hover:text-gray-300"
-    >
+    <button type="submit" @click="fetchWord" class="submit-button">
       Take A Look
     </button>
 
     <div v-if="dne">
-      <h2 class="text-semilight text-2xl text-center my-12 font-hairline capitalize">Sorry, we couldn't find that for you :(</h2>
+      <h2 class="error-text">Sorry, we couldn't find that for you :(</h2>
     </div>
-    <div v-else>
-    <div v-for="(key, index) in Object.keys(entry)" :key="index" class="mx-6 my-12">
-      <div class="max-w-3xl m-auto">
 
-        <div v-if="notEmpty(entry[key])">
-        <h2 class="text-semilight text-2xl my-4 text-left capitalize">{{ key }}</h2>
-        <div class="nym-box-wrapper bg-pink-900 pt-2 pb-8 rounded">
-          <div v-for="pos in Object.keys(entry[key])" :key="pos+entry.key">
-            <div v-if="entry[key][pos].length > 0" class="mx-4 md:mx-8">
-              <h3 class="text-xl py-2 text-light text-left lowercase">{{ pos }}</h3>
-              <ul class="nym-box flex flex-wrap justify-center bg-gray-400 p-2 rounded">
-                <li class="m-4 text-pink-300 text-xl" v-for="nym in entry[key][pos]" :key="pos+entry.key+nym">
-                  <button @click="()=>setWord(nym)" class="focus:outline-none hover:text-pink-500">{{nym}}</button>
-                </li>
-              </ul>
+    <div v-else>
+      <!-- this could be a functional component! -->
+      <ThesaurusResult :entry="entry" @event_from_child="setWord"/>
+      <!-- <div v-for="(key, index) in Object.keys(entry)" :key="index" class="mx-6 my-12">
+        <div class="thesaurus--results-box">
+          <div v-if="notEmpty(entry[key])">
+          <h2 class="thesaurus--category">{{ key }}</h2>
+          <div class="thesaurus--pos__wrapper">
+            <div v-for="pos in Object.keys(entry[key])" :key="pos+entry.key">
+              <div v-if="entry[key][pos].length > 0" class="mx-4 md:mx-8">
+                <h3 class="thesaurus--pos">{{ pos }}</h3>
+                <ul class="thesaurus--entry__wrapper">
+                  <li class="thesaurus--entry" v-for="word in entry[key][pos]" :key="pos+entry.key+word" v-on:click="()=>setWord(word)">
+                    {{word}}
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
+          </div>
         </div>
-        </div>
-
-
-      </div>
-    </div>
+      </div> -->
     </div>
 
   </div>
 </template>
 
 <script>
+import ThesaurusResult from "@/components/ThesaurusResult.vue"
 export default {
   name: 'HelloWorld',
+  components: {
+    ThesaurusResult
+  },
   props: {
     word: String
   },
@@ -62,7 +62,7 @@ export default {
       console.log("Getting something")
       let prod = true;
       let url = `http://localhost:3000/thesaurus/api/v1/words/${this.m_word.trim()}`;
-	if(prod) url = `https://sproj.api.colehollant.com/thesaurus/api/v1/words/${this.m_word.trim().toLowerCase()}`;
+      if(prod) url = `https://sproj.api.colehollant.com/thesaurus/api/v1/words/${this.m_word.trim().toLowerCase()}`;
       fetch(url, {
         method: 'GET',
         headers: {
@@ -102,8 +102,14 @@ export default {
       }
       return false
     },
-    setWord(nym){
-      this.m_word=nym.trim().toLowerCase();
+    // setWord(nym){
+    //   this.m_word=nym.trim().toLowerCase();
+    //   this.fetchWord()
+    // }
+    setWord(e) {
+      // (e)=>m_word = e
+      console.log(e)
+      this.m_word=e.trim().toLowerCase();
       this.fetchWord()
     }
   },
@@ -124,21 +130,19 @@ export default {
   margin-left: 2rem;
   margin-right: 2rem;
   max-width: calc(100vw - 4rem);
+  @apply text-3xl mt-10 mb-4 font-bold uppercase text-pink-200 text-center bg-transparent border-b-2 border-solid border-pink-500 outline-none;
 }
 .submit-button {
   transition: all 0.2s ease-in-out;
+  @apply outline-none border-2 border-solid border-pink-500 rounded-full py-1 px-4 cursor-pointer text-pink-300 text-xl font-bold;
 }
-
-.nym-box-wrapper{
-  
-  box-shadow: 4px 4px 10px -1px rgba(104, 0, 95, 0.5);
-  background: linear-gradient(155deg, rgb(117, 42, 81) 30%, rgb(88, 33, 87) 70%);
+.submit-button:hover {
+  @apply bg-pink-900 text-gray-300;
 }
-.nym-box{
-  background-color: rgba(59, 12, 33, 0.6);
-  border-color: rgba(216, 69, 145, 0.7);
-  @apply border-l-4;
-  /* @apply bg-gray-800 border border-pink-500; */
+.submit-button:focus {
+  @apply outline-none;
 }
-
+.error-text {
+  @apply text-semilight text-2xl text-center my-12 font-hairline capitalize;
+}
 </style>
