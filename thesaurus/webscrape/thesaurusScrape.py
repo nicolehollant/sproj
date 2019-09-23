@@ -15,14 +15,14 @@ class ThesaurusScraper:
         self.words = open('words', 'r').readlines()
         self.allHeaders = []
 
-    '''
+    def scrapeByWord(self, word):
+        '''
         Method to scrape entries by word
         params:
             - word: word to scrape
         returns:
             - result: dictionary containing synonyms and antonyms for [word]
-    '''
-    def scrapeByWord(self, word):
+        '''
         url = "https://words.bighugelabs.com/" + word
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "html.parser")
@@ -39,7 +39,8 @@ class ThesaurusScraper:
         # pprint(result, compact=True)
         return result
 
-    '''
+    def processSection(self, partOfSpeech, soup):
+        '''
         Helper for extracting synonyms and antonyms for a part of speech
         params: 
             - partOfSpeech: a string for which part of speech to process
@@ -47,8 +48,7 @@ class ThesaurusScraper:
         returns:
             - synonymsList: list of all synonyms found
             - antonymsList: list of all antonyms found
-    '''
-    def processSection(self, partOfSpeech, soup):
+        '''
         # initialize lists for returns
         synonymsList = []
         antonymsList = []
@@ -90,10 +90,10 @@ class ThesaurusScraper:
         return synonymsList, antonymsList
 
 
-    '''
-        Small helper function to get headers (parts of speech and whatnot)
-    '''
     def getHeaders(self, word):
+        '''
+        Small helper function to get headers (parts of speech and whatnot)
+        '''
         url = "https://words.bighugelabs.com/" + word
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "html.parser")
@@ -103,11 +103,11 @@ class ThesaurusScraper:
                 self.allHeaders.append(head)
                 print(head)
     
-    '''
+    def run(self):
+        '''
         Runner that scrapes all words in [self.words]
         Writes to files by first letter
-    '''
-    def run(self):
+        '''
         for word in self.words:
             word = word.lower().strip()
             synonyms = self.scrapeByWord(word)
@@ -148,7 +148,6 @@ class ThesaurusScraper:
         for filename in directory:
             if filename.is_file():
                 if filename.name.endswith('json') and filename.name.startswith("thesaurus"):
-                    filestr = ""
                     with open('./thesaurus/'+filename.name, "r") as f:
                         currentList = json.load(f)
                         for entry in currentList:
