@@ -23,7 +23,11 @@ differences_by_number = {}
 sumdiffs = 0
 maxnumdiffs = 0
 for word in senselevel.keys():
-  senseassoc = senselevel[word]["associations"]
+  # senseassoc = [sense["associations"] for sense in senselevel[word]]
+  senseassoc = set()
+  for sense in senselevel[word]:
+    senseassoc = senseassoc.union(sense["associations"])
+  # senselevel = senselevel[word]["associations"]
   wordassoc = wordlevel[word]["associations"]
 
   same, diffs = same_entries(senseassoc, wordassoc)

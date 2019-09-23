@@ -113,7 +113,9 @@ class SenseLevel():
           with open('./tmp/'+filename.name, "r") as f:
             currentList = json.load(f)
             for entry in currentList:
-              dataset[entry["word"]] = entry
+              curr = list(dataset.get(entry["word"], []))
+              curr.append(entry)
+              dataset[entry["word"]] = curr
           os.remove('./tmp/'+filename.name)
     with open(self.outfile, "w") as f:
       json.dump(dataset, f, indent=2, sort_keys=True)
