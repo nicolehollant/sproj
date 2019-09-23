@@ -89,3 +89,9 @@ We wanted to preserve their data, but bring it into our database (MongoDB). This
 ```
 
 Note that the "synonyms" field is only present in the "sense-level" form, otherwise the schema are equivalent. This is then easily POST-ed to our API and can be accessible!
+
+## National Research Council Canada (NRC) Colour Lexicon
+## National Research Council Canada (NRC) Affect-Intensity Lexicon
+## National Research Council Canada (NRC) VAD Lexicon
+
+These three lexicons followed largely from the first. They shared similar formats, and we only had to change how we parsed them. These lexicons were all one-entry-per-line, so we were able to skip our finished-entry checking, and otherwise the differences were solely in the `process_line` which had to be catered to each lexicon. As they are also single-form, we skipped difference checking for all of them.

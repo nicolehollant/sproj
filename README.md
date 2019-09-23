@@ -16,8 +16,6 @@ Backend - http://sproj.api.colehollant.com
   2. Bayesian replacement (LDA model):
      * Gather >= 2 categories, gather some probabilities of words belonging to a category (we will ignore words not in my thesaurus, but maybe write them to a file?), calculate probs of word being used given each category, replace with word if prob of belonging to the other category is greater (or lesser)
   3. Neural Network replacement:
-     * I have no idea what im doing
-     * What even is an lstm (or even an rnn LOL)
      * Consider kmc !!!! gotta pretend i care about linalg and separatrices or whatever
    4. Maybe just dont do NNs:
      * look at LDAs and seeded LDAs
@@ -80,3 +78,9 @@ lexicon:
 }
 
 ```
+
+## 9/23
+
+- Redo sense-level (there are multiple entries in the TSV, fix your JSON to actually get that)
+  - probably can keep most of the code, but maybe switch to use arrays?
+    - could potentially check existence of key at write time and add if exists
