@@ -1,4 +1,4 @@
-package main
+package endpoints
 
 import (
 	"context"
@@ -6,7 +6,8 @@ import (
 	"fmt"
 	"net/http"
 	"time"
-
+	"main/structs"
+	
 	"go.mongodb.org/mongo-driver/bson"
 )
 

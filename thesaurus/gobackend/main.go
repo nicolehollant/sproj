@@ -9,6 +9,8 @@ import (
 	"net/http"
 	"os"
 	"time"
+	"endpoints"
+	"structs"
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"

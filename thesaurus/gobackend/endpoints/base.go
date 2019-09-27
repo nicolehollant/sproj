@@ -1,4 +1,4 @@
-package main
+package endpoints
 
 import (
 	"encoding/json"

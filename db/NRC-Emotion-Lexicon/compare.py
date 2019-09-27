@@ -1,4 +1,5 @@
 import json
+import sys
 
 senselevel = {}
 wordlevel = {}
@@ -22,6 +23,7 @@ differences = []
 differences_by_number = {}
 sumdiffs = 0
 maxnumdiffs = 0
+print(len(senselevel.keys()), len(wordlevel.keys()))
 for word in senselevel.keys():
   # senseassoc = [sense["associations"] for sense in senselevel[word]]
   senseassoc = set()

@@ -54,7 +54,7 @@ class SenseLevel():
     word = wordsect.split("--")[0]
 
     self.currententry["word"] = word.strip()
-    self.currententry["synonyms"] = [x.strip() for x in wordsect.split("--")[1].split(",")]
+    self.currententry["sense"] = [x.strip() for x in wordsect.split("--")[1].split(",")]
     if int(association) == 1:
       self.currententry["associations"].append(affect)
 
@@ -101,7 +101,7 @@ class SenseLevel():
     {
       "WORD": {
         "associations": [],
-        "synonyms": [],
+        "sense": [],
         "word": "WORD"
         ...
       }
