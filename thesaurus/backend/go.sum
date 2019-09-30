@@ -1,5 +1,6 @@
 github.com/colehollant/sproj v0.0.0-20190930180904-7581cbcd8cc9 h1:4fNXa1kFZ+m19VjSaCNovFKjk1OYNonJ0JNM3ctVFGE=
 github.com/colehollant/sproj v0.0.0-20190930182355-6aa5a7a83987 h1:MuUE1bOOomQfGDNV7XMv5iR2q9f8NqECBJkSKx4/pig=
+github.com/colehollant/sproj v0.0.0-20190930182741-b277aa538a30 h1:RBXXGXP+da9ez9tL3Ti4Do9P33Am9ZBe6Yxl3pdMMKk=
 github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930180904-7581cbcd8cc9 h1:zmSDpxKQ2njPy78q8zq6Bhp/8mHRyrkUXf6TXFjX1KA=
 github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930180904-7581cbcd8cc9/go.mod h1:r1HRVWsAS2Q6ELYRQtR6k5op0REh8SEU2IMReQRhd78=
 github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930180904-7581cbcd8cc9 h1:IVyk1qBFNmRhVOLL4UD93CbPHd/9MCoysePAnM4UVdQ=

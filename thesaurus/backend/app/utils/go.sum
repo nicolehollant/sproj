@@ -1,4 +1,3 @@
-github.com/colehollant/sproj v0.0.0-20190930181534-c495d38262ce h1:JBtvDAdKyARf/J00lzi6ACV2xhbl+2zOc2vmnJbJYCU=
 github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930181534-c495d38262ce h1:mnKJoU7wyBlVujdmCxwgLCGB315TnfpsFmkhnJHdh94=
 github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930181534-c495d38262ce/go.mod h1:6T6whvtL8PjfqQtMut4kJdu/wKbgNoXT07zJ/1EBQW8=
 github.com/go-stack/stack v1.8.0 h1:5SgMzNM5HxrEjV0ww2lTmX6E2Izsfxas4+YHWRs3Lsk=
