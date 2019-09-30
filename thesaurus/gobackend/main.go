@@ -12,6 +12,7 @@ import (
 	"endpoints"
 	"structs"
 
+	"github.com/colehollant/sproj/thesaurus/gobackend/structs"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/mongo"
