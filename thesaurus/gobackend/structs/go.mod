@@ -1,4 +1,4 @@
-module structs
+module github.com/colehollant/sproj/tree/master/thesaurus/gobackend/structs
 
 go 1.12
 
