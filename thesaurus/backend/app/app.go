@@ -49,6 +49,7 @@ func (a *App) Initialize(config *config.Config) {
 	fmt.Println(config.DB.Port)
 	fmt.Println("URI:")
 	fmt.Println(uri)
+	fmt.Println("O hi there")
 	clientOptions := options.Client().ApplyURI(uri)
 	a.Client, _ = mongo.Connect(ctx, clientOptions)
 

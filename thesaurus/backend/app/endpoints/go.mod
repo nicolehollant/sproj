@@ -2,8 +2,12 @@ module github.com/colehollant/sproj/thesaurus/backend/app/endpoints
 
 go 1.12
 
+replace github.com/colehollant/sproj/thesaurus/backend/app => /Users/colehollant/Projects/sproj/thesaurus/backend/app
+replace github.com/colehollant/sproj/thesaurus/backend/app/utils => /Users/colehollant/Projects/sproj/thesaurus/backend/app/utils
+replace github.com/colehollant/sproj/thesaurus/backend/app/structs => /Users/colehollant/Projects/sproj/thesaurus/backend/app/structs
+replace github.com/colehollant/sproj/thesaurus/backend/config => /Users/colehollant/Projects/sproj/thesaurus/backend/config
+
 require (
-	github.com/colehollant/sproj v0.0.0-20190930183635-b13cbc2a0a34
 	github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930183635-b13cbc2a0a34
 	github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930183635-b13cbc2a0a34
 	github.com/colehollant/sproj/thesaurus/backend/app/utils v0.0.0-20190930183635-b13cbc2a0a34

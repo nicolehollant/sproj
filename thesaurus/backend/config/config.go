@@ -16,7 +16,7 @@ type DBConfig struct {
 func GetConfig() *Config {
 	return &Config{
 		DB: &DBConfig{
-			Host:     os.Getenv("database"),
+			Host:     os.Getenv("DBHOST"),
 			Port:     os.Getenv("MONGOPORT"),
 			Username: os.Getenv("DBUSERNAME"),
 			Password: os.Getenv("DBPASSWORD"),

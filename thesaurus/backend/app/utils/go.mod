@@ -2,6 +2,8 @@ module github.com/colehollant/sproj/thesaurus/backend/app/utils
 
 go 1.12
 
+replace github.com/colehollant/sproj/thesaurus/backend/app/structs => /Users/colehollant/Projects/sproj/thesaurus/backend/app/structs
+
 require (
 	github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930181534-c495d38262ce
 	github.com/go-stack/stack v1.8.0 // indirect
