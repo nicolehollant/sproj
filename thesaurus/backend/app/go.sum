@@ -1,4 +1,10 @@
 github.com/colehollant/sproj v0.0.0-20190930180904-7581cbcd8cc9 h1:4fNXa1kFZ+m19VjSaCNovFKjk1OYNonJ0JNM3ctVFGE=
+github.com/colehollant/sproj/thesaurus/backend/app/endpoints v0.0.0-20190930182355-6aa5a7a83987 h1:iEf40uWyNGNylr3q7z55oEGw49vF44QlHiI7mHT4zbY=
+github.com/colehollant/sproj/thesaurus/backend/app/endpoints v0.0.0-20190930182355-6aa5a7a83987/go.mod h1:ifXFB7YcWT9RBeu9mLoSex84AvjtbyO/05RkveySSxE=
+github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930181534-c495d38262ce h1:mnKJoU7wyBlVujdmCxwgLCGB315TnfpsFmkhnJHdh94=
+github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930181534-c495d38262ce/go.mod h1:6T6whvtL8PjfqQtMut4kJdu/wKbgNoXT07zJ/1EBQW8=
+github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930182355-6aa5a7a83987 h1:8ijn4WcDC9+BLDZAXETpL6lBELdyooptJCnZtpiyr+k=
+github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930182355-6aa5a7a83987/go.mod h1:ww+g2tXBrVg3Ak06kFXwCbmL3U8BfJ3HmjvuanTIoKw=
 github.com/go-stack/stack v1.8.0 h1:5SgMzNM5HxrEjV0ww2lTmX6E2Izsfxas4+YHWRs3Lsk=
 github.com/go-stack/stack v1.8.0/go.mod h1:v0f6uXyyMGvRgIKkXu+yp6POWl0qKG85gN/melR3HDY=
 github.com/golang/snappy v0.0.1 h1:Qgr9rKW7uDUkrbSmQeiDsGa8SjGyCOGtuasMWwvp2P4=

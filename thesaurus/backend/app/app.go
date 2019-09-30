@@ -6,7 +6,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/colehollant/sproj/thesaurus/gobackend/endpoints"
+	"github.com/colehollant/sproj/thesaurus/backend/app/endpoints"
+	"github.com/colehollant/sproj/thesaurus/backend/config"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/mongo"

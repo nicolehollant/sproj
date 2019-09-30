@@ -7,7 +7,9 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/colehollant/sproj/thesaurus/backend/app"
 	"github.com/colehollant/sproj/thesaurus/backend/app/structs"
+	"github.com/colehollant/sproj/thesaurus/backend/app/utils"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
@@ -17,7 +19,7 @@ func CreateWord(response http.ResponseWriter, request *http.Request) {
 	var entry structs.ThesaurusEntry
 	_ = json.NewDecoder(request.Body).Decode(&entry)
 
-	hasCreds := CheckAdminCreds(request)
+	hasCreds := utils.CheckAdminCreds(request)
 	if hasCreds != nil {
 		json.NewEncoder(response).Encode(hasCreds)
 		return
@@ -25,13 +27,13 @@ func CreateWord(response http.ResponseWriter, request *http.Request) {
 
 	createdWord := entry.Word
 
-	wordExists := CheckEmptyFieldsAll(entry, response)
+	wordExists := utils.CheckEmptyFieldsAll(entry, response)
 	if wordExists != nil {
 		json.NewEncoder(response).Encode(wordExists)
 		return
 	}
 
-	collection := client.Database("thesaurus-v1").Collection("words")
+	collection := app.App.Client.Database("thesaurus-v1").Collection("words")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	exists := collection.FindOne(ctx, ThesaurusEntry{Word: createdWord}).Decode(&entry)
 
