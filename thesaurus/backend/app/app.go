@@ -39,7 +39,7 @@ func (a *App) Initialize(config *config.Config) {
 	cancel()
 	defaultURI := "mongodb://database:27017"
 	// defaultURI := "mongodb://67.205.167.246:27017"
-	if db == "" {
+	if config.DB.Host == "" {
 		uri = defaultURI
 	}
 	clientOptions := options.Client().ApplyURI(uri)

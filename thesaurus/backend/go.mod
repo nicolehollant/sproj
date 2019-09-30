@@ -3,10 +3,18 @@ module github.com/colehollant/sproj/thesaurus/backend
 go 1.12
 
 require (
-	github.com/colehollant/sproj v0.0.0-20190930183635-b13cbc2a0a34 // indirect
-	github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930183635-b13cbc2a0a34
-	github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930183635-b13cbc2a0a34
-	golang.org/x/net v0.0.0-20190930134127-c5a3c61f89f3 // indirect
-	golang.org/x/sys v0.0.0-20190927073244-c990c680b611 // indirect
-	golang.org/x/tools v0.0.0-20190930152728-90aeebe84374 // indirect
+	github.com/colehollant/sproj v0.0.0-20190930223614-7803c61ac915 // indirect
+	github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930223614-7803c61ac915
+	github.com/colehollant/sproj/thesaurus/backend/app/endpoints v0.0.0-20190930223614-7803c61ac915 // indirect
+	github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930223614-7803c61ac915 // indirect
+	github.com/colehollant/sproj/thesaurus/backend/app/utils v0.0.0-20190930223614-7803c61ac915 // indirect
+	github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930223614-7803c61ac915
+	github.com/google/go-cmp v0.3.1 // indirect
+	github.com/kr/pretty v0.1.0 // indirect
+	github.com/stretchr/objx v0.2.0 // indirect
+	github.com/stretchr/testify v1.4.0 // indirect
+	github.com/tidwall/pretty v1.0.0 // indirect
+	golang.org/x/tools v0.0.0-20190930201159-7c411dea38b0 // indirect
+	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
+	gopkg.in/yaml.v2 v2.2.3 // indirect
 )
