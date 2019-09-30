@@ -6,10 +6,11 @@ import (
 	"net/http"
 
 	"github.com/colehollant/sproj/thesaurus/backend/app/structs"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 // GetAPIInfo - Small debug/"hello world" endpoint.
-func GetAPIInfo(response http.ResponseWriter, request *http.Request) {
+func GetAPIInfo(client *mongo.Client, response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Getting API info!")
 	response.WriteHeader(http.StatusOK)
 	payload := structs.MessageResponse{
