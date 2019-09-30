@@ -3,12 +3,12 @@ module github.com/colehollant/sproj/thesaurus/backend
 go 1.12
 
 require (
-	github.com/colehollant/sproj v0.0.0-20190930224118-bf9baf93591a // indirect
-	github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930224118-bf9baf93591a
-	github.com/colehollant/sproj/thesaurus/backend/app/endpoints v0.0.0-20190930224118-bf9baf93591a // indirect
-	github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930224118-bf9baf93591a // indirect
-	github.com/colehollant/sproj/thesaurus/backend/app/utils v0.0.0-20190930224118-bf9baf93591a // indirect
-	github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930224118-bf9baf93591a
+	github.com/colehollant/sproj v0.0.0-20190930224446-1532ae457d51 // indirect
+	github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930224446-1532ae457d51
+	github.com/colehollant/sproj/thesaurus/backend/app/endpoints v0.0.0-20190930224446-1532ae457d51 // indirect
+	github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930224446-1532ae457d51 // indirect
+	github.com/colehollant/sproj/thesaurus/backend/app/utils v0.0.0-20190930224446-1532ae457d51 // indirect
+	github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930224446-1532ae457d51
 	github.com/creack/pty v1.1.9 // indirect
 	github.com/google/go-cmp v0.3.1 // indirect
 	github.com/kr/pretty v0.1.0 // indirect

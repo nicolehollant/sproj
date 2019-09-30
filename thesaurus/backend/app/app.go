@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -42,6 +43,12 @@ func (a *App) Initialize(config *config.Config) {
 	if config.DB.Host == "" {
 		uri = defaultURI
 	}
+	fmt.Println("DB HOST:")
+	fmt.Println(config.DB.Host)
+	fmt.Println("MONGO PORT:")
+	fmt.Println(config.DB.Port)
+	fmt.Println("URI:")
+	fmt.Println(uri)
 	clientOptions := options.Client().ApplyURI(uri)
 	a.Client, _ = mongo.Connect(ctx, clientOptions)
 

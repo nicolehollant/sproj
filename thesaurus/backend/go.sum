@@ -8,6 +8,8 @@ github.com/colehollant/sproj v0.0.0-20190930223614-7803c61ac915 h1:nipSqyUVKgAOl
 github.com/colehollant/sproj v0.0.0-20190930223614-7803c61ac915/go.mod h1:6Mo3jsZFzzdpzlkTosZbRFDYHopSwaCjfyoA4A8MD7E=
 github.com/colehollant/sproj v0.0.0-20190930224118-bf9baf93591a h1:zLjbU1s9hnnmydgNmBQ5yl1Q8Kad/J9YuPLpNAX7adA=
 github.com/colehollant/sproj v0.0.0-20190930224118-bf9baf93591a/go.mod h1:6Mo3jsZFzzdpzlkTosZbRFDYHopSwaCjfyoA4A8MD7E=
+github.com/colehollant/sproj v0.0.0-20190930224446-1532ae457d51 h1:H6SWavAVs32TvK/NXIhtA92nNK4clVuHdCC5RsURfJQ=
+github.com/colehollant/sproj v0.0.0-20190930224446-1532ae457d51/go.mod h1:6Mo3jsZFzzdpzlkTosZbRFDYHopSwaCjfyoA4A8MD7E=
 github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930180904-7581cbcd8cc9 h1:zmSDpxKQ2njPy78q8zq6Bhp/8mHRyrkUXf6TXFjX1KA=
 github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930180904-7581cbcd8cc9/go.mod h1:r1HRVWsAS2Q6ELYRQtR6k5op0REh8SEU2IMReQRhd78=
 github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930182355-6aa5a7a83987/go.mod h1:JmeZoCtJs5TuU736XQ/P5Q8Rzp2SAvi1KctGfEl5hbc=
@@ -17,6 +19,8 @@ github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930223614-7803c61
 github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930223614-7803c61ac915/go.mod h1:uZshb4UWTutLfYZTnix8Rqm8cMooQOP83e3/9UnD8EI=
 github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930224118-bf9baf93591a h1:01pvmnCZ+pdgxbFZDmrH6hN/R5tG+75p+zJMjU5/LlE=
 github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930224118-bf9baf93591a/go.mod h1:uZshb4UWTutLfYZTnix8Rqm8cMooQOP83e3/9UnD8EI=
+github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930224446-1532ae457d51 h1:n/V9HU/TJiH+r99as4udercr4Gldbzmh4HYoDAcTvoI=
+github.com/colehollant/sproj/thesaurus/backend/app v0.0.0-20190930224446-1532ae457d51/go.mod h1:uZshb4UWTutLfYZTnix8Rqm8cMooQOP83e3/9UnD8EI=
 github.com/colehollant/sproj/thesaurus/backend/app/endpoints v0.0.0-20190930182355-6aa5a7a83987 h1:iEf40uWyNGNylr3q7z55oEGw49vF44QlHiI7mHT4zbY=
 github.com/colehollant/sproj/thesaurus/backend/app/endpoints v0.0.0-20190930182355-6aa5a7a83987/go.mod h1:ifXFB7YcWT9RBeu9mLoSex84AvjtbyO/05RkveySSxE=
 github.com/colehollant/sproj/thesaurus/backend/app/endpoints v0.0.0-20190930183635-b13cbc2a0a34 h1:YsDAYwzO7hDx0BBrEFjo0E+B7Pjd0wE/Usi2UqT6Bwo=
@@ -25,6 +29,8 @@ github.com/colehollant/sproj/thesaurus/backend/app/endpoints v0.0.0-201909302236
 github.com/colehollant/sproj/thesaurus/backend/app/endpoints v0.0.0-20190930223614-7803c61ac915/go.mod h1:RoM6FhI9AEsEZbzIkWe7sNL/eGrI457hFRzzpkZfsnI=
 github.com/colehollant/sproj/thesaurus/backend/app/endpoints v0.0.0-20190930224118-bf9baf93591a h1:zhaEBo+8nxyXptpNshek1B0iR8yqViEKv4QaSAns7Gk=
 github.com/colehollant/sproj/thesaurus/backend/app/endpoints v0.0.0-20190930224118-bf9baf93591a/go.mod h1:RoM6FhI9AEsEZbzIkWe7sNL/eGrI457hFRzzpkZfsnI=
+github.com/colehollant/sproj/thesaurus/backend/app/endpoints v0.0.0-20190930224446-1532ae457d51 h1:UKb0Sr3B4usFKBL3sU71pZB0eNHXZUuJvUAU25wNfTI=
+github.com/colehollant/sproj/thesaurus/backend/app/endpoints v0.0.0-20190930224446-1532ae457d51/go.mod h1:RoM6FhI9AEsEZbzIkWe7sNL/eGrI457hFRzzpkZfsnI=
 github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930181534-c495d38262ce h1:mnKJoU7wyBlVujdmCxwgLCGB315TnfpsFmkhnJHdh94=
 github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930181534-c495d38262ce/go.mod h1:6T6whvtL8PjfqQtMut4kJdu/wKbgNoXT07zJ/1EBQW8=
 github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930183635-b13cbc2a0a34 h1:0elXQB64Z+ngF4BXZofdR4X/GEIPkk2K1OZXLIhWzU8=
@@ -33,6 +39,8 @@ github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930223614
 github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930223614-7803c61ac915/go.mod h1:XEaSXX0iJ7feHIRgGPsJqdFBI55RiuoVWj9XzHdoe8E=
 github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930224118-bf9baf93591a h1:VX1pEUxemVPqGUUU4p8l4nKYVi6U+klJyp533BqEwT8=
 github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930224118-bf9baf93591a/go.mod h1:XEaSXX0iJ7feHIRgGPsJqdFBI55RiuoVWj9XzHdoe8E=
+github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930224446-1532ae457d51 h1:fbEAyTDikhJ3h4QZ997zw+3bCtPTgwxy3LpfzzLMrn0=
+github.com/colehollant/sproj/thesaurus/backend/app/structs v0.0.0-20190930224446-1532ae457d51/go.mod h1:XEaSXX0iJ7feHIRgGPsJqdFBI55RiuoVWj9XzHdoe8E=
 github.com/colehollant/sproj/thesaurus/backend/app/utils v0.0.0-20190930182355-6aa5a7a83987/go.mod h1:OPdBJtEkrxNYuwkNFKzJ0M2Go81xnp4zBUZlLKWJLTo=
 github.com/colehollant/sproj/thesaurus/backend/app/utils v0.0.0-20190930183635-b13cbc2a0a34 h1:oizWz6ySyuDzKKDiyReEZgNObM5mVs6aJ++diGla5Io=
 github.com/colehollant/sproj/thesaurus/backend/app/utils v0.0.0-20190930183635-b13cbc2a0a34/go.mod h1:OPdBJtEkrxNYuwkNFKzJ0M2Go81xnp4zBUZlLKWJLTo=
@@ -40,6 +48,8 @@ github.com/colehollant/sproj/thesaurus/backend/app/utils v0.0.0-20190930223614-7
 github.com/colehollant/sproj/thesaurus/backend/app/utils v0.0.0-20190930223614-7803c61ac915/go.mod h1:OPdBJtEkrxNYuwkNFKzJ0M2Go81xnp4zBUZlLKWJLTo=
 github.com/colehollant/sproj/thesaurus/backend/app/utils v0.0.0-20190930224118-bf9baf93591a h1:g3Av3+CGOPbm4glTrZbm0qAXfa7e0FAIk41C4NGbRrc=
 github.com/colehollant/sproj/thesaurus/backend/app/utils v0.0.0-20190930224118-bf9baf93591a/go.mod h1:OPdBJtEkrxNYuwkNFKzJ0M2Go81xnp4zBUZlLKWJLTo=
+github.com/colehollant/sproj/thesaurus/backend/app/utils v0.0.0-20190930224446-1532ae457d51 h1:MvxNfWsrchFiwFwBMtBJ+kHRjiWI6wLEhC9eWGb6F5w=
+github.com/colehollant/sproj/thesaurus/backend/app/utils v0.0.0-20190930224446-1532ae457d51/go.mod h1:OPdBJtEkrxNYuwkNFKzJ0M2Go81xnp4zBUZlLKWJLTo=
 github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930180904-7581cbcd8cc9 h1:IVyk1qBFNmRhVOLL4UD93CbPHd/9MCoysePAnM4UVdQ=
 github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930180904-7581cbcd8cc9/go.mod h1:ww+g2tXBrVg3Ak06kFXwCbmL3U8BfJ3HmjvuanTIoKw=
 github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930182355-6aa5a7a83987/go.mod h1:ww+g2tXBrVg3Ak06kFXwCbmL3U8BfJ3HmjvuanTIoKw=
@@ -49,6 +59,8 @@ github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930223614-7803
 github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930223614-7803c61ac915/go.mod h1:ww+g2tXBrVg3Ak06kFXwCbmL3U8BfJ3HmjvuanTIoKw=
 github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930224118-bf9baf93591a h1:Z+o+HI0fEGenCSagtQpuNAhVsbtN5Jk4vW3hf2UpAq0=
 github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930224118-bf9baf93591a/go.mod h1:ww+g2tXBrVg3Ak06kFXwCbmL3U8BfJ3HmjvuanTIoKw=
+github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930224446-1532ae457d51 h1:eSIozepD1SFTvStL6CBTEAbNS+bWgmhbh9a0VE4ZrgA=
+github.com/colehollant/sproj/thesaurus/backend/config v0.0.0-20190930224446-1532ae457d51/go.mod h1:ww+g2tXBrVg3Ak06kFXwCbmL3U8BfJ3HmjvuanTIoKw=
 github.com/creack/pty v1.1.7/go.mod h1:lj5s0c3V2DBrqTV7llrYr5NG6My20zk30Fl46Y7DoTY=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
