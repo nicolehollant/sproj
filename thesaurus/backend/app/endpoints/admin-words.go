@@ -7,13 +7,14 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/colehollant/sproj/thesaurus/backend/app/structs"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
 // CreateWord - Add entries to the collection!
 func CreateWord(response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Creating word!")
-	var entry ThesaurusEntry
+	var entry structs.ThesaurusEntry
 	_ = json.NewDecoder(request.Body).Decode(&entry)
 
 	hasCreds := CheckAdminCreds(request)
