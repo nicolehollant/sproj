@@ -6,8 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"time"
-	"main/structs"
-	
+
 	"go.mongodb.org/mongo-driver/bson"
 )
 
