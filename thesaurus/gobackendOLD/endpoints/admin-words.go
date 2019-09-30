@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"time"
 
+"github.com/colehollant/sproj/thesaurus/gobackend/structs"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
