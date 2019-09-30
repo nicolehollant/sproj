@@ -7,14 +7,14 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/colehollant/sproj/thesaurus/backend/app"
 	"github.com/colehollant/sproj/thesaurus/backend/app/structs"
 	"github.com/colehollant/sproj/thesaurus/backend/app/utils"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 // CreateWord - Add entries to the collection!
-func CreateWord(response http.ResponseWriter, request *http.Request) {
+func CreateWord(client *mongo.Client, response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Creating word!")
 	var entry structs.ThesaurusEntry
 	_ = json.NewDecoder(request.Body).Decode(&entry)
@@ -33,13 +33,13 @@ func CreateWord(response http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	collection := app.App.Client.Database("thesaurus-v1").Collection("words")
+	collection := client.Database("thesaurus-v1").Collection("words")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	exists := collection.FindOne(ctx, ThesaurusEntry{Word: createdWord}).Decode(&entry)
+	exists := collection.FindOne(ctx, structs.ThesaurusEntry{Word: createdWord}).Decode(&entry)
 
 	if exists == nil {
 		response.WriteHeader(http.StatusBadRequest)
-		payload := MessageResponse{
+		payload := structs.MessageResponse{
 			Message: "Word already exists",
 		}
 		json.NewEncoder(response).Encode(payload)
@@ -49,16 +49,16 @@ func CreateWord(response http.ResponseWriter, request *http.Request) {
 
 	result, err := collection.InsertOne(ctx, entry)
 	if err != nil {
-		MongoError(err, cancel, response)
+		utils.MongoError(err, cancel, response)
 		return
 	}
 
 	response.WriteHeader(http.StatusCreated)
-	payload := CreateWordSuccess{
-		MessageResponse: MessageResponse{
+	payload := structs.CreateWordSuccess{
+		MessageResponse: structs.MessageResponse{
 			Message: "Word added",
 		},
-		Data: CreateWordSuccessData{
+		Data: structs.CreateWordSuccessData{
 			Word:   createdWord,
 			Result: result,
 		},
@@ -70,10 +70,10 @@ func CreateWord(response http.ResponseWriter, request *http.Request) {
 }
 
 // GetAllWords - Add entries to the collection!
-func GetAllWords(response http.ResponseWriter, request *http.Request) {
+func GetAllWords(client *mongo.Client, response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Getting words!")
 
-	hasCreds := CheckAdminCreds(request)
+	hasCreds := utils.CheckAdminCreds(request)
 	if hasCreds != nil {
 		json.NewEncoder(response).Encode(hasCreds)
 		return
@@ -84,7 +84,7 @@ func GetAllWords(response http.ResponseWriter, request *http.Request) {
 	cursor, err := collection.Find(ctx, bson.D{})
 
 	if err != nil {
-		MongoError(err, cancel, response)
+		utils.MongoError(err, cancel, response)
 		return
 	}
 	var s []string
@@ -93,7 +93,7 @@ func GetAllWords(response http.ResponseWriter, request *http.Request) {
 		elem := &bson.D{}
 		err = cursor.Decode(elem)
 		if err != nil {
-			MongoError(err, cancel, response)
+			utils.MongoError(err, cancel, response)
 			return
 		}
 		word := elem.Map()["word"].(string)
@@ -101,11 +101,11 @@ func GetAllWords(response http.ResponseWriter, request *http.Request) {
 	}
 	fmt.Println("guess we good")
 	response.WriteHeader(http.StatusOK)
-	payload := GetAllWordsSuccess{
-		MessageResponse: MessageResponse{
+	payload := structs.GetAllWordsSuccess{
+		MessageResponse: structs.MessageResponse{
 			Message: "Words aggregated",
 		},
-		Data: GetAllWordsSuccessData{
+		Data: structs.GetAllWordsSuccessData{
 			Result: s,
 		},
 	}
@@ -116,12 +116,12 @@ func GetAllWords(response http.ResponseWriter, request *http.Request) {
 }
 
 // UpdateWord - Update entries in the collection!
-func UpdateWord(response http.ResponseWriter, request *http.Request) {
+func UpdateWord(client *mongo.Client, response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Updating word!")
-	var entry ThesaurusEntry
+	var entry structs.ThesaurusEntry
 	_ = json.NewDecoder(request.Body).Decode(&entry)
 
-	hasCreds := CheckAdminCreds(request)
+	hasCreds := utils.CheckAdminCreds(request)
 	if hasCreds != nil {
 		json.NewEncoder(response).Encode(hasCreds)
 		return
@@ -129,7 +129,7 @@ func UpdateWord(response http.ResponseWriter, request *http.Request) {
 
 	createdWord := entry.Word
 
-	wordExists := CheckEmptyFieldsAll(entry, response)
+	wordExists := utils.CheckEmptyFieldsAll(entry, response)
 	if wordExists != nil {
 		json.NewEncoder(response).Encode(wordExists)
 		return
@@ -137,11 +137,11 @@ func UpdateWord(response http.ResponseWriter, request *http.Request) {
 
 	collection := client.Database("thesaurus-v1").Collection("words")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	exists := collection.FindOne(ctx, ThesaurusEntry{Word: createdWord}).Decode(&entry)
+	exists := collection.FindOne(ctx, structs.ThesaurusEntry{Word: createdWord}).Decode(&entry)
 
 	if exists != nil {
 		response.WriteHeader(http.StatusBadRequest)
-		payload := MessageResponse{
+		payload := structs.MessageResponse{
 			Message: "Word does not already exist",
 		}
 		json.NewEncoder(response).Encode(payload)
@@ -149,18 +149,18 @@ func UpdateWord(response http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	result, err := collection.ReplaceOne(ctx, ThesaurusEntry{Word: createdWord}, entry)
+	result, err := collection.ReplaceOne(ctx, structs.ThesaurusEntry{Word: createdWord}, entry)
 	if err != nil {
-		MongoError(err, cancel, response)
+		utils.MongoError(err, cancel, response)
 		return
 	}
 
 	response.WriteHeader(http.StatusOK)
-	payload := UpdateWordSuccess{
-		MessageResponse: MessageResponse{
+	payload := structs.UpdateWordSuccess{
+		MessageResponse: structs.MessageResponse{
 			Message: "Word updated",
 		},
-		Data: UpdateWordSuccessData{
+		Data: structs.UpdateWordSuccessData{
 			Word:   createdWord,
 			Result: result,
 		},
@@ -172,12 +172,12 @@ func UpdateWord(response http.ResponseWriter, request *http.Request) {
 }
 
 // DeleteWord - Remove entries from the collection!
-func DeleteWord(response http.ResponseWriter, request *http.Request) {
+func DeleteWord(client *mongo.Client, response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Deleting word!")
-	var entry ThesaurusEntry
+	var entry structs.ThesaurusEntry
 	_ = json.NewDecoder(request.Body).Decode(&entry)
 
-	hasCreds := CheckAdminCreds(request)
+	hasCreds := utils.CheckAdminCreds(request)
 	if hasCreds != nil {
 		json.NewEncoder(response).Encode(hasCreds)
 		return
@@ -185,7 +185,7 @@ func DeleteWord(response http.ResponseWriter, request *http.Request) {
 
 	createdWord := entry.Word
 
-	wordExists := CheckEmptyFieldsWord(entry, response)
+	wordExists := utils.CheckEmptyFieldsWord(entry, response)
 	if wordExists != nil {
 		json.NewEncoder(response).Encode(wordExists)
 		return
@@ -193,11 +193,11 @@ func DeleteWord(response http.ResponseWriter, request *http.Request) {
 
 	collection := client.Database("thesaurus-v1").Collection("words")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	exists := collection.FindOne(ctx, ThesaurusEntry{Word: createdWord}).Decode(&entry)
+	exists := collection.FindOne(ctx, structs.ThesaurusEntry{Word: createdWord}).Decode(&entry)
 
 	if exists != nil {
 		response.WriteHeader(http.StatusBadRequest)
-		payload := MessageResponse{
+		payload := structs.MessageResponse{
 			Message: "Word does not already exist",
 		}
 		json.NewEncoder(response).Encode(payload)
@@ -205,18 +205,18 @@ func DeleteWord(response http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	result, err := collection.DeleteOne(ctx, ThesaurusEntry{Word: createdWord})
+	result, err := collection.DeleteOne(ctx, structs.ThesaurusEntry{Word: createdWord})
 	if err != nil {
-		MongoError(err, cancel, response)
+		utils.MongoError(err, cancel, response)
 		return
 	}
 
 	response.WriteHeader(http.StatusOK)
-	payload := DeleteWordSuccess{
-		MessageResponse: MessageResponse{
+	payload := structs.DeleteWordSuccess{
+		MessageResponse: structs.MessageResponse{
 			Message: "Word removed",
 		},
-		Data: DeleteWordSuccessData{
+		Data: structs.DeleteWordSuccessData{
 			Word:   createdWord,
 			Result: result,
 		},
