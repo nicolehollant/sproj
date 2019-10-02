@@ -67,6 +67,8 @@ func (a *App) setRouters() {
 	a.Put("/thesaurus/api/v1/admin/words", a.handleRequest(endpoints.UpdateWord))
 	a.Delete("/thesaurus/api/v1/admin/words", a.handleRequest(endpoints.DeleteWord))
 	a.Get("/thesaurus/api/v1/words/{word}", a.handleRequest(endpoints.GetWord))
+
+	a.Post("/thesaurus/api/v1/admin/senselevel", a.handleRequest(endpoints.CreateSenseLevel))
 }
 
 // Get wraps the router for GET method
@@ -98,6 +100,7 @@ func (a *App) Run(host string) {
 			handlers.AllowedOrigins([]string{"*"}))(a.Router)))
 }
 
+// RequestHandlerFunction -- request handler wrapper
 type RequestHandlerFunction func(client *mongo.Client, w http.ResponseWriter, r *http.Request)
 
 func (a *App) handleRequest(handler RequestHandlerFunction) http.HandlerFunc {

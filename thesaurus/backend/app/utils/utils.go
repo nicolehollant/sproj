@@ -9,6 +9,18 @@ import (
 	"github.com/colehollant/sproj/thesaurus/backend/app/structs"
 )
 
+// CheckEmptyFieldsAllGeneral - checks if there are empty fields in the request body: checks all possible fields
+func CheckEmptyFieldsAllGeneral(empty bool, response http.ResponseWriter) *structs.MessageResponse {
+	if empty {
+		response.WriteHeader(http.StatusBadRequest)
+		payload := structs.MessageResponse{
+			Message: "Empty fields in request",
+		}
+		return &payload
+	}
+	return nil
+}
+
 // CheckEmptyFieldsAll - checks if there are empty fields in the request body: checks all possible fields
 func CheckEmptyFieldsAll(entry structs.ThesaurusEntry, response http.ResponseWriter) *structs.EmptyFieldsResponse {
 	return checkEmptyFields(entry, response, true, true)

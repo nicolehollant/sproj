@@ -52,6 +52,3 @@ QA/QC, educational background, direction adherance, money, english skills
 ### Approach
 
 Prune responses with bad answers, generated word choice problems automaticaly with the Macquarie Thesaurus (pg 10 sample HIT)
-
-
-

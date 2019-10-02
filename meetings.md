@@ -52,3 +52,9 @@ lexicon:
 - Redo sense-level (there are multiple entries in the TSV, fix your JSON to actually get that)
   - probably can keep most of the code, but maybe switch to use arrays?
     - could potentially check existence of key at write time and add if exists
+
+## 9/30
+
+Look at dates, and track down specifics for differences between datasets
+
+-- compile their data for each difference

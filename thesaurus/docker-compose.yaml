@@ -18,7 +18,7 @@ services:
     restart: unless-stopped
     environment:
     - MONGOPORT=27017
-    build: gobackend
+    build: backend
     ports:
     - "3000:3000"
     links: # link service to database

@@ -26,6 +26,14 @@ case $1 in
   msg="Removing containers!"
   docker-compose restart
   ;;
+"restart")
+  msg="Starting backend"
+  pushd backend
+  go get -u all
+  go build
+  ./backend
+  popd
+  ;;
 *)
   msg="
   Oops! '$1' is not a valid option:\noptions: \n\trun \n\tbuild \n\tboot \n\tstop \n\tstop \n\trestart"

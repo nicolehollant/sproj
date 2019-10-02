@@ -48,7 +48,7 @@ class Colour():
     sections = line.split('\t')
     wordsection = sections[0].split('--')
     word = wordsection[0].strip()
-    sense = wordsection[1].strip()
+    sense = [x.strip() for x in wordsection[1].strip().split(',')]
     color = sections[1].split('=')[1].strip()
     votes = sections[2].split('=')[1].strip()
     totalvotes = sections[3].split('=')[1].strip()
@@ -106,7 +106,9 @@ class Colour():
           with open('./tmp/'+filename.name, "r") as f:
             currentList = json.load(f)
             for entry in currentList:
-              dataset[entry["word"]] = entry
+              curr = list(dataset.get(entry["word"], []))
+              curr.append(entry)
+              dataset[entry["word"]] = curr
           os.remove('./tmp/'+filename.name)
     with open(self.outfile, "w") as f:
       json.dump(dataset, f, indent=2, sort_keys=True)
