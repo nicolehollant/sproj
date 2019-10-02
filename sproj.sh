@@ -10,19 +10,24 @@ case $1 in
 "stop")
   msg="Building!"
   pushd thesaurus
-  /app.sh stop
+  ./app.sh stop
+  popd
+  ;;
+"dev")
+  msg="Running dev server!"
+  pushd thesaurus
+  ./app.sh dev
   popd
   ;;
 "restart")
   msg="Booting!"
   pushd thesaurus
-  /app.sh stop
-  /app.sh boot
+  ./app.sh stop
+  ./app.sh boot
   popd
   ;;
 *)
-  msg="
-  Oops! '$1' is not a valid option:\noptions: \n\trun \n\tbuild \n\tboot \n\tstop \n\tstop \n\trestart"
+  msg="Oops! '$1' is not a valid option:\noptions: \n\tstart \n\tstop \n\trestart"
   ;;
 esac
 

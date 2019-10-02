@@ -3,6 +3,7 @@
     <div>
       <input type="text" v-model="m_word" v-on:keyup.enter="fetchWord" class="word-input"/>
     </div>
+
     <button type="submit" @click="fetchWord" class="submit-button">
       Take A Look
     </button>
@@ -12,29 +13,8 @@
     </div>
 
     <div v-else>
-      <!-- this could be a functional component! -->
       <ThesaurusResult :entry="entry" @event_from_child="setWord"/>
-      <!-- <div v-for="(key, index) in Object.keys(entry)" :key="index" class="mx-6 my-12">
-        <div class="thesaurus--results-box">
-          <div v-if="notEmpty(entry[key])">
-          <h2 class="thesaurus--category">{{ key }}</h2>
-          <div class="thesaurus--pos__wrapper">
-            <div v-for="pos in Object.keys(entry[key])" :key="pos+entry.key">
-              <div v-if="entry[key][pos].length > 0" class="mx-4 md:mx-8">
-                <h3 class="thesaurus--pos">{{ pos }}</h3>
-                <ul class="thesaurus--entry__wrapper">
-                  <li class="thesaurus--entry" v-for="word in entry[key][pos]" :key="pos+entry.key+word" v-on:click="()=>setWord(word)">
-                    {{word}}
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>
-      </div> -->
     </div>
-
   </div>
 </template>
 
@@ -61,8 +41,11 @@ export default {
     fetchWord() {
       console.log("Getting something")
       let prod = true;
+      if(process.env.NODE_ENV == "dev") prod = false;
+      // should actually do this at a state level
       let url = `http://localhost:3000/thesaurus/api/v1/words/${this.m_word.trim()}`;
       if(prod) url = `https://sproj.api.colehollant.com/thesaurus/api/v1/words/${this.m_word.trim().toLowerCase()}`;
+      console.log(url);
       fetch(url, {
         method: 'GET',
         headers: {
@@ -102,12 +85,7 @@ export default {
       }
       return false
     },
-    // setWord(nym){
-    //   this.m_word=nym.trim().toLowerCase();
-    //   this.fetchWord()
-    // }
     setWord(e) {
-      // (e)=>m_word = e
       console.log(e)
       this.m_word=e.trim().toLowerCase();
       this.fetchWord()

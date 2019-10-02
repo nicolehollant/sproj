@@ -24,13 +24,13 @@ Backend - http://sproj.api.colehollant.com
 ## Frontend todo:
    * interface on site for model
    * fuzzy search for words (maybe publish some edit distance thing on npm)
-   * break up frontend dockerfile so that I can have a dev image (that just runs `yarn serve` and attaches my dirs)
-     * read [this](https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093)
+   * ~~break up frontend dockerfile so that I can have a dev image (that just runs `yarn serve` and attaches my dirs)~~
+     * ~~read [this](https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093)~~
    * would also love to break up more things into components and do a design doc
    * gotta use tailwind better
 
 ## Backend todo:
-   * deal with go modules (maybe provide the actual git path?)
+   * ~~deal with go modules (maybe provide the actual git path?)~~
    * write better / more reusable code
    * post all the things in `db` to separate collections
    * maybe change the admin-words endpoints to take in a collection name?

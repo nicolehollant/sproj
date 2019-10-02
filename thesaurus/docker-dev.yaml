@@ -4,16 +4,6 @@
 version: '3'
 
 services:
-  # Frontend Service
-  vue: # name of service
-    build: frontend # dir of dockerfile
-    restart: unless-stopped
-    tty: true
-    ports:
-    - "8080:80" # map ports
-    networks:
-    - app-network
-
   api:
     container_name: api
     restart: unless-stopped

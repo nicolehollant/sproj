@@ -15,8 +15,8 @@ case $1 in
   ;;
 "dev")
   msg "Booting and running dev server"
-  docker-compose up --build -d
-  yarn serve --cwd frontend
+  docker-compose -f docker-dev.yaml up --build -d
+  yarn --cwd frontend run dev
   ;;
 "stop")
   msg="Stopping!"
