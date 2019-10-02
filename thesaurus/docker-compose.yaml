@@ -16,8 +16,10 @@ services:
   api:
     container_name: api
     restart: unless-stopped
-    environment:
-    - MONGOPORT=27017
+    env_file:
+    - backend/backendvars.env
+    # environment:
+    # - MONGOPORT=27017
     build: backend
     ports:
     - "3000:3000"

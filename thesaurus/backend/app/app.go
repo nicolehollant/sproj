@@ -36,23 +36,20 @@ func commonMiddleware(next http.Handler) http.Handler {
 // Initialize initializes the app with predefined configuration
 func (a *App) Initialize(config *config.Config) {
 	uri := "mongodb://" + config.DB.Host + ":" + config.DB.Port
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	cancel()
 	defaultURI := "mongodb://database:27017"
-	// defaultURI := "mongodb://67.205.167.246:27017"
 	if config.DB.Host == "" {
 		uri = defaultURI
 	}
-	fmt.Println("DB HOST:")
-	fmt.Println(config.DB.Host)
-	fmt.Println("MONGO PORT:")
-	fmt.Println(config.DB.Port)
-	fmt.Println("URI:")
-	fmt.Println(uri)
-	fmt.Println("O hi there")
-	clientOptions := options.Client().ApplyURI(uri)
-	a.Client, _ = mongo.Connect(ctx, clientOptions)
-
+	fmt.Printf("HOST: %s, PORT: %s, URI: %s\n", config.DB.Host, config.DB.Port, uri)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	cancel()
+	client, err := mongo.NewClient(options.Client().ApplyURI(uri))
+	err = client.Connect(ctx)
+	if err != nil {
+		fmt.Printf("Failed to connect to mongo %s\n", err)
+		return
+	}
+	a.Client = client
 	a.Router = mux.NewRouter()
 	a.Router.Use(commonMiddleware)
 	a.setRouters()
