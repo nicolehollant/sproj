@@ -17,7 +17,7 @@ services:
     container_name: api
     restart: unless-stopped
     env_file:
-    - backend/backendvars.env
+    - backend/.env
     # environment:
     # - MONGOPORT=27017
     build: backend
