@@ -36,6 +36,8 @@ services:
   database:
     image: mongo:3.6-xenial
     container_name: database
+    env_file:
+    - db/.env
     restart: unless-stopped
     tty: true
     ports:
@@ -43,6 +45,7 @@ services:
     - "27017:27017" # my server
     networks:
     - app-network
+    command: mongod
 
 # Networks
 networks:

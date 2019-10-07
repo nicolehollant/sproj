@@ -58,3 +58,7 @@ lexicon:
 Look at dates, and track down specifics for differences between datasets
 
 -- compile their data for each difference
+
+## 10/4
+
+Gather excerpts, gather criticism to get the meaning, ask about meaning and altered meaning

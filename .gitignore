@@ -99,3 +99,4 @@ public
 
 # envs
 *.env
+.env
