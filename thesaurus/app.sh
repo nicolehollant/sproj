@@ -20,7 +20,7 @@ case $1 in
   ;;
 "stop")
   msg="Stopping!"
-  docker-compose down
+  docker-compose stop
   ;;
 "restart")
   msg="Removing containers!"
