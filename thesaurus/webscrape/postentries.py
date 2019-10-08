@@ -4,7 +4,8 @@ import requests
 import json
 from pprint import pprint
 
-url = os.getenv("SPROJBASE")+"/thesaurus/api/v1/admin/words"
+# url = os.getenv("SPROJBASE")+"/thesaurus/api/v1/admin/words"
+url = "http://localhost:3000/thesaurus/api/v1/admin/words"
 thesaurusLoc = './thesaurus/final/thesaurus-final.json'
 testThesaurus = './thesaurus/thesaurus-small.json'
 with open(thesaurusLoc) as f:

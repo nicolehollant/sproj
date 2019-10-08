@@ -73,4 +73,6 @@ An early issue we ran into in this project was the disorganization of our backen
 
 GOMODULES was introduced in Go 1.11 as a form of dependency management, and a way to circumvent some of the issues of GOPATH. GOPATH has been an issue stemming from the opinionated nature of Golang: all packages should be centralized and reside within GOPATH.
 
-> Modules allow for the deprecation of the GOPATH. There is no longer a need to set it explicitly as a go.mod files defines the root of a Module, and allows the Go toolchain to know where everything is that it needs to work with. This was the purpose of GOPATH. Internally to the go tool GOPATH is still used for a few things, but this not something we need to be concerned with.
+> As of Go 1.11, the `go` command enables the use of modules when the current directory or any parent directory has a `go.mod`, provided the directory is outside `$GOPATH/src`. (Inside `$GOPATH/src`, for compatibility, the go command still runs in the old GOPATH mode, even if a go.mod is found.) [the go blog](https://blog.golang.org/using-go-modules)
+
+Thus, with the introduction of module mode, we are able to develop Go outside of our GOPATH. We get a bundle of versioned dependencies (respecting semantic import versioning), which allows for... modular code. There's a similar notion of reproducibility with Go modules as there is with containerization: the `go.mod` specifies the module root—everything is self contained.

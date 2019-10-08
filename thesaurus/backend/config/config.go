@@ -18,8 +18,8 @@ func GetConfig() *Config {
 		DB: &DBConfig{
 			Host:     os.Getenv("DBHOST"),
 			Port:     os.Getenv("MONGOPORT"),
-			Username: os.Getenv("DBUSERNAME"),
-			Password: os.Getenv("DBPASSWORD"),
+			Username: os.Getenv("MONGO_USERNAME"),
+			Password: os.Getenv("MONGO_PASSWORD"),
 		},
 	}
 }

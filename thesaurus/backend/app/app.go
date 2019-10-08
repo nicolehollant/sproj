@@ -35,7 +35,7 @@ func commonMiddleware(next http.Handler) http.Handler {
 
 // Initialize initializes the app with predefined configuration
 func (a *App) Initialize(config *config.Config) {
-	uri := "mongodb://" + config.DB.Host + ":" + config.DB.Port
+	uri := "mongodb://" + config.DB.Username + ":" + config.DB.Password + "@" + config.DB.Host + ":" + config.DB.Port
 	defaultURI := "mongodb://database:27017"
 	if config.DB.Host == "" {
 		uri = defaultURI

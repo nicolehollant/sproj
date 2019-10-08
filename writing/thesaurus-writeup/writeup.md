@@ -27,7 +27,7 @@ Web scraping for purposes such as gathering content from a page is a basic proce
 We are using the `requests` module to get the HTML for each page and `bs4` for our HTML parsing. I am running Ubuntu on my computer, and thus have access to the `words` file present across Unix operating systems: this is a raw text file with a collection of words each on their own line. This will be the basis of our thesaurus. We will first reduce this file by removing all entries with apostrophes with `fixWords.py` whose essence is:
 
 ```py
-if word.find("'") == -1:
+if word.find("...") == -1:
     outfile.write(word)
 ```
 
