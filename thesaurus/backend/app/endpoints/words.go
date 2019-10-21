@@ -16,14 +16,15 @@ import (
 // GetWord - Access entries in the collection!
 func GetWord(client *mongo.Client, response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Getting word!")
-	var entry structs.ThesaurusEntry
-	_ = json.NewDecoder(request.Body).Decode(&entry)
+	word := mux.Vars(request)["word"]
 
-	params := mux.Vars(request)
-	word := params["word"]
-	entry.Word = word
+	entry := structs.ThesaurusEntry{}
+	err := utils.UnmarshalEntry(&entry, response, request)
+	if err != nil {
+		return
+	}
 
-	wordExists := utils.CheckEmptyFieldsWord(entry, response)
+	wordExists := utils.CheckEmptyFieldsAllGeneral(word == "", response)
 	if wordExists != nil {
 		json.NewEncoder(response).Encode(wordExists)
 		return
@@ -31,30 +32,14 @@ func GetWord(client *mongo.Client, response http.ResponseWriter, request *http.R
 
 	collection := client.Database("thesaurus-v1").Collection("words")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	exists := collection.FindOne(ctx, structs.ThesaurusEntry{Word: word}).Decode(&entry)
+	err = collection.FindOne(ctx, structs.ThesaurusEntry{Word: word}).Decode(&entry)
 
-	if exists != nil {
-		response.WriteHeader(http.StatusBadRequest)
-		payload := structs.MessageResponse{
-			Message: "Word does not already exist",
-		}
-		json.NewEncoder(response).Encode(payload)
+	if err != nil {
 		cancel()
+		utils.RespondError(response, http.StatusBadRequest, "Word does not already exist")
 		return
 	}
 
-	response.WriteHeader(http.StatusOK)
-	payload := structs.GetWordSuccess{
-		MessageResponse: structs.MessageResponse{
-			Message: "Word retrieved",
-		},
-		Data: structs.GetWordSuccessData{
-			Word:   word,
-			Result: entry,
-		},
-	}
-
-	json.NewEncoder(response).Encode(payload)
 	cancel()
-	return
+	utils.RespondJSON(response, http.StatusOK, entry)
 }

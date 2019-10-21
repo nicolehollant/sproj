@@ -35,14 +35,16 @@ func commonMiddleware(next http.Handler) http.Handler {
 
 // Initialize initializes the app with predefined configuration
 func (a *App) Initialize(config *config.Config) {
+	localEnv := true
 	uri := "mongodb://" + config.DB.Username + ":" + config.DB.Password + "@" + config.DB.Host + ":" + config.DB.Port
-	defaultURI := "mongodb://database:27017"
-	if config.DB.Host == "" {
+	defaultURI := "mongodb://" + config.DB.Username + ":" + config.DB.Password + "@" + "localhost:27017"
+	if config.DB.Host == "" || localEnv == true {
 		uri = defaultURI
 	}
 	fmt.Printf("HOST: %s, PORT: %s, URI: %s\n", config.DB.Host, config.DB.Port, uri)
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	cancel()
+
 	client, err := mongo.NewClient(options.Client().ApplyURI(uri))
 	err = client.Connect(ctx)
 	if err != nil {
@@ -57,15 +59,22 @@ func (a *App) Initialize(config *config.Config) {
 
 // setRouters sets the all required routers
 func (a *App) setRouters() {
-	// Routes below
+	// General Routes
 	a.Get("/thesaurus/api/v1", a.handleRequest(endpoints.GetAPIInfo))
+	// Standard Thesaurus -- Admin
 	a.Post("/thesaurus/api/v1/admin/words", a.handleRequest(endpoints.CreateWord))
 	a.Get("/thesaurus/api/v1/admin/words", a.handleRequest(endpoints.GetAllWords))
 	a.Put("/thesaurus/api/v1/admin/words", a.handleRequest(endpoints.UpdateWord))
 	a.Delete("/thesaurus/api/v1/admin/words", a.handleRequest(endpoints.DeleteWord))
+	// Standard Thesaurus -- Basic
 	a.Get("/thesaurus/api/v1/words/{word}", a.handleRequest(endpoints.GetWord))
-
+	// SenseLevel Lexicon -- Admin
+	a.Get("/thesaurus/api/v1/admin/senselevel", a.handleRequest(endpoints.GetAllSenseLevels))
 	a.Post("/thesaurus/api/v1/admin/senselevel", a.handleRequest(endpoints.CreateSenseLevel))
+	a.Put("/thesaurus/api/v1/admin/senselevel", a.handleRequest(endpoints.UpdateSenseLevel))
+	a.Delete("/thesaurus/api/v1/admin/senselevel", a.handleRequest(endpoints.DeleteSenseLevel))
+	// SenseLevel Lexicon -- Basic
+	a.Get("/thesaurus/api/v1/senselevel/{word}", a.handleRequest(endpoints.GetSenseLevel))
 }
 
 // Get wraps the router for GET method

@@ -2,17 +2,6 @@ package structs
 
 import "go.mongodb.org/mongo-driver/mongo"
 
-// GetAllWordsSuccessData - Data for GetAllWordsSuccess: list of all words
-type GetAllWordsSuccessData struct {
-	Result []string `json:"result"`
-}
-
-// GetAllWordsSuccess - Response upon getting all words
-type GetAllWordsSuccess struct {
-	MessageResponse
-	Data GetAllWordsSuccessData `json:"data"`
-}
-
 // DeleteWordSuccessData - Data for DeleteWordSuccess: mongo's result
 type DeleteWordSuccessData struct {
 	Word   string              `json:"word"`

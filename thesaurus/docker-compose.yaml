@@ -24,7 +24,7 @@ services:
       MONGO_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
     build: backend
     ports:
-    - "3000:3000"
+    - "3005:3000"
     links: # link service to database
     - database
     networks:

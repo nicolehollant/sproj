@@ -8,7 +8,7 @@ case $1 in
   popd
   ;;
 "stop")
-  msg="Building!"
+  msg="Stopping!"
   pushd thesaurus
   ./app.sh stop
   popd

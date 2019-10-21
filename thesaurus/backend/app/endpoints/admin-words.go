@@ -1,23 +1,40 @@
 package endpoints
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"time"
 
 	"github.com/colehollant/sproj/thesaurus/backend/app/structs"
 	"github.com/colehollant/sproj/thesaurus/backend/app/utils"
-	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 )
+
+// driver for above guys
+func checkEmptyFieldsWordLevel(entry structs.ThesaurusEntry, response http.ResponseWriter) *structs.MessageResponse {
+	return utils.CheckEmptyFieldsAllGeneral(
+		entry.Word == "" ||
+			entry.Antonyms == nil ||
+			entry.Synonyms == nil ||
+			len(entry.Antonyms) == 0 ||
+			len(entry.Synonyms) == 0,
+		response)
+}
 
 // CreateWord - Add entries to the collection!
 func CreateWord(client *mongo.Client, response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Creating word!")
-	var entry structs.ThesaurusEntry
-	_ = json.NewDecoder(request.Body).Decode(&entry)
+	entry := structs.ThesaurusEntry{}
+	err := utils.UnmarshalEntry(&entry, response, request)
+	if err != nil {
+		return
+	}
+
+	wordExists := checkEmptyFieldsWordLevel(entry, response)
+	if wordExists != nil {
+		json.NewEncoder(response).Encode(wordExists)
+		return
+	}
 
 	hasCreds := utils.CheckAdminCreds(request)
 	if hasCreds != nil {
@@ -25,48 +42,8 @@ func CreateWord(client *mongo.Client, response http.ResponseWriter, request *htt
 		return
 	}
 
-	createdWord := entry.Word
-
-	wordExists := utils.CheckEmptyFieldsAll(entry, response)
-	if wordExists != nil {
-		json.NewEncoder(response).Encode(wordExists)
-		return
-	}
-
 	collection := client.Database("thesaurus-v1").Collection("words")
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	exists := collection.FindOne(ctx, structs.ThesaurusEntry{Word: createdWord}).Decode(&entry)
-
-	if exists == nil {
-		response.WriteHeader(http.StatusBadRequest)
-		payload := structs.MessageResponse{
-			Message: "Word already exists",
-		}
-		json.NewEncoder(response).Encode(payload)
-		cancel()
-		return
-	}
-
-	result, err := collection.InsertOne(ctx, entry)
-	if err != nil {
-		utils.MongoError(err, cancel, response)
-		return
-	}
-
-	response.WriteHeader(http.StatusCreated)
-	payload := structs.CreateWordSuccess{
-		MessageResponse: structs.MessageResponse{
-			Message: "Word added",
-		},
-		Data: structs.CreateWordSuccessData{
-			Word:   createdWord,
-			Result: result,
-		},
-	}
-
-	json.NewEncoder(response).Encode(payload)
-	cancel()
-	return
+	utils.CreateEntry(entry, structs.ThesaurusEntry{Word: entry.Word}, collection, response)
 }
 
 // GetAllWords - Add entries to the collection!
@@ -80,46 +57,17 @@ func GetAllWords(client *mongo.Client, response http.ResponseWriter, request *ht
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("words")
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	cursor, err := collection.Find(ctx, bson.D{})
-
-	if err != nil {
-		utils.MongoError(err, cancel, response)
-		return
-	}
-	var s []string
-
-	for cursor.Next(ctx) {
-		elem := &bson.D{}
-		err = cursor.Decode(elem)
-		if err != nil {
-			utils.MongoError(err, cancel, response)
-			return
-		}
-		word := elem.Map()["word"].(string)
-		s = append(s, word)
-	}
-	fmt.Println("guess we good")
-	response.WriteHeader(http.StatusOK)
-	payload := structs.GetAllWordsSuccess{
-		MessageResponse: structs.MessageResponse{
-			Message: "Words aggregated",
-		},
-		Data: structs.GetAllWordsSuccessData{
-			Result: s,
-		},
-	}
-
-	json.NewEncoder(response).Encode(payload)
-	cancel()
-	return
+	utils.AggregateEntries("word", collection, response)
 }
 
 // UpdateWord - Update entries in the collection!
 func UpdateWord(client *mongo.Client, response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Updating word!")
-	var entry structs.ThesaurusEntry
-	_ = json.NewDecoder(request.Body).Decode(&entry)
+	entry := structs.ThesaurusEntry{}
+	err := utils.UnmarshalEntry(&entry, response, request)
+	if err != nil {
+		return
+	}
 
 	hasCreds := utils.CheckAdminCreds(request)
 	if hasCreds != nil {
@@ -129,53 +77,24 @@ func UpdateWord(client *mongo.Client, response http.ResponseWriter, request *htt
 
 	createdWord := entry.Word
 
-	wordExists := utils.CheckEmptyFieldsAll(entry, response)
+	wordExists := checkEmptyFieldsWordLevel(entry, response)
 	if wordExists != nil {
 		json.NewEncoder(response).Encode(wordExists)
 		return
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("words")
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	exists := collection.FindOne(ctx, structs.ThesaurusEntry{Word: createdWord}).Decode(&entry)
-
-	if exists != nil {
-		response.WriteHeader(http.StatusBadRequest)
-		payload := structs.MessageResponse{
-			Message: "Word does not already exist",
-		}
-		json.NewEncoder(response).Encode(payload)
-		cancel()
-		return
-	}
-
-	result, err := collection.ReplaceOne(ctx, structs.ThesaurusEntry{Word: createdWord}, entry)
-	if err != nil {
-		utils.MongoError(err, cancel, response)
-		return
-	}
-
-	response.WriteHeader(http.StatusOK)
-	payload := structs.UpdateWordSuccess{
-		MessageResponse: structs.MessageResponse{
-			Message: "Word updated",
-		},
-		Data: structs.UpdateWordSuccessData{
-			Word:   createdWord,
-			Result: result,
-		},
-	}
-
-	json.NewEncoder(response).Encode(payload)
-	cancel()
-	return
+	utils.ReplaceEntry(entry, structs.ThesaurusEntry{Word: createdWord}, collection, response)
 }
 
 // DeleteWord - Remove entries from the collection!
 func DeleteWord(client *mongo.Client, response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Deleting word!")
-	var entry structs.ThesaurusEntry
-	_ = json.NewDecoder(request.Body).Decode(&entry)
+	entry := structs.ThesaurusEntry{}
+	err := utils.UnmarshalEntry(&entry, response, request)
+	if err != nil {
+		return
+	}
 
 	hasCreds := utils.CheckAdminCreds(request)
 	if hasCreds != nil {
@@ -185,44 +104,12 @@ func DeleteWord(client *mongo.Client, response http.ResponseWriter, request *htt
 
 	createdWord := entry.Word
 
-	wordExists := utils.CheckEmptyFieldsWord(entry, response)
+	wordExists := utils.CheckEmptyFieldsAllGeneral(createdWord == "", response)
 	if wordExists != nil {
 		json.NewEncoder(response).Encode(wordExists)
 		return
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("words")
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	exists := collection.FindOne(ctx, structs.ThesaurusEntry{Word: createdWord}).Decode(&entry)
-
-	if exists != nil {
-		response.WriteHeader(http.StatusBadRequest)
-		payload := structs.MessageResponse{
-			Message: "Word does not already exist",
-		}
-		json.NewEncoder(response).Encode(payload)
-		cancel()
-		return
-	}
-
-	result, err := collection.DeleteOne(ctx, structs.ThesaurusEntry{Word: createdWord})
-	if err != nil {
-		utils.MongoError(err, cancel, response)
-		return
-	}
-
-	response.WriteHeader(http.StatusOK)
-	payload := structs.DeleteWordSuccess{
-		MessageResponse: structs.MessageResponse{
-			Message: "Word removed",
-		},
-		Data: structs.DeleteWordSuccessData{
-			Word:   createdWord,
-			Result: result,
-		},
-	}
-
-	json.NewEncoder(response).Encode(payload)
-	cancel()
-	return
+	utils.DeleteEntry(entry, structs.ThesaurusEntry{Word: createdWord}, collection, response)
 }
