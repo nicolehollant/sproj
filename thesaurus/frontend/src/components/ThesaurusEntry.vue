@@ -1,29 +1,35 @@
 <template>
   <div class="hello" :key="wordkey">
     <div>
-      <input type="text" v-model="m_word" v-on:keyup.enter="fetchWord" class="word-input"/>
+      <input type="text" v-model="m_word" v-on:keyup.enter="fetchAll" class="word-input"/>
     </div>
 
-    <button type="submit" @click="fetchWord" class="submit-button">
+    <button type="submit" @click="fetchAll" class="submit-button">
       Take A Look
     </button>
 
-    <div v-if="dne">
+    <!-- <p>{{entry}}</p> -->
+    <!-- <p class="text-white">{{entrySenselevel}}</p> -->
+
+    <div v-if="dne && dneSenselevel">
       <h2 class="error-text">Sorry, we couldn't find that for you :(</h2>
     </div>
 
     <div v-else>
-      <ThesaurusResult :entry="entry" @event_from_child="setWord"/>
+      <SenseLevelResult :entry="entrySenselevel.senselist" @setword="setWord" v-if="!dneSenselevel"/>
+      <ThesaurusResult :entry="entry" @event_from_child="setWord" v-if="!dne"/>
     </div>
   </div>
 </template>
 
 <script>
 import ThesaurusResult from "@/components/ThesaurusResult.vue"
+import SenseLevelResult from "@/components/SenseLevelResult.vue"
 export default {
   name: 'HelloWorld',
   components: {
-    ThesaurusResult
+    ThesaurusResult,
+    SenseLevelResult
   },
   props: {
     word: String
@@ -32,9 +38,12 @@ export default {
     return {
       m_word: this.word,
       entry: {},
+      entrySenselevel: {},
       wordkey: 0,
       dne: true,
-      exists: [false, false]
+      dneSenselevel: true,
+      exists: [false, false],
+      existsSenselevel: [false]
     }
   },
   methods: {
@@ -46,29 +55,36 @@ export default {
       let url = `http://localhost:3000/thesaurus/api/v1/words/${this.m_word.trim()}`;
       if(prod) url = `https://sproj.api.colehollant.com/thesaurus/api/v1/words/${this.m_word.trim().toLowerCase()}`;
       console.log(url);
+      let code = -1
       fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
       })
-      .then(response => response.json())
+      .then(response => {
+        let res = response.json()
+        code = response.status
+        return res
+      })
       .catch((error) => {
         this.dne = true;
         console.error('Error:', error)
       }).then((response) => {
-        if(response.message!=="Word retrieved"){
+        // console.log("RESPONSE",response, code)
+        if(code !== 200) {
           this.dne = true;
           this.wordkey++;
-          return;
+          return
         }
-        let res = response.data.result;
+        let res = response.data;
         this.parseWord(res);
         this.wordkey++;
         console.log('Success:', JSON.stringify(this.entry))
       });
     },
     parseWord(res){
+      console.log("ahjsdkkm",res)
       this.entry.antonyms = res.antonyms;
       this.entry.synonyms = res.synonyms;
       this.exists[0] = this.notEmpty(this.entry.antonyms);
@@ -79,6 +95,53 @@ export default {
       }
       this.dne = doesNotExist;
     },
+    fetchSenselevel() {
+      console.log("Getting something")
+      let prod = true;
+      if(process.env.NODE_ENV == "dev") prod = false;
+      // should actually do this at a state level
+      let url = `http://localhost:3000/thesaurus/api/v1/senselevel/${this.m_word.trim()}`;
+      if(prod) url = `https://sproj.api.colehollant.com/thesaurus/api/v1/senselevel/${this.m_word.trim().toLowerCase()}`;
+      console.log(url);
+      let code = -1
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(response => {
+        let res = response.json()
+        code = response.status
+        return res
+      })
+      .catch((error) => {
+        this.dneSenselevel = true;
+        this.wordkey++;
+        console.error('Error:', error)
+      }).then((response) => {
+        if(code !== 200) {
+          this.dneSenselevel = true;
+          this.wordkey++;
+          return
+        }
+        let res = response.data;
+        this.parseSenselevel(res);
+        this.wordkey++;
+        console.log('Success:', JSON.stringify(this.entry))
+      });
+    },
+    parseSenselevel(res){
+      console.log("ahjsdkkm",res)
+      this.entrySenselevel.senselist = res.senselist;
+      // this.existsSenselevel[0] = this.notEmpty(this.entrySenselevel.senselist);
+      // let doesNotExist = true;
+      // for (const exist of this.existsSenselevel) {
+      //   if(exist) doesNotExist = false;
+      // }
+      // this.dneSenselevel = doesNotExist;
+      this.dneSenselevel = this.entrySenselevel.senselist.length <= 0
+    },
     notEmpty(o){
       for(let key of Object.keys(o)){
         if(o[key].length > 0) return true;
@@ -87,12 +150,18 @@ export default {
     },
     setWord(e) {
       console.log(e)
-      this.m_word=e.trim().toLowerCase();
+      this.m_word = e.trim().toLowerCase();
       this.fetchWord()
+      this.fetchSenselevel()
+    },
+    fetchAll() {
+      this.fetchWord()
+      this.fetchSenselevel()
     }
   },
   mounted () {
     this.fetchWord()
+    this.fetchSenselevel()
   },
 }
 </script>
