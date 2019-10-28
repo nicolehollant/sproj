@@ -62,3 +62,33 @@ Look at dates, and track down specifics for differences between datasets
 ## 10/4
 
 Gather excerpts, gather criticism to get the meaning, ask about meaning and altered meaning
+
+## 10/24
+
+DO WRITING!!!!
+Prepare prospectus talk for comp sci
+- maybe add beginning random model to site before the talk? (depends on how easy that will be)
+
+Display each association (including from any synonym):
+- under each, give all synonyms
+
+(get senselevel associations for each synonym, keeping track of their associations, adding to them)
+Slides to stefan for monday
+
+Wordlevel from senselevel (add "all" field)
+
+Create local master list (query each endpoint)
+
+Send an email to the authors asking about word-level vs sense-level?
+
+## 10/28
+
+Prepare for talk
+Send Stefan 2+ pages by sunday night
+
+- bib stuff!!!
+
+- lexicons
+- api
+
+- design (for future)

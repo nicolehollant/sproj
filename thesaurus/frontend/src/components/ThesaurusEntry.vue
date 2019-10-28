@@ -8,14 +8,11 @@
       Take A Look
     </button>
 
-    <!-- <p>{{entry}}</p> -->
-    <!-- <p class="text-white">{{entrySenselevel}}</p> -->
-
     <div v-if="dne && dneSenselevel">
       <h2 class="error-text">Sorry, we couldn't find that for you :(</h2>
     </div>
 
-    <div v-else>
+    <div v-else class="result-wrapper">
       <SenseLevelResult :entry="entrySenselevel.senselist" @setword="setWord" v-if="!dneSenselevel"/>
       <ThesaurusResult :entry="entry" @event_from_child="setWord" v-if="!dne"/>
     </div>
@@ -191,5 +188,8 @@ export default {
 }
 .error-text {
   @apply text-semilight text-2xl text-center my-12 font-hairline capitalize;
+}
+.result-wrapper {
+  @apply mx-6 my-12;
 }
 </style>

@@ -10,18 +10,15 @@ export default {
   render(h, {props, listeners}) {
     const hasResults = (obj) => {
       for(let key of Object.keys(obj)){
-        console.log("KEY", key, obj[key])
         if(obj[key].length > 0) return true;
       }
       return false
     }
     let entry = props.entry;
-    console.log("WHAT THE FUCK", entry, hasResults(Object.keys(entry)))
-    return h("div", { staticClass: "mx-6 my-12" }, [
+    return h("div", { staticClass: "my-12" }, [
       h(
         "div", {
           staticClass: "thesaurus--results-box",
-          // class: { "optional-class-name": condition },
         }, [
         Object.keys(entry).map(key => {
           return hasResults(entry[key]) ? h("div", {}, [

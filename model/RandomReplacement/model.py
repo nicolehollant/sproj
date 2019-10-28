@@ -7,7 +7,7 @@ import random
 class Model:
 
     def __init__(self, prob=0.40, ignoreArticles=True):
-        self.baseurl = 'http://67.205.167.246:3000/thesaurus/api/v1/words/'
+        self.baseurl = 'https://sproj.api.colehollant.com/thesaurus/api/v1/words/'
         self.prob = prob
         self.ignoreArticles = ignoreArticles
         self.articles = ['a', 'and', 'the', 'an', 'to', 'is', 'be']
@@ -28,7 +28,7 @@ class Model:
             if self.debug:
                 print("Not present in db:", word)
             return False, word, {}
-        return True, word, response['data']['result']
+        return True, word, response['data']
         
     def selectEntry(self, entry):
         synonyms = self.aggregateWords(entry)
@@ -60,7 +60,7 @@ class Model:
                     newEntry = self.selectEntry(data)
                     if newEntry:
                         numChanged += 1
-                        out.append(self.selectEntry(data))
+                        out.append(self.selectEntry(data).lower())
                         changed = True
                     else:
                         notPresent.append(wordStripped)
