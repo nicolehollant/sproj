@@ -1,5 +1,27 @@
 # Backend Writeup
 
+## What is a RESTful API and why do I Need One?
+
+An application programming interface (API) provides a client with some form of interfacing or interacting with a server. This is rather broad, and in the realm of web development there are standard HTTP (HyperText Transfer Protocol) methods—GET, HEAD, POST, PUT, PATCH, DELETE, CONNECT, OPTIONS, and TRACE—with various usages and characteristics. Perhaps the most common usage of HTTP is in REST APIs (REpresentational State Transfer) which is a stateless architecture based on a request-response interface. REST maps nicely onto basic CRUD (CREATE, READ, UPDATE, DELETE) operations common to databases. Note that REST defines an abstract framework for web services whereas CRUD defines a distinct set of operations largely in the realm of databases. With the foundations of this pairing, we can use these within our application.
+
+We would like to have a RESTful API for our application to be able to securely wrap these CRUD functions for our database as well as having a bidirectional data flow between our frontend and our model as well as our frontend and our database. We abstract our database connection to this RESTful API as any frontend code is universally accessible; we introduce this data-layer as a means of keeping our backend private.
+
+<!-- 
+  Not sure how deep into HTTP i should get...
+  - I kinda wanna get into different uses like rest vs websockets vs polling vs etc 
+  - how much do I talk about CRUD vs REST?
+  - Talk about flow? 
+    - Static html from vue, requests through node over http to backend, process request, grab needed things from mongo, marshall stuff, send back over http to node to vue to html
+-->
+
+
+<!-- ## Overview of Our API
+
+Talk about mux, structure, mongo driver, etc -->
+
+
+<!-- ## Anatomy of an HTTP Request -->
+
 ## Unmarshalling JSON into Nested Structs in Golang
 
 So, we are thrilled that we have translated TSV to JSON... but now what? Obviously, we're in no business of `require`-ing a gigabyte of JSON, so we've got to write up some more endpoints. We figure we more-or-less know how we want things structured as it's right there in JSON, so how do we move from JSON to... _JSON elsewhere_? 

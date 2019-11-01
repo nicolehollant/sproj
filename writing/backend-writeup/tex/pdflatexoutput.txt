@@ -1,7 +1,7 @@
 This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
-(tex/thesaurus-writeup.tex
+(tex/backend-writeup.tex
 LaTeX2e <2018-12-01>
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2018/09/03 v1.4i Standard LaTeX document class
@@ -66,7 +66,7 @@ BardT\kern -.1667em\lower .5ex\hbox {E}\kern -.125emX\spacefactor \@m {}\ Style
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/listings.sty
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstmisc.sty)
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/listings.cfg))
-(tex/thesaurus-writeup.aux)
+(tex/backend-writeup.aux)
 
 LaTeX Font Warning: Font shape `OT1/cmtt/b/n' undefined
 (Font)              using `OT1/cmtt/m/n' instead on input line 49.
@@ -150,17 +150,22 @@ LaTeX Font Warning: Font shape `OT1/cmtt/m/In' undefined
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 )) (/usr/local/texlive/2019basic/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/local/texlive/2019basic/texmf-dist/tex/generic/oberdiek/gettitlestring.st
-y)) (tex/thesaurus-writeup.out) (tex/thesaurus-writeup.out)
+y)) (tex/backend-writeup.out) (tex/backend-writeup.out)
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
  1.
 
-Underfull \vbox (badness 3942) has occurred while \output is active [1{/usr/loc
-al/texlive/2019basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Underfull \vbox (badness 10000) has occurred while \output is active [1{/usr/lo
+cal/texlive/2019basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang1.sty)
-Underfull \vbox (badness 1147) has occurred while \output is active [3]
-[4] (tex/thesaurus-writeup.aux)
+[2] (/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang1.sty)
+(/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang2.sty)
+(/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang3.sty)
+Overfull \hbox (6.05257pt too wide) in paragraph at lines 116--117
+\OT1/cmtt/l/n/10.95 Level(client *mongo.Client, re-sponse http.ResponseWriter, 
+re-quest *http.Request)\OT1/cmr/m/n/10.95 (-20) ,
+[3] [4] (tex/backend-writeup.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -170,10 +175,7 @@ ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019
 basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2
 019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texliv
 e/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/te
-xlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/loca
-l/texlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/
-local/texlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></
-usr/local/texlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb
->
-Output written on tex/thesaurus-writeup.pdf (4 pages, 103161 bytes).
-Transcript written on tex/thesaurus-writeup.log.
+xlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/loca
+l/texlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on tex/backend-writeup.pdf (4 pages, 96510 bytes).
+Transcript written on tex/backend-writeup.log.

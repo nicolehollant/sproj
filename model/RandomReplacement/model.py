@@ -66,7 +66,6 @@ class Model:
                         notPresent.append(wordStripped)
             if not changed:
                 out.append(word)
-        
         return out, notPresent, numChanged
 
         

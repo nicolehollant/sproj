@@ -1,0 +1,131 @@
+\documentclass[12pt, oneside, reqno]{article}
+\usepackage{amssymb, amsthm, amsmath, amsfonts}
+\usepackage{fancybox}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{url}
+
+\usepackage{bardtex}
+
+%The following optional command allows for a change in the method of inputting the bibliography.  The options are ``amsrefs'' and ``bibtex."  If the command is not used, the default is ``amsrefs.''  The bibliographic entries given at the end of this file are in the amsrefs format; a different format is needed for bibtex.  See the manual for details about the bibliography.
+\biboption{amsrefs}
+
+\styleoption{prospectus}
+
+\usepackage{fourier}
+
+%The following four optional commands change the colors in the poster; if you want to change the default colors, use any or all of these four commands by removing the % symbols, and inserting your choice of colors.  See the manual for details about colors in posters.
+%\prospectustitlecolor{color}
+%\prospectusnamecolor{color}
+%\prospectusheadingtextcolor{color}
+%\prospectusheadingbackgroundcolor{color}
+
+
+%Your macros, if you have any.
+
+
+\begin{document}
+
+\titleprospectus{Shifting Tone of a Body of Text}{Cole Hollant}{Computer Science and Mathematics}{November 2019}{Stefan Méndez-Diez, Robert McGrail, Kerri-Ann Norton}
+
+
+\startmain
+
+\prospectusslideone{Abstract}
+
+\begin{itemize}
+\item Plutchik's basic emotions
+\item Natural language processing
+\begin{itemize}
+  \item Tone recognition
+  \item Tone alteration
+\end{itemize}
+\end{itemize}
+
+
+\prospectusslidetwo{High Level Plans}
+
+\begin{itemize}
+  \item Build out datasets / lexicons
+  \begin{itemize}
+    \item Sourced vs created
+  \end{itemize}
+  \item Make different models
+  \begin{itemize}
+    \item Arbitrary replacement
+    \item Latent Dirichlet Allocation
+    \item Neural nets?
+  \end{itemize}
+  \item User testing
+\end{itemize}
+
+
+\prospectusslidethree{Current Progress}
+
+\begin{itemize}
+  \item Thesaurus
+  \item Lexicons
+  \item Website
+  \begin{itemize}
+    \item Frontend
+    \item API
+    \item Server setup, etc
+  \end{itemize}
+\end{itemize}
+
+\prospectusslidefour{Immediate Next Steps}
+
+\begin{itemize}
+  \item Other lexicons!
+  \item Build control model
+  \item Alter data visualization
+\end{itemize}
+
+\prospectusslidefive{Thank you!}
+
+Here are links if anyone is interested
+\begin{itemize}
+  \item Frontend: \href{https://sproj.colehollant.com}{sproj.colehollant.com}
+  \item Backend: \href{https://sproj.api.colehollant.com/thesaurus/api/v1/words/cool}{sproj.api.colehollant.com}
+  \item Version control: \href{https://github.com/colehollant/sproj}{my github}
+\end{itemize}
+
+
+\begin{bibliog}
+
+\bib{label}{book}{
+author = {last name, first name},
+title = {title},
+publisher = {publisher},
+address = {city},
+date = {year}
+}
+
+\bib{label}{article}{
+author = {last name, first name},
+title = {title},
+journal = {journal name},
+volume = {volume number},
+date = {year}
+pages = {starting page--ending page}
+}
+
+\bib{label}{report}{
+author = {last name, first name},
+title = {title},
+eprint = {web address}
+}
+
+\bib{label}{report}{
+author = {last name, first name},
+title = {title},
+note = {arXiv address}
+}
+
+\end{bibliog}
+
+\end{document}
+
