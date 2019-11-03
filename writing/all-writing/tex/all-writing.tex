@@ -1,5 +1,6 @@
 \documentclass[11pt, twoside, reqno]{book}
 \usepackage{amssymb, amsthm, amsmath, amsfonts}
+\usepackage[htt]{hyphenat}
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{hyperref}
@@ -21,7 +22,7 @@
     commentstyle=\color{codegreen},
     keywordstyle=\color{magenta},
     stringstyle=\color{codepurple},
-    basicstyle=\ttfamily,
+    basicstyle=\ttfamily\footnotesize,
     backgroundcolor=\color{backcolour},
     frame=lrbt,
     breakatwhitespace=false,      
@@ -46,29 +47,8 @@
 \newcommand{\doublespaced}{}
 \newenvironment{blockquote}[1][\prose]{\setlength{\parindent}{#1}\begin{quoting}\blockquotespacing}{\end{quoting}}
 \begin{document}
+\startmain% <!-- Begin backend section -->
 
-\titlepg{Shifting Tone of a Body of Text}{Cole Hollant}
-    {May}{2020}
-
-\abstr
-
-We will be looking into altering the tone of a body of text based off of Robert Plutchik's basic emotions while preserving the original meaning. This project encompasses building probabilistic models in the realm of natural language processing (nlp), full-stack web development, dataset creation and application, along with proofs of algorithmic runtimes. We will build our models off of latent Dirichlet allocation—a grouping model common in nlp—and may explore neural networks as a means of emotion recognition. This will also involve user testing as a means of measuring the effectiveness of our models as well as guiding the development cycles.
-
-\tableofcontents
-
-% \dedic
-
-% Text of dedication.
-
-% \acknowl
-
-% Text of acknowledgments.
-
-\startmain
-
-% \intro
-
-% Text of Introductory Chapter.
 
 \chapter{Backend}
 
@@ -412,51 +392,4 @@ The MongoDB and Nginx containers are as easy as can be. We simply change nothing
 Within our docker-compose file, we naturally define a service for each previously mentioned aspect. The common bits are that each service is given the location of the Dockerfile or image, all are set to restart unless-stopped (as I will just be deploying a single instance of this), each is gicen a pseudo tty incase anything goes amuck, everything is given some sort of port mapping, and everything is added to a network. Outsude of this, we link the backend to the database, and we are good to go! From here we can build our cluster and tear it down at will.
 
 Since this deployment is in essence a personal project (I hardly expect more than a handful of people to check it out in these stages), I'm not concerned with scaling and load-balancing. Should the need arise, everything is fully containerized, and it is just a matter of migrating to a container orchistration platform (like Kubernetes).
-
-\begin{appendices}
-\chapter{Title of First Chapter of Appendices}
-\label{label}
-
-\section{Title of First Section of Appendices}
-\label{label}
-
-Text.  \cite{CALCULUS}
-
-\end{appendices}
-
-
-\begin{bibliog}
-
-\bib{label}{book}{
-author = {last name, first name},
-title = {title},
-publisher = {publisher},
-address = {city},
-date = {year}
-}
-
-\bib{label}{article}{
-author = {last name, first name},
-title = {title},
-journal = {journal name},
-volume = {volume number},
-date = {year}
-pages = {starting page--ending page}
-}
-
-\bib{label}{report}{
-author = {last name, first name},
-title = {title},
-eprint = {web address}
-}
-
-\bib{label}{report}{
-author = {last name, first name},
-title = {title},
-note = {arXiv address}
-}
-
-\end{bibliog}
-
 \end{document}
-

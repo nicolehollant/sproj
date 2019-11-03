@@ -1,52 +1,44 @@
-# Sproj
-
-Cole Hollant
-Bard College, 2019 - 2020
-Computer Science and Mathematics
-
-__________________________________
-
-Table of Contents
-
-- [Sproj](#sproj)
-- [Backend](#backend)
-  - [Unmarshalling JSON into Nested Structs in Golang](#unmarshalling-json-into-nested-structs-in-golang)
-  - [Writing Go Modules](#writing-go-modules)
-- [Frontend](#frontend)
-- [Lexicons](#lexicons)
-  - [National Research Council Canada (NRC) Emotion Lexicon](#national-research-council-canada-nrc-emotion-lexicon)
-    - [IMPORTANT NOTE: remember to cite as per Terms of Use in their readme](#important-note-remember-to-cite-as-per-terms-of-use-in-their-readme)
-    - [Methodology](#methodology)
-  - [Our Representation](#our-representation)
-    - [Word Level](#word-level)
-    - [Sense Level](#sense-level)
-    - [Word-Sense Level](#word-sense-level)
-  - [National Research Council Canada (NRC) Colour Lexicon](#national-research-council-canada-nrc-colour-lexicon)
-  - [National Research Council Canada (NRC) Affect-Intensity Lexicon](#national-research-council-canada-nrc-affect-intensity-lexicon)
-  - [National Research Council Canada (NRC) VAD Lexicon](#national-research-council-canada-nrc-vad-lexicon)
-- [Thesaurus](#thesaurus)
-  - [Why do I need a thesaurus?](#why-do-i-need-a-thesaurus)
-  - [Why not use an existing API?](#why-not-use-an-existing-api)
-  - [How did we do it?](#how-did-we-do-it)
-    - [Choosing a site](#choosing-a-site)
-    - [Scraping the site](#scraping-the-site)
-- [Database](#database)
-  - [What's all this then](#whats-all-this-then)
-  - [Don't be root!](#dont-be-root)
-  - [The big whale upstairs](#the-big-whale-upstairs)
-    - [Building My Containers (Thesaurus)](#building-my-containers-thesaurus)
-      - [Go Backend Dockerfile](#go-backend-dockerfile)
-      - [Vue Frontend Dockerfile](#vue-frontend-dockerfile)
-      - [Mongo and Nginx](#mongo-and-nginx)
-      - [The Composition](#the-composition)
-
-
-__________________________________
-
 <!-- Begin backend section -->
 
 # Backend
 ____________________________
+
+## What is a RESTful API and why do I Need One?
+
+An application programming interface (API) provides a client with some form of interfacing or interacting with a server. This is rather broad, and in the realm of web development there are standard HTTP (HyperText Transfer Protocol) methods—GET, HEAD, POST, PUT, PATCH, DELETE, CONNECT, OPTIONS, and TRACE—with various usages and characteristics. Perhaps the most common usage of HTTP is in REST APIs (REpresentational State Transfer) which is a stateless architecture based on a request-response interface. REST maps nicely onto basic CRUD (CREATE, READ, UPDATE, DELETE) operations common to databases. Note that REST defines an abstract framework for web services whereas CRUD defines a distinct set of operations largely in the realm of databases. With the foundations of this pairing, we can use these within our application.
+
+We would like to have a RESTful API for our application to be able to securely wrap these CRUD functions for our database as well as having a bidirectional data flow between our frontend and our model as well as our frontend and our database. We abstract our database connection to this RESTful API as any frontend code is universally accessible; we introduce this data-layer as a means of keeping our backend private.
+
+## Anatomy of an HTTP request
+
+refs:
+- [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [mux router](http://www.gorillatoolkit.org/pkg/mux)
+- [idempotency](https://developer.mozilla.org/en-US/docs/Glossary/idempotent)
+- [unsafe](https://developer.mozilla.org/en-US/docs/Glossary/safe)
+- [LetsEncrypt](https://letsencrypt.org/)
+- [Nginx](https://www.nginx.com)
+
+As we have our database and our API in place, it is worth talking about the flow of a request. Our user will only directly interact with our frontend, which is in essence a series of forms or input/output cycles; we shall take the thesaurus page as an example. We keep around state for the word being looked up and for various aspects of the results (the response object and whether the response was empty for each of the lexicons). 
+
+To get this response, we send a GET request to API with the word as the URI/path parameter via JavaScript's [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). This then resolves to our API where we are listening with the [mux router](http://www.gorillatoolkit.org/pkg/mux) which matches the URI to our `/thesaurus/api/v1/words/{word}` route. We send a reference to our database client singleton as well as our request and empty response to our route handler. Here we parse the requested word and unmarshall this request into our `entry` struct representing our database schema: should this fail, we write a `bad request` response and return. There are a few more checks along these lines that we perform before sending an `ok` response with entry from our database: we make sure that the word is not an empty string, and we make sure that the word is actually present in our database. The former is less necessary, as it would be caught by the latter, but it stems from patterns used in [unsafe](https://developer.mozilla.org/en-US/docs/Glossary/safe) endpoints and thus serves to provide consistency between responses. 
+
+The latter is where the actual retrieval occurs; we access our database and collection through our passed client reference, and we attempt to find an entry with a matching `word` field. We may safely use `FindOne` as we enforced [idempotency](https://developer.mozilla.org/en-US/docs/Glossary/idempotent) in our POST for each collection. If the word does not exist in the database, we get an error and repond with a `bad request` signifying its absence. Otherwise, we decode the resulting document into our `entry` struct and respond with a success message paired with the marshalled data of our `entry`. 
+
+Once we have written our response, we send it back as `application/json` to our frontend and interpret the result. Should we an erroneous response, we set a flag for the word not existing, and should we receive a successful reponse we send the data on to our components for response rendering.
+
+There are other fine grained details involving Transmission Control Protocol (TCP), Transport Layer Security (TLS) / Secure Sockets Layer (SSL), and router middleware that we deal with to a certain extent. TCP underlies HTTP in the establishment of sockets, keeping track of packet loss, etc. Our SSL certificates are generated by [LetsEncrypt](https://letsencrypt.org/) and we use [Nginx](https://www.nginx.com) to upgrade insecure connections, serve our frontend, and to reverse proxy our containers.
+
+
+<!--
+  Not sure how deep into HTTP i should get...
+  - I kinda wanna get into different uses like rest vs websockets vs polling vs etc 
+  - how much do I talk about CRUD vs REST?
+  - Talk about flow? 
+    - Static html from vue, requests through node over http to backend, process request, grab needed things from mongo, marshall stuff, send back over http to node to vue to html
+  - Maybe should talk about cors??
+  - talk more about containers and nginx??
+-->
 
 ## Unmarshalling JSON into Nested Structs in Golang
 
@@ -126,12 +118,21 @@ GOMODULES was introduced in Go 1.11 as a form of dependency management, and a wa
 Thus, with the introduction of module mode, we are able to develop Go outside of our GOPATH. We get a bundle of versioned dependencies (respecting semantic import versioning), which allows for... modular code. There's a similar notion of reproducibility with Go modules as there is with containerization: the `go.mod` specifies the module root—everything is self contained.
 
 
+
+
+
+
+
 <!-- Begin Frontend Section -->
 
 # Frontend
 _____________________________
 
 <!-- Begin Lexicon Section -->
+
+## frontend stuff
+
+this would be me talking about the frontend
 
 # Lexicons
 _____________________________
@@ -146,7 +147,7 @@ We've made some mistakes in the past, so we want to check our restructured data;
 
 ### Methodology
 
-Saif M. Mohommad and Peter D. Tourney compiled this lexicon with crowdsourcing through Amazon's Mechanical Turk (an online crowdsourcing platform); they chose crowdsourcing as it is quick and inexpensive (costing them $2100 for the Turkers). As a deterrent of bad responses, they included a filtering question in each survey that asked for the best synonym for the given word, allowing them to identify either lack of word knowledge or probabilitically filtering random responders. They selected joy, sadness, anger, fear, trust, disgust, surprise, and anticipation as per Robert Plutchik's wheel of basic emotions, as well as drawing from the present emotion lexicons WordNet Affect Lexicon, General Inquirer, and Affective Norms for English Words and both the Maquarie Thesaurus and Google's N-Gram corpus. They generated questions with the Macquarie Thesaurus with the aforementioned filtering-question followed by questions asking for alignment with the various emotions. They also included polarity (positive vs negative valence) in the lexicon, giving us 10 categories to work with.
+Saif M. Mohommad and Peter D. Tourney compiled this lexicon with crowdsourcing through Amazon's Mechanical Turk (an online crowdsourcing platform); they chose crowdsourcing as it is quick and inexpensive (costing them \$2100 for the Turkers). As a deterrent of bad responses, they included a filtering question in each survey that asked for the best synonym for the given word, allowing them to identify either lack of word knowledge or probabilitically filtering random responders. They selected joy, sadness, anger, fear, trust, disgust, surprise, and anticipation as per Robert Plutchik's wheel of basic emotions, as well as drawing from the present emotion lexicons WordNet Affect Lexicon, General Inquirer, and Affective Norms for English Words and both the Maquarie Thesaurus and Google's N-Gram corpus. They generated questions with the Macquarie Thesaurus with the aforementioned filtering-question followed by questions asking for alignment with the various emotions. They also included polarity (positive vs negative valence) in the lexicon, giving us 10 categories to work with.
 
 <!-- Maybe delve into Plutchik? -->
 
@@ -214,13 +215,23 @@ These three lexicons followed largely from the first. They shared similar format
 # Thesaurus
 _____________________________
 
+<!-- 
+    Summary of this file:
+    - I need a thesaurus because we are going to be swapping words for ones with similar meaning
+    - I want to have my own because of manipulating data, cost, and the learning experience
+    - We web scraped it!
+      - Picked words.bighugelabs.com because it was cool with being scraped and it had what we needed!
+    - Practically anything can be used for webscraping so long as you have requests and string manipulation
+    - We used bs4 and requests, and we wrote by first letter
+-->
+
 ## Why do I need a thesaurus?
 
-A moldable thesaurus is seemingly very important for my project. I'm looking at building a model to shift the tone of a body of text while attempting to preserve semantics. Simply going off of intuition, we can figure that swapping a word for a synonym of that word may alter the tone. We would, then, like to aggregate some relative relationship between some set of tones and groups of synonymous words. Upon creating such a dataset, we may interchange a word with a synonym according to a difference in tone.
+A moldable thesaurus is seemingly very important for my project. I'm looking at building a model to shift the tone of a body of text while attempting to preserve semantics. Simply going off of intuition, we can figure that swapping a word for a synonym of that word may alter the tone of its enclosing sentence. Consequently, we would like to aggregate some relative relationship between some set of tones and groups of synonymous words. Upon creating such a dataset, we may interchange a word with a synonym according to a difference in tone.
 
 ## Why not use an existing API?
 
-There are a few reasons to reconstruct our own thesaurus. First and foremost, we are interested in keeping additional data regarding tone that is not present within existing thesaurus APIs. It is far easier to manipulate data if it is all on hand, and it should save some server-side complexity in dealing with the decoupling of the thesaurus and the word-tone relationships. There is an issue with cost as well: APIs are rarely free past some established number of calls in some time interval, and I would like for this software to function with minimal cost--ideally the only cost is in hosting. Finally, this is a project in the realm of software engineering. While it is often better to rely on existing services--standing on the shoulders of those who came before you--it is also important to know how to create your own services.
+There are a few reasons to construct or reconstruct our own thesaurus. First and foremost, we are interested in keeping additional data regarding tone that is not present within existing thesaurus APIs. It is far easier to manipulate data if it is all on hand, and it should save some server-side complexity in dealing with the decoupling of the thesaurus and the word-tone relationships. There is an issue with cost as well: APIs are rarely free past some established number of calls in a given time interval, and I would like for this software to function with minimal cost--ideally the only cost is in hosting. Finally, this is a project in the realm of software engineering. While it is often better to rely on existing services--standing on the shoulders of those who came before you--it is also important to know how to create your own services.
 
 ## How did we do it?
 
@@ -228,32 +239,31 @@ We created the thesaurus by web scraping, which is a large aspect of data-collec
 
 ### Choosing a site
 
-Web scraping often comes with a give and take. There are several existing online thesaurus services, so we did looked into a few of them and landed on [John Watson's Big Huge Thesaurus](words.bighugelabs.com). We began with trying [thesaurus.com](www.thesaurus.com), but they have protections against traditional scraping. There are many of such protections including lazy-loading content, providing fake data, services like Captcha, even automatically altering the page's HTML. It seemed as if [thesaurus.com](www.thesaurus.com) had been randomizing their CSS classes and either lazy-loading content or providing fake data. While we could likely get around this with an automated browser like [Selenium](https://www.seleniumhq.org/), as the CSS classes are only a deterrent if scraping over a large time interval and the content would almost certainly exist within an automated browser session, we should respect that this site has practices in place to prevent scraping.
+Web scraping often comes with a give and take. There are several existing online thesaurus services, so we did looked into a few of them and landed on [John Watson's Big Huge Thesaurus](https://words.bighugelabs.com). We began with trying [thesaurus.com](https://www.thesaurus.com), but they have protections against traditional scraping. There are many of such protections including lazy-loading content, providing fake data, services like Captcha, even automatically altering the page's HTML. It seemed as if [thesaurus.com](https://www.thesaurus.com) had been randomizing their CSS classes and either lazy-loading content or providing fake data. While we could likely get around this with an automated browser like [Selenium](https://www.seleniumhq.org/), as the CSS classes are only a deterrent if scraping over a large time interval and the content would almost certainly exist within an automated browser session, we should respect that this site has practices in place to prevent scraping.
 
-There may be protections against web scraping in place that we ought to honor, or there are often poorly laid out websites that would be a pain to use despite being open source, or the site may simply not provide all the information we would like. The latter is best exemplified by [moby](http://moby-thesaurus.org) which we may come back to if we decide that we care not about parts of speech. [John Watson's Big Huge Thesaurus](words.bighugelabs.com), on the other hand, seems to have all that we want: synonyms by part of speech, a clean interface, and permission for use given credit is provided.
+There may be protections against web scraping in place that we ought to honor, or there are often poorly laid out websites that would be a pain to use despite being open source, or the site may simply not provide all the information we would like. The latter is best exemplified by [moby](http://moby-thesaurus.org) which we may come back to if we decide that we care not about parts of speech. [John Watson's Big Huge Thesaurus](https://words.bighugelabs.com), on the other hand, seems to have all that we want: synonyms by part of speech, a clean interface, and permission for use given credit is provided.
 
 *Protections against web scraping from [JonasCz](https://github.com/JonasCz/How-To-Prevent-Scraping/blob/master/README.md)*
 
 ### Scraping the site
 
-Web scraping for purposes such as gathering content from a page is a basic process: get the raw HTML of the page and retrieve what you want. Due to the ubiquity of HTTP requests and string processing, we can use just about anything we want for building our scraper. We will be using Python for its simplicity in our project, although we will create something similar in a bash script as a proof of concept for demonstration.
+Web scraping for purposes such as gathering content from a page is a basic process: get the raw HTML of the page and retrieve what you want. Due to the ubiquity of HTTP requests and string processing, we can use just about anything we want for building our scraper. We will be using Python for its simplicity in our project, although we will create something similar in a bash script as a proof of concept for demonstration (see `thesaurus/webscrape/scrape.sh`).
+<!-- Note: I dont like how this reads, but I do like having the bash script to drive the point home -->
 
-We are using the `requests` module to get the HTML for each page and `bs4` for our HTML parsing. I am running Ubuntu on my computer, and thus have access to the `words` file present across Unix operating systems: this is a raw text file with a collection of words each on their own line. This will be the basis of our thesaurus. We will first reduce this file by removing all entries with apostrophes with `fixWords.py` whose essence is:
+We are using the `requests` module to get the HTML for each page and `bs4` for our HTML parsing. I am running Ubuntu on my computer, and thus have access to the `words` file present across Unix operating systems: this is a raw text file with a collection of words separated by line. This will be the basis of our thesaurus. We will first reduce this file by removing all entries with apostrophes with `thesaurus/webscrape/fixWords.py` whose essence is:
 
 ```py
-if word.find("...") == -1:
+if word.find("'") == -1:
     outfile.write(word)
 ```
 
-Now that we have the words we will use to construct our thesaurus, we may do exactly that. Each page takes the form of the same base url followed by the word, this makes for easy access. We go through word-by-word in our reduced file, make a GET request for that word, and then aggregate all the word's synonyms and antonyms by part of speech. There's just one little trick to this process: the antonyms were not a concrete section, but rather one of several possible subsections under each part of speech. To circumvent this issue, we just have to do some checks to make sure that any present antonym section belongs to the part of speech we are considering and not a later-occuring part of speech. We allow the addition of antonyms to the synonym list and remove them prior to returning; this allows for us to have less rigorous checks in adding synonyms.
+We do this as to eliminate repetition in our database to expedite searching as all nouns present in `words` have a possessive form; note that this does come with the loss of conjuntions. Now that we have the words we will use to construct our thesaurus, we may do exactly that. Each page takes the form of the same base url followed by the word: this makes for easy access. We go through word-by-word in our reduced file, make a GET request for that word, and then aggregate all the word's synonyms and antonyms by part of speech. There's just one little trick to this process: the antonyms are not in a concrete section, but rather one of several possible subsections under each part of speech. To circumvent this issue, we just have to do some checks to make sure that any present antonym section belongs to the part of speech we are considering and not a later-occuring part of speech. We allow the addition of antonyms to the synonym list and remove them prior to returning; this allows for us to have less rigorous checks in adding synonyms.
 
-There was an earlier version of this scraper that did not deal with antonyms. This catch is attributed to Ariadne, who--when I showed her my progress--brought up the word "beautiful" which had "ugly" as the first entry under the synonym section. This prompted quite a refactoring, and we should now be free of these bugs. The basis of this refactoring has largely been tested against "beautiful" and "well" which both have antonyms in the thesaurus, and "well" had all the parts of speech.
+There was an earlier version of this scraper that did not deal with antonyms. This catch is attributed to Ariadne, who—when I showed her my progress—brought up the word "beautiful" which had "ugly" as the first entry under the synonym section. This prompted quite a refactoring, and we should now be free of these bugs. The basis of this refactoring was largely tested against "beautiful" and "well" which both have antonyms in the thesaurus, and "well" had all the parts of speech.
 
-As I only have so much RAM, and Python can be rather resource hungry, we segment our data by first letter. We will restructure our data into one object, but we will do this after collecting all of our data. We may naively write each dictionary to its corresponding JSON file and correct the result. This allows us to keep less in memory, which may otherwise present itself as a problem. 
+Upon tweaking our scraper to suit our needs, we must output our results. As I only have so much RAM, and Python can be rather resource hungry, we segment our data by first letter. We will restructure our data into one object, but we will do this after collecting all of our data. We may naively write each dictionary to its corresponding JSON file and correct the result. This allows us to keep less in memory, which may otherwise present itself as a problem. This also allows us to segment our program as a failsafe; if we are to lose connection, crash, hit a request limit, or otherwise fail to run the script to completion, we may easily start again from where we have left off rather than the very beginning.
 
-Then, upon building our thesaurus, we may move to the next part. We would like to store this in a database and create an API to interface with this.
-
-Sidenote: while it didn't change anything significant, it's worth noting!
+Then, upon building our thesaurus, we may move to the next part of our project. We would like to store this thesaurus in a database and create an API to interface with it.
 
 
 <!-- Begin Database Section -->

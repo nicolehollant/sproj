@@ -131,12 +131,6 @@ export default {
     parseSenselevel(res){
       console.log("ahjsdkkm",res)
       this.entrySenselevel.senselist = res.senselist;
-      // this.existsSenselevel[0] = this.notEmpty(this.entrySenselevel.senselist);
-      // let doesNotExist = true;
-      // for (const exist of this.existsSenselevel) {
-      //   if(exist) doesNotExist = false;
-      // }
-      // this.dneSenselevel = doesNotExist;
       this.dneSenselevel = this.entrySenselevel.senselist.length <= 0
     },
     notEmpty(o){

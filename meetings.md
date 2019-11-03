@@ -92,3 +92,13 @@ Send Stefan 2+ pages by sunday night
 - api
 
 - design (for future)
+
+# 11/1
+
+- wrap in flask
+- write rest of endpoints
+- steal stuff from wordnet!
+  - grab emotion association by tweets?
+  - maaaybe look into facebook?
+
+Peep "Speech and Language Processing (3rd edition)"

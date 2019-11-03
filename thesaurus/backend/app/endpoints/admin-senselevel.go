@@ -10,37 +10,6 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-/*
-SAMPLE JSON:
-"abate": [
-    {
-      "associations": [],
-      "sense": [
-        "nonincrease"
-      ],
-      "word": "abate"
-    },
-    {
-      "associations": [],
-      "sense": [
-        "discount"
-      ],
-      "word": "abate"
-    }
-	],
-
-SCHEMA:
-type SenseLevelEntry struct {
-	ID        primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
-	Word      string             `json:"word,omitempty" bson:"word,omitempty"`
-	SenseList []SenseLevelData   `json:"senselist,omitempty" bson:"senselist,omitempty"`
-}
-type SenseLevelData struct {
-	Associations []string `json:"associations,omitempty" bson:"associations,omitempty"`
-	Sense        []string `json:"sense,omitempty" bson:"sense,omitempty"`
-}
-*/
-
 func checkEmptyFieldsSenseLevel(entry structs.SenseLevelEntry, response http.ResponseWriter) *structs.MessageResponse {
 	fmt.Println(entry.Word)
 	fmt.Println(entry.SenseList)

@@ -18,6 +18,7 @@
 - [Web sockets?](https://www.educba.com/websocket-vs-rest/)
 - [LDAs](https://towardsdatascience.com/light-on-math-machine-learning-intuitive-guide-to-latent-dirichlet-allocation-437c81220158)
 - [basic explanation of ldas](https://medium.com/@lettier/how-does-lda-work-ill-explain-using-emoji-108abf40fa7d)
+- [web request more tcp dns and socket stuff](https://robrich.org/slides/anatomy_of_a_web_request)
 
 ## Backend Writeup
 
