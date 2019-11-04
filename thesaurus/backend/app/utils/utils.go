@@ -112,6 +112,12 @@ func CheckNotExists(ctx context.Context, item interface{}, collection *mongo.Col
 		payload := structs.MessageResponse{
 			Message: "Word exists",
 		}
+		if err != nil {
+			fmt.Sprintf("Word exists: %s", err)
+			payload = structs.MessageResponse{
+				Message: fmt.Sprintf("Word exists: %s", err),
+			}
+		}
 		json.NewEncoder(response).Encode(payload)
 		return fmt.Errorf("Word exists: %s", err)
 	}

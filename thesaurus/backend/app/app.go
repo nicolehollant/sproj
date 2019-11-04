@@ -76,6 +76,27 @@ func (a *App) setRouters() {
 	a.Delete("/thesaurus/api/v1/admin/senselevel", a.handleRequest(endpoints.DeleteSenseLevel))
 	// SenseLevel Lexicon -- Basic
 	a.Get("/thesaurus/api/v1/senselevel/{word}", a.handleRequest(endpoints.GetSenseLevel))
+	// AffectIntensity Lexicon -- Admin
+	a.Get("/thesaurus/api/v1/admin/affectintensity", a.handleRequest(endpoints.GetAllAffectIntensitys))
+	a.Post("/thesaurus/api/v1/admin/affectintensity", a.handleRequest(endpoints.CreateAffectIntensity))
+	a.Put("/thesaurus/api/v1/admin/affectintensity", a.handleRequest(endpoints.UpdateAffectIntensity))
+	a.Delete("/thesaurus/api/v1/admin/affectintensity", a.handleRequest(endpoints.DeleteAffectIntensity))
+	// AffectIntensity Lexicon -- Basic
+	a.Get("/thesaurus/api/v1/affectintensity/{word}", a.handleRequest(endpoints.GetAffectIntensity))
+	// Color Lexicon -- Admin
+	a.Get("/thesaurus/api/v1/admin/color", a.handleRequest(endpoints.GetAllColors))
+	a.Post("/thesaurus/api/v1/admin/color", a.handleRequest(endpoints.CreateColor))
+	a.Put("/thesaurus/api/v1/admin/color", a.handleRequest(endpoints.UpdateColor))
+	a.Delete("/thesaurus/api/v1/admin/color", a.handleRequest(endpoints.DeleteColor))
+	// Color Lexicon -- Basic
+	a.Get("/thesaurus/api/v1/color/{word}", a.handleRequest(endpoints.GetColor))
+	// VAD Lexicon -- Admin
+	a.Get("/thesaurus/api/v1/admin/vad", a.handleRequest(endpoints.GetAllVADs))
+	a.Post("/thesaurus/api/v1/admin/vad", a.handleRequest(endpoints.CreateVAD))
+	a.Put("/thesaurus/api/v1/admin/vad", a.handleRequest(endpoints.UpdateVAD))
+	a.Delete("/thesaurus/api/v1/admin/vad", a.handleRequest(endpoints.DeleteVAD))
+	// VAD Lexicon -- Basic
+	a.Get("/thesaurus/api/v1/vad/{word}", a.handleRequest(endpoints.GetVAD))
 }
 
 // Get wraps the router for GET method

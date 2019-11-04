@@ -2,6 +2,7 @@
 \usepackage{amssymb, amsthm, amsmath, amsfonts}
 \usepackage{graphicx}
 \usepackage{color}
+\usepackage{url}
 \usepackage{hyperref}
 \usepackage{verbatim}
 \usepackage{ wasysym }
@@ -10,7 +11,6 @@
 \usepackage[leftmargin = 1in, rightmargin = 0in, vskip = 0in]{quoting}
 \usepackage{microtype}
 \usepackage{bardtex}
-\biboption{amsrefs}
 \styleoption{seniorproject}
 \usepackage{listings}
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -51,7 +51,6 @@
     {May}{2020}
 
 \abstr
-
 We will be looking into altering the tone of a body of text based off of Robert Plutchik's basic emotions while preserving the original meaning. This project encompasses building probabilistic models in the realm of natural language processing (nlp), full-stack web development, dataset creation and application, along with proofs of algorithmic runtimes. We will build our models off of latent Dirichlet allocation—a grouping model common in nlp—and may explore neural networks as a means of emotion recognition. This will also involve user testing as a means of measuring the effectiveness of our models as well as guiding the development cycles.
 
 \tableofcontents
@@ -96,7 +95,7 @@ refs:
 
 As we have our database and our API in place, it is worth talking about the flow of a request. Our user will only directly interact with our frontend, which is in essence a series of forms or input/output cycles; we shall take the thesaurus page as an example. We keep around state for the word being looked up and for various aspects of the results (the response object and whether the response was empty for each of the lexicons).
 
-To get this response, we send a GET request to API with the word as the URI/path parameter via JavaScript's \href{https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API}{fetch}. This then resolves to our API where we are listening with the \href{http://www.gorillatoolkit.org/pkg/mux}{mux router} which matches the URI to our \texttt{/thesaurus/api/v1/words/{word}} route. We send a reference to our database client singleton as well as our request and empty response to our route handler. Here we parse the requested word and unmarshall this request into our \texttt{entry} struct representing our database schema: should this fail, we write a \texttt{bad request} response and return. There are a few more checks along these lines that we perform before sending an \texttt{ok} response with entry from our database: we make sure that the word is not an empty string, and we make sure that the word is actually present in our database. The former is less necessary, as it would be caught by the latter, but it stems from patterns used in \href{https://developer.mozilla.org/en-US/docs/Glossary/safe}{unsafe} endpoints and thus serves to provide consistency between responses.
+To get this response, we send a GET request to API with the word as the URI/path parameter via JavaScript's \href{https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API}{fetch} \cite{FetchAPI36:online}. This then resolves to our API where we are listening with the \href{http://www.gorillatoolkit.org/pkg/mux}{mux router} which matches the URI to our \texttt{/thesaurus/api/v1/words/{word}} route. We send a reference to our database client singleton as well as our request and empty response to our route handler. Here we parse the requested word and unmarshall this request into our \texttt{entry} struct representing our database schema: should this fail, we write a \texttt{bad request} response and return. There are a few more checks along these lines that we perform before sending an \texttt{ok} response with entry from our database: we make sure that the word is not an empty string, and we make sure that the word is actually present in our database. The former is less necessary, as it would be caught by the latter, but it stems from patterns used in \href{https://developer.mozilla.org/en-US/docs/Glossary/safe}{unsafe} endpoints and thus serves to provide consistency between responses.
 
 The latter is where the actual retrieval occurs; we access our database and collection through our passed client reference, and we attempt to find an entry with a matching \texttt{word} field. We may safely use \texttt{FindOne} as we enforced \href{https://developer.mozilla.org/en-US/docs/Glossary/idempotent}{idempotency} in our POST for each collection. If the word does not exist in the database, we get an error and repond with a \texttt{bad request} signifying its absence. Otherwise, we decode the resulting document into our \texttt{entry} struct and respond with a success message paired with the marshalled data of our \texttt{entry}.
 
@@ -420,43 +419,13 @@ Since this deployment is in essence a personal project (I hardly expect more tha
 \section{Title of First Section of Appendices}
 \label{label}
 
-Text.  \cite{CALCULUS}
+% Text.  \cite{CALCULUS}
 
 \end{appendices}
 
-
-\begin{bibliog}
-
-\bib{label}{book}{
-author = {last name, first name},
-title = {title},
-publisher = {publisher},
-address = {city},
-date = {year}
-}
-
-\bib{label}{article}{
-author = {last name, first name},
-title = {title},
-journal = {journal name},
-volume = {volume number},
-date = {year}
-pages = {starting page--ending page}
-}
-
-\bib{label}{report}{
-author = {last name, first name},
-title = {title},
-eprint = {web address}
-}
-
-\bib{label}{report}{
-author = {last name, first name},
-title = {title},
-note = {arXiv address}
-}
-
-\end{bibliog}
+\nocite{FetchAPI36:online}
+\bibliographystyle{plain}
+\bibliography{sproj.bib}
 
 \end{document}
 

@@ -31,4 +31,3 @@
 \contentsline {chapter}{Appendices}{23}{section*.3}% 
 \contentsline {chapter}{\numberline {A}Title of First Chapter of Appendices}{23}{Appendix.1.A}% 
 \contentsline {section}{\numberline {A.1}Title of First Section of Appendices}{23}{section.1.A.1}% 
-\contentsline {chapter}{Bibliography}{25}{chapter*.4}% 

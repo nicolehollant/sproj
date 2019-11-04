@@ -1,5 +1,14 @@
 # Whole bunch of sources
 
+## How to cite
+
+@misc{
+  WinNT,
+  title = {{MS Windows NT} Kernel Description},
+  howpublished = {\url{http://web.archive.org/web/20080207010024/http://www.808multimedia.com/winnt/kernel.htm}},
+  note = {Accessed: 2010-09-30}
+}
+
 ## Things To Read
 
 - [NLP emotion recognition](https://medium.com/neuronio/from-sentiment-analysis-to-emotion-recognition-a-nlp-story-bcc9d6ff61ae)

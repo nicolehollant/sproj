@@ -41,6 +41,8 @@ INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/graphics/color.sty
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/graphics/color.sty
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/graphics-cfg/color.cfg
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/url/url.sty
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/hyperref/hyperref.sty
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/hyperref/hyperref.sty
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
@@ -58,8 +60,6 @@ INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/hyperref/pd1enc.def
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/hyperref/pd1enc.def
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/latexconfig/hyperref.cfg
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/url/url.sty
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/url/url.sty
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/hyperref/hpdftex.def
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/hyperref/hpdftex.def
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
@@ -87,19 +87,6 @@ INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/base/ifthen.sty
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/base/ifthen.sty
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/tools/calc.sty
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/tools/calc.sty
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/amsrefs/amsrefs.sty
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/amsrefs/amsrefs.sty
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/url/url.sty
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/amsrefs/pcatcode.sty
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/amsrefs/pcatcode.sty
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/amsrefs/ifoption.sty
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/amsrefs/ifoption.sty
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/amsrefs/rkeyval.sty
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/amsrefs/rkeyval.sty
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/amsrefs/textcmds.sty
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/amsrefs/textcmds.sty
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/amsrefs/mathscinet.sty
-INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/amsrefs/mathscinet.sty
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/local/texlive/2019basic/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
@@ -187,6 +174,8 @@ INPUT /usr/local/texlive/2019basic/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2019basic/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.bbl
+INPUT /Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.bbl
 INPUT /Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.aux
 INPUT /Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.out
 INPUT /Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.out

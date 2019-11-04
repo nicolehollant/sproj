@@ -23,6 +23,22 @@ func checkEmptyFieldsSenseLevel(entry structs.SenseLevelEntry, response http.Res
 	return utils.CheckEmptyFieldsAllGeneral(entry.Word == "" || entry.SenseList == nil || emptySenseList, response)
 }
 
+func extendSet(a []string, b []string) []string {
+
+	check := make(map[string]int)
+	d := append(a, b...)
+	res := make([]string, 0)
+	for _, val := range d {
+		check[val] = 1
+	}
+
+	for letter, _ := range check {
+		res = append(res, letter)
+	}
+
+	return res
+}
+
 // CreateSenseLevel - Add entries to the collection!
 func CreateSenseLevel(client *mongo.Client, response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Creating senselevel!")
@@ -43,7 +59,16 @@ func CreateSenseLevel(client *mongo.Client, response http.ResponseWriter, reques
 		json.NewEncoder(response).Encode(hasCreds)
 		return
 	}
-
+	var wordLevelAssociations []string
+	var wordLevelSense []string
+	for _, x := range entry.SenseList {
+		wordLevelAssociations = extendSet(wordLevelAssociations, x.Associations)
+		wordLevelSense = extendSet(wordLevelSense, x.Sense)
+	}
+	entry.WordLevel = structs.SenseLevelData{
+		Associations: wordLevelAssociations,
+		Sense:        wordLevelSense,
+	}
 	collection := client.Database("thesaurus-v1").Collection("senselevel")
 	utils.CreateEntry(entry, structs.SenseLevelEntry{Word: entry.Word}, collection, response)
 }
