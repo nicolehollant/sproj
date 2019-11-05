@@ -32,7 +32,7 @@ func GetWord(client *mongo.Client, response http.ResponseWriter, request *http.R
 
 	collection := client.Database("thesaurus-v1").Collection("words")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	err = collection.FindOne(ctx, structs.ThesaurusEntry{Word: word}).Decode(&entry)
+	err = collection.FindOne(ctx, structs.Filter{Word: word}).Decode(&entry)
 
 	if err != nil {
 		cancel()

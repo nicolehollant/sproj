@@ -80,7 +80,7 @@ func CreateColor(client *mongo.Client, response http.ResponseWriter, request *ht
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("color")
-	utils.CreateEntry(entry, structs.ColorEntry{Word: entry.Word}, collection, response)
+	utils.CreateEntry(entry, structs.Filter{Word: entry.Word}, collection, response)
 }
 
 // GetAllColors - Add entries to the collection!
@@ -121,7 +121,7 @@ func UpdateColor(client *mongo.Client, response http.ResponseWriter, request *ht
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("color")
-	utils.ReplaceEntry(entry, structs.ColorEntry{Word: createdWord}, collection, response)
+	utils.ReplaceEntry(entry, structs.Filter{Word: createdWord}, collection, response)
 }
 
 // DeleteColor - Remove entries from the collection!
@@ -148,5 +148,5 @@ func DeleteColor(client *mongo.Client, response http.ResponseWriter, request *ht
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("color")
-	utils.DeleteEntry(entry, structs.ColorEntry{Word: createdWord}, collection, response)
+	utils.DeleteEntry(entry, structs.Filter{Word: createdWord}, collection, response)
 }

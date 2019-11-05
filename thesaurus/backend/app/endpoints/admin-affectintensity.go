@@ -104,7 +104,7 @@ func CreateAffectIntensity(client *mongo.Client, response http.ResponseWriter, r
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("affectintensity")
-	utils.CreateEntry(entry, structs.AffectIntensityEntry{Word: entry.Word}, collection, response)
+	utils.CreateEntry(entry, structs.Filter{Word: entry.Word}, collection, response)
 }
 
 // GetAllAffectIntensitys - Add entries to the collection!
@@ -145,7 +145,7 @@ func UpdateAffectIntensity(client *mongo.Client, response http.ResponseWriter, r
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("affectintensity")
-	utils.ReplaceEntry(entry, structs.AffectIntensityEntry{Word: createdWord}, collection, response)
+	utils.ReplaceEntry(entry, structs.Filter{Word: createdWord}, collection, response)
 }
 
 // DeleteAffectIntensity - Remove entries from the collection!
@@ -172,5 +172,5 @@ func DeleteAffectIntensity(client *mongo.Client, response http.ResponseWriter, r
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("affectintensity")
-	utils.DeleteEntry(entry, structs.AffectIntensityEntry{Word: createdWord}, collection, response)
+	utils.DeleteEntry(entry, structs.Filter{Word: createdWord}, collection, response)
 }

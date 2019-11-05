@@ -32,7 +32,7 @@ func GetSenseLevel(client *mongo.Client, response http.ResponseWriter, request *
 
 	collection := client.Database("thesaurus-v1").Collection("senselevel")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	err = collection.FindOne(ctx, structs.SenseLevelEntry{Word: word}).Decode(&entry)
+	err = collection.FindOne(ctx, structs.Filter{Word: word}).Decode(&entry)
 
 	if err != nil {
 		cancel()

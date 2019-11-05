@@ -43,7 +43,7 @@ func CreateWord(client *mongo.Client, response http.ResponseWriter, request *htt
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("words")
-	utils.CreateEntry(entry, structs.ThesaurusEntry{Word: entry.Word}, collection, response)
+	utils.CreateEntry(entry, structs.Filter{Word: entry.Word}, collection, response)
 }
 
 // GetAllWords - Add entries to the collection!
@@ -84,7 +84,7 @@ func UpdateWord(client *mongo.Client, response http.ResponseWriter, request *htt
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("words")
-	utils.ReplaceEntry(entry, structs.ThesaurusEntry{Word: createdWord}, collection, response)
+	utils.ReplaceEntry(entry, structs.Filter{Word: createdWord}, collection, response)
 }
 
 // DeleteWord - Remove entries from the collection!
@@ -111,5 +111,5 @@ func DeleteWord(client *mongo.Client, response http.ResponseWriter, request *htt
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("words")
-	utils.DeleteEntry(entry, structs.ThesaurusEntry{Word: createdWord}, collection, response)
+	utils.DeleteEntry(entry, structs.Filter{Word: createdWord}, collection, response)
 }

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"sort"
 
 	"github.com/colehollant/sproj/thesaurus/backend/app/structs"
 	"github.com/colehollant/sproj/thesaurus/backend/app/utils"
@@ -35,8 +36,22 @@ func extendSet(a []string, b []string) []string {
 	for letter, _ := range check {
 		res = append(res, letter)
 	}
-
+	sort.Strings(res)
 	return res
+}
+
+func addWordLevel(entry *structs.SenseLevelEntry) {
+	// entry.Name = "Paul"
+	var wordLevelAssociations []string
+	var wordLevelSense []string
+	for _, x := range entry.SenseList {
+		wordLevelAssociations = extendSet(wordLevelAssociations, x.Associations)
+		wordLevelSense = extendSet(wordLevelSense, x.Sense)
+	}
+	entry.WordLevel = structs.SenseLevelData{
+		Associations: wordLevelAssociations,
+		Sense:        wordLevelSense,
+	}
 }
 
 // CreateSenseLevel - Add entries to the collection!
@@ -59,18 +74,10 @@ func CreateSenseLevel(client *mongo.Client, response http.ResponseWriter, reques
 		json.NewEncoder(response).Encode(hasCreds)
 		return
 	}
-	var wordLevelAssociations []string
-	var wordLevelSense []string
-	for _, x := range entry.SenseList {
-		wordLevelAssociations = extendSet(wordLevelAssociations, x.Associations)
-		wordLevelSense = extendSet(wordLevelSense, x.Sense)
-	}
-	entry.WordLevel = structs.SenseLevelData{
-		Associations: wordLevelAssociations,
-		Sense:        wordLevelSense,
-	}
+	addWordLevel(&entry)
 	collection := client.Database("thesaurus-v1").Collection("senselevel")
-	utils.CreateEntry(entry, structs.SenseLevelEntry{Word: entry.Word}, collection, response)
+	// utils.CreateEntry(entry, structs.SenseLevelEntry{Word: entry.Word}, collection, response)
+	utils.CreateEntry(entry, structs.Filter{Word: entry.Word}, collection, response)
 }
 
 // GetAllSenseLevels - Add entries to the collection!
@@ -111,7 +118,7 @@ func UpdateSenseLevel(client *mongo.Client, response http.ResponseWriter, reques
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("senselevel")
-	utils.ReplaceEntry(entry, structs.SenseLevelEntry{Word: createdWord}, collection, response)
+	utils.ReplaceEntry(entry, structs.Filter{Word: createdWord}, collection, response)
 }
 
 // DeleteSenseLevel - Remove entries from the collection!
@@ -138,5 +145,5 @@ func DeleteSenseLevel(client *mongo.Client, response http.ResponseWriter, reques
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("senselevel")
-	utils.DeleteEntry(entry, structs.SenseLevelEntry{Word: createdWord}, collection, response)
+	utils.DeleteEntry(entry, structs.Filter{Word: createdWord}, collection, response)
 }

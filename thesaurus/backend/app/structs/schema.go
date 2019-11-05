@@ -2,6 +2,11 @@ package structs
 
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
+// Filter - helper for filtering by word
+type Filter struct {
+	Word string `json:"word,omitempty" bson:"word,omitempty"`
+}
+
 // ThesaurusEntry - scheme for the thesaurus entry
 type ThesaurusEntry struct {
 	ID       primitive.ObjectID  `json:"_id,omitempty" bson:"_id,omitempty"`

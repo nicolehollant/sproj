@@ -32,7 +32,7 @@ func GetAffectIntensity(client *mongo.Client, response http.ResponseWriter, requ
 
 	collection := client.Database("thesaurus-v1").Collection("affectintensity")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	err = collection.FindOne(ctx, structs.AffectIntensityEntry{Word: word}).Decode(&entry)
+	err = collection.FindOne(ctx, structs.Filter{Word: word}).Decode(&entry)
 
 	if err != nil {
 		cancel()

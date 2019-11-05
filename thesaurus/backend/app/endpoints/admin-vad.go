@@ -37,7 +37,7 @@ func CreateVAD(client *mongo.Client, response http.ResponseWriter, request *http
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("vad")
-	utils.CreateEntry(entry, structs.VADEntry{Word: entry.Word}, collection, response)
+	utils.CreateEntry(entry, structs.Filter{Word: entry.Word}, collection, response)
 }
 
 // GetAllVADs - Add entries to the collection!
@@ -78,7 +78,7 @@ func UpdateVAD(client *mongo.Client, response http.ResponseWriter, request *http
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("vad")
-	utils.ReplaceEntry(entry, structs.VADEntry{Word: createdWord}, collection, response)
+	utils.ReplaceEntry(entry, structs.Filter{Word: createdWord}, collection, response)
 }
 
 // DeleteVAD - Remove entries from the collection!
@@ -105,5 +105,5 @@ func DeleteVAD(client *mongo.Client, response http.ResponseWriter, request *http
 	}
 
 	collection := client.Database("thesaurus-v1").Collection("vad")
-	utils.DeleteEntry(entry, structs.VADEntry{Word: createdWord}, collection, response)
+	utils.DeleteEntry(entry, structs.Filter{Word: createdWord}, collection, response)
 }

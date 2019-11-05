@@ -32,7 +32,7 @@ func GetVAD(client *mongo.Client, response http.ResponseWriter, request *http.Re
 
 	collection := client.Database("thesaurus-v1").Collection("vad")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	err = collection.FindOne(ctx, structs.VADEntry{Word: word}).Decode(&entry)
+	err = collection.FindOne(ctx, structs.Filter{Word: word}).Decode(&entry)
 
 	if err != nil {
 		cancel()

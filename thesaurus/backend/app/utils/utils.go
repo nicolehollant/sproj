@@ -138,6 +138,7 @@ func UnmarshalEntry(entry interface{}, response http.ResponseWriter, request *ht
 func CreateEntry(entry interface{}, filter interface{}, collection *mongo.Collection, response http.ResponseWriter) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 
+	fmt.Printf("Filter is: %s\n", filter)
 	err := CheckNotExists(ctx, filter, collection, response)
 
 	if err != nil {
@@ -151,6 +152,7 @@ func CreateEntry(entry interface{}, filter interface{}, collection *mongo.Collec
 		return
 	}
 	cancel()
+	fmt.Println("Entry is: %s", entry)
 	RespondJSON(response, http.StatusCreated, entry)
 }
 

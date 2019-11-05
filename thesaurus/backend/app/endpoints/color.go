@@ -32,7 +32,7 @@ func GetColor(client *mongo.Client, response http.ResponseWriter, request *http.
 
 	collection := client.Database("thesaurus-v1").Collection("color")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	err = collection.FindOne(ctx, structs.ColorEntry{Word: word}).Decode(&entry)
+	err = collection.FindOne(ctx, structs.Filter{Word: word}).Decode(&entry)
 
 	if err != nil {
 		cancel()
