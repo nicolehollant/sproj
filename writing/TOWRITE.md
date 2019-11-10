@@ -1,0 +1,28 @@
+# Things to write:
+
+- Stuff for lexicons ...
+- Finishing API
+  - Filtering properly
+  - General flow
+  - Overview of endpoints
+- Making control model
+  - Flask stuff
+  - Why another server?
+  - Options
+  - Structure
+  - Preserving punctuation
+  - Stop words
+    - credit to nltk
+  - Words by crud vs words by rest
+  - Pattern of pushing named params as None 
+- Frontend
+  - Whole lotta stuff maybe
+  - Design
+    - idt anyone cares about css, but maybe UI components
+  - Making calls
+  - When and what to render
+- LDAs
+  - how do they work
+  - prob an overview of bayes
+  - prob an overview of topic gen
+  - how can we apply it

@@ -3,7 +3,7 @@
         <nav class="navbar--link__wrapper">
             <router-link exact to="/" class="navbar--link">Home</router-link>
             <router-link to="/thesaurus" class="navbar--link">Thesaurus</router-link>
-            <router-link to="/about" class="navbar--link">Model</router-link>
+            <router-link to="/model" class="navbar--link">Model</router-link>
         </nav>
     </div>
 </template>

@@ -1,4 +1,8 @@
 flask
 flask_pymongo
+flask-cors
+pymongo
 requests
 urllib3
+python-dotenv
+nltk

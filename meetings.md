@@ -102,3 +102,5 @@ Send Stefan 2+ pages by sunday night
   - maaaybe look into facebook?
 
 Peep "Speech and Language Processing (3rd edition)"
+
+Ask bob what we need for IRB

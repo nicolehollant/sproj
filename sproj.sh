@@ -26,8 +26,11 @@ case $1 in
   ./app.sh boot
   popd
   ;;
+"lines")
+  scc -i vue,js,ts,py,go,html,sh,yaml .
+  ;;
 *)
-  msg="Oops! '$1' is not a valid option:\noptions: \n\tstart \n\tstop \n\trestart"
+  msg="Oops! '$1' is not a valid option:\noptions: \n\tstart \n\tstop \n\trestart \n\tlines"
   ;;
 esac
 
