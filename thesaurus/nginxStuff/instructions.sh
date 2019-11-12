@@ -8,6 +8,8 @@ sudo vim /etc/nginx/sites-available/sproj.api.colehollant.com
 # enable them
 sudo ln /etc/nginx/sites-available/sproj.colehollant.com /etc/nginx/sites-enabled/sproj.colehollant.com
 sudo ln /etc/nginx/sites-available/sproj.api.colehollant.com /etc/nginx/sites-enabled/sproj.api.colehollant.com
+sudo ln /etc/nginx/sites-available/sproj.model.colehollant.com /etc/nginx/sites-enabled/sproj.model.colehollant.com
+
 # check syntax and reload
 sudo nginx -t 
 sudo systemctl reload nginx
