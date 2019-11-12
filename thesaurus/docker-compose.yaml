@@ -42,6 +42,16 @@ services:
     - "445:443"
     networks:
     - app-network
+  
+  # Model Service
+  model: # name of service
+    build: model # dir of dockerfile
+    restart: unless-stopped
+    tty: true
+    ports:
+    - "5005:5000" # map ports
+    networks:
+    - app-network
 
   # Mongo Service
   database:

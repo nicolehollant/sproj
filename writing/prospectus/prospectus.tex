@@ -37,11 +37,14 @@
 \prospectusslideone{Abstract}
 
 \begin{itemize}
-\item Plutchik's basic emotions
 \item Natural language processing
 \begin{itemize}
-  \item Tone recognition
-  \item Tone alteration
+  \item Tone recognition: label input text
+  \item Tone alteration: align text with a different category
+\end{itemize}
+\item Plutchik's basic emotions
+\begin{itemize}
+  \item Joy, trust, fear, surprise, sadness, disgust, anger, anticipation
 \end{itemize}
 \end{itemize}
 
@@ -52,18 +55,46 @@
   \item Build out datasets / lexicons
   \begin{itemize}
     \item Sourced vs created
+    \begin{itemize}
+      \item NRC Emotion / Affect lexicons
+      \begin{itemize}
+        \item Unigram limitations
+      \end{itemize}
+      \item Twitter scraper
+      \item Scraped thesaurus
+    \end{itemize}
   \end{itemize}
   \item Make different models
   \begin{itemize}
-    \item Arbitrary replacement
+    \item Arbitrary replacement (control)
     \item Latent Dirichlet Allocation
     \item Neural nets?
+    \begin{itemize}
+      \item Potential n-gram benefits
+    \end{itemize}
   \end{itemize}
   \item User testing
 \end{itemize}
 
 
-\prospectusslidethree{Current Progress}
+\prospectusslidefour{Latent Dirichlet Allocation}
+
+\begin{itemize}
+  \item Generative statistical topic model
+  \begin{itemize}
+    \item document $\rightarrow$ set of topics
+  \end{itemize}
+  \item Bayesian inference for topic mixture
+  \item Soft clustering
+  \begin{itemize}
+    \item fuzzy membership
+    \item topic reduction
+  \end{itemize}
+\end{itemize}
+
+
+
+\prospectusslidefour{Current Progress}
 
 \begin{itemize}
   \item Thesaurus
@@ -76,11 +107,10 @@
   \end{itemize}
 \end{itemize}
 
-\prospectusslidefour{Immediate Next Steps}
-
+Next Steps
 \begin{itemize}
-  \item Other lexicons!
-  \item Build control model
+  \item More server configuration
+  \item Build LDA model
   \item Alter data visualization
 \end{itemize}
 

@@ -104,3 +104,16 @@ Send Stefan 2+ pages by sunday night
 Peep "Speech and Language Processing (3rd edition)"
 
 Ask bob what we need for IRB
+
+# 11/11
+
+- To the control model add:
+  - Sentiment score
+  - Frequency of use (unigram level)
+    - Think about adding unigram frequency collection
+      - Consider frequency by time period for n intervals
+
+- Add and proxy subdomain for model
+- Add logging for each word and its wordlevel / affect intensity
+- Consider compound sentiment
+

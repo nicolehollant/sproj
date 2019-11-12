@@ -92,10 +92,10 @@ export default {
     },
     applyModel() {
       console.log("Getting something")
-      // let prod = true;
-      // if(process.env.NODE_ENV == "dev") prod = false;
+      let prod = true;
+      if(process.env.NODE_ENV == "dev") prod = false;
       let url = `http://localhost:5000/control`;
-      // if(prod) url = `https://sproj.model.colehollant.com/control`;
+      if(prod) url = `https://sproj.model.colehollant.com/control`;
       console.log(url);
       let code = -1
       fetch(url, {

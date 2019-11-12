@@ -28,6 +28,9 @@
 - [LDAs](https://towardsdatascience.com/light-on-math-machine-learning-intuitive-guide-to-latent-dirichlet-allocation-437c81220158)
 - [basic explanation of ldas](https://medium.com/@lettier/how-does-lda-work-ill-explain-using-emoji-108abf40fa7d)
 - [web request more tcp dns and socket stuff](https://robrich.org/slides/anatomy_of_a_web_request)
+- [IMPORTANT MATH LDA](https://en.wikipedia.org/wiki/Dirichlet_distribution)
+- [Function words - like stop words, can give more context on what to filter](https://en.wikipedia.org/wiki/Function_word)
+- [Ngram api](https://jameshfisher.com/2018/11/25/google-ngram-api/)
 
 ## Backend Writeup
 
