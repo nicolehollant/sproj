@@ -5,18 +5,27 @@ import json
 from pprint import pprint
 
 url = os.getenv("SPROJBASE")+"/thesaurus/api/v1/admin/"
-url = "http://localhost:3000/thesaurus/api/v1/admin/"
+# url = "http://localhost:3000/thesaurus/api/v1/admin/"
 
 thesaurusLoc = './thesaurus/final/thesaurus-final.json'
 testThesaurus = './thesaurus/thesaurus-small.json'
 
 senselevelLoc = '../../db/NRC-Emotion-Lexicon/senselevel/out/senselevel.json'
+affectIntensityLoc = '../../db/NRC-Affect-Intensity-Lexicon/out/affect_intensity.json'
+colorLoc = '../../db/NRC-Colour-Lexicon/out/colour.json'
+vadLoc = '../../db/NRC-VAD-Lexicon/out/vad.json'
+
+def logResponse(endpoint, count, response, word):
+    if count % 50 == 0:
+        print(endpoint, word, response)
 
 def postThesaurus():
+    count = 0
     seen_legislate = False
     with open(thesaurusLoc) as f:
         data = json.load(f)
         for entry in data:
+            count += 1
             if entry == 'legislate':
                 seen_legislate = True
 
@@ -35,13 +44,14 @@ def postThesaurus():
                     'adminPassword': 'cool'
                 }
                 response = requests.post(url + "words", headers=headers, data=json.dumps(payload))
-                print(response.text)
+                logResponse("Thesaurus:", count, response.text, entry)
 
 def postSenseLevel():
+    count = 0
     with open(senselevelLoc) as f:
         data = json.load(f)
         for entry in data:
-
+            count += 1
 
             # POST LIKE THIS
             # "word": "testword",
@@ -77,13 +87,14 @@ def postSenseLevel():
                 'adminPassword': 'cool'
             }
             response = requests.post(url + "senselevel", headers=headers, data=json.dumps(payload))
-            print(response.text)
+            logResponse("SenseLevel:", count, response.text, entry)
 
 def postaffectintensity():
-    with open(affectintensityLoc) as f:
+    count = 0
+    with open(affectIntensityLoc) as f:
         data = json.load(f)
         for entry in data:
-
+            count += 1
             # POST LIKE THIS
             # {
             #     "word": "abandon",
@@ -107,6 +118,7 @@ def postaffectintensity():
 
             for i, _ in enumerate(data[entry]):
                 data[entry][i].pop("word")
+                data[entry][i]['affectdimension'] = data[entry][i].pop('affect_dimension')
             payload = {
                 "word": entry,
                 "affectlist": data[entry]
@@ -119,13 +131,14 @@ def postaffectintensity():
                 'adminPassword': 'cool'
             }
             response = requests.post(url + "affectintensity", headers=headers, data=json.dumps(payload))
-            print(response.text)
+            logResponse("AffectIntensity:", count, response.text, entry)
 
 def postcolor():
+    count = 0
     with open(colorLoc) as f:
         data = json.load(f)
         for entry in data:
-
+            count += 1
             # POST LIKE THIS
             # {
             #     "word": "abandoned",
@@ -157,14 +170,15 @@ def postcolor():
                 'adminPassword': 'cool'
             }
             response = requests.post(url + "color", headers=headers, data=json.dumps(payload))
-            print(response.text)
+            logResponse("Colour:", count, response.text, entry)
 
 
 def postvad():
+    count = 0
     with open(vadLoc) as f:
         data = json.load(f)
         for entry in data:
-
+            count += 1
             # POST LIKE THIS
             # {
             #     "word": "abandoned",
@@ -176,12 +190,9 @@ def postvad():
             # # PARSE FROM THIS
             # "abandoned": { "arousal": "0.481", "dominance": "0.130", "valence": "0.046", "word": "abandoned" },
 
-            for i, _ in enumerate(data[entry]):
-                data[entry][i].pop("word")
-            payload = {
-                "word": entry,
-                "colorlist": data[entry]
-            }
+            # for i, _ in enumerate(data[entry]):
+            #     data[entry][i].pop("word")
+            payload = data[entry]
             # pprint(payload)
             headers = {
                 'Content-Type': 'application/json', 
@@ -189,8 +200,11 @@ def postvad():
                 'adminUsername': 'cole',
                 'adminPassword': 'cool'
             }
-            response = requests.post(url + "color", headers=headers, data=json.dumps(payload))
-            print(response.text)
+            response = requests.post(url + "vad", headers=headers, data=json.dumps(payload))
+            logResponse("VAD:", count, response.text, entry)
 
 if __name__ == "__main__":
-    postSenseLevel()
+    # postSenseLevel()
+    postaffectintensity()
+    postcolor()
+    postvad()
