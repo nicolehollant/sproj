@@ -3,46 +3,84 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: sprojTemplate.aux
 The style file: plain.bst
 Database file #1: sproj.bib
+Warning--to sort, need author or key in mongoGoD17:online
 Warning--to sort, need author or key in FetchAPI36:online
-You've used 1 entry,
+Warning--to sort, need author or key in ErrorPer49:online
+Warning--to sort, need author or key in DigitalO1:online
+Warning--to sort, need author or key in HowToPre29:online
+Warning--to sort, need author or key in MobyThes97:online
+Warning--to sort, need author or key in Selenium25:online
+Warning--to sort, need author or key in Thesauru2:online
+Warning--to sort, need author or key in BigHugeT88:online
+Warning--to sort, need author or key in UsingGoM42:online
+Warning--to sort, need author or key in NGINXHig46:online
+Warning--to sort, need author or key in LetsEncr62:online
+Warning--to sort, need author or key in SafeMDNW66:online
+Warning--to sort, need author or key in Idempote58:online
+Warning--to sort, need author or key in muxGoril57:online
+Warning--to sort, need author or key in FromSent98:online
+Warning--to sort, need author or key in mongogod83:online
+Warning--to sort, need author or key in optionsG69:online
+Warning--to sort, need author or key in Interfac74:online
+Warning--to sort, need author or key in jsonTheG53:online
+Warning--to sort, need author or key in mongo42a34:online
+Warning--to sort, need author or key in Goprogra80:online
+Warning--to sort, need author or key in Dockeran68:online
+Warning--to sort, need author or key in AnIntrod64:online
+Warning--to sort, need author or key in Effectiv71:online
+Warning--to sort, need author or key in ATourofG8:online
+Warning--to sort, need author or key in Agentlei48:online
+Warning--to sort, need author or key in WebSocke25:online
+Warning--to sort, need author or key in Intuitiv89:online
+Warning--to sort, need author or key in YourGuid95:online
+Warning--to sort, need author or key in Anatomyo22:online
+Warning--to sort, need author or key in Dirichle42:online
+Warning--to sort, need author or key in Function90:online
+Warning--to sort, need author or key in NLTKstop42:online
+Warning--to sort, need author or key in Whatisth22:online
+Warning--to sort, need author or key in Cronjobf4:online
+Warning--to sort, need author or key in CitingWo77:online
+Warning--to sort, need author or key in book1dvi18:online
+Warning--empty journal in Mohammad13
+You've used 43 entries,
             2118 wiz_defined-function locations,
-            502 strings with 4156 characters,
-and the built_in function-call counts, 188 in all, are:
-= -- 17
-> -- 1
+            686 strings with 10134 characters,
+and the built_in function-call counts, 7747 in all, are:
+= -- 778
+> -- 85
 < -- 0
-+ -- 1
-- -- 0
-* -- 7
-:= -- 28
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 3
++ -- 60
+- -- 14
+* -- 272
+:= -- 956
+add.period$ -- 129
+call.type$ -- 43
+change.case$ -- 136
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 7
-empty$ -- 24
-format.name$ -- 0
-if$ -- 43
+cite$ -- 82
+duplicate$ -- 323
+empty$ -- 1001
+format.name$ -- 14
+if$ -- 1879
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 0
-newline$ -- 8
-num.names$ -- 0
-pop$ -- 10
+int.to.str$ -- 43
+missing$ -- 4
+newline$ -- 218
+num.names$ -- 10
+pop$ -- 412
 preamble$ -- 1
-purify$ -- 2
+purify$ -- 93
 quote$ -- 0
-skip$ -- 5
+skip$ -- 223
 stack$ -- 0
-substring$ -- 5
-swap$ -- 1
+substring$ -- 262
+swap$ -- 42
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 4
-warning$ -- 1
-while$ -- 0
-width$ -- 2
-write$ -- 11
-(There was 1 warning)
+type$ -- 172
+warning$ -- 39
+while$ -- 14
+width$ -- 45
+write$ -- 397
+(There were 39 warnings)

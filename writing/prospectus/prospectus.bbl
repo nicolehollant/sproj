@@ -1,0 +1,39 @@
+\begin{thebibliography}{1}
+
+\bibitem{BigHugeT88:online}
+Big huge thesaurus api.
+\newblock \url{https://words.bighugelabs.com/}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{david_m._y._i._1970}
+Ng~David~M., Andrew Y., and Michael I.
+\newblock Latent dirichlet allocation, Jan 1970.
+
+\bibitem{griffiths_steyvers_2004}
+Thomas~L Griffiths and Mark Steyvers.
+\newblock Finding scientific topics, Apr 2004.
+
+\bibitem{vad-acl2018}
+Saif~M. Mohammad.
+\newblock Obtaining reliable human ratings of valence, arousal, and dominance
+  for 20,000 english words.
+\newblock In {\em Proceedings of The Annual Conference of the Association for
+  Computational Linguistics (ACL)}, Melbourne, Australia, 2018.
+
+\bibitem{LREC18-AIL}
+Saif~M. Mohammad.
+\newblock Word affect intensities.
+\newblock In {\em Proceedings of the 11th Edition of the Language Resources and
+  Evaluation Conference (LREC-2018)}, Miyazaki, Japan, 2018.
+
+\bibitem{Mohammad13}
+Saif~M. Mohammad and Peter~D. Turney.
+\newblock Crowdsourcing a word-emotion association lexicon.
+\newblock 29(3):436--465, 2013.
+
+\bibitem{Pritchard945}
+Jonathan~K. Pritchard, Matthew Stephens, and Peter Donnelly.
+\newblock Inference of population structure using multilocus genotype data.
+\newblock {\em Genetics}, 155(2):945--959, 2000.
+
+\end{thebibliography}

@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: prospectus.aux
+The style file: plain.bst
+Database file #1: prospectus.bib
+Warning--to sort, need author or key in BigHugeT88:online
+Warning--empty journal in Mohammad13
+You've used 7 entries,
+            2118 wiz_defined-function locations,
+            542 strings with 5164 characters,
+and the built_in function-call counts, 1863 in all, are:
+= -- 176
+> -- 77
+< -- 0
++ -- 31
+- -- 24
+* -- 113
+:= -- 307
+add.period$ -- 19
+call.type$ -- 7
+change.case$ -- 33
+chr.to.int$ -- 0
+cite$ -- 9
+duplicate$ -- 71
+empty$ -- 174
+format.name$ -- 24
+if$ -- 394
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 4
+newline$ -- 36
+num.names$ -- 12
+pop$ -- 56
+preamble$ -- 1
+purify$ -- 26
+quote$ -- 0
+skip$ -- 47
+stack$ -- 0
+substring$ -- 85
+swap$ -- 6
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 28
+warning$ -- 2
+while$ -- 16
+width$ -- 8
+write$ -- 70
+(There were 2 warnings)

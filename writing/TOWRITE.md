@@ -5,6 +5,8 @@
   - Filtering properly
   - General flow
   - Overview of endpoints
+- Mongo
+  - Security and structure
 - Making control model
   - Flask stuff
   - Why another server?
@@ -15,6 +17,8 @@
     - credit to nltk
   - Words by crud vs words by rest
   - Pattern of pushing named params as None 
+  - Server Config!
+    - nginx, ssl, dns records, etc...   cron jobs?
 - Frontend
   - Whole lotta stuff maybe
   - Design

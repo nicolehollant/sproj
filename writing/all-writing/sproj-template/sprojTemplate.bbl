@@ -1,8 +1,232 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{Anatomyo22:online}
+Anatomy of a web request.
+\newblock \url{https://robrich.org/slides/anatomy_of_a_web_request/#/}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{BigHugeT88:online}
+Big huge thesaurus api.
+\newblock \url{https://words.bighugelabs.com/}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{book1dvi18:online}
+book1.dvi.
+\newblock \url{http://i.stanford.edu/~ullman/mmds/ch1.pdf}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{CitingWo77:online}
+Citing wordnet | wordnet.
+\newblock \url{https://wordnet.princeton.edu/citing-wordnet}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{Cronjobf4:online}
+Cron job for let's encrypt renewal - server fault.
+\newblock
+  \url{https://serverfault.com/questions/790772/cron-job-for-lets-encrypt-renewal}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{DigitalO1:online}
+Digitalocean – the developer cloud.
+\newblock \url{https://www.digitalocean.com/}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{Dirichle42:online}
+Dirichlet distribution - wikipedia.
+\newblock \url{https://en.wikipedia.org/wiki/Dirichlet_distribution}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{Dockeran68:online}
+Docker and go: why did we decide to write docker in go?
+\newblock
+  \url{https://www.slideshare.net/jpetazzo/docker-and-go-why-did-we-decide-to-write-docker-in-go}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{Effectiv71:online}
+Effective go - the go programming language.
+\newblock \url{https://golang.org/doc/effective_go.html}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{ErrorPer49:online}
+Error permission denied (publickey) when i try to ssh | digitalocean.
+\newblock
+  \url{https://www.digitalocean.com/community/questions/error-permission-denied-publickey-when-i-try-to-ssh}.
+\newblock (Accessed on 11/12/2019).
 
 \bibitem{FetchAPI36:online}
 Fetch api - web apis | mdn.
 \newblock \url{https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API}.
 \newblock (Accessed on 11/04/2019).
+
+\bibitem{FromSent98:online}
+From sentiment analysis to emotion recognition: A nlp story.
+\newblock
+  \url{https://medium.com/neuronio/from-sentiment-analysis-to-emotion-recognition-a-nlp-story-bcc9d6ff61ae}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{Function90:online}
+Function word - wikipedia.
+\newblock \url{https://en.wikipedia.org/wiki/Function_word}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{Agentlei48:online}
+A gentle introduction to golang modules - ukiah smith.
+\newblock
+  \url{https://ukiahsmith.com/blog/a-gentle-introduction-to-golang-modules/}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{Goprogra80:online}
+Go (programming language) - wikipedia.
+\newblock \url{https://en.wikipedia.org/wiki/Go_(programming_language)}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{HowToPre29:online}
+How-to-prevent-scraping/readme.md at master · jonascz/how-to-prevent-scraping.
+\newblock
+  \url{https://github.com/JonasCz/How-To-Prevent-Scraping/blob/master/README.md}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{Idempote58:online}
+Idempotent - mdn web docs glossary: Definitions of web-related terms | mdn.
+\newblock \url{https://developer.mozilla.org/en-US/docs/Glossary/idempotent}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{Interfac74:online}
+Interfaces in go (part i) - golangspec - medium.
+\newblock
+  \url{https://medium.com/golangspec/interfaces-in-go-part-i-4ae53a97479c}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{AnIntrod64:online}
+An introduction to programming in go | go resources.
+\newblock \url{http://www.golang-book.com/books/intro}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{Intuitiv89:online}
+Intuitive guide to latent dirichlet allocation - towards data science.
+\newblock
+  \url{https://towardsdatascience.com/light-on-math-machine-learning-intuitive-guide-to-latent-dirichlet-allocation-437c81220158}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{jsonTheG53:online}
+json - the go programming language.
+\newblock \url{https://golang.org/pkg/encoding/json/}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{LetsEncr62:online}
+Let's encrypt - free ssl/tls certificates.
+\newblock \url{https://letsencrypt.org/}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{MobyThes97:online}
+Moby thesaurus.
+\newblock \url{http://moby-thesaurus.org/}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{mongoGoD17:online}
+mongo - godoc.
+\newblock \url{https://godoc.org/go.mongodb.org/mongo-driver/mongo}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{mongogod83:online}
+mongo-go-driver/examples.go at master · mongodb/mongo-go-driver.
+\newblock
+  \url{https://github.com/mongodb/mongo-go-driver/blob/master/examples/documentation_examples/examples.go}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{mongo42a34:online}
+mongo/4.2 at master · docker-library/mongo.
+\newblock \url{https://github.com/docker-library/mongo/tree/master/4.2}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{muxGoril57:online}
+mux - gorilla, the golang web toolkit.
+\newblock \url{http://www.gorillatoolkit.org/pkg/mux}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{NGINXHig46:online}
+Nginx | high performance load balancer, web server, \& reverse proxy.
+\newblock \url{https://www.nginx.com/}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{NLTKstop42:online}
+Nltk stop words - python tutorial.
+\newblock \url{https://pythonspot.com/nltk-stop-words/}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{optionsG69:online}
+options - godoc.
+\newblock \url{https://godoc.org/go.mongodb.org/mongo-driver/mongo/options}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{SafeMDNW66:online}
+Safe - mdn web docs glossary: Definitions of web-related terms | mdn.
+\newblock \url{https://developer.mozilla.org/en-US/docs/Glossary/safe}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{Selenium25:online}
+Selenium - web browser automation.
+\newblock \url{https://www.seleniumhq.org/}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{Thesauru2:online}
+Thesaurus.com | synonyms and antonyms of words at thesaurus.com.
+\newblock \url{https://www.thesaurus.com/}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{ATourofG8:online}
+A tour of go.
+\newblock \url{https://tour.golang.org/list}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{UsingGoM42:online}
+Using go modules - the go blog.
+\newblock \url{https://blog.golang.org/using-go-modules}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{WebSocke25:online}
+Websocket vs rest | learn the 8 important differences.
+\newblock \url{https://www.educba.com/websocket-vs-rest/}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{Whatisth22:online}
+What is the api for google ngram viewer?
+\newblock \url{https://jameshfisher.com/2018/11/25/google-ngram-api/}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{YourGuid95:online}
+Your guide to latent dirichlet allocation - lettier - medium.
+\newblock
+  \url{https://medium.com/@lettier/how-does-lda-work-ill-explain-using-emoji-108abf40fa7d}.
+\newblock (Accessed on 11/12/2019).
+
+\bibitem{griffiths_steyvers_2004}
+Thomas~L Griffiths and Mark Steyvers.
+\newblock Finding scientific topics, Apr 2004.
+
+\bibitem{Miller:1995:WLD:219717.219748}
+George~A. Miller.
+\newblock Wordnet: A lexical database for english.
+\newblock {\em Commun. ACM}, 38(11):39--41, November 1995.
+\newblock
+  \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.83.1823&rep=rep1&type=pdf}.
+
+\bibitem{vad-acl2018}
+Saif~M. Mohammad.
+\newblock Obtaining reliable human ratings of valence, arousal, and dominance
+  for 20,000 english words.
+\newblock In {\em Proceedings of The Annual Conference of the Association for
+  Computational Linguistics (ACL)}, Melbourne, Australia, 2018.
+
+\bibitem{LREC18-AIL}
+Saif~M. Mohammad.
+\newblock Word affect intensities.
+\newblock In {\em Proceedings of the 11th Edition of the Language Resources and
+  Evaluation Conference (LREC-2018)}, Miyazaki, Japan, 2018.
+
+\bibitem{Mohammad13}
+Saif~M. Mohammad and Peter~D. Turney.
+\newblock Crowdsourcing a word-emotion association lexicon.
+\newblock 29(3):436--465, 2013.
 
 \end{thebibliography}

@@ -11,7 +11,7 @@
 \usepackage{bardtex}
 
 %The following optional command allows for a change in the method of inputting the bibliography.  The options are ``amsrefs'' and ``bibtex."  If the command is not used, the default is ``amsrefs.''  The bibliographic entries given at the end of this file are in the amsrefs format; a different format is needed for bibtex.  See the manual for details about the bibliography.
-\biboption{amsrefs}
+% \biboption{bibtex}
 
 \styleoption{prospectus}
 
@@ -77,7 +77,7 @@
 \end{itemize}
 
 
-\prospectusslidefour{Latent Dirichlet Allocation}
+\prospectusslidethree{Latent Dirichlet Allocation}
 
 \begin{itemize}
   \item Generative statistical topic model
@@ -123,39 +123,41 @@ Here are links if anyone is interested
   \item Version control: \href{https://github.com/colehollant/sproj}{my github}
 \end{itemize}
 
-
-\begin{bibliog}
-
-\bib{label}{book}{
-author = {last name, first name},
-title = {title},
-publisher = {publisher},
-address = {city},
-date = {year}
+\fontsize{\prosptextfontsize}{1.3\prosptextfontsize}\selectfont
+\newpage
+\thispagestyle{fancy}
+\lhead{}
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\chead{
+\begin{Sbox}
+\begin{minipage}{0.96\textwidth}
+\bf \fontsize{\prospheadfontsize}{\prospheadfontsize}\selectfont
+\textcolor{\prheadtextcolor}{
+References
+}
+\end{minipage}
+\end{Sbox}
+\setlength{\fboxrule}{0pt}
+\setlength{\fboxsep}{12pt}
+\fcolorbox{\boxxcolor}{\prheadbackcolor}{\TheSbox}
+}
+% }
+\large{
+  \nocite{*}
+\bibliographystyle{plain}
+\begingroup
+\renewcommand{\section}[2]{}
+\begin{thebibliography}{}
+  \bibliography{prospectus.bib}
+\end{thebibliography}
+\endgroup
 }
 
-\bib{label}{article}{
-author = {last name, first name},
-title = {title},
-journal = {journal name},
-volume = {volume number},
-date = {year}
-pages = {starting page--ending page}
-}
-
-\bib{label}{report}{
-author = {last name, first name},
-title = {title},
-eprint = {web address}
-}
-
-\bib{label}{report}{
-author = {last name, first name},
-title = {title},
-note = {arXiv address}
-}
-
-\end{bibliog}
 
 \end{document}
 

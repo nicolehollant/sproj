@@ -108,12 +108,15 @@ Ask bob what we need for IRB
 # 11/11
 
 - To the control model add:
-  - Sentiment score
-  - Frequency of use (unigram level)
+  - [ ] Sentiment score
+  - [ ] Frequency of use (unigram level)
     - Think about adding unigram frequency collection
       - Consider frequency by time period for n intervals
 
-- Add and proxy subdomain for model
-- Add logging for each word and its wordlevel / affect intensity
-- Consider compound sentiment
+- [X] Add and proxy subdomain for model
+- [ ] Add logging for each word and its wordlevel / affect intensity
+- [ ] Consider compound sentiment
+- [ ] Add all lexicons (and wordlevel) to frontend thesaurus page
 
+Could potentially do a subproject to get started with LDAs:
+Im thinking we could make a playlist generator. Not sure how much we can get from the spotify api, but if we can get all songs in a playlist, then we can scrape lyrics and try and build subset playlists with similar topic spreads?
