@@ -52,8 +52,6 @@ import (
 	]
 }
 
-
-
 "abandon": [
     {
       "affect_dimension": "fear",
@@ -66,7 +64,6 @@ import (
       "word": "abandon"
     }
   ]
-
 */
 
 func checkEmptyFieldsAffectIntensity(entry structs.AffectIntensityEntry, response http.ResponseWriter) *structs.MessageResponse {

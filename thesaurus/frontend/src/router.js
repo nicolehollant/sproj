@@ -21,6 +21,11 @@ export default new Router({
       path: '/thesaurus',
       name: 'thesaurus',
       component: () => import('./views/Thesaurus.vue')
+    },
+    {
+      path: '/writing',
+      name: 'writing',
+      component: () => import('./views/Writing.vue')
     }
   ]
 })

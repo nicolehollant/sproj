@@ -120,3 +120,30 @@ Ask bob what we need for IRB
 
 Could potentially do a subproject to get started with LDAs:
 Im thinking we could make a playlist generator. Not sure how much we can get from the spotify api, but if we can get all songs in a playlist, then we can scrape lyrics and try and build subset playlists with similar topic spreads?
+
+Write LDAs first!!
+Comment code over winter break
+
+Midways: (Stefan, Kerri, Matt)
+schedule for soon after winter break (late january?)
+- Ask Sven to come to midway!!
+- give a presentation on what I've done and what I'm planning to do 20-30 minute presentation
+- by last day of semester submit 10 pages
+
+IRB:
+ask before and after
+- reading comprehension and emotion!
+- maybe passages from SAT prep for multiple choice
+- how much did it change, in what way?
+- separate out passages?
+- SAT prep could be good!!
+
+Documentation:
+- module level descriptions in appendix or main writing?
+- no docs in appendix
+
+Email Justin Dainerbest ? about irb (also about stats)
+
+Link to code in intro
+
+Do multiple links per bib entry for stuff like MDN

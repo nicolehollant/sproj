@@ -1,32 +1,34 @@
 # Things to write:
 
-- Stuff for lexicons ...
-- Finishing API
-  - Filtering properly
-  - General flow
-  - Overview of endpoints
-- Mongo
-  - Security and structure
-- Making control model
-  - Flask stuff
-  - Why another server?
-  - Options
-  - Structure
-  - Preserving punctuation
-  - Stop words
-    - credit to nltk
-  - Words by crud vs words by rest
-  - Pattern of pushing named params as None 
-  - Server Config!
-    - nginx, ssl, dns records, etc...   cron jobs?
-- Frontend
-  - Whole lotta stuff maybe
-  - Design
-    - idt anyone cares about css, but maybe UI components
-  - Making calls
-  - When and what to render
-- LDAs
-  - how do they work
-  - prob an overview of bayes
-  - prob an overview of topic gen
-  - how can we apply it
+- [ ] Stuff for lexicons ...
+- [X] Finishing API
+  - [X] Filtering properly
+  - [X] General flow
+  - [X] Overview of endpoints
+- [ ] Nginx
+  - [ ] Configuring nginx and adding subdomains, ssl, etc
+- [ ] Mongo
+  - [ ] Security and structure
+- [ ] Making control model
+  - [ ] Flask stuff
+  - [ ] Why another server?
+  - [ ] Options
+  - [ ] Structure
+  - [ ] Preserving punctuation
+  - [ ] Stop words
+    - [ ] credit to nltk
+  - [ ] Words by crud vs words by rest
+  - [ ] Pattern of pushing named params as None 
+  - [ ] Server Config!
+    - [ ] nginx, ssl, dns records, etc...   cron jobs?
+- [ ] Frontend
+  - [ ] Whole lotta stuff maybe
+  - [ ] Design
+    - [ ] idt anyone cares about css, but maybe UI components
+  - [ ] Making calls
+  - [ ] When and what to render
+- [ ] LDAs
+  - [ ] how do they work
+  - [ ] prob an overview of bayes
+  - [ ] prob an overview of topic gen
+  - [ ] how can we apply it
