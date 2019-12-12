@@ -1,5 +1,10 @@
 <template>
-  <div class="midway" v-html="midwaySlides"></div>
+<div class="relative">
+  <div class="midway" v-html="midwaySlides" />
+  <div class="link-home">
+    <router-link exact to="/">home</router-link>
+  </div>
+</div>
 </template>
 
 <script>
@@ -101,6 +106,11 @@ export default {
 .midway >>> div:nth-child(even) { 
   @apply bg-gray-900; 
 }
+.link-home {
+  bottom: 1rem;
+  left: 1rem;
+  @apply absolute text-purple-400 text-lg;
+}
 .midway >>> .number {
   background: transparent !important;
   bottom: 1rem;
@@ -132,6 +142,9 @@ export default {
 .midway >>> h2 {
   @apply leading-loose font-black text-2xl text-indigo-200 pt-10 mb-5 uppercase;
 }
+.midway >>> h3 {
+  @apply leading-loose font-semibold text-2xl text-indigo-300 my-2;
+}
 .midway >>> p {
   @apply mt-3;
 }
@@ -152,6 +165,9 @@ export default {
   }
   .midway >>> h1, .midway >>> h2 {
     @apply text-4xl pt-20 mb-10;
+  }
+  .midway >>> h3 {
+    @apply text-3xl;
   }
   .midway >>> .number {
     @apply text-lg;

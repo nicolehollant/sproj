@@ -12,6 +12,12 @@
       <h2>What's to come?</h2>
       <p>Well, I sure hope I put in an actual model that does something. Other than that? I suppose I'll eventually put up my writing and some auxiliary garbage</p>
       <p>But, regardless, I hope you enjoy :-)</p>
+      <h2>Not Navbar Worthy</h2>
+      <p>I don't want to clutter my navbar with garbage that I don't much care about, so here are some side bits</p>
+      <nav>
+        <li><router-link to="/midway" class="text-pink-400">midway presentation</router-link></li>
+        <li><a href="https://github.com/colehollant/sproj" class="text-pink-400">github</a></li>
+      </nav>
     </div>
   </div>
 </template>
@@ -34,5 +40,8 @@ h2{
 }
 p{
   @apply text-lg;
+}
+nav {
+  @apply text-lg mt-2;
 }
 </style>

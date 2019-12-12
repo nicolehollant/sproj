@@ -7,7 +7,7 @@
 
 <div class="midway-slide-title">
   <h2 id="shifting-tone-of-a-body-of-text">Shifting Tone of a Body of Text</h2>
-  <p>Cole Hollant</p>
+  <h3>Cole Hollant</h3>
   <p>Stefan Mendéz-Diez, Bob McGrail, Kerri-Ann Norton</p>
   <div class="number"></div>
 </div>
