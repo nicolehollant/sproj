@@ -1,0 +1,598 @@
+<div class="midway-slide-title">
+  <h1 id="midway">Midway</h1>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide-title">
+  <h2 id="shifting-tone-of-a-body-of-text">Shifting Tone of a Body of Text</h2>
+  <p>Cole Hollant</p>
+  <p>Stefan Mendéz-Diez, Bob McGrail, Kerri-Ann Norton</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="intro--refresher">Intro / Refresher</h2>
+  <ul>
+    <li>Natural language processing
+      <ul>
+        <li>Tone recognition: label input text</li>
+        <li>Tone alteration: change input text to align with a different category</li>
+      </ul>
+    </li>
+    <li>Plutchik's basic emotions
+      <ul>
+        <li>Joy, trust, fear, surprise, sadness, disgust, anger, anticipation</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="super-high-level-overview">Super High Level Overview</h2>
+  <ul>
+    <li>Host everything</li>
+    <li>Make datasets</li>
+    <li>Make models</li>
+    <li>Bask in how well it works?</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide-title">
+  <h2 id="hosting">Hosting</h2>
+  <p>And all the associated fun</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="hosting-strategies">Hosting Strategies</h2>
+  <p>IaaS vs PaaS</p>
+  <!-- 
+  Talk about what IaaS and PaaS are
+  - IaaS: renting server
+  - PaaS: using environments
+  
+  We went with IaaS
+-->
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="our-choice">Our Choice</h2>
+  <p>IaaS: Digital Ocean</p>
+  <!-- 
+  We just have a little ubuntu server somewhere (probably virginia or NY)
+  - $5 a month for 1 core, 1gb ram, 1tb data transfer, 25gb storage
+    - might have to scale up because we are real low on ram when building
+  
+  This means we have to do nearly everything ourselves
+-->
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="some-records">Some records</h2>
+  <ul>
+    <li>Domain from Google (<a href="http://colehollant.com">colehollant.com</a>)</li>
+    <li>A whole lot of A records (for subdomains and ssh)
+      <ul>
+        <li>Also make sure to disable ssh for root!</li>
+      </ul>
+    </li>
+    <li>Point to a couple of DigitalOcean's name servers</li>
+  </ul>
+  <!-- 
+  A (IPv4 address) Records: map the domain name of a host to the IP address of that host (name-to-address mapping).
+
+  Name Server: The authoritative name server for the domain (holds the resource records).
+-->
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="git">Git</h2>
+  <p>Nothing too major for now, just beats scp for file transfer</p>
+  <p><em>Might</em> move to GitHub orgs soon</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="nginx">Nginx</h2>
+  <p>Our dear friend &quot;Reverse Proxy&quot;</p>
+  <ul>
+    <li>forward proxy: client-side</li>
+    <li>reverse proxy: server-side
+      <ul>
+        <li>filter services</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="ssltls">SSL/TLS</h2>
+  <p>Secure Sockets Layer / Transport Layer Security</p>
+  <p>Save ourselves from http embarrassment</p>
+  <ul>
+    <li>just use certbot and add certs to server blocks
+      <ul>
+        <li>auto-rewrite insecure requests</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="docker">Docker</h2>
+  <p>VMs sans OS</p>
+  <p>Code neatly packaged with requirements, dynamic resource allocation</p>
+  <p>Each service needs a dockerfile</p>
+  <ul>
+    <li>walks through running the app (installing requirements, building, etc)</li>
+    <li>multi-stage dockerfiles for small containers
+      <ul>
+        <li>why carry node runtimes if we don't need to</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="docker-compose">Docker Compose</h2>
+  <p>My devops dream 😍</p>
+  <p>Yaml describing docker services</p>
+  <ul>
+    <li>specifies environment variables, port mappings, etc</li>
+    <li>allows for some easy networking so my containers can chat</li>
+    <li>absurdly easy to spin up and tear down</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="mongo">Mongo</h2>
+  <p>Our NOSQL db!</p>
+  <ul>
+    <li>everything is JSON (or BSON, I guess...)</li>
+    <li>we have to store things somehow</li>
+    <li>security and abstraction with docker</li>
+  </ul>
+  <!-- 
+  in an awkward place in the deck... 
+  talk about getting hacked, how that shows pros of docker
+  how it informed security
+
+  mayyybe get into schema?
+-->
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="future-plans">Future Plans</h2>
+  <ul>
+    <li>Set in stone for now</li>
+    <li>Should make a cronjob for certbot</li>
+    <li>Should set up webhooks</li>
+    <li><em>May want some custom email servers in the future</em></li>
+    <li>May want to move to Kubernetes 😎</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="things-work">Things Work</h2>
+  <p>Everything works now!</p>
+  <p>But, I'd hate to be satisfied</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="cron-jobs">Cron Jobs</h2>
+  <p>I'm positively tired of manually updating my SSL certs</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="web-hooks">Web Hooks</h2>
+  <p>Web Hooks (from GitHub) would allow me to auto update on push</p>
+  <p>Alternatively: pipelines (either GitHub actions or moving to GitLab)</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="email-servers">Email Servers</h2>
+  <p>Email servers are iffy</p>
+  <ul>
+    <li>hard to set up</li>
+    <li>can add consistency (UX 👍)</li>
+    <li>no more reliance on SaaS</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="kubernetes">Kubernetes!!</h2>
+  <p>Kubernetes is just <em>cool</em></p>
+  <ul>
+    <li>again, hard to set up</li>
+    <li>lots of scalability pros!
+      <ul>
+        <li>container orchestration
+          <ul>
+            <li>load balancing</li>
+            <li>auto scaling</li>
+            <li>rolling updates</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide-title">
+  <h2 id="datasets">Datasets</h2>
+  <p>Everything comes from somewhere</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="thesaurus">Thesaurus</h2>
+  <p>Web scraped from <a href="http://words.bighugelabs.com">words.bighugelabs.com</a></p>
+  <ul>
+    <li>had all the data we wanted, in a format we could scrape
+      <ul>
+        <li>consistent layout, no robots.txt</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Spider based on the unix words file</p>
+  <p>Write as we go, fix JSON after</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="lexicons">Lexicons</h2>
+  <p>From National Research Council Canada (NRC) / Saif M. Mohammad</p>
+  <ul>
+    <li>Built off of wordnet and emolex</li>
+    <li>Utilized mechanical turk</li>
+  </ul>
+  <p>Got Affect-Intensity, Color, Emotion, and VAD lexicons</p>
+  <p>TSV to JSON scripts</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="posting">POSTing</h2>
+  <p>Have &quot;master JSON&quot; locally</p>
+  <p>Just loop over entries and POST to our db</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="future">Future</h2>
+  <ul>
+    <li>Google NGrams
+      <ul>
+        <li>Found scraper / api</li>
+      </ul>
+    </li>
+    <li>Twitter scraping for improved emotion lexicon</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide-title">
+  <h2 id="our-api">Our API</h2>
+  <p>Go</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="why">Why</h2>
+  <p>Interfacing with frontend sans JAM</p>
+  <ul>
+    <li>Need data from DB</li>
+    <li>Can't interface directly</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="but-why-go">But... Why Go?</h2>
+  <p>Experience</p>
+  <ul>
+    <li>Doing things in Python is quite easy (see model)</li>
+    <li>Doing things in Go is quite hard</li>
+    <li>When things are hard, we get a better understanding</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="protocols-and-the-likes-%f0%9f%99%83">Protocols and the Likes 🙃</h2>
+  <ul>
+    <li>REST &amp; CRUD</li>
+    <li>HTTP</li>
+    <li>TLS</li>
+    <li>CORS</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="main-process">Main Process</h2>
+  <ul>
+    <li>make db connection</li>
+    <li>register endpoints</li>
+    <li>apply middleware</li>
+    <li>start server</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="schema">Schema</h2>
+  <ul>
+    <li>define schema per db collection</li>
+    <li>structs with marshalling annotations</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="utils">Utils</h2>
+  <ul>
+    <li>provide nice wrapper functions
+      <ul>
+        <li>ease of replication</li>
+        <li>ease of consistency</li>
+        <li>easy to manage</li>
+      </ul>
+    </li>
+    <li>wrap CRUD and common responses</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="endpoints">Endpoints</h2>
+  <p>Use those utils!</p>
+  <p>Pretty formulaic application of utility functions</p>
+  <ul>
+    <li>schema specific extensions</li>
+    <li>room to refactor</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="future-api-plans">Future API Plans</h2>
+  <p>Hopefully nothing!</p>
+  <p>Maybe refactoring a bit</p>
+  <p>Maybe adding endpoints if we are changing datasets</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide-title">
+  <h2 id="frontend">Frontend</h2>
+  <p>My happy place: Vue</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="libraries">Libraries</h2>
+  <p>I'd never dream of using other component libraries</p>
+  <p>🙅‍♀️ BootStrap 🙅‍♀️</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="postcss-my-favorite-thing-on-earth">(post)CSS (My Favorite Thing on Earth)</h2>
+  <p><em>Bard's greatest fear</em></p>
+  <p>Currently using Tailwind</p>
+  <p>Hopefully scrapping it for Comosus 🍍💝</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="vue-my-second-favorite-thing-on-earth">Vue (My Second Favorite Thing on Earth?)</h2>
+  <p>The Python of frameworks (but fast...)</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="routing">Routing</h2>
+  <p>A few pages:</p>
+  <ul>
+    <li>home: some landing page</li>
+    <li>thesaurus: our thesaurus</li>
+    <li>model: our model</li>
+    <li>writing: our writing</li>
+  </ul>
+  <p>Simple list of objects with path/name/sfc</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="component-library">Component Library</h2>
+  <p>Components range in complexity</p>
+  <ul>
+    <li>navbar</li>
+    <li>small UI components (slider, toggle, array renderers)</li>
+    <li>more complex renderers (api results)</li>
+  </ul>
+  <p>More should be functional, or maybe component factories</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="views">Views</h2>
+  <p>The page layouts</p>
+  <ul>
+    <li>filled with components and other markup</li>
+  </ul>
+  <p>Either standard HTML templates or render functions</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="the-actual-js">The Actual JS</h2>
+  <p>business logic and state logic</p>
+  <ul>
+    <li>fetching and processing data from api</li>
+    <li>tracking UI state</li>
+    <li>creating DOM elements / conditional rendering (directives)</li>
+    <li>event emitting / handling</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="future-frontend-plans">Future Frontend Plans</h2>
+  <p>UX niceties</p>
+  <ul>
+    <li>suggested words</li>
+    <li>themes</li>
+    <li>better accessibility</li>
+  </ul>
+  <p>Sweeping changes</p>
+  <ul>
+    <li>use Comosus 😎</li>
+    <li>more functional components</li>
+  </ul>
+  <p>Changing up data visualization</p>
+  <p>Adding more as we go</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide-title">
+  <h2 id="model">Model</h2>
+  <p>the big &quot;TODO&quot;</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="additional-service">Additional Service</h2>
+  <p>The more the merrier!</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="why-python">Why Python?</h2>
+  <p>&lt;img src=&quot;<a href="https://staples.com/easy-button.mp4">https://staples.com/easy-button.mp4</a>&quot;&gt;
+  </p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="how-does-it-work">How does it work?</h2>
+  <ul>
+    <li>receive requests from frontend
+      <ul>
+        <li>parse them, pass to appropriate endpoints, etc</li>
+        <li>flask is a cakewalk</li>
+      </ul>
+    </li>
+    <li>text preprocessing (dealing with punctuation, etc)</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="control-model">Control Model</h2>
+  <p>Make a whole bunch of calls</p>
+  <ul>
+    <li>each word gets a random synonym</li>
+    <li>log things that don't exist</li>
+  </ul>
+  <p>Options:</p>
+  <ul>
+    <li>replacement probability</li>
+    <li>ignore stop words</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="future-plans-1">Future Plans</h2>
+  <p>Make main LDA model</p>
+  <p>Perhaps look into NN if we must</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="lda">LDA</h2>
+  <ul>
+    <li>generative statistical topic model
+      <ul>
+        <li>document → set of topics</li>
+      </ul>
+    </li>
+    <li>Bayesian inference for topic mixture</li>
+    <li>Soft clustering
+      <ul>
+        <li>fuzzy membership</li>
+        <li>topic reduction</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="lda-thoughts">LDA thoughts</h2>
+  <p>Just for analysis</p>
+  <p>Seed with words by association</p>
+  <ul>
+    <li>maybe weight by strength</li>
+  </ul>
+  <p>Change words until it realigns</p>
+  <ul>
+    <li>criteria for changing</li>
+  </ul>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide-title">
+  <h2 id="odds-and-ends">Odds and Ends</h2>
+  <p>Related bits</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="metrics">Metrics</h2>
+  <p>The boring part</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="user-testing">User Testing</h2>
+  <p>IRB 😴</p>
+  <p>Do some sort of user testing</p>
+  <p>Do some analysis on it</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="writing-conversion">Writing Conversion</h2>
+  <p>I'm too lazy for Latex / don't like it</p>
+  <div class="number"></div>
+</div>
+
+<div class="midway-slide">
+  <h2 id="the-end">The End</h2>
+  <p>Here are links if anyone is interested</p>
+  <ul>
+    <li>Frontend: <a href="https://sproj.colehollant.com">sproj.colehollant.com</a></li>
+    <li>Backend: <a href="https://sproj.api.colehollant.com/thesaurus/api/v1/words/cool">sproj.api.colehollant.com</a>
+    </li>
+    <li>Version control: <a href="https://github.com/colehollant/sproj">my github</a></li>
+  </ul>
+  <div class="number"></div>
+</div>

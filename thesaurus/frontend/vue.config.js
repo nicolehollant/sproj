@@ -8,4 +8,5 @@ module.exports = {
         .loader('raw-loader')
         .end()
     },
+
 }

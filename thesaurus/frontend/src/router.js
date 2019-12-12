@@ -26,6 +26,11 @@ export default new Router({
       path: '/writing',
       name: 'writing',
       component: () => import('./views/Writing.vue')
+    },
+    {
+      path: '/midway',
+      name: 'Midway',
+      component: () => import('./views/Midway.vue')
     }
   ]
 })
