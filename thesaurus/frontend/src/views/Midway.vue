@@ -17,7 +17,8 @@ gsap.registerPlugin(ScrollToPlugin);
 export default {
   data() {
     return {
-      midwaySlides: midway
+      midwaySlides: midway,
+      listener: null
     }
   },
   methods: {
@@ -73,7 +74,7 @@ export default {
     const titleKeys = ['Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8']
     const nextKeys = ['Space', 'ArrowRight', 'ArrowDown', 'Period']
     const prevKeys = ['ArrowLeft', 'ArrowUp', 'Comma']
-    document.addEventListener('keydown', (e) => {
+    this.listener = document.addEventListener('keydown', (e) => {
       if(nextKeys.includes(e.code)) {
         e.preventDefault()
         this.next()
@@ -87,6 +88,9 @@ export default {
         this.goto(parseInt(e.code.replace("Digit", "")) - 1)
       }
     });
+  },
+  beforeDestroy () {
+    document.removeEventListener(this.listener)
   },
 }
 </script>
@@ -180,6 +184,12 @@ export default {
   }
   .midway >>> .midway-slide-title {
     @apply text-center items-center;
+  }
+  .midway >>> .midway-slide-title h3 {
+    @apply text-3xl;
+  }
+  .midway >>> .midway-slide-title p {
+    @apply text-2xl;
   }
 }
 </style>

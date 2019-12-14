@@ -156,68 +156,124 @@ y)) (tex/all-writing.out) (tex/all-writing.out)
 *geometry* detected driver: pdftex
  1.
 
-Underfull \vbox (badness 10000) has occurred while \output is active [1{/usr/lo
-cal/texlive/2019basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \vbox (badness 10000) has occurred while \output is active [2]
-
-LaTeX Warning: Citation `mongoGoD17:online' on page 3 undefined on input line 8
-7.
-
-[3]
-Underfull \vbox (badness 10000) has occurred while \output is active [4]
-Underfull \vbox (badness 10000) has occurred while \output is active [5]
+Underfull \vbox (badness 3942) has occurred while \output is active [1{/usr/loc
+al/texlive/2019basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 (/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang1.sty)
-[6] (/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang1.sty)
-(/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang2.sty)
-(/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang3.sty)
-Overfull \hbox (6.05257pt too wide) in paragraph at lines 149--150
-\OT1/cmtt/l/n/10.95 Level(client *mongo.Client, re-sponse http.ResponseWriter, 
-re-quest *http.Request)\OT1/cmr/m/n/10.95 (-20) ,
-[7] [8]
+Underfull \vbox (badness 1147) has occurred while \output is active [3]
+[4]
  2.
-[9] [10]
+
+Underfull \vbox (badness 3942) has occurred while \output is active [5]
+(/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang1.sty)
+Underfull \vbox (badness 10000) has occurred while \output is active [6]
+Underfull \vbox (badness 10000) has occurred while \output is active [7]
+Underfull \vbox (badness 10000) has occurred while \output is active [8]
+Underfull \vbox (badness 10000) has occurred while \output is active [9]
+[10]
  3.
+(/usr/local/texlive/2019basic/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2019basic/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/local/texlive/2019basic/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/local/texlive/2019basic/texmf-dist/tex/latex/microtype/mt-msb.cfg)
+(/usr/local/texlive/2019basic/texmf-dist/tex/latex/wasysym/uwasy.fd)
+! Missing $ inserted.
+<inserted text> 
+                $
+l.194 
+      
+? 
+Overfull \hbox (2347.87953pt too wide) in paragraph at lines 192--194
+\OT1/cmr/m/n/10.95 (-20) and in-ex-pen-sive (cost-ing them $2100\OML/cmm/m/it/1
+0.95 fortheTurkers\OT1/cmr/m/n/10.95 (-20) )\OML/cmm/m/it/10.95 :Asadeterrentof
+badresponses; theyincludedafilteringquestionineachsurveythataskedforthebestsyno
+nymforthegivenword; allowingthemtoidentifyeitherlackofwordknowledgeorprobabilit
+icallyfilteringrandomresponders:Theyselectedjoy; sadness; anger; fear; trust; d
+isgust; surprise; andanticipationasperRobertPlutchik[]swheelofbasicemotions; as
+wellasdrawingfromthepresentemotionlexiconsWordNetAffectLexicon; GeneralInquirer
+; andAffectiveNormsforEnglishWordsandboththeMaquarieThesaurusandGoogle[]sN \OMS
+/cmsy/m/n/10.95 ^^@
+
+Overfull \hbox (41.41064pt too wide) in paragraph at lines 192--194
+\OML/cmm/m/it/10.95 Gramcorpus:TheygeneratedquestionswiththeMacquarieThesaurusw
+iththeaforementionedfiltering \OMS/cmsy/m/n/10.95 ^^@
+
+Overfull \hbox (397.55873pt too wide) in paragraph at lines 192--194
+\OML/cmm/m/it/10.95 questionfollowedbyquestionsaskingforalignmentwiththevarious
+emotions:Theyalsoincludedpolarity\OT1/cmr/m/n/10.95 (-20) (\OML/cmm/m/it/10.95 
+positivevsnegativevalence\OT1/cmr/m/n/10.95 (-20) )\OML/cmm/m/it/10.95 inthelex
+icon; givingus\OT1/cmr/m/n/10.95 (-20) 10\OML/cmm/m/it/10.95 categoriestoworkwi
+th:$ 
 
 Underfull \vbox (badness 2707) has occurred while \output is active [11]
-[12]
-Underfull \hbox (badness 1082) in paragraph at lines 267--268
+Underfull \vbox (badness 1931) has occurred while \output is active [12]
+Underfull \hbox (badness 1082) in paragraph at lines 251--252
 []\OT1/cmr/m/n/10.95 (+20) | Saif M. Mo-ham-mad and Pe-ter D. Tur-ney (from NRC
 -Emotion-Lexicon-
 [13] [14]
  4.
 
-Underfull \vbox (badness 3942) has occurred while \output is active [15]
-[16]
-Underfull \vbox (badness 1147) has occurred while \output is active [17]
-[18]
+Underfull \vbox (badness 10000) has occurred while \output is active [15]
+Underfull \vbox (badness 10000) has occurred while \output is active [16]
+
+LaTeX Warning: Citation `mongoGoD17:online' on page 17 undefined on input line 
+298.
+
+[17]
+Underfull \vbox (badness 10000) has occurred while \output is active [18]
+Underfull \vbox (badness 10000) has occurred while \output is active [19]
+[20] (/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang1.sty)
+(/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang2.sty)
+(/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang3.sty)
+Overfull \hbox (6.05257pt too wide) in paragraph at lines 360--361
+\OT1/cmtt/l/n/10.95 Level(client *mongo.Client, re-sponse http.ResponseWriter, 
+re-quest *http.Request)\OT1/cmr/m/n/10.95 (-20) ,
+[21] [22]
  5.
-(/usr/local/texlive/2019basic/texmf-dist/tex/latex/listings/lstlang1.sty)
-Underfull \vbox (badness 4144) has occurred while \output is active [19]
-[20] [21]
-Underfull \vbox (badness 10000) has occurred while \output is active [22]
-[23] (tex/all-writing.aux)
+
+! Package inputenc Error: Unicode character 👍 (U+1F44D)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.402 Also Caleb is right apps are forms 👍
+                                             🏻 most information systems a...
+
+? 
+! Package inputenc Error: Unicode character 🏻 (U+1F3FB)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.402 Also Caleb is right apps are forms 👍🏻
+                                                  most information systems a...
+
+? (/usr/local/texlive/2019basic/texmf-dist/tex/latex/base/omscmr.fd)
+Underfull \vbox (badness 2990) has occurred while \output is active [23]
+[24] [25] (tex/all-writing.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
 LaTeX Warning: There were undefined references.
 
+ )pdfTeX warning (dest): name{cite.mongoGoD17:online} has been referenced but d
+oes not exist, replaced by a fixed one
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- )
-(see the transcript file for additional information)pdfTeX warning (dest): name
-{cite.mongoGoD17:online} has been referenced but does not exist, replaced by a 
-fixed one
-
-</usr/local/texlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.p
-fb></usr/local/texlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-2.pfb></usr/local/texlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr17.pfb></usr/local/texlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsl10.pfb></usr/local/texlive/2019basic/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmti10.pfb></usr/local/texlive/2019basic/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmti12.pfb></usr/local/texlive/2019basic/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019basic/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmtt8.pfb>
-Output written on tex/all-writing.pdf (23 pages, 180085 bytes).
+</usr/local/texlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.
+pfb></usr/local/texlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+10.pfb></usr/local/texlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr12.pfb></usr/local/texlive/2019basic/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr17.pfb></usr/local/texlive/2019basic/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsl10.pfb></usr/local/texlive/2019basic/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb></usr/local/texlive/2019basic/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019basic/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019basic/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2019basic/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019basic/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on tex/all-writing.pdf (25 pages, 221556 bytes).
 Transcript written on tex/all-writing.log.

@@ -63,6 +63,12 @@ export default {
 .markdown >>> ul{
   margin: 0.2rem 0 0.5rem;
 }
+.markdown >>> blockquote{
+  background: linear-gradient(155deg, rgb(117, 42, 81) 30%, rgb(88, 33, 87) 70%);
+  box-shadow: 4px 4px 10px -1px rgba(104, 0, 95, 0.5);
+  border-color: rgba(241, 55, 151, 0.9);
+  @apply flex flex-col m-4 rounded-lg border-l-4 p-4;
+}
 .markdown >>> pre, .markdown >>> code {
   font-family: monospace, monospace;
 }

@@ -18,19 +18,26 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \@ifundefined{amsrefs@bibcite}{}{\let\bibcite\amsrefs@bibcite}
 \bibstyle{amsrn}
-\@writefile{toc}{\contentsline {chapter}{\numberline {1}Backend}{1}{chapter.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Thesaurus Write Up}{1}{chapter.1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {1.1}What is a RESTful API and why do I Need One?}{1}{section.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1.2}Anatomy of an HTTP request}{2}{section.1.2}\protected@file@percent }
-\citation{mongoGoD17:online}
-\@writefile{toc}{\contentsline {section}{\numberline {1.3}Creating our API}{3}{section.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1.4}Unmarshalling JSON into Nested Structs in Golang}{6}{section.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1.5}Writing Go Modules}{8}{section.1.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {2}Frontend}{9}{chapter.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Why do I need a thesaurus?}{1}{section.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Why not use an existing API?}{1}{section.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.3}How did we do it?}{2}{section.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.1}Choosing a site}{2}{subsection.1.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.2}Scraping the site}{3}{subsection.1.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Server Writeup}{5}{chapter.2}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {2.1}frontend stuff}{9}{section.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}What's all this then}{5}{section.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}IaaS vs PaaS vs SaaS}{5}{section.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Don't be root!}{6}{section.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}The big whale upstairs}{7}{section.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}Building My Containers (Thesaurus)}{8}{subsection.2.4.1}\protected@file@percent }
+\newlabel{Go Backend Dockerfile}{{2.4.1}{9}{Building My Containers (Thesaurus)}{subsection.2.4.1}{}}
+\newlabel{Vue Frontend Dockerfile}{{2.4.1}{9}{Building My Containers (Thesaurus)}{subsection.2.4.1}{}}
+\newlabel{Mongo and Nginx}{{2.4.1}{9}{Building My Containers (Thesaurus)}{subsection.2.4.1}{}}
+\newlabel{The Composition}{{2.4.1}{9}{Building My Containers (Thesaurus)}{subsection.2.4.1}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}Lexicons}{11}{chapter.3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -41,25 +48,24 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Word Level}{12}{subsection.3.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Sense Level}{12}{subsection.3.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Word-Sense Level}{13}{subsection.3.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}National Research Council Canada (NRC) Colour Lexicon}{13}{section.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}National Research Council Canada (NRC) Affect-Intensity Lexicon}{13}{section.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}National Research Council Canada (NRC) VAD Lexicon}{13}{section.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Thesaurus}{15}{chapter.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Other lexicons}{13}{subsection.3.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.5}Potential Downfalls}{14}{subsection.3.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Backend Writeup}{15}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Why do I need a thesaurus?}{15}{section.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Why not use an existing API?}{15}{section.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}How did we do it?}{16}{section.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Choosing a site}{16}{subsection.4.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Scraping the site}{17}{subsection.4.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Database}{19}{chapter.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}What is a RESTful API and why do I Need One?}{15}{section.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Anatomy of an HTTP request}{16}{section.4.2}\protected@file@percent }
+\citation{mongoGoD17:online}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Creating our API}{17}{section.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Unmarshalling JSON into Nested Structs in Golang}{20}{section.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Writing Go Modules}{22}{section.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Frontend}{23}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}What's all this then}{19}{section.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Don't be root!}{19}{section.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}The big whale upstairs}{20}{section.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Building My Containers (Thesaurus)}{21}{subsection.5.3.1}\protected@file@percent }
-\newlabel{Go Backend Dockerfile}{{5.3.1}{22}{Building My Containers (Thesaurus)}{subsection.5.3.1}{}}
-\newlabel{Vue Frontend Dockerfile}{{5.3.1}{22}{Building My Containers (Thesaurus)}{subsection.5.3.1}{}}
-\newlabel{Mongo and Nginx}{{5.3.1}{22}{Building My Containers (Thesaurus)}{subsection.5.3.1}{}}
-\newlabel{The Composition}{{5.3.1}{22}{Building My Containers (Thesaurus)}{subsection.5.3.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}In defense of the GUI}{23}{section.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Sap Aside / GSAP Inside}{24}{section.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Configuration}{25}{subsection.5.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Creating our Component Library}{25}{section.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Abstracted renderers}{25}{subsection.5.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Overview of Views}{25}{section.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Making things pretty}{25}{section.5.5}\protected@file@percent }

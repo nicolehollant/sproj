@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex sprojTemplate"] 1575943564 "sprojTemplate.aux" "sprojTemplate.bbl" "sprojTemplate" 1575943565
+["bibtex sprojTemplate"] 1576130435 "sprojTemplate.aux" "sprojTemplate.bbl" "sprojTemplate" 1576130436
   "/usr/local/texlive/2019basic/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "sproj.bib" 1573578336 10952 ae5fc1fe85887aec45acb0ec6373c177 ""
-  "sprojTemplate.aux" 1575943565 7450 bfa293eef1f0bfac036e748cceba2bf1 "pdflatex"
+  "sprojTemplate.aux" 1576130436 8132 e40b32344f4836ec806e6bac9e7806b0 "pdflatex"
   (generated)
   "sprojTemplate.bbl"
   "sprojTemplate.blg"
-["pdflatex"] 1575943564 "/Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.tex" "/Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.pdf" "sprojTemplate" 1575943565
-  "/Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.aux" 1575943565 7450 bfa293eef1f0bfac036e748cceba2bf1 ""
-  "/Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.tex" 1575943564 42775 1d8c73d223ab66cd939b97a2db7c2511 ""
+["pdflatex"] 1576130435 "/Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.tex" "/Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.pdf" "sprojTemplate" 1576130436
+  "/Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.aux" 1576130436 8132 e40b32344f4836ec806e6bac9e7806b0 ""
+  "/Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.tex" 1576130435 51879 c22c1c07bfb8343c59285674b88dcbba ""
   "/usr/local/texlive/2019basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2019basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/local/texlive/2019basic/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -108,16 +108,16 @@
   "/usr/local/texlive/2019basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1572468958 326053 1879d0988e6dfdacfc011288ab8c00bd ""
   "/usr/local/texlive/2019basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1567365964 2678473 98487942c42bcc553b3bfe6012fe4ffb ""
   "/usr/local/texlive/2019basic/texmf.cnf" 1554925189 628 6cfff46d1fd9ae1d47a88551035aa162 ""
-  "sprojTemplate.aux" 1575943565 7450 bfa293eef1f0bfac036e748cceba2bf1 "pdflatex"
-  "sprojTemplate.bbl" 1575943564 7979 31e5a9a10160fc32c9563f7bdb4f3fe2 "bibtex sprojTemplate"
-  "sprojTemplate.out" 1575943565 2420 61b379b720f169648202195b2ec9b49c "pdflatex"
-  "sprojTemplate.tex" 1575943564 42775 1d8c73d223ab66cd939b97a2db7c2511 ""
-  "sprojTemplate.toc" 1575943565 2971 e8f4b2857a6b1096be46386014b024a3 "pdflatex"
+  "sprojTemplate.aux" 1576130436 8132 e40b32344f4836ec806e6bac9e7806b0 "pdflatex"
+  "sprojTemplate.bbl" 1576130435 7979 31e5a9a10160fc32c9563f7bdb4f3fe2 "bibtex sprojTemplate"
+  "sprojTemplate.out" 1576130436 2764 ecf37cc75c52db05c922d74005022256 "pdflatex"
+  "sprojTemplate.tex" 1576130435 51879 c22c1c07bfb8343c59285674b88dcbba ""
+  "sprojTemplate.toc" 1576130436 3417 020862f8f63fd6244df734fb636891ea "pdflatex"
   (generated)
+  "/Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.log"
+  "sprojTemplate.log"
   "sprojTemplate.pdf"
-  "sprojTemplate.toc"
+  "sprojTemplate.aux"
   "/Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.pdf"
   "sprojTemplate.out"
-  "sprojTemplate.log"
-  "sprojTemplate.aux"
-  "/Users/colehollant/Projects/sproj/writing/all-writing/sproj-template/sprojTemplate.log"
+  "sprojTemplate.toc"
