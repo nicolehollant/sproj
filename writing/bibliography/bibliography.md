@@ -69,6 +69,7 @@
   - Why cors
 - {CITED} [Cross Origin Resouce Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
   - What cors
+- [multi stage python dockerfile](https://pythonspeed.com/articles/multi-stage-docker-python/)
 
 ## Backend Writeup
 
