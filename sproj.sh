@@ -27,7 +27,7 @@ case $1 in
   popd
   ;;
 "lines")
-  scc -i vue,js,ts,py,go,html,sh,yaml .
+  scc -i vue,js,ts,py,go,sh,yaml .
   ;;
 *)
   msg="Oops! '$1' is not a valid option:\noptions: \n\tstart \n\tstop \n\trestart \n\tlines"

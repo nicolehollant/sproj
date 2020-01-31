@@ -1,5 +1,5 @@
 <template>
-  <div class="home text-pink-200">
+  <div class="home">
     <Navbar/>
     <div class="px-6 py-4 text-left max-w-3xl m-auto">
       <h1 class="font-bold text-2xl text-purple-100 mt-4 mb-6 text-center">MY SPROJ!!</h1>
@@ -43,5 +43,8 @@ p{
 }
 nav {
   @apply text-lg mt-2;
+}
+.home {
+  @apply text-pink-200
 }
 </style>

@@ -10,7 +10,7 @@
 \contentsline {section}{\numberline {2.2}IaaS vs PaaS vs SaaS}{5}{section.2.2}% 
 \contentsline {section}{\numberline {2.3}Don't be root!}{6}{section.2.3}% 
 \contentsline {section}{\numberline {2.4}The big whale upstairs}{7}{section.2.4}% 
-\contentsline {subsection}{\numberline {2.4.1}Building My Containers (Thesaurus)}{8}{subsection.2.4.1}% 
+\contentsline {subsection}{\numberline {2.4.1}Building My Containers (Thesaurus)}{9}{subsection.2.4.1}% 
 \contentsline {chapter}{\numberline {3}Lexicons}{11}{chapter.3}% 
 \contentsline {section}{\numberline {3.1}National Research Council Canada (NRC) Emotion Lexicon}{11}{section.3.1}% 
 \contentsline {subsection}{\numberline {3.1.1}IMPORTANT NOTE: remember to cite as per Terms of Use in their readme}{11}{subsection.3.1.1}% 

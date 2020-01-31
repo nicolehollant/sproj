@@ -14,7 +14,6 @@ sudo ln /etc/nginx/sites-available/sproj.model.colehollant.com /etc/nginx/sites-
 sudo nginx -t 
 sudo systemctl reload nginx
 
-
 # MAKE SURE THAT YOU'VE SET UP A RECORDS ON DIGITALOCEAN AND GOOGLE LOLL
 
 # SSL [here](https://medium.com/@jgefroh/a-guide-to-using-nginx-for-static-websites-d96a9d034940)

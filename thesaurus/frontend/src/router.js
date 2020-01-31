@@ -31,6 +31,11 @@ export default new Router({
       path: '/midway',
       name: 'Midway',
       component: () => import('./views/Midway.vue')
+    },
+    {
+      path: '/docs',
+      name: 'docs',
+      component: () => import('./views/Documentation.vue')
     }
   ]
 })

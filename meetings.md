@@ -147,3 +147,55 @@ Email Justin Dainerbest ? about irb (also about stats)
 Link to code in intro
 
 Do multiple links per bib entry for stuff like MDN
+
+
+## 12/16
+
+write down what I actually want to ask for the things
+
+### For the break:
+
+- [ ] experiment with LDAs in some regard
+- [ ] write about above experimentation
+- [ ] implement LDAs with what we are actually doing
+  - [ ] defining seed documents
+  - [ ] test it against specific passages
+    - [ ] specific words
+    - [ ] specific phrases
+- [ ] tests with control
+  - [ ] see if we can improve readability
+  - [ ] hash against ngrams
+  - [ ] alter parameters (max words, max words in a row, importance of words in sentence)
+- [ ] UI for stuff we add
+- [ ] documentation and commenting
+
+
+### What I want from midway
+
+- how to better frame the project
+  - I care a lot about nitty-gritty stuff, but "shifting tone of a body of text" doesn't get that
+- is it worth it to do twitter stuff
+  - any other good datasets I should care about?
+    - already very similar to wordnet
+  - I think it could be fun?
+- insight about model
+  - two part system
+    - latent semantic analysis with lda to get prob distribution over our emotion sets
+    - heuristic based replacement fed back into analysis model, looking for convergence
+- room for other maths
+  - runtime proofs
+    - ui/ux niceties like edit distance
+  - within web stuff somehow?
+
+
+## Sven's suggestions
+
+- more text processing (cut down words to bare forms, apply negations when appropriate, look into textblob module and nltk)
+- more standard sentiment stuff!
+
+
+## IDEAS:
+- [Some seeded lda kinda stuff](https://github.com/gregversteeg/corex_topic)
+- [and another one](https://github.com/vi3k6i5/GuidedLDA)
+
+Perhaps before LDA, we just want to do a naive approach. This would consist of assigning a score to each word (based off of it's affect dimensions and intensity, and try to ease into something with that)
