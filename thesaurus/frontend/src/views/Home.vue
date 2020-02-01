@@ -15,6 +15,7 @@
       <h2>Not Navbar Worthy</h2>
       <p>I don't want to clutter my navbar with garbage that I don't much care about, so here are some side bits</p>
       <nav>
+        <li><router-link to="/docs" class="text-pink-400">docs</router-link></li>
         <li><router-link to="/midway" class="text-pink-400">midway presentation</router-link></li>
         <li><a href="https://github.com/colehollant/sproj" class="text-pink-400">github</a></li>
       </nav>

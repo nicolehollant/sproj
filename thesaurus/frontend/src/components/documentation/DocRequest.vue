@@ -74,7 +74,7 @@ export default {
   @apply bg-red-600 border-red-800 text-red-100
 }
 .url {
-  @apply text-base text-indigo-400
+  @apply text-base text-indigo-400 break-all
 }
 .request__section {
   @apply my-1

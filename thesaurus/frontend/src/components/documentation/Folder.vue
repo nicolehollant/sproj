@@ -9,6 +9,7 @@
     v-for="(item, index) of folder.item" 
     :key="[folder.name, index].join('-')"
     :request="item"
+    :id="`request-${item.name}`"
   />
 </div>
 </template>
@@ -25,7 +26,6 @@ export default {
       default: () => ({})
     },
   },
-  
 }
 </script>
 
@@ -43,7 +43,7 @@ export default {
   @apply font-medium text-purple-400 text-lg border-l-4 border-blue-500 pl-3
 }
 
-@screen sm {
+@screen md {
   .folder {
     @apply rounded-lg shadow-xl
   }

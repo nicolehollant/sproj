@@ -1,7 +1,8 @@
 <template>
 <div v-if="!!body.raw">
   <div class="title">Body</div>
-  <pre class="body">{{JSON.stringify(JSON.parse(body.raw), null, 2)}}</pre>
+  <pre class="body" v-if="width < 640">{{JSON.stringify(JSON.parse(body.raw), null, 1)}}</pre>
+  <pre class="body" v-else>{{JSON.stringify(JSON.parse(body.raw), null, 2)}}</pre>
 </div>
 </template>
 
@@ -12,6 +13,11 @@ export default {
       type: Object,
       default: () => ({})
     },
+  },
+  data() {
+    return {
+      width: window.innerWidth
+    }
   },
 }
 </script>

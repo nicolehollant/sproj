@@ -6,7 +6,8 @@
     <div class="status">{{response.status}}</div>
     <div class="code">{{response.code}}</div>
   </div>
-  <pre class="body">{{JSON.stringify(JSON.parse(response.body), null, 2)}}</pre>
+  <pre class="body" v-if="width < 640">{{ JSON.stringify(JSON.parse(response.body), null, 1) }}</pre>
+  <pre class="body" v-else>{{ JSON.stringify(JSON.parse(response.body), null, 2) }}</pre>
 </div>
 </template>
 
@@ -17,6 +18,11 @@ export default {
       type: Object,
       default: () => ({})
     },
+  },
+  data() {
+    return {
+      width: window.innerWidth
+    }
   },
 }
 </script>
