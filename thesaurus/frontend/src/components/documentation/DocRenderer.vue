@@ -132,6 +132,9 @@ export default {
   border-top: none;
   box-shadow: none;
 }
+.docs__nav--requests {
+  @apply mb-24
+}
 .docs__nav--main, .docs__nav--requests {
   @apply hidden
 }

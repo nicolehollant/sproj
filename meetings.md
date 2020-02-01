@@ -155,7 +155,7 @@ write down what I actually want to ask for the things
 
 ### For the break:
 
-- [ ] experiment with LDAs in some regard
+- [X] experiment with LDAs in some regard
 - [ ] write about above experimentation
 - [ ] implement LDAs with what we are actually doing
   - [ ] defining seed documents
@@ -167,7 +167,8 @@ write down what I actually want to ask for the things
   - [ ] hash against ngrams
   - [ ] alter parameters (max words, max words in a row, importance of words in sentence)
 - [ ] UI for stuff we add
-- [ ] documentation and commenting
+- [X] documentation 
+- [ ] commenting
 
 
 ### What I want from midway
