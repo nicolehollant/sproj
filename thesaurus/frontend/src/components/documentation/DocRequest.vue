@@ -2,7 +2,6 @@
 <div class="request-wrapper" v-if="!!request.request">
   <div class="request__header">
     <div class="name">{{request.name}}</div>
-    <div class="description">{{request.description}}</div>
   </div>
   <div class="request">
     <div class="request__url">
@@ -10,6 +9,9 @@
       <div class="request__text">
         <div class="url">{{request.request.url.raw}}</div>
       </div>
+    </div>
+    <div class="request__section">
+      <div class="description">{{request.request.description}}</div>
     </div>
     <Headers :headers="request.request.header" class="request__section"/>
     <Body :body="request.request.body" class="request__section"/>
@@ -45,7 +47,13 @@ export default {
   @apply text-xl font-black text-indigo-200
 }
 .description {
-  @apply text-base font-medium text-pink-200
+  background: #00000030;
+  width: max-content;
+  max-width: 100%;
+  @apply text-base text-teal-300 font-medium mt-4 mb-2 py-3 px-4 shadow rounded
+}
+.description__title {
+  @apply font-bold text-xl text-blue-300 my-2
 }
 .request__header {
   @apply mb-2

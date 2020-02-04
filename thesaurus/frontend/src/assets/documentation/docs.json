@@ -1,8 +1,7 @@
 {
 	"info": {
 		"_postman_id": "4990177d-66c9-4c55-b136-ba7647152ca6",
-    "name": "SPROJ DOCUMENTATION",
-    "description": "the requests for my senior project :'-)",
+		"name": "SPROJ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -15,7 +14,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{thesaurus-base}}",
+							"raw": "{{thesaurus-base}}?",
 							"host": [
 								"{{thesaurus-base}}"
 							],
@@ -31,7 +30,8 @@
 									"disabled": true
 								}
 							]
-						}
+						},
+						"description": "Gives a little blurb as a healthcheck"
 					},
 					"response": [
 						{
@@ -40,7 +40,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{thesaurus-base}}",
+									"raw": "{{thesaurus-base}}?",
 									"host": [
 										"{{thesaurus-base}}"
 									],
@@ -142,7 +142,8 @@
 								"admin",
 								"words"
 							]
-						}
+						},
+						"description": "Retrieves all words in the thesaurus collection"
 					},
 					"response": [
 						{
@@ -237,7 +238,8 @@
 								"admin",
 								"words"
 							]
-						}
+						},
+						"description": "Adds a word to the thesaurus collection"
 					},
 					"response": [
 						{
@@ -342,7 +344,8 @@
 								"admin",
 								"words"
 							]
-						}
+						},
+						"description": "Tries to create a word that already exists in the thesaurus collection"
 					},
 					"response": [
 						{
@@ -447,7 +450,8 @@
 								"admin",
 								"words"
 							]
-						}
+						},
+						"description": "Tries to create a word in the thesaurus collection without all required fields"
 					},
 					"response": [
 						{
@@ -552,7 +556,8 @@
 								"admin",
 								"words"
 							]
-						}
+						},
+						"description": "Updates a word in the thesaurus collection"
 					},
 					"response": [
 						{
@@ -657,7 +662,8 @@
 								"admin",
 								"words"
 							]
-						}
+						},
+						"description": "Tries to update a word in the thesaurus collection that does not already exist"
 					},
 					"response": [
 						{
@@ -762,7 +768,8 @@
 								"admin",
 								"words"
 							]
-						}
+						},
+						"description": "Tries to update a word in the thesaurus collection without all required fields present"
 					},
 					"response": [
 						{
@@ -867,7 +874,8 @@
 								"admin",
 								"words"
 							]
-						}
+						},
+						"description": "Deletes a word in the thesaurus collection"
 					},
 					"response": [
 						{
@@ -972,7 +980,8 @@
 								"admin",
 								"words"
 							]
-						}
+						},
+						"description": "Tries to delete a word in the thesaurus collection that does not exist"
 					},
 					"response": [
 						{
@@ -1077,7 +1086,8 @@
 								"admin",
 								"words"
 							]
-						}
+						},
+						"description": "Tries to delete a word in the thesaurus collection without all required fields"
 					},
 					"response": [
 						{
@@ -1187,7 +1197,8 @@
 								"words",
 								"a"
 							]
-						}
+						},
+						"description": "Retrieves the object from the thesaurus collection corresponding to the passed word"
 					},
 					"response": [
 						{
@@ -1260,7 +1271,7 @@
 					]
 				}
 			],
-			"description": "Thesaurus requests",
+			"description": "Contains requests for the `thesaurus` collection. A `ThesaurusEntry` is defined as follows\n```\n{\n\t\"_id\": <MONGO_ID>,\n\t\"word\": <STRING>,\n\t\"antonyms\": <MAP<STRING, <STRING[]>>>,\n\t\"synonyms\": <MAP<STRING, <STRING[]>>>\n}\n```",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -1323,7 +1334,8 @@
 								"admin",
 								"senselevel"
 							]
-						}
+						},
+						"description": "Add an entry to the senselevel collection"
 					},
 					"response": [
 						{
@@ -1428,7 +1440,8 @@
 								"admin",
 								"senselevel"
 							]
-						}
+						},
+						"description": "Try to add an entry to the senselevel collection without all required fields"
 					},
 					"response": [
 						{
@@ -1533,7 +1546,8 @@
 								"admin",
 								"senselevel"
 							]
-						}
+						},
+						"description": "Try to add an entry to the senselevel collection with invalid fields"
 					},
 					"response": [
 						{
@@ -1638,7 +1652,8 @@
 								"admin",
 								"senselevel"
 							]
-						}
+						},
+						"description": "Update an entry in the senselevel collection"
 					},
 					"response": [
 						{
@@ -1743,7 +1758,8 @@
 								"admin",
 								"senselevel"
 							]
-						}
+						},
+						"description": "Delete an entry in the senselevel collection"
 					},
 					"response": [
 						{
@@ -1851,7 +1867,8 @@
 								"admin",
 								"senselevel"
 							]
-						}
+						},
+						"description": "Retrieves all entries in the senselevel collection"
 					},
 					"response": [
 						{
@@ -1961,7 +1978,8 @@
 								"senselevel",
 								"testword"
 							]
-						}
+						},
+						"description": "Retrieves the entry in the senselevel collection corresponding to the passed word"
 					},
 					"response": [
 						{
@@ -2034,6 +2052,29 @@
 					]
 				}
 			],
+			"description": "Contains requests for the `senselevel` collection. A `SenseLevelEntry` is defined as follows\n```\n{\n\t\"_id\": <MONGO_ID>,\n\t\"word\": <STRING>,\n\t\"senselist\": <[]SenseLevelData>,\n\t\"wordlevel\": <SenseLevelData>\n}\n```\n\n`SenseLevelData` is defined as follows:\n\n```\n{\n\t\"associations\": <[]STRING>,\n\t\"sense\": <[]STRING>\n}\n```",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3c0afa7e-7427-411c-ab8b-28717accd3bd",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "3939197d-b803-4466-97d9-9ae2f7c87fe8",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
 			"protocolProfileBehavior": {}
 		},
 		{
@@ -2074,7 +2115,8 @@
 								"admin",
 								"affectintensity"
 							]
-						}
+						},
+						"description": "Adds an entry to the affectintensity collection"
 					},
 					"response": [
 						{
@@ -2179,7 +2221,8 @@
 								"admin",
 								"affectintensity"
 							]
-						}
+						},
+						"description": "Tries to add an entry to the affectintensity collection without all required fields"
 					},
 					"response": [
 						{
@@ -2284,7 +2327,8 @@
 								"admin",
 								"affectintensity"
 							]
-						}
+						},
+						"description": "Tries to add an entry to the affectintensity collection without with invalid fields"
 					},
 					"response": [
 						{
@@ -2389,7 +2433,8 @@
 								"admin",
 								"affectintensity"
 							]
-						}
+						},
+						"description": "Updates an entry in the affectintensity collection"
 					},
 					"response": [
 						{
@@ -2494,7 +2539,8 @@
 								"admin",
 								"affectintensity"
 							]
-						}
+						},
+						"description": "Removes an entry from the affectintensity collection"
 					},
 					"response": [
 						{
@@ -2602,7 +2648,8 @@
 								"admin",
 								"affectintensity"
 							]
-						}
+						},
+						"description": "Retrieves all words in the affectintensity collection"
 					},
 					"response": [
 						{
@@ -2712,7 +2759,8 @@
 								"affectintensity",
 								"testword"
 							]
-						}
+						},
+						"description": "Retrieves the entry in the affectintensity collection corresponfing to the passed word"
 					},
 					"response": [
 						{
@@ -2785,6 +2833,29 @@
 					]
 				}
 			],
+			"description": "Contains requests for the `affectintensity` collection. An `AffectIntensityEntry` is defined as follows\n```\n{\n\t\"_id\": <MONGO_ID>,\n\t\"word\": <STRING>,\n\t\"affectlist\": <[]AffectIntensityData>\n}\n```\n\n`AffectIntensityData` is defined as follows:\n\n```\n{\n\t\"affectdimension\": <STRING>,\n\t\"score\": <STRING>\n}\n```",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "82841cdf-b6cc-4d54-b2cb-e5fd11aedfa1",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d3d66995-116b-49ec-80a4-d7d2005edbd5",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
 			"protocolProfileBehavior": {}
 		},
 		{
@@ -2825,7 +2896,8 @@
 								"admin",
 								"color"
 							]
-						}
+						},
+						"description": "Adds an entry to the color collection"
 					},
 					"response": [
 						{
@@ -2930,7 +3002,8 @@
 								"admin",
 								"affectintensity"
 							]
-						}
+						},
+						"description": "Tries to add an entry in the color collection without all required fields"
 					},
 					"response": [
 						{
@@ -3035,7 +3108,8 @@
 								"admin",
 								"affectintensity"
 							]
-						}
+						},
+						"description": "Tries to add an entry to the color collection with invalid fields"
 					},
 					"response": [
 						{
@@ -3140,7 +3214,8 @@
 								"admin",
 								"affectintensity"
 							]
-						}
+						},
+						"description": "Updates an entry in the color collection"
 					},
 					"response": [
 						{
@@ -3245,7 +3320,8 @@
 								"admin",
 								"affectintensity"
 							]
-						}
+						},
+						"description": "Removes an entry from the color collection"
 					},
 					"response": [
 						{
@@ -3353,7 +3429,8 @@
 								"admin",
 								"color"
 							]
-						}
+						},
+						"description": "Retrieves all words in the color collection"
 					},
 					"response": [
 						{
@@ -3463,7 +3540,8 @@
 								"affectintensity",
 								"testword"
 							]
-						}
+						},
+						"description": "Retrieves the entry from the color collection corresponding the the passed word"
 					},
 					"response": [
 						{
@@ -3536,6 +3614,29 @@
 					]
 				}
 			],
+			"description": "Contains requests for the `color` collection. A `ColorEntry` is defined as follows\n```\n{\n\t\"_id\": <MONGO_ID>,\n\t\"word\": <STRING>,\n\t\"colorlist\": <[]ColorData>\n}\n```\n\n`ColorData` is defined as follows:\n\n```\n{\n\t\"color\": <STRING>,\n\t\"totalvotes\": <STRING>,\n\t\"votes\": <STRING>,\n\t\"sense\": <[]STRING>\n}\n```",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0ec88ddd-915f-4aa9-a86a-c096d67129d7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "35c8c8ed-8106-4d68-a538-64f57a5f964d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
 			"protocolProfileBehavior": {}
 		},
 		{
@@ -3576,7 +3677,8 @@
 								"admin",
 								"vad"
 							]
-						}
+						},
+						"description": "Adds an entry to the vad collection"
 					},
 					"response": [
 						{
@@ -3681,7 +3783,8 @@
 								"admin",
 								"vad"
 							]
-						}
+						},
+						"description": "Tries to add an entry in the vad collection without all required fields"
 					},
 					"response": [
 						{
@@ -3786,7 +3889,8 @@
 								"admin",
 								"vad"
 							]
-						}
+						},
+						"description": "Tries to add an entry to the vad collection with invalid fields"
 					},
 					"response": [
 						{
@@ -3891,7 +3995,8 @@
 								"admin",
 								"vad"
 							]
-						}
+						},
+						"description": "Updates an entry in the vad collection"
 					},
 					"response": [
 						{
@@ -3996,7 +4101,8 @@
 								"admin",
 								"vad"
 							]
-						}
+						},
+						"description": "Removes an entry from the vad collection"
 					},
 					"response": [
 						{
@@ -4104,7 +4210,8 @@
 								"admin",
 								"vad"
 							]
-						}
+						},
+						"description": "Retrieves all words in the vad collection"
 					},
 					"response": [
 						{
@@ -4214,7 +4321,8 @@
 								"vad",
 								"testword"
 							]
-						}
+						},
+						"description": "Retrieves the entry from the vad collection corresponding to the passed word"
 					},
 					"response": [
 						{
@@ -4287,17 +4395,67 @@
 					]
 				}
 			],
+			"description": "Contains requests for the `vad` collection. A `VADEntry` is defined as follows\n```\n{\n\t\"_id\": <MONGO_ID>,\n\t\"word\": <STRING>,\n\t\"valence\": <STRING>,\n\t\"arousal\": <STRING>,\n\t\"dominance\": <STRING>,\n}\n```",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2364142d-12ae-4423-9437-d69480bb06e1",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "5cc3df14-5db6-473a-8ce3-5d6fec586c31",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Model",
+			"name": "Model-Control",
 			"item": [
 				{
-					"name": "Control",
-					"item": [
+					"name": "Post Empty Fields",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"asd\": \"\",\n\t\"text\": \" a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{model-control}}",
+							"host": [
+								"{{model-control}}"
+							]
+						},
+						"description": "Tries to process input without all required fields"
+					},
+					"response": [
 						{
 							"name": "Post Empty Fields",
-							"request": {
+							"originalRequest": {
 								"method": "POST",
 								"header": [
 									{
@@ -4323,72 +4481,73 @@
 									]
 								}
 							},
-							"response": [
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"name": "Post Empty Fields",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"name": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n\t\"asd\": \"\",\n\t\"text\": \" a\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{model-control}}",
-											"host": [
-												"{{model-control}}"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Server",
-											"value": "nginx/1.14.0 (Ubuntu)"
-										},
-										{
-											"key": "Date",
-											"value": "Thu, 30 Jan 2020 20:45:28 GMT"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										},
-										{
-											"key": "Content-Length",
-											"value": "111"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"data\": {\n        \"input\": \" a\",\n        \"notPresent\": [],\n        \"numChanged\": 0,\n        \"output\": \"a\",\n        \"stopwordsSkipped\": []\n    },\n    \"message\": \"success!\"\n}"
+									"key": "Server",
+									"value": "nginx/1.14.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2020 20:45:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "111"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
 								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"input\": \" a\",\n        \"notPresent\": [],\n        \"numChanged\": 0,\n        \"output\": \"a\",\n        \"stopwordsSkipped\": []\n    },\n    \"message\": \"success!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Post Valid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"To be or not to be that is the question, whether tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take up arms against this sea of trouble and, by opposing, end them. To die, to sleep, no more.\",\n\t\"prob\": 0.99,\n\t\"ignore\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{model-control}}",
+							"host": [
+								"{{model-control}}"
 							]
 						},
+						"description": "Processes valid input"
+					},
+					"response": [
 						{
 							"name": "Post Valid",
-							"request": {
+							"originalRequest": {
 								"method": "POST",
 								"header": [
 									{
@@ -4414,72 +4573,73 @@
 									]
 								}
 							},
-							"response": [
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"name": "Post Valid",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"name": "Content-Type",
-												"type": "text",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n\t\"text\": \"To be or not to be that is the question, whether tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take up arms against this sea of trouble and, by opposing, end them. To die, to sleep, no more.\",\n\t\"prob\": 0.99,\n\t\"ignore\": true\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{model-control}}",
-											"host": [
-												"{{model-control}}"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Server",
-											"value": "nginx/1.14.0 (Ubuntu)"
-										},
-										{
-											"key": "Date",
-											"value": "Thu, 30 Jan 2020 20:45:49 GMT"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										},
-										{
-											"key": "Content-Length",
-											"value": "737"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"data\": {\n        \"input\": \"To be or not to be that is the question, whether tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take up arms against this sea of trouble and, by opposing, end them. To die, to sleep, no more.\",\n        \"notPresent\": [\n            \"nobler\",\n            \"whether\"\n        ],\n        \"numChanged\": 14,\n        \"output\": \"To be or not to be that is the uncertainness, whether tis nobler in the intellect to comprehend the shoe and pointer of outrageous hazard or to have it off up weapons system against this water of sweat and, by opposed, piece of material them. To cash in one's chips, to kip, no more.\",\n        \"stopwordsSkipped\": [\n            \"by\",\n            \"this\",\n            \"and\",\n            \"be\",\n            \"that\",\n            \"up\",\n            \"more\",\n            \"not\",\n            \"in\",\n            \"against\",\n            \"no\",\n            \"or\",\n            \"of\",\n            \"them\",\n            \"to\",\n            \"is\",\n            \"the\"\n        ]\n    },\n    \"message\": \"success!\"\n}"
+									"key": "Server",
+									"value": "nginx/1.14.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2020 20:45:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "737"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
 								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"input\": \"To be or not to be that is the question, whether tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take up arms against this sea of trouble and, by opposing, end them. To die, to sleep, no more.\",\n        \"notPresent\": [\n            \"nobler\",\n            \"whether\"\n        ],\n        \"numChanged\": 14,\n        \"output\": \"To be or not to be that is the uncertainness, whether tis nobler in the intellect to comprehend the shoe and pointer of outrageous hazard or to have it off up weapons system against this water of sweat and, by opposed, piece of material them. To cash in one's chips, to kip, no more.\",\n        \"stopwordsSkipped\": [\n            \"by\",\n            \"this\",\n            \"and\",\n            \"be\",\n            \"that\",\n            \"up\",\n            \"more\",\n            \"not\",\n            \"in\",\n            \"against\",\n            \"no\",\n            \"or\",\n            \"of\",\n            \"them\",\n            \"to\",\n            \"is\",\n            \"the\"\n        ]\n    },\n    \"message\": \"success!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Post Valid Heavy Punctuation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"To, be, or, not, to, be, that. is. the. question?, whether! tis? nobler, in. the; mind: to. suffer, the! slings. and, arrows, of. outrageous. fortune. or: to: take. up; arms; against. this! sea. of! trouble. and,., by/ opposing., end.! them.!. To. die.,, to., sleep!!, no?! more.,.\",\n\t\"prob\": 0.99,\n\t\"ignore\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{model-control}}",
+							"host": [
+								"{{model-control}}"
 							]
 						},
+						"description": "Processes input with dense punctuation"
+					},
+					"response": [
 						{
 							"name": "Post Valid Heavy Punctuation",
-							"request": {
+							"originalRequest": {
 								"method": "POST",
 								"header": [
 									{
@@ -4505,72 +4665,62 @@
 									]
 								}
 							},
-							"response": [
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"name": "Post Valid Heavy Punctuation",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"name": "Content-Type",
-												"type": "text",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n\t\"text\": \"To, be, or, not, to, be, that. is. the. question?, whether! tis? nobler, in. the; mind: to. suffer, the! slings. and, arrows, of. outrageous. fortune. or: to: take. up; arms; against. this! sea. of! trouble. and,., by/ opposing., end.! them.!. To. die.,, to., sleep!!, no?! more.,.\",\n\t\"prob\": 0.99,\n\t\"ignore\": true\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{model-control}}",
-											"host": [
-												"{{model-control}}"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Server",
-											"value": "nginx/1.14.0 (Ubuntu)"
-										},
-										{
-											"key": "Date",
-											"value": "Thu, 30 Jan 2020 20:46:05 GMT"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										},
-										{
-											"key": "Content-Length",
-											"value": "815"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"data\": {\n        \"input\": \"To, be, or, not, to, be, that. is. the. question?, whether! tis? nobler, in. the; mind: to. suffer, the! slings. and, arrows, of. outrageous. fortune. or: to: take. up; arms; against. this! sea. of! trouble. and,., by/ opposing., end.! them.!. To. die.,, to., sleep!!, no?! more.,.\",\n        \"notPresent\": [\n            \"nobler\",\n            \"whether\"\n        ],\n        \"numChanged\": 15,\n        \"output\": \"To, be, or, not, to, be, that. is. the. chew over?, whether! tis? nobler, in. the; intelligence: to. abide, the! bandage. and, pointer, of. immoderate. fate. or: to: love. up; blazonry; against. this! subocean. of! disturb. and,., by/ hostile., extremity.! them.!. To. change.,, to., log z's!!, no?! more.,.\",\n        \"stopwordsSkipped\": [\n            \"by\",\n            \"this\",\n            \"and\",\n            \"be\",\n            \"that\",\n            \"up\",\n            \"more\",\n            \"not\",\n            \"in\",\n            \"against\",\n            \"no\",\n            \"or\",\n            \"of\",\n            \"them\",\n            \"to\",\n            \"is\",\n            \"the\"\n        ]\n    },\n    \"message\": \"success!\"\n}"
+									"key": "Server",
+									"value": "nginx/1.14.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2020 20:46:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "815"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
 								}
-							]
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"input\": \"To, be, or, not, to, be, that. is. the. question?, whether! tis? nobler, in. the; mind: to. suffer, the! slings. and, arrows, of. outrageous. fortune. or: to: take. up; arms; against. this! sea. of! trouble. and,., by/ opposing., end.! them.!. To. die.,, to., sleep!!, no?! more.,.\",\n        \"notPresent\": [\n            \"nobler\",\n            \"whether\"\n        ],\n        \"numChanged\": 15,\n        \"output\": \"To, be, or, not, to, be, that. is. the. chew over?, whether! tis? nobler, in. the; intelligence: to. abide, the! bandage. and, pointer, of. immoderate. fate. or: to: love. up; blazonry; against. this! subocean. of! disturb. and,., by/ hostile., extremity.! them.!. To. change.,, to., log z's!!, no?! more.,.\",\n        \"stopwordsSkipped\": [\n            \"by\",\n            \"this\",\n            \"and\",\n            \"be\",\n            \"that\",\n            \"up\",\n            \"more\",\n            \"not\",\n            \"in\",\n            \"against\",\n            \"no\",\n            \"or\",\n            \"of\",\n            \"them\",\n            \"to\",\n            \"is\",\n            \"the\"\n        ]\n    },\n    \"message\": \"success!\"\n}"
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
+				}
+			],
+			"description": "Contains requests for the control model. Takes request as follows:\n\n```\n{\n\t\"text\": <STRING, required>,\n\t\"prob\": <FLOAT, not required>,\n\t\"ignore\": <BOOL, not required>\n}\n```\n\n- `text` is the text to process\n- `prob` is the probability of attempting to replace a word\n- `ignore` is whether or not to ignore stop words",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "baa3d01e-fe0f-4cfa-b724-5df9efa04885",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca5e76bf-babb-4a9f-99ba-fc6c6679a7bb",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			],
 			"protocolProfileBehavior": {}
