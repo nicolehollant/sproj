@@ -41,7 +41,7 @@ class Control(Model):
       noPunctuation = self.stripPunctuation(word)
 
       if random.random() < self.prob:
-        exists, wordStripped, data = self.entryExists(noPunctuation)
+        exists, wordStripped, data = self.entryExists(noPunctuation, collection='words')
         if exists:
           newEntry = self.selectEntry(data)
           if newEntry:
