@@ -200,3 +200,39 @@ write down what I actually want to ask for the things
 - [and another one](https://github.com/vi3k6i5/GuidedLDA)
 
 Perhaps before LDA, we just want to do a naive approach. This would consist of assigning a score to each word (based off of it's affect dimensions and intensity, and try to ease into something with that)
+
+
+
+
+
+## Sense Level Associations
+
+Note if it has
+
+[X] See if I can push history for words in thesaurus page 
+
+Get synonyms by association:
+- if we are using "cool" in the sense of "quiet, chill, blunt" grab only the synonyms that also have that sense
+
+For the model output, keep data for other choices and their sense associations for each replaced word, perhaps be able to swap words in output
+
+Look into sense detection
+
+Get all words by association
+- list affect intensity scores for each
+
+
+Scores:
+- Base be neutral, only count words that have scores for normalization
+
+Negations:
+- either ignore or flip score to complement
+
+Scalars:
+- see if theres a standard thing for "kind of, really, etc"
+
+IRB:
+- ask participants to score passages before and after
+- finish and send to everyone!!!
+- give scores for pre-constructed sentences and then things that have gone through the model
+- for pre-constructed, go through gutenburg and pick most extreme sentences

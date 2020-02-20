@@ -1,5 +1,5 @@
 <template>
-  <div class="hello" :key="wordkey">
+  <div class="hello" :key="wordkey + $router.currentRoute.hash">
     <div>
       <input type="text" v-model="m_word" v-on:keyup.enter="fetchAll" class="word-input"/>
     </div>
@@ -13,7 +13,7 @@
     </div>
 
     <div v-else class="result-wrapper">
-      <SenseLevelResult :entry="entrySenselevel.senselist" @setword="setWord" v-if="!dneSenselevel"/>
+      <SenseLevelResult :entry="entrySenselevel.senselist" :synonyms="getSynonyms(entry.synonyms)" @setword="setWord" v-if="!dneSenselevel"/>
       <ThesaurusResult :entry="entry" @event_from_child="setWord" v-if="!dne"/>
     </div>
   </div>
@@ -77,11 +77,9 @@ export default {
         let res = response.data;
         this.parseWord(res);
         this.wordkey++;
-        console.log('Success:', JSON.stringify(this.entry))
       });
     },
     parseWord(res){
-      console.log("ahjsdkkm",res)
       this.entry.antonyms = res.antonyms;
       this.entry.synonyms = res.synonyms;
       this.exists[0] = this.notEmpty(this.entry.antonyms);
@@ -125,11 +123,9 @@ export default {
         let res = response.data;
         this.parseSenselevel(res);
         this.wordkey++;
-        console.log('Success:', JSON.stringify(this.entry))
       });
     },
     parseSenselevel(res){
-      console.log("ahjsdkkm",res)
       this.entrySenselevel.senselist = res.senselist;
       this.dneSenselevel = this.entrySenselevel.senselist.length <= 0
     },
@@ -140,19 +136,36 @@ export default {
       return false
     },
     setWord(e) {
-      console.log(e)
       this.m_word = e.trim().toLowerCase();
+      this.$router.push(`/thesaurus#${this.m_word.trim()}`)
       this.fetchWord()
       this.fetchSenselevel()
     },
     fetchAll() {
       this.fetchWord()
       this.fetchSenselevel()
+    },
+    updateWord() {
+      if(this.$router.currentRoute.hash) this.m_word = this.$router.currentRoute.hash.substring(1)
+      this.fetchWord()
+      this.fetchSenselevel()
+    },
+    getSynonyms(synonyms) {
+      if (typeof synonyms !== 'object') return null
+      return Object.values(synonyms).reduce((prev, curr) => prev.concat(curr), [])
     }
   },
   mounted () {
-    this.fetchWord()
-    this.fetchSenselevel()
+    this.updateWord()
+  },
+  watch: {
+    '$route': {
+      handler: function() {
+        this.updateWord()
+      },
+      deep: true,
+      immediate: true
+    }
   },
 }
 </script>
