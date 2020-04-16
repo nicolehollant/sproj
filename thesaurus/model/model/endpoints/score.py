@@ -26,6 +26,29 @@ def post_score():
     "message": "success!",
     "data": out
   }), 200
+
+@routes.route('/make-affect/<affect>', methods=["POST"])
+def post_make_affect(affect):
+  reqbody = request.get_json()
+  text = reqbody.get("text", "")
+
+  if text.strip() == "":
+    return jsonify({
+      'message': 'Empty text value'
+    }), 400
+  
+  score_model = Score(ignoreArticles=True)
+  out = score_model.make_affect(text, affect)
+
+  if out is None:
+    return jsonify({
+      'message': 'Bad affect value, choose amoung: sadness, joy, fear, anger'
+    }), 400
+
+  return jsonify({
+    "message": "success!",
+    "data": out
+  }), 200
   
 
 

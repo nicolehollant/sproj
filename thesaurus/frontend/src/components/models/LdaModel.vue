@@ -25,7 +25,7 @@
           </label>
         </Slider>
 
-        <TextInput type="number" class="font-medium" name="numkeywords" v-model="numKeywords">
+        <TextInput type="number" class="font-medium" name="numkeywords" v-model="numKeywords" min="0" max="100">
           <label for="numkeywords" class="w-max mt-1 mb-2 relative block font-semibold text-lg text-secondary-20">
             Number of Keywords:
           </label>

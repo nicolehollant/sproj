@@ -93,3 +93,23 @@ class Score(Model):
         res[dimension] += score[dimension]
       res[dimension] /= len(words)
     return res
+
+  def argmax(self, arr):
+    return max(range(len(arr)), key=lambda i: arr[i])
+
+  def make_affect(self, body, affect):
+    if affect not in ['sadness', 'joy', 'fear', 'anger']:
+      return None
+    original = body[:]
+    for word in list(set(body.split())):
+      if word not in self.articles:
+        scores = [self.get_all_scores(word)[affect]]
+        synonyms = self.get_synonyms(word)
+        words = [word]
+        if synonyms:
+          words += synonyms
+          for synonym in synonyms:
+            scores.append(self.get_all_scores(synonym)[affect])
+        replacement = words[self.argmax(scores)] if max(scores) != 0.0 else word
+        original = original.replace(word, replacement)
+    return original

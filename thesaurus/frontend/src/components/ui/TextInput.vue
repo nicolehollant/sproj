@@ -6,6 +6,8 @@
     :id="$attrs.id" 
     :ref="$attrs.ref"
     :placeholder="$attrs.placeholder"
+    :max="$attrs.max"
+    :min="$attrs.min"
     class="text-input focusable h-10 lg:h-12"
     :class="{'has-error': error !== ''}"
     v-model="m_value"

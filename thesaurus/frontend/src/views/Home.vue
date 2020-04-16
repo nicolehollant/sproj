@@ -1,48 +1,86 @@
 <template>
-  <div class="home">
-    <Navbar/>
-    <div class="px-6 py-4 text-left max-w-3xl m-auto">
-      <h1 class="font-bold text-2xl text-primary-10 mt-4 mb-6 text-center">MY SPROJ!!</h1>
-      <h2>Welcome!</h2>
-      <p>This is some home page for my sproj for now. It's gonna get scrapped eventually, but I need a place to start, and well... you've found it :)</p>
-      <h2>What's all this then?</h2>
-      <p>Currently it's next to nothing! But I have a <router-link to="/thesaurus" class="text-secondary-30">thesaurus</router-link> that's (hopefully) up and running</p>
-      <h2>What's the goal?</h2>
-      <p>I'm tryna build a model to shift the tone of a body of text. And hopefully that's mathy enough to stamp it on a degree or something</p>
-      <h2>What's to come?</h2>
-      <p>Well, I sure hope I put in an actual model that does something. Other than that? I suppose I'll eventually put up my writing and some auxiliary garbage</p>
-      <p>But, regardless, I hope you enjoy :-)</p>
-      <h2>Not Navbar Worthy</h2>
-      <p>I don't want to clutter my navbar with garbage that I don't much care about, so here are some side bits</p>
-      <nav>
-        <li><router-link to="/docs" class="text-secondary-30">docs</router-link></li>
-        <li><router-link to="/midway" class="text-secondary-30">midway presentation</router-link></li>
-        <li><a href="https://github.com/colehollant/sproj" class="text-secondary-30">github</a></li>
+  <div class="flex flex-col sm:flex-row h-screen">
+    <div class="border-t-4 border-primary-50 shadow-lg sm:shadow-none sm:border-none py-4 sm:py-0 sm:w-3/5 text-left flex flex-shrink-0 bg-primary-90 sm:bg-neutral-90">
+      <div class="my-auto mx-6 grid gap-4">
+        <h1 class="text-3xl sm:text-5xl text-secondary-20 font-bold">
+          Welcome
+        </h1>
+        <p class="hidden sm:block text-2xl">
+          There's some stuff to see :)
+        </p>
+      </div>
+    </div>
+    <div class="flex-1 sm:bg-primary-90 flex items-start mt-4 sm:mt-0 sm:items-center">
+      <nav class="grid gap-2 w-full">
+        <router-link 
+          aria-label="Home" 
+          exact 
+          to="/"
+          class="home-navlink text-2xl hover:bg-primary-80 py-3"
+        >
+          Home
+        </router-link>
+        <router-link 
+          aria-label="Thesaurus" 
+          to="/thesaurus"
+          class="home-navlink text-2xl hover:bg-primary-80 py-3"
+        >
+          Thesaurus
+        </router-link>
+        <router-link 
+          aria-label="Model" 
+          to="/model"
+          class="home-navlink text-2xl hover:bg-primary-80 py-3"
+        >
+          Model
+        </router-link>
+        <router-link 
+          aria-label="Writing" 
+          to="/writing"
+          class="home-navlink text-2xl hover:bg-primary-80 py-3"
+        >
+          Writing
+        </router-link>
+        <router-link 
+          aria-label="Docs" 
+          to="/docs"
+          class="home-navlink text-2xl hover:bg-primary-80 py-3"
+        >
+          Docs
+        </router-link>
+        <router-link 
+          aria-label="midway" 
+          to="/midway"
+          class="home-navlink text-2xl hover:bg-primary-80 py-3"
+        >
+          Midway
+        </router-link>
+        <a 
+          href="https://github.com/colehollant/sproj"
+          class="home-navlink text-2xl hover:bg-primary-80 py-3"
+        >
+          Github
+        </a>
       </nav>
     </div>
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
-
 export default {
-  name: 'home',
-  components: {
-    Navbar
-  }
-  
+  name: 'home',  
 }
 </script>
 
 <style lang="postcss" scoped>
-h2{
-  @apply font-bold text-xl text-secondary-20 mt-5 mb-1;
+.home-navlink {
+  transition-duration: 150ms;
+  @apply cursor-pointer text-primary-20 px-1 rounded;
 }
-p{
-  @apply text-lg font-medium;
+.home-navlink:focus {
+  @apply outline-none bg-primary-80 text-secondary-10
 }
-nav {
-  @apply text-lg mt-2;
+.router-link-active{
+  @apply text-secondary-20 font-semibold;
 }
 </style>

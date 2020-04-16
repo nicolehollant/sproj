@@ -25,13 +25,13 @@ function useModel({ endpoint }) {
     resultExists: false,
   })
 
-  function postData(body) {
+  function postData(body, queryparam="") {
     responseState.loading = true
     console.log("Getting something :3")
     let prod = true;
     if(process.env.NODE_ENV == "dev") prod = false;
-    let url = `http://localhost:5000/${endpoint}`;
-    if(prod) url = `https://sproj.model.colehollant.com/${endpoint}`;
+    let url = `http://localhost:5000/${endpoint}/${queryparam}`;
+    if(prod) url = `https://sproj.model.colehollant.com/${endpoint}/${queryparam}`;
     let code = -1
     useFetch({
       url,
@@ -68,4 +68,8 @@ export function useRawScoreModel() {
 
 export function useLdaModel() {
   return useModel({ endpoint: 'lda' })
+}
+
+export function useAlterTargetModel() {
+  return useModel({ endpoint: 'make-affect' })
 }

@@ -21,7 +21,12 @@ export default {
       theme.value = theme.value === 'light' ? 'dark' : 'light'
       applyBodyColor()
     }
-    onMounted(applyBodyColor)
+    onMounted(() => {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        theme.value = 'dark'
+      }
+      applyBodyColor()
+    })
     return { theme, toggleTheme }
   }
 }
