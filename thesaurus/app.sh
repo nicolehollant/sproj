@@ -13,6 +13,11 @@ case $1 in
   msg="Booting!"
   docker-compose up --build -d
   ;;
+"nocache")
+  msg="Booting with no cache"
+  docker-compose build --no-cache
+  docker-compose up -d
+  ;;
 "dev")
   msg "Booting and running dev server"
   docker-compose -f docker-dev.yaml up --build -d
