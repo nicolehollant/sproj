@@ -11,7 +11,7 @@ class Control(Model):
     super().__init__(ignoreArticles, collection, debug)
     self.prob = prob if prob else 0.4
     self.debug = False
-    print(f"Prob: {self.prob}, ignore: {self.ignoreArticles}")
+    # print(f"Prob: {self.prob}, ignore: {self.ignoreArticles}")
 
   def selectEntry(self, entry):
     synonyms = self.aggregateWords(entry)

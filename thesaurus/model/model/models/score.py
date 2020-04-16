@@ -10,7 +10,7 @@ class Score(Model):
   def __init__(self, prob=None, ignoreArticles=None, collection="words/", debug=False):
     super().__init__(ignoreArticles, collection, debug)
     self.debug = False
-    print(f"ignore: {self.ignoreArticles}")
+    # print(f"ignore: {self.ignoreArticles}")
 
   def selectEntry(self, entry):
     synonyms = self.aggregateWords(entry)
