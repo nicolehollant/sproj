@@ -4,10 +4,11 @@
   <div class="docs__nav" :class="{ 'docs__mobile--active': navActive }" v-on-click-outside="dismissNav">
     <div class="docs__nav--header">
       <router-link exact to="/">HOME</router-link>
-      <button @click="toggleNav" class="docs__nav--hamburger"><fa-icon icon="bars" /></button>
+      <button aria-label="navigation toggle" @click="toggleNav" class="docs__nav--hamburger"><fa-icon icon="bars" /></button>
     </div>
     <div class="docs__nav--main" v-if="!!selected">
       <button 
+        :aria-label="item.name"
         v-for="item in envdocs.item" 
         :key="`navlink-${item.name}`" 
         class="docs__navlink"
@@ -18,6 +19,7 @@
     <div class="docs__nav--requests" v-if="!!selected">
       <div class="docs__nav--subheader">Requests:</div>
       <button 
+        :aria-label="item.name"
         v-for="item in selected.item" 
         :key="`request-${item.name}`" 
         class="docs__folder--link"
@@ -184,10 +186,10 @@ export default {
   @apply font-semibold text-xl p-2 text-indigo-200
 }
 .docs__header--description {
-  @apply font-semibold text-lg text-purple-300 my-2
+  @apply font-semibold text-lg text-secondary-30 my-2
 }
 .docs__header--title {
-  @apply font-bold text-2xl text-indigo-200 mt-4 mb-2 uppercase;
+  @apply font-bold text-2xl text-secondary-20 mt-4 mb-2 uppercase;
 }
 @screen md {
 

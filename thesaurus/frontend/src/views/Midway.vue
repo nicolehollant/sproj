@@ -101,25 +101,25 @@ export default {
   --snap-type: y mandatory;
   scroll-snap-type: var(--snap-type);
   overflow: scroll;
-  @apply h-screen w-screen leading-normal font-medium text-left text-pink-200;
+  @apply h-screen w-screen leading-normal font-medium text-left text-primary-10;
 }
 .midway >>> .midway-slide {
   scroll-snap-align: start;
   @apply relative h-screen w-screen text-xl font-medium py-4 px-4;
 }
 .midway >>> div:nth-child(even) { 
-  @apply bg-gray-900; 
+  @apply bg-neutral-80; 
 }
 .link-home {
   bottom: 1rem;
   left: 1rem;
-  @apply absolute text-purple-400 text-lg;
+  @apply absolute text-secondary-30 text-lg;
 }
 .midway >>> .number {
   background: transparent !important;
   bottom: 1rem;
   right: 1rem;
-  @apply absolute text-purple-400 text-base;
+  @apply absolute text-secondary-30 text-base;
 }
 .midway >>> #midway {
   font-size: 3rem !important;
@@ -141,19 +141,19 @@ export default {
   top: 40%;
   left: 50%;
   transform: translate(-50%);
-  @apply absolute leading-loose font-black text-2xl text-indigo-200 uppercase;
+  @apply absolute leading-loose font-black text-2xl text-secondary-10 uppercase;
 }
 .midway >>> h2 {
-  @apply leading-loose font-black text-2xl text-indigo-200 pt-10 mb-5 uppercase;
+  @apply leading-loose font-black text-2xl text-secondary-10 pt-10 mb-5 uppercase;
 }
 .midway >>> h3 {
-  @apply leading-loose font-semibold text-2xl text-indigo-300 my-2;
+  @apply leading-loose font-semibold text-2xl text-secondary-20 my-2;
 }
 .midway >>> p {
   @apply mt-3;
 }
 .midway >>> a {
-  @apply text-teal-200 underline;
+  @apply text-primary-40 underline;
 }
 .midway >>> ul{
   list-style: inside;

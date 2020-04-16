@@ -1,0 +1,5 @@
+## Debriefing Script
+
+Thank you again for participating in this study! We are looking into whether a latent Dirichlet allocation model or a maximization algorithm can outperform random replacement in readability and achieve similar tone scores as people. The first of the two sections had all unaltered sentences and serves to establish a baseline for readability and emotion scores to compare our models to. In the second section you were given the same sentences, but they had gone through either our control model or our experimental model—you received our ______ model. The control model simply replaces each word with a random synonym, and the experimental model tries to maximize score in one of the emotion categories. We are hoping that The experimental model achieves similar readability scores to the baseline, as well as reaching higher emotion scores in the category it seeks to maximize.
+
+If you have any other questions, please let me know!

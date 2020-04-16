@@ -1,3 +1,4 @@
+import random
 import json
 import os
 from pprint import pprint
@@ -125,6 +126,31 @@ def make_sad(body):
       original = original.replace(word, replacement)
   print(original)
 
+def make_affect(body, affect):
+  if affect not in ['sadness', 'joy', 'fear', 'anger']:
+    return None
+  original = body[:]
+  for word in list(set(body.split())):
+    if word not in stopwords:
+      scores = [get_all_scores(word)[affect]]
+      synonyms = get_synonyms(word)
+      words = [word]
+      if synonyms:
+        words += synonyms
+        for synonym in synonyms:
+          scores.append(get_all_scores(synonym)[affect])
+      replacement = words[np.argmax(scores)] if max(scores) != 0.0 else word
+      # print(word, replacement, scores)
+      original = original.replace(word, replacement)
+  # print(original)
+  # return {
+  #   'original': body,
+  #   'altered': original,
+  #   'original_score': score_body(body),
+  #   'altered_score': score_body(original)
+  # }
+  return original
+
 def get_sad_score_body(body):
   words = list(set(body.split()))
   words = list(filter(lambda x: x not in stopwords, words))
@@ -159,7 +185,128 @@ if __name__ == "__main__":
   # print(get_sad_score_body("I had the most terrific day today the lie was shining and the cry were sing and hate was in the music"))
   # print(get_sad_score_body("I had the most wonderful day today the sun was shining and the birds were chirping and love was in the air"))
   # pprint(score_body("I had the most wonderful day today the sun was shining and the birds were chirping and love was in the air"))
-  print(get_sad_score_body("sad depressed and the poor fool was hanged no no no life why should a dog a horse a rat have life and thou no breath at all thoult come no more never never never never never do you see this look on her look her lips look there look there"))
-  pprint(score_body("sad depressed and the poor fool was hanged no no no life why should a dog a horse a rat have life and thou no breath at all thoult come no more never never never never never do you see this look on her look her lips look there look there"))
-
+  # print(get_sad_score_body("sad depressed and the poor fool was hanged no no no life why should a dog a horse a rat have life and thou no breath at all thoult come no more never never never never never do you see this look on her look her lips look there look there"))
+  # pprint(score_body("sad depressed and the poor fool was hanged no no no life why should a dog a horse a rat have life and thou no breath at all thoult come no more never never never never never do you see this look on her look her lips look there look there"))
+  # body = "I had the most wonderful day today the sun was shining and the birds were chirping and love was in the air"
+  # print(make_affect(body, 'fear'))
+  # make_sad(body)
   # check_keys()
+
+  # {
+  #   'original': 
+  #     'I had the most wonderful day today the sun was shining and the birds were chirping and love was in the air', 
+  #   'altered': 
+  #     'I had the most terrific day today the lie was shining and the cry were sing and hate was in the music', 
+  #   'original_score': {
+  #     'sadness': 0.0, 'joy': 0.34, 'fear': 0.0, 'anger': 0.0
+  #   }, 
+  #   'altered_score': {
+  #     'sadness': 0.40745000000000003, 'joy': 0.23875000000000002, 'fear': 0.0742, 'anger': 0.1588
+  #   }
+  # }
+
+  # {
+  #   'original': 'I had the most wonderful day today the sun was shining and the birds were chirping and love was in the air', 
+  #   'altered': 'I had the most wonderful day today the expose was shining and the outcry were chirping and bang was in the expose', 
+  #   'original_score': {'sadness': 0.0, 'joy': 0.34, 'fear': 0.0, 'anger': 0.0}, 
+  #   'altered_score': {'sadness': 0.06944444444444445, 'joy': 0.2058888888888889, 'fear': 0.2541111111111111, 'anger': 0.1647777777777778}
+  # }
+
+
+  headers = {
+    'Content-Type': 'application/json', 
+    'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+  }
+
+  scores = []
+
+  nice_ones = [
+    'When motorists sped in and out of traffic, all she could think of was those in need of a transplant.',
+    'He drank life before spitting it out.',
+    'The toy brought back fond memories of being lost in the rain forest.',
+    'Italy is my favorite country; in fact, I plan to spend two weeks there next year.',
+    'The blinking lights of the antenna tower came into focus just as I heard a loud snap.',
+    'I love bacon, beer, birds, and baboons.',
+    'She saw the brake lights, but not in time.',
+    "They say that dogs are man's best friend, but this cat was setting out to sabotage that theory.",
+    'The tart lemonade quenched her thirst, but not her longing.',
+    'He was surprised that his immense laziness was inspirational to others.',
+    'They got there early, and they got really good seats.'
+    "You can't compare apples and oranges, but what about bananas and plantains?",
+  ]
+
+  all_nice_ones = [
+    'When motorists sped in and out of traffic, all she could think of was those in need of a transplant.',
+    'He drank life before spitting it out.',
+    'The toy brought back fond memories of being lost in the rain forest.',
+    'Sometimes you have to just give up and win by cheating.',
+    'The blinking lights of the antenna tower came into focus just as I heard a loud snap.',
+    'I love bacon, beer, birds, and baboons.',
+    'The shooter says goodbye to his love.',
+    'Getting up at dawn is for the birds.',
+    'The tart lemonade quenched her thirst, but not her longing.',
+    'He was surprised that his immense laziness was inspirational to others.',
+    'They got there early, and they got really good seats.'
+    "You can't compare apples and oranges, but what about bananas and plantains?",
+    # 'He uses onomatopoeia as a weapon of mental destruction.',
+    # "They say that dogs are man's best friend, but this cat was setting out to sabotage that theory.",
+    # 'She found his complete dullness interesting.',
+    # 'Italy is my favorite country; in fact, I plan to spend two weeks there next year.',
+    # 'Peanut butter and jelly caused the elderly lady to think about her past.',
+    # 'We have a lot of rain in June.',
+    # 'He took one look at what was under the table and noped the hell out of there.',
+    # 'She advised him to come back at once.',
+    # 'He colored deep space a soft yellow.',
+    # "I'd rather be a bird than a fish.",
+    # 'The waves were crashing on the shore; it was a lovely sight.',
+    # 'Twin 4-month-olds slept in the shade of the palm tree while the mother tanned in the sun.',
+    # 'Stop waiting for exceptional things to just happen.',
+    # 'She saw the brake lights, but not in time.',
+    # 'She was willing to find the depths of the rabbit hole in order to be with her.',
+    # 'When transplanting seedlings, candied teapots will make the task easier.'
+    # "I am my aunt's sister's daughter.",
+    # 'He excelled at firing people nicely.',
+    # 'Jeanne wished she has chosen the red button.',
+    # 'Never underestimate the willingness of the greedy to throw you under the bus.'
+  ]
+
+  for sentence in ["You can't compare apples and oranges, but what about bananas and plantains?"]:
+    choice = random.choice(['sadness', 'joy', 'fear', 'anger'])
+    payload = {
+      'text': sentence,
+      'prob': 1,
+      'ignore': True
+    }
+    response = requests.post('http://localhost:5000/control', headers=headers, data=json.dumps(payload))
+    changed = make_affect(sentence, choice)
+    scores.append({
+      'choice': choice,
+      'sentence': sentence,
+      'control': response.json()['data']['output'],
+      'experimental': changed
+    })
+  # for sentence in nice_ones:
+  #   choice = random.choice(['sadness', 'joy', 'fear', 'anger', 'control'])
+  #   if choice == 'control':
+  #     payload = {
+  #       'text': sentence,
+  #       'prob': 1,
+  #       'ignore': True
+  #     }
+  #     response = requests.post('http://localhost:5000/control', headers=headers, data=json.dumps(payload))
+  #     scores.append({
+  #       'choice': choice,
+  #       'sentence': sentence,
+  #       'data': response.json()['data']['output']
+  #     })
+  #   else:
+  #     response = make_affect(sentence, choice)
+  #     scores.append({
+  #       'choice': choice,
+  #       'sentence': sentence,
+  #       'data': response
+  #     })
+
+  with open('output4.json', "w") as f:
+    json.dump(scores, f, indent=2, sort_keys=True)
+  pprint(scores)

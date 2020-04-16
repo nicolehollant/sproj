@@ -1,10 +1,10 @@
 <template>
 <div class="senselevel senselevel--results-box">
   
-  <h2 class="senselevel--category">
-    Sense Associations 
-    <InfoHover>
-      <div>
+  <h2 class="senselevel--category flex items-center">
+    <div class="mr-2">Sense Associations</div> 
+    <InfoHover size="3" class="-mt-1">
+      <div class="text-gray-100">
         <div>
           <p><b class="text-blue-500">sense</b> is the way in which the word is used.</p>
           <p class="text-sm text-blue-200 my-1 ml-1 pl-2 border-l-2 border-teal-700">ex: "cool" can be used in the sense of "quiet, chill, blunt" or in the sense of "cold, pinching, biting"</p>
@@ -31,10 +31,13 @@
       >
         <span>sense: </span>
         <span 
-          class="senselevel--entry__sense-word"
+          class="senselevel--entry__sense-word focus:outline-none focus:underline"
           v-for="sense in entry[senses].sense" 
           :key="`senselevel--entry-${senses}-${sense}`"
+          tabindex="0"
           v-on:click="()=>$emit('setword', sense)"
+          v-on:keydown.enter="()=>$emit('setword', sense)"
+          v-on:keydown.space="()=>$emit('setword', sense)"
         >
           {{commaSeparated(sense, entry[senses].sense)}}
         </span>
@@ -47,10 +50,13 @@
         <div class="senselevel--entry__associations senselevel--pos">
           <span>associations: </span>
           <span 
-            class="senselevel--entry__sense-word"
+            class="senselevel--entry__sense-word focus:outline-none focus:underline"
             v-for="association in entry[senses].associations" 
             :key="`senselevel--entry-${senses}-${association}`"
+            tabindex="0"
             v-on:click="()=>$emit('setword', association)"
+            v-on:keydown.enter="()=>$emit('setword', association)"
+            v-on:keydown.space="()=>$emit('setword', association)"
           >
             {{commaSeparated(association, entry[senses].associations)}}
           </span>
@@ -163,12 +169,16 @@ export default {
 }
 .senselevel--pos__wrapper{
   box-shadow: 4px 4px 10px -1px rgba(104, 0, 95, 0.5);
-  background: linear-gradient(155deg, rgb(117, 42, 81) 30%, rgb(88, 33, 87) 70%);
+  background: linear-gradient(155deg, rgb(248, 172, 213) 30%, rgb(192, 126, 191) 70%);
   min-width: min-content;
   @apply pt-2 pb-8 rounded;
 }
+.dark .senselevel--pos__wrapper {
+  box-shadow: 4px 4px 10px -1px rgba(138, 5, 127, 0.5);
+  background: linear-gradient(155deg, rgb(117, 42, 81) 30%, rgb(88, 33, 87) 70%);
+}
 .wrapper {
-  background-color: rgba(59, 12, 33, 0.6);
+  background-color: rgba(233, 177, 228, 0.6);
   min-width: min-content;
   @apply border-l-4 flex flex-wrap justify-start p-2 rounded;
 }
@@ -177,28 +187,32 @@ export default {
   @apply wrapper
 }
 .senselevel--error__wrapper {
-  @apply wrapper border-purple-500 text-purple-400 italic lowercase flex-col items-start
+  @apply wrapper border-secondary-50 text-secondary-30 italic lowercase flex-col items-start
+}
+
+.dark .wrapper, .dark .senselevel--entry__wrapper, .dark .senselevel--error__wrapper {
+  background-color: rgba(59, 12, 33, 0.6);
 }
 
 .senselevel--category {
-  @apply text-semilight text-2xl my-4 text-left capitalize;
+  @apply text-primary-10 text-2xl my-4 text-left capitalize;
 }
 
 .senselevel--pos {
-  @apply text-xl py-2 text-light text-left lowercase;
+  @apply text-xl py-2 text-secondary-20 text-left lowercase;
 }
 
 .senselevel--entry {
-  @apply m-4 text-pink-300 text-xl cursor-pointer;
+  @apply m-4 text-primary-20 text-xl cursor-pointer;
 }
 .senselevel--entry:hover {
-  @apply text-pink-500;
+  @apply text-primary-10 underline;
 }
 .senselevel--entry__sense-word {
-  @apply text-pink-200 cursor-pointer;
+  @apply text-primary-10 cursor-pointer;
 }
 .senselevel--entry__sense-word:hover {
-  @apply text-pink-500;
+  @apply text-primary-10 underline;
 }
 .senselevel--results__entries {
   @apply mx-4;
@@ -209,11 +223,11 @@ export default {
 }
 
 .associated__vals {
-  @apply text-left text-sm text-purple-200 italic
+  @apply text-left text-sm text-text italic
 }
 .associated__vals--header {
   text-transform: none;
-  @apply text-left text-base text-purple-300 font-medium font-medium not-italic
+  @apply text-left text-base text-secondary-20 font-medium font-medium not-italic
 }
 
 @media (min-width: 768px) {

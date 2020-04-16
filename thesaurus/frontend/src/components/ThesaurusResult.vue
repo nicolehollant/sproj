@@ -43,11 +43,20 @@ export default {
                     }, 
                     entry[key][pos].map(word => {
                       return h("li", {
+                        attrs: {
+                          tabindex: 0
+                        },
                         staticClass: "thesaurus--entry",
                         domProps: {
                           "innerHTML": word
                         },
                         on: {
+                          keydown: (e) => {
+                            if(e.key === 'Enter' || e.key === ' ') {
+                              const emit_event = listeners.event_from_child;
+                              emit_event(word);
+                            }
+                          },
                           click: () => {
                             const emit_event = listeners.event_from_child;
                             emit_event(word);
@@ -69,38 +78,49 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.text-semilight{
+/* .text-semilight{
   color: rgb(253, 203, 229);
 }
 .text-light{
   color: #dec4f0;
-}
+} */
 .thesaurus--pos__wrapper{
   box-shadow: 4px 4px 10px -1px rgba(104, 0, 95, 0.5);
-  background: linear-gradient(155deg, rgb(117, 42, 81) 30%, rgb(88, 33, 87) 70%);
+  background: linear-gradient(155deg, rgb(248, 172, 213) 30%, rgb(192, 126, 191) 70%);
   min-width: min-content;
   @apply pt-2 pb-8 rounded;
 }
+.dark .thesaurus--pos__wrapper{
+  box-shadow: 4px 4px 10px -1px rgba(138, 5, 127, 0.5);
+  background: linear-gradient(155deg, rgb(117, 42, 81) 30%, rgb(88, 33, 87) 70%);
+}
 .thesaurus--entry__wrapper{
-  background-color: rgba(59, 12, 33, 0.6);
+  background-color: rgba(233, 177, 228, 0.6);
   border-color: rgba(216, 69, 145, 0.7);
   min-width: min-content;
   @apply border-l-4 flex flex-wrap justify-center p-2 rounded;
 }
+.dark .thesaurus--entry__wrapper{
+  background-color: rgba(59, 12, 33, 0.6);
+  border-color: rgba(216, 69, 145, 0.7);
+}
 
 .thesaurus--category {
-  @apply text-semilight text-2xl my-4 text-left capitalize;
+  @apply text-primary-10 text-2xl my-4 text-left capitalize;
 }
 
 .thesaurus--pos {
-  @apply text-xl py-2 text-light text-left lowercase;
+  @apply text-xl py-2 text-secondary-20 text-left lowercase;
 }
 
 .thesaurus--entry {
-  @apply m-4 text-pink-300 text-xl cursor-pointer;
+  @apply m-4 text-primary-20 text-xl cursor-pointer;
 }
 .thesaurus--entry:hover {
-  @apply text-pink-500;
+  @apply text-primary-10 underline;
+}
+.thesaurus--entry:focus {
+  @apply outline-none underline
 }
 
 .thesaurus--results-box {

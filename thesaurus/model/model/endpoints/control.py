@@ -20,7 +20,6 @@ def post_control():
   
   prob = reqbody.get("prob", None)
   ignore = reqbody.get("ignore", None)
-  # print(f"Endpoint: ignore: {ignore}, prob: {prob}")
   control = Control(prob=prob, ignoreArticles=ignore)
   out, notPresent, numChanged, stopwordsSkipped = control.replaceWords(text)
   return jsonify({

@@ -12,6 +12,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/vue-fontawesome": "^0.1.8",
+    "@vue/composition-api": "^0.5.0",
     "core-js": "^2.6.5",
     "gsap": "^3.0.2",
     "markdown-it": "^10.0.0",

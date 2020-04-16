@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Procedure</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h2 id="procedure">Procedure</h2>
+<p>Before beginning the survey, the participant must complete a consent form. Then they will take the ground truth survey, and then take either the control survey or the experimental survey.</p>
+<h2 id="ground-truth-survey">Ground Truth Survey</h2>
+<p>The ground truth survey will consist of 12 sentences that were gathered from a <a href="https://randomwordgenerator.com/sentence.php">random sentence generator</a>. These 12 sentences will be given to all participants. The participant will be asked to give a score from 1-10 on how natural the passage sounded and to give scores from 1-10 on the strength of association between the passage and each of the following categories: anger, fear, joy, and sadness.</p>
+<h2 id="control-survey">Control Survey</h2>
+<p>For this section, each sentence from the previous section will be fed through a word replacement model to randomly replace words with their synonyms. Participants will answer the same questions for each sentence as in the ground-truth section. The participant will be asked to give a score from 1-10 on how natural the passage sounded and to give scores from 1-10 on the strength of association between the passage and each of the following categories: anger, fear, joy, and sadness.</p>
+<h2 id="experimental-survey">Experimental Survey</h2>
+<p>For this section, each sentence from the previous section will be fed through a word replacement model to target an emotion (either anger, fear, joy, or sadness). Participants will answer the same questions for each sentence as in the ground-truth section. The participant will be asked to give a score from 1-10 on how natural the passage sounded and to give scores from 1-10 on the strength of association between the passage and each of the following categories: anger, fear, joy, and sadness.</p>
+
+    </body>
+    </html>

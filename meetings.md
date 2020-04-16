@@ -209,7 +209,7 @@ Perhaps before LDA, we just want to do a naive approach. This would consist of a
 
 Note if it has
 
-[X] See if I can push history for words in thesaurus page 
+[X] See if I can push history for words in thesaurus page
 
 Get synonyms by association:
 - if we are using "cool" in the sense of "quiet, chill, blunt" grab only the synonyms that also have that sense
@@ -236,3 +236,26 @@ IRB:
 - finish and send to everyone!!!
 - give scores for pre-constructed sentences and then things that have gone through the model
 - for pre-constructed, go through gutenburg and pick most extreme sentences
+- passages from sat prep stuff so we know the answer?
+
+Email the irb folks
+
+
+- grab 20 sentences
+- run all through the model
+- give different things to 3 groups:
+  - group 1: 10 sentences unaltered, 10 altered
+  - group 2: flipped of above
+  - group 3: mix of both
+
+## For next week
+
+Write up more LDA stuff
+
+Get as much done as possible
+
+## Plans
+
+skype with stefan
+
+email irb folks about google forms

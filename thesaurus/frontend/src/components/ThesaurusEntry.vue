@@ -1,10 +1,11 @@
 <template>
   <div class="hello" :key="wordkey + $router.currentRoute.hash">
-    <div>
+    <label class="block">
+      <div class="sr-only">Word to search</div>
       <input type="text" v-model="m_word" v-on:keyup.enter="fetchAll" class="word-input"/>
-    </div>
+    </label>
 
-    <button type="submit" @click="fetchAll" class="submit-button">
+    <button aria-label="submit" type="submit" @click="fetchAll" class="submit-button">
       Take A Look
     </button>
 
@@ -171,30 +172,31 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.text-semilight{
-  color: rgb(253, 203, 229);
-}
-.text-light{
-  color: #dec4f0;
-}
-.word-input{
+.word-input {
   margin-left: 2rem;
   margin-right: 2rem;
   max-width: calc(100vw - 4rem);
-  @apply text-3xl mt-10 mb-4 font-bold uppercase text-pink-200 text-center bg-transparent border-b-2 border-solid border-pink-500 outline-none;
+  transition-duration: 200ms;
+  @apply text-3xl mt-10 mb-4 font-bold uppercase text-primary-10 text-center bg-transparent border-b-2 border-solid border-primary-40 rounded-t-lg;
+}
+.word-input:hover {
+  @apply bg-primary-90 text-primary-10
+}
+.word-input:focus {
+  @apply outline-none bg-neutral-10 text-primary-90
 }
 .submit-button {
   transition: all 0.2s ease-in-out;
-  @apply outline-none border-2 border-solid border-pink-500 rounded-full py-1 px-4 cursor-pointer text-pink-300 text-xl font-bold;
+  @apply outline-none border-2 border-solid border-primary-40 rounded-full py-1 px-4 cursor-pointer text-primary-10 text-xl font-bold;
 }
 .submit-button:hover {
-  @apply bg-pink-900 text-gray-300;
+  @apply bg-primary-90 text-primary-10;
 }
 .submit-button:focus {
-  @apply outline-none;
+  @apply outline-none bg-neutral-10 text-primary-90;
 }
 .error-text {
-  @apply text-semilight text-2xl text-center my-12 font-hairline capitalize;
+  @apply text-neutral-10 text-2xl text-center my-12 font-hairline capitalize;
 }
 .result-wrapper {
   @apply mx-6 my-12;

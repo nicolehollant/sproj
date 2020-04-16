@@ -52,13 +52,13 @@ export default {
   appearance: none;
   opacity: 0.8;
   transition: opacity .3s ease;
-  @apply block outline-none w-full h-2 bg-purple-800 my-2 rounded;
+  @apply block outline-none w-full h-2 bg-secondary-80 my-2 rounded;
 }
 .slider:hover {
   opacity: 1;
 }
 .thumb {
-  @apply w-3 h-3 bg-pink-500 rounded-full cursor-pointer;
+  @apply w-3 h-3 bg-primary-50 rounded-full cursor-pointer;
 }
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -69,9 +69,12 @@ export default {
   @apply thumb;
 }
 .slider::-webkit-slider-thumb:hover {
-  @apply bg-pink-300;
+  @apply bg-primary-20;
 }
 .slider::-moz-range-thumb:hover {
-  @apply bg-pink-300;
+  @apply bg-primary-20;
+}
+.slider:focus::-webkit-slider-thumb {
+  @apply shadow-outline w-4 h-4
 }
 </style>
