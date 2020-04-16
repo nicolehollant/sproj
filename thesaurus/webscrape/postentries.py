@@ -3,7 +3,7 @@ import urllib3
 import requests 
 import json
 from pprint import pprint
-
+# Started at 1:20pm
 url = os.getenv("SPROJBASE")+"/thesaurus/api/v1/admin/"
 # url = "http://localhost:3000/thesaurus/api/v1/admin/"
 
@@ -21,15 +21,15 @@ def logResponse(endpoint, count, response, word):
 
 def postThesaurus():
     count = 0
-    seen_legislate = False
+    seen_word = False
     with open(thesaurusLoc) as f:
         data = json.load(f)
         for entry in data:
             count += 1
-            if entry == 'legislate':
-                seen_legislate = True
+            if entry == 'aztlan':
+                seen_word = True
 
-            if seen_legislate:
+            if seen_word:
                 
                 payload = {
                     "word": entry,
@@ -204,7 +204,8 @@ def postvad():
             logResponse("VAD:", count, response.text, entry)
 
 if __name__ == "__main__":
-    # postSenseLevel()
+    postThesaurus()
+    postSenseLevel()
     postaffectintensity()
     postcolor()
     postvad()
