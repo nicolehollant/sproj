@@ -1,0 +1,554 @@
+[
+  {
+    "prompt": "When motorists sped in and out of traffic, all she could think of was those in need of a transplant.",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "sadness": 0.0
+      },
+      "topic": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "sadness": 0.0
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.0,
+      "sadness": 0.0
+    }
+  },
+  {
+    "prompt": "He drank life before spitting it out.",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.00012942580377646223,
+        "sadness": 0.0
+      },
+      "topic": {
+        "anger": 0.01990518762374914,
+        "fear": 0.030583087237465334,
+        "joy": 0.26979916115501834,
+        "sadness": 0.03134394310826834
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.0438,
+      "sadness": 0.0
+    }
+  },
+  {
+    "prompt": "The toy brought back fond memories of being lost in the rain forest.",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 2.443933771212971e-06,
+        "sadness": 0.00033025398050705134
+      },
+      "topic": {
+        "anger": 0.22573344151325284,
+        "fear": 0.32105788211910835,
+        "joy": 0.005184472488495934,
+        "sadness": 0.37318183927189447
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.0,
+      "sadness": 0.10888888888888888
+    }
+  },
+  {
+    "prompt": "Italy is my favorite country; in fact, I plan to spend two weeks there next year.",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 9.273781518281307e-05,
+        "sadness": 0.0
+      },
+      "topic": {
+        "anger": 0.01990526282267141,
+        "fear": 0.030583202775949236,
+        "joy": 0.2698001804172595,
+        "sadness": 0.03134406152115577
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.07672727272727273,
+      "sadness": 0.0
+    }
+  },
+  {
+    "prompt": "The blinking lights of the antenna tower came into focus just as I heard a loud snap.",
+    "lda": {
+      "input": {
+        "anger": 0.00024145889364858442,
+        "fear": 5.545454766127805e-06,
+        "joy": 9.854432490539759e-05,
+        "sadness": 0.0
+      },
+      "topic": {
+        "anger": 0.2484923225987228,
+        "fear": 0.21421840061220812,
+        "joy": 0.19764210245346842,
+        "sadness": 0.1557081988130594
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.009227272727272728,
+      "sadness": 0.0
+    }
+  },
+  {
+    "prompt": "I love bacon, beer, birds, and baboons.",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.0044606469815132175,
+        "sadness": 0.0023555880353362114
+      },
+      "topic": {
+        "anger": 0.026413924592132546,
+        "fear": 0.040583358235779736,
+        "joy": 0.35801997109872025,
+        "sadness": 0.04159300406161932
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.24741666666666665,
+      "sadness": 0.0
+    }
+  },
+  {
+    "prompt": "She saw the brake lights, but not in time.",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.00014713224954374413,
+        "sadness": 0.0
+      },
+      "topic": {
+        "anger": 0.019908310728989565,
+        "fear": 0.03058788569512497,
+        "joy": 0.2698414923899704,
+        "sadness": 0.0313488609434994
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.020300000000000002,
+      "sadness": 0.0
+    }
+  },
+  {
+    "prompt": "They say that dogs are man's best friend, but this cat was setting out to sabotage that theory.",
+    "lda": {
+      "input": {
+        "anger": 0.0009083908416632866,
+        "fear": 0.000895766996729923,
+        "joy": 0.0003883748309189523,
+        "sadness": 0.0007805744117129805
+      },
+      "topic": {
+        "anger": 0.2486004295259834,
+        "fear": 0.21430520196448477,
+        "joy": 0.19760710138868348,
+        "sadness": 0.1557669500105881
+      }
+    },
+    "raw": {
+      "anger": 0.08635,
+      "fear": 0.08514999999999999,
+      "joy": 0.07355,
+      "sadness": 0.0742
+    }
+  },
+  {
+    "prompt": "The tart lemonade quenched her thirst, but not her longing.",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "sadness": 0.00024352994672865294
+      },
+      "topic": {
+        "anger": 0.22564638936497866,
+        "fear": 0.32093406892523035,
+        "joy": 0.005182473141545981,
+        "sadness": 0.37303792492500926
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.0,
+      "sadness": 0.23441666666666663
+    }
+  },
+  {
+    "prompt": "He was surprised that his immense laziness was inspirational to others.",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.001369745715850049,
+        "joy": 0.003950616555326341,
+        "sadness": 0.0
+      },
+      "topic": {
+        "anger": 0.026414850478862967,
+        "fear": 0.0405847808033628,
+        "joy": 0.3580325207650642,
+        "sadness": 0.04159446202029579
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.044250000000000005,
+      "sadness": 0.0
+    }
+  },
+  {
+    "prompt": "They got there early, and they got really good seats.",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.000990198672737391,
+        "sadness": 0.0
+      },
+      "topic": {
+        "anger": 0.019908313078955887,
+        "fear": 0.030587889305702592,
+        "joy": 0.26984152424191543,
+        "sadness": 0.03134886464390214
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.12891666666666668,
+      "sadness": 0.0
+    }
+  },
+  {
+    "prompt": "You can't compare apples and oranges, but what about bananas and plantains?",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "sadness": 0.0
+      },
+      "topic": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "sadness": 0.0
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.0,
+      "sadness": 0.0
+    }
+  },
+  {
+    "prompt": "The toy brought lie fond memories of being destroyed in the rain forest.",
+    "lda": {
+      "input": {
+        "anger": 0.0035161147595730406,
+        "fear": 0.002533299531320858,
+        "joy": 5.287511295650304e-06,
+        "sadness": 0.0038427157116637154
+      },
+      "topic": {
+        "anger": 0.4524614609570701,
+        "fear": 0.4527340082715381,
+        "joy": 0.027080790744967848,
+        "sadness": 0.4035550369776352
+      }
+    },
+    "raw": {
+      "anger": 0.17422222222222222,
+      "fear": 0.09744444444444444,
+      "joy": 0.0,
+      "sadness": 0.2091111111111111
+    }
+  },
+  {
+    "prompt": "He drank sentence before expulsion it out.",
+    "lda": {
+      "input": {
+        "anger": 0.001225774090485552,
+        "fear": 0.0011955011730335333,
+        "joy": 0.0,
+        "sadness": 0.0011448624100012699
+      },
+      "topic": {
+        "anger": 0.38581312176837174,
+        "fear": 0.4079435818491096,
+        "joy": 0.0211763156626665,
+        "sadness": 0.3836442112139914
+      }
+    },
+    "raw": {
+      "anger": 0.28440000000000004,
+      "fear": 0.2813,
+      "joy": 0.0,
+      "sadness": 0.2703
+    }
+  },
+  {
+    "prompt": "The tart lemonade quenched her thirst, but not her longing.",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "sadness": 0.00024353190225313062
+      },
+      "topic": {
+        "anger": 0.22564820128603244,
+        "fear": 0.3209366459981363,
+        "joy": 0.005182514756358529,
+        "sadness": 0.37304092038738706
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.0,
+      "sadness": 0.23441666666666663
+    }
+  },
+  {
+    "prompt": "You can't compare apples and oranges, but what about bananas and plantains?",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "sadness": 0.0
+      },
+      "topic": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "sadness": 0.0
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.0,
+      "sadness": 0.0
+    }
+  },
+  {
+    "prompt": "They got there early, and they got really bully seats.",
+    "lda": {
+      "input": {
+        "anger": 0.0007632662359094844,
+        "fear": 0.0007487967338069351,
+        "joy": 0.0,
+        "sadness": 0.00026135538172729973
+      },
+      "topic": {
+        "anger": 0.22573346815915069,
+        "fear": 0.3210579200172393,
+        "joy": 0.00518447310047847,
+        "sadness": 0.37318188332281177
+      }
+    },
+    "raw": {
+      "anger": 0.14066666666666666,
+      "fear": 0.138,
+      "joy": 0.0,
+      "sadness": 0.04816666666666666
+    }
+  },
+  {
+    "prompt": "They say that scoundrel are man's shell friend, but this flog was setting out to devastation that theory.",
+    "lda": {
+      "input": {
+        "anger": 0.0035753438426655232,
+        "fear": 0.00366994737028064,
+        "joy": 0.000233709836846287,
+        "sadness": 0.0039875264784574585
+      },
+      "topic": {
+        "anger": 0.27709673560452097,
+        "fear": 0.3950200467530875,
+        "joy": 0.11409058942949923,
+        "sadness": 0.4574702399847075
+      }
+    },
+    "raw": {
+      "anger": 0.32075000000000004,
+      "fear": 0.3186,
+      "joy": 0.07355,
+      "sadness": 0.2262
+    }
+  },
+  {
+    "prompt": "I hate bacon, beer, birds, and baboons.",
+    "lda": {
+      "input": {
+        "anger": 0.0015735896322070816,
+        "fear": 0.0012787503858328248,
+        "joy": 0.00022676292728629835,
+        "sadness": 0.001349328052457824
+      },
+      "topic": {
+        "anger": 0.24864758146870736,
+        "fear": 0.21434070745886563,
+        "joy": 0.1975473018625946,
+        "sadness": 0.1557892658741334
+      }
+    },
+    "raw": {
+      "anger": 0.15233333333333332,
+      "fear": 0.12366666666666666,
+      "joy": 0.09508333333333334,
+      "sadness": 0.138
+    }
+  },
+  {
+    "prompt": "She saw the constraint lights, but not in time.",
+    "lda": {
+      "input": {
+        "anger": 0.00044153587260304424,
+        "fear": 0.0004551916212402518,
+        "joy": 9.833982451363442e-05,
+        "sadness": 0.0003908578721049629
+      },
+      "topic": {
+        "anger": 0.16375726277337332,
+        "fear": 0.23442497280469762,
+        "joy": 0.18335239253911392,
+        "sadness": 0.26968066642776034
+      }
+    },
+    "raw": {
+      "anger": 0.14550000000000002,
+      "fear": 0.15,
+      "joy": 0.020300000000000002,
+      "sadness": 0.1288
+    }
+  },
+  {
+    "prompt": "He was surprised that his immense relaxation was inspirational to others.",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.0015384199806219607,
+        "joy": 0.005455508491027887,
+        "sadness": 0.0
+      },
+      "topic": {
+        "anger": 0.029667648010569172,
+        "fear": 0.045582502631379695,
+        "joy": 0.40212163271165896,
+        "sadness": 0.04671651877774482
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.10025,
+      "sadness": 0.0
+    }
+  },
+  {
+    "prompt": "When motorists sped in and out of traffic, all she could think of was those in need of a transplant.",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "sadness": 0.0
+      },
+      "topic": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "sadness": 0.0
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.0,
+      "sadness": 0.0
+    }
+  },
+  {
+    "prompt": "Italy is my competition country; in fact, I plan to spend two weeks there next year.",
+    "lda": {
+      "input": {
+        "anger": 1.8317728830976398e-07,
+        "fear": 2.5205194871423524e-07,
+        "joy": 8.777678692111697e-05,
+        "sadness": 0.0
+      },
+      "topic": {
+        "anger": 0.019905220523277634,
+        "fear": 0.03058313778555204,
+        "joy": 0.26979960708224887,
+        "sadness": 0.03134399491390659
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.007818181818181818,
+      "joy": 0.0,
+      "sadness": 0.0
+    }
+  },
+  {
+    "prompt": "The blinking twinkle of the antenna tower came into clarity just as I heard a roaring snap.",
+    "lda": {
+      "input": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "sadness": 0.0
+      },
+      "topic": {
+        "anger": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "sadness": 0.0
+      }
+    },
+    "raw": {
+      "anger": 0.0,
+      "fear": 0.0,
+      "joy": 0.10190909090909091,
+      "sadness": 0.0
+    }
+  }
+]

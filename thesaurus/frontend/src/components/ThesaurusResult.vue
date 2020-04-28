@@ -16,40 +16,27 @@ export default {
     }
     let entry = props.entry;
     return h("div", { staticClass: "my-12" }, [
-      h(
-        "div", {
+      h("div", {
           staticClass: "thesaurus--results-box",
         }, [
         Object.keys(entry).map(key => {
           return hasResults(entry[key]) ? h("div", {}, [
             h("h2", {
               staticClass: "thesaurus--category",
-              domProps: {
-                "innerHTML": key
-              },
+              domProps: { "innerHTML": key },
             }),
             h("div", {
               staticClass: "thesaurus--pos__wrapper"
             }, Object.keys(entry[key]).map(pos => {
               if(entry[key][pos].length > 0) {
-                return h("div", {
-                  staticClass: "mx-4 md:mx-8"
-                }, [
-                  h("h3", {
-                    staticClass: "thesaurus--pos"
-                  }, pos),
-                  h("ul", {
-                      "class": "thesaurus--entry__wrapper"
-                    }, 
+                return h("div", { staticClass: "mx-4 md:mx-8"}, [
+                  h("h3", { staticClass: "thesaurus--pos" }, pos),
+                  h("ul", { "class": "thesaurus--entry__wrapper" }, 
                     entry[key][pos].map(word => {
                       return h("li", {
-                        attrs: {
-                          tabindex: 0
-                        },
+                        attrs: { tabindex: 0 },
                         staticClass: "thesaurus--entry",
-                        domProps: {
-                          "innerHTML": word
-                        },
+                        domProps: { "innerHTML": word },
                         on: {
                           keydown: (e) => {
                             if(e.key === 'Enter' || e.key === ' ') {
@@ -129,22 +116,45 @@ export default {
 </style>
 
 <!--
-<template>
+<template functional>
 <div class="thesaurus--results-box">
-  <div v-if="notEmpty(entry[key])">
-  <h2 class="thesaurus--category">{{ key }}</h2>
-  <div class="thesaurus--pos__wrapper">
-    <div v-for="pos in Object.keys(entry[key])" :key="pos+entry.key">
-      <div v-if="entry[key][pos].length > 0" class="mx-4 md:mx-8">
-        <h3 class="thesaurus--pos">{{ pos }}</h3>
-        <ul class="thesaurus--entry__wrapper">
-          <li class="thesaurus--entry" v-for="word in entry[key][pos]" :key="pos+entry.key+word" v-on:click="()=>setWord(word)">
-            {{word}}
-          </li>
-        </ul>
+  <div 
+    v-for="(key, i) in Object.keys(props.entry)" 
+    :key="[key, i].join('-')"
+  >
+    <div v-if="Object.entries(props.entry[key]).map(([k, v]) => v.length > 0).reduce((a, c) => (a || c))">
+      <h2 class="thesaurus--category">
+        {{ key }}
+      </h2>
+      <div class="thesaurus--pos__wrapper">
+        <div 
+          v-for="(pos, j) in Object.keys(props.entry[key])" 
+          :key="[pos, props.entry.key, j].join('-')"
+        >
+          <div 
+            v-if="props.entry[key][pos].length > 0" 
+            class="mx-4 md:mx-8"
+          >
+            <h3 class="thesaurus--pos">
+              {{ pos }}
+            </h3>
+            <ul class="thesaurus--entry__wrapper">
+              <li 
+                class="thesaurus--entry" 
+                v-for="(word, k) in props.entry[key][pos]" 
+                :key="[pos, props.entry.key, word, k].join('-')" 
+                v-on:keydown.enter="() => listeners.event_from_child(word)" 
+                v-on:keydown.space="() => listeners.event_from_child(word)" 
+                v-on:click="() => listeners.event_from_child(word)" 
+                tabindex="0"
+              >
+                {{word}}
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </div>
 </template>

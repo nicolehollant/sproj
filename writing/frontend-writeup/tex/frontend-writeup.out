@@ -1,0 +1,11 @@
+\BOOKMARK [0][-]{chapter.1}{Frontend}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Why make a frontend?}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{Overview of our frontend}{section.1.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.2}{Configuration}{section.1.1}% 4
+\BOOKMARK [1][-]{section.1.2}{Creating our Component Library}{chapter.1}% 5
+\BOOKMARK [2][-]{subsection.1.2.1}{Different Kinds of Components}{section.1.2}% 6
+\BOOKMARK [2][-]{subsection.1.2.2}{Our Components}{section.1.2}% 7
+\BOOKMARK [2][-]{subsection.1.2.3}{Creating Our Documentation Renderer}{section.1.2}% 8
+\BOOKMARK [1][-]{section.1.3}{Consuming the composition API}{chapter.1}% 9
+\BOOKMARK [1][-]{section.1.4}{Making things pretty}{chapter.1}% 10
+\BOOKMARK [1][-]{section.1.5}{Making things accessible}{chapter.1}% 11

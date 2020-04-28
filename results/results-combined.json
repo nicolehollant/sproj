@@ -1,0 +1,434 @@
+[
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "When motorists sped in and out of traffic, all she could think of was those in need of a transplant.",
+    "scores": {
+      "natural": 4.642857142857142,
+      "angry": 3.8214285714285716,
+      "sad": 6.607142857142857,
+      "joy": 1.8928571428571428,
+      "fear": 5.964285714285714
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "He drank life before spitting it out.",
+    "scores": {
+      "natural": 6.107142857142858,
+      "angry": 4.857142857142858,
+      "sad": 6.107142857142858,
+      "joy": 2.392857142857143,
+      "fear": 2.821428571428571
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "The toy brought back fond memories of being lost in the rain forest.",
+    "scores": {
+      "natural": 7.928571428571429,
+      "angry": 1.4285714285714286,
+      "sad": 4.535714285714286,
+      "joy": 6.607142857142858,
+      "fear": 2.178571428571429
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "Italy is my favorite country; in fact, I plan to spend two weeks there next year.",
+    "scores": {
+      "natural": 8.5,
+      "angry": 1.2142857142857144,
+      "sad": 1.1785714285714286,
+      "joy": 8.107142857142858,
+      "fear": 1.1428571428571428
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "The blinking lights of the antenna tower came into focus just as I heard a loud snap.",
+    "scores": {
+      "natural": 7.535714285714286,
+      "angry": 1.8214285714285714,
+      "sad": 1.8928571428571428,
+      "joy": 1.6071428571428572,
+      "fear": 7.0
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "I love bacon, beer, birds, and baboons.",
+    "scores": {
+      "natural": 7.928571428571429,
+      "angry": 1.2142857142857144,
+      "sad": 1.3214285714285716,
+      "joy": 7.571428571428571,
+      "fear": 1.2142857142857144
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "She saw the brake lights, but not in time.",
+    "scores": {
+      "natural": 8.714285714285715,
+      "angry": 2.321428571428571,
+      "sad": 7.892857142857142,
+      "joy": 1.1428571428571428,
+      "fear": 7.4642857142857135
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "They say that dogs are man's best friend, but this cat was setting out to sabotage that theory.",
+    "scores": {
+      "natural": 7.571428571428571,
+      "angry": 3.0357142857142856,
+      "sad": 1.5714285714285714,
+      "joy": 4.892857142857143,
+      "fear": 2.2142857142857144
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "The tart lemonade quenched her thirst, but not her longing.",
+    "scores": {
+      "natural": 7.392857142857142,
+      "angry": 1.7857142857142856,
+      "sad": 6.928571428571429,
+      "joy": 2.3214285714285716,
+      "fear": 1.6071428571428572
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "He was surprised that his immense laziness was inspirational to others.",
+    "scores": {
+      "natural": 7.535714285714286,
+      "angry": 1.5,
+      "sad": 3.5,
+      "joy": 4.142857142857142,
+      "fear": 1.5357142857142856
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "They got there early, and they got really good seats.",
+    "scores": {
+      "natural": 7.571428571428571,
+      "angry": 1.5714285714285714,
+      "sad": 1.3928571428571428,
+      "joy": 6.892857142857142,
+      "fear": 1.25
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "You can't compare apples and oranges, but what about bananas and plantains?",
+    "scores": {
+      "natural": 8.071428571428571,
+      "angry": 1.6428571428571428,
+      "sad": 1.3571428571428572,
+      "joy": 3.9642857142857144,
+      "fear": 1.2857142857142856
+    }
+  },
+  {
+    "group": "control",
+    "target": null,
+    "question": "The flaming fire up of the transmitting aerial rise came into adjust just as I detected a colourful cracking.",
+    "scores": {
+      "natural": 2.5,
+      "angry": 1.9285714285714286,
+      "sad": 2.0714285714285716,
+      "joy": 2.142857142857143,
+      "fear": 3.857142857142857
+    }
+  },
+  {
+    "group": "control",
+    "target": null,
+    "question": "She locution the pasture brake unstressed, but not in instance.",
+    "scores": {
+      "natural": 1.2857142857142858,
+      "angry": 1.3571428571428572,
+      "sad": 2.2142857142857144,
+      "joy": 1.5714285714285714,
+      "fear": 2.5
+    }
+  },
+  {
+    "group": "control",
+    "target": null,
+    "question": "Italy is my preferred administrative district; in concept, I think to exhaust ii work time there adjacent time period.",
+    "scores": {
+      "natural": 1.6428571428571428,
+      "angry": 1.3571428571428572,
+      "sad": 1.1428571428571428,
+      "joy": 2.2142857142857144,
+      "fear": 1.2857142857142858
+    }
+  },
+  {
+    "group": "control",
+    "target": null,
+    "question": "I get it on monastic, brew, skirt, and old world monkey.",
+    "scores": {
+      "natural": 1.8571428571428572,
+      "angry": 1.4285714285714286,
+      "sad": 1.2142857142857142,
+      "joy": 2.4285714285714284,
+      "fear": 1.1428571428571428
+    }
+  },
+  {
+    "group": "control",
+    "target": null,
+    "question": "They got there primeval, and they got actually redeeming seats.",
+    "scores": {
+      "natural": 2.2142857142857144,
+      "angry": 1.2142857142857142,
+      "sad": 1.5,
+      "joy": 3.357142857142857,
+      "fear": 1.2142857142857142
+    }
+  },
+  {
+    "group": "control",
+    "target": null,
+    "question": "They express that canid are man's beat out friend, but this vomit was scope out to disobey that belief.",
+    "scores": {
+      "natural": 1.4285714285714286,
+      "angry": 2.7857142857142856,
+      "sad": 1.5714285714285714,
+      "joy": 1.1428571428571428,
+      "fear": 1.7142857142857142
+    }
+  },
+  {
+    "group": "control",
+    "target": null,
+    "question": "The move brought backrest adoring memories of being unsaved in the chronological succession woods.",
+    "scores": {
+      "natural": 1.7142857142857142,
+      "angry": 1.7142857142857142,
+      "sad": 2.7142857142857144,
+      "joy": 2.357142857142857,
+      "fear": 2.357142857142857
+    }
+  },
+  {
+    "group": "control",
+    "target": null,
+    "question": "The bawd ade satisfied her ache, but not her desire.",
+    "scores": {
+      "natural": 3.0714285714285716,
+      "angry": 1.5,
+      "sad": 3.7142857142857144,
+      "joy": 1.7142857142857142,
+      "fear": 1.4285714285714286
+    }
+  },
+  {
+    "group": "control",
+    "target": null,
+    "question": "He drank brio before projection it out.",
+    "scores": {
+      "natural": 1.2857142857142858,
+      "angry": 1.7857142857142858,
+      "sad": 1.7857142857142858,
+      "joy": 1.3571428571428572,
+      "fear": 1.7857142857142858
+    }
+  },
+  {
+    "group": "control",
+    "target": null,
+    "question": "You can't similitude apple tree and spectral color, but what about herbaceous plant and banana?",
+    "scores": {
+      "natural": 1.5714285714285714,
+      "angry": 1.5714285714285714,
+      "sad": 1.2857142857142858,
+      "joy": 1.7857142857142858,
+      "fear": 1.0714285714285714
+    }
+  },
+  {
+    "group": "control",
+    "target": null,
+    "question": "When driver sped in and out of commerce, all she could call up of was those in demand of a insert.",
+    "scores": {
+      "natural": 1.5,
+      "angry": 2.357142857142857,
+      "sad": 2.0,
+      "joy": 1.0714285714285714,
+      "fear": 2.142857142857143
+    }
+  },
+  {
+    "group": "control",
+    "target": null,
+    "question": "He was dumbstruck that his vast inertia was sacred to unusual.",
+    "scores": {
+      "natural": 2.2857142857142856,
+      "angry": 2.0,
+      "sad": 2.2142857142857144,
+      "joy": 1.8571428571428572,
+      "fear": 2.0714285714285716
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "anger",
+    "question": "The toy brought lie fond memories of being destroyed in the rain forest.",
+    "scores": {
+      "natural": 3.2857142857142856,
+      "angry": 3.142857142857143,
+      "sad": 5.857142857142857,
+      "joy": 2.0,
+      "fear": 3.0714285714285716
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "anger",
+    "question": "He drank sentence before expulsion it out.",
+    "scores": {
+      "natural": 1.7142857142857142,
+      "angry": 3.2142857142857144,
+      "sad": 2.5,
+      "joy": 1.5714285714285714,
+      "fear": 2.142857142857143
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "anger",
+    "question": "The tart lemonade quenched her thirst, but not her longing.",
+    "scores": {
+      "natural": 7.714285714285714,
+      "angry": 1.9285714285714286,
+      "sad": 7.142857142857143,
+      "joy": 2.0,
+      "fear": 1.7857142857142858
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "anger",
+    "question": "You can't compare apples and oranges, but what about bananas and plantains?",
+    "scores": {
+      "natural": 7.5,
+      "angry": 1.8571428571428572,
+      "sad": 1.5714285714285714,
+      "joy": 2.5714285714285716,
+      "fear": 1.3571428571428572
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "anger",
+    "question": "They got there early, and they got really bully seats.",
+    "scores": {
+      "natural": 2.0714285714285716,
+      "angry": 2.7142857142857144,
+      "sad": 1.9285714285714286,
+      "joy": 2.0714285714285716,
+      "fear": 1.9285714285714286
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "anger",
+    "question": "They say that scoundrel are man's shell friend, but this flog was setting out to devastation that theory.",
+    "scores": {
+      "natural": 1.6428571428571428,
+      "angry": 3.4285714285714284,
+      "sad": 2.142857142857143,
+      "joy": 1.5,
+      "fear": 2.357142857142857
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "sadness",
+    "question": "I hate bacon, beer, birds, and baboons.",
+    "scores": {
+      "natural": 8.142857142857142,
+      "angry": 7.642857142857143,
+      "sad": 2.4285714285714284,
+      "joy": 1.3571428571428572,
+      "fear": 1.9285714285714286
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "fear",
+    "question": "She saw the constraint lights, but not in time.",
+    "scores": {
+      "natural": 4.357142857142857,
+      "angry": 1.7857142857142858,
+      "sad": 5.0,
+      "joy": 1.5,
+      "fear": 4.357142857142857
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "joy",
+    "question": "He was surprised that his immense relaxation was inspirational to others.",
+    "scores": {
+      "natural": 5.785714285714286,
+      "angry": 1.4285714285714286,
+      "sad": 1.8571428571428572,
+      "joy": 4.0,
+      "fear": 1.3571428571428572
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "joy",
+    "question": "When motorists sped in and out of traffic, all she could think of was those in need of a transplant.",
+    "scores": {
+      "natural": 5.857142857142857,
+      "angry": 3.0714285714285716,
+      "sad": 6.0,
+      "joy": 1.7857142857142858,
+      "fear": 4.5
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "fear",
+    "question": "Italy is my competition country; in fact, I plan to spend two weeks there next year.",
+    "scores": {
+      "natural": 4.071428571428571,
+      "angry": 3.0,
+      "sad": 1.5,
+      "joy": 2.857142857142857,
+      "fear": 1.7857142857142858
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "joy",
+    "question": "The blinking twinkle of the antenna tower came into clarity just as I heard a roaring snap.",
+    "scores": {
+      "natural": 5.142857142857143,
+      "angry": 1.7857142857142858,
+      "sad": 2.4285714285714284,
+      "joy": 1.7857142857142858,
+      "fear": 5.285714285714286
+    }
+  }
+]

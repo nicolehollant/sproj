@@ -1,21 +1,34 @@
 <template>
 <div class="request-wrapper" v-if="!!request.request">
   <div class="request__header">
-    <div class="name">{{request.name}}</div>
+    <div class="name">
+      {{request.name}}
+    </div>
   </div>
   <div class="request">
     <div class="request__url">
-      <div :class="`request__badge request__badge--${request.request.method}`">{{request.request.method}}</div>
+      <div :class="`request__badge request__badge--${request.request.method}`">
+        {{request.request.method}}
+      </div>
       <div class="request__text">
-        <div class="url">{{request.request.url.raw}}</div>
+        <div class="url">
+          {{request.request.url.raw}}
+        </div>
       </div>
     </div>
     <div class="request__section">
-      <div class="description">{{request.request.description}}</div>
+      <div class="description">
+        {{request.request.description}}
+      </div>
     </div>
     <Headers :headers="request.request.header" class="request__section"/>
     <Body :body="request.request.body" class="request__section"/>
-    <Response :response="response" class="request__section" v-for="(response, index) of request.response" :key="`response-${request.name}-${index}`"/>
+    <Response 
+      :response="response" 
+      class="request__section" 
+      v-for="(response, index) of request.response" 
+      :key="`response-${request.name}-${index}`"
+    />
   </div>
 </div>
 </template>

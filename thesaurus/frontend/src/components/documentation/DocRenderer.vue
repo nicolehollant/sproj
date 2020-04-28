@@ -4,7 +4,9 @@
   <div class="docs__nav" :class="{ 'docs__mobile--active': navActive }" v-on-click-outside="dismissNav">
     <div class="docs__nav--header">
       <router-link exact to="/">HOME</router-link>
-      <button aria-label="navigation toggle" @click="toggleNav" class="docs__nav--hamburger"><fa-icon icon="bars" /></button>
+      <button aria-label="navigation toggle" @click="toggleNav" class="docs__nav--hamburger">
+        <fa-icon icon="bars" />
+      </button>
     </div>
     <div class="docs__nav--main" v-if="!!selected">
       <button 

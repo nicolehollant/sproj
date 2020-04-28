@@ -13,7 +13,9 @@
     v-model="m_value"
     @input="$emit('input', m_value)"
   >
-  <p v-if="error !== ''" class="text-orange-500 font-medium text-sm text-center mt-1">{{error}}</p>
+  <p v-if="error !== ''" class="text-orange-500 font-medium text-sm text-center mt-1">
+    {{error}}
+  </p>
 </div>
 </template>
 
@@ -42,7 +44,6 @@ export default {
   @apply w-full text-left;
 }
 .text-input {
-  -webkit-appearance: none;
   background-color: rgb(255, 224, 252);
   @apply w-full px-2 font-normal rounded border-2 border-primary-50 text-primary-10 appearance-none;
 }

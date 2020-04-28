@@ -1,0 +1,947 @@
+[
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "1. When motorists sped in and out of traffic, all she could think of was those in need of a transplant.\n",
+    "scores": {
+      "means": {
+        "natural": 4.357142857142857,
+        "angry": 3.2142857142857144,
+        "sad": 6.857142857142857,
+        "joy": 2.2142857142857144,
+        "fear": 5.785714285714286
+      },
+      "medians": {
+        "natural": 4.5,
+        "angry": 2.0,
+        "sad": 7.5,
+        "joy": 2.0,
+        "fear": 6.0
+      },
+      "modes": {
+        "natural": [
+          "6"
+        ],
+        "angry": [
+          "2"
+        ],
+        "sad": [
+          "8"
+        ],
+        "joy": [
+          "1"
+        ],
+        "fear": [
+          "8",
+          "6"
+        ]
+      }
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "2. He drank life before spitting it out.\n",
+    "scores": {
+      "means": {
+        "natural": 6.071428571428571,
+        "angry": 5.642857142857143,
+        "sad": 6.285714285714286,
+        "joy": 2.357142857142857,
+        "fear": 2.7142857142857144
+      },
+      "medians": {
+        "natural": 7.0,
+        "angry": 6.0,
+        "sad": 6.5,
+        "joy": 2.0,
+        "fear": 2.5
+      },
+      "modes": {
+        "natural": [
+          "8",
+          "7",
+          "2"
+        ],
+        "angry": [
+          "7"
+        ],
+        "sad": [
+          "8",
+          "6"
+        ],
+        "joy": [
+          "2",
+          "1"
+        ],
+        "fear": [
+          "2"
+        ]
+      }
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "3. The toy brought back fond memories of being lost in the rain forest.\n",
+    "scores": {
+      "means": {
+        "natural": 7.571428571428571,
+        "angry": 1.5,
+        "sad": 5.428571428571429,
+        "joy": 6.785714285714286,
+        "fear": 2.0714285714285716
+      },
+      "medians": {
+        "natural": 8.0,
+        "angry": 1.0,
+        "sad": 6.0,
+        "joy": 7.0,
+        "fear": 2.0
+      },
+      "modes": {
+        "natural": [
+          "8",
+          "9"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "6"
+        ],
+        "joy": [
+          "7"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "4. Italy is my favorite country; in fact, I plan to spend two weeks there next year.\n",
+    "scores": {
+      "means": {
+        "natural": 8.357142857142858,
+        "angry": 1.2857142857142858,
+        "sad": 1.2857142857142858,
+        "joy": 8.214285714285714,
+        "fear": 1.2857142857142858
+      },
+      "medians": {
+        "natural": 9.0,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 8.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          "10"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "1"
+        ],
+        "joy": [
+          "8"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "5. The blinking lights of the antenna tower came into focus just as I heard a loud snap.\n",
+    "scores": {
+      "means": {
+        "natural": 7.785714285714286,
+        "angry": 2.142857142857143,
+        "sad": 1.7857142857142858,
+        "joy": 1.5714285714285714,
+        "fear": 7.428571428571429
+      },
+      "medians": {
+        "natural": 7.0,
+        "angry": 2.0,
+        "sad": 2.0,
+        "joy": 1.0,
+        "fear": 8.0
+      },
+      "modes": {
+        "natural": [
+          "7"
+        ],
+        "angry": [
+          "2",
+          "1"
+        ],
+        "sad": [
+          "2",
+          "1"
+        ],
+        "joy": [
+          "1"
+        ],
+        "fear": [
+          "8"
+        ]
+      }
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "6. I love bacon, beer, birds, and baboons.\n",
+    "scores": {
+      "means": {
+        "natural": 7.785714285714286,
+        "angry": 1.3571428571428572,
+        "sad": 1.3571428571428572,
+        "joy": 7.642857142857143,
+        "fear": 1.3571428571428572
+      },
+      "medians": {
+        "natural": 7.5,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 8.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          "10",
+          "9",
+          "7",
+          "6"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "1"
+        ],
+        "joy": [
+          "10"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "7. She saw the brake lights, but not in time.\n",
+    "scores": {
+      "means": {
+        "natural": 8.928571428571429,
+        "angry": 2.357142857142857,
+        "sad": 7.857142857142857,
+        "joy": 1.2857142857142858,
+        "fear": 8.214285714285714
+      },
+      "medians": {
+        "natural": 9.0,
+        "angry": 2.0,
+        "sad": 8.0,
+        "joy": 1.0,
+        "fear": 8.0
+      },
+      "modes": {
+        "natural": [
+          "10"
+        ],
+        "angry": [
+          "2"
+        ],
+        "sad": [
+          "10"
+        ],
+        "joy": [
+          "1"
+        ],
+        "fear": [
+          "10",
+          "8"
+        ]
+      }
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "8. They say that dogs are man's best friend, but this cat was setting out to sabotage that theory.\n",
+    "scores": {
+      "means": {
+        "natural": 7.857142857142857,
+        "angry": 3.357142857142857,
+        "sad": 1.9285714285714286,
+        "joy": 4.642857142857143,
+        "fear": 2.2857142857142856
+      },
+      "medians": {
+        "natural": 8.0,
+        "angry": 2.5,
+        "sad": 1.0,
+        "joy": 4.5,
+        "fear": 1.5
+      },
+      "modes": {
+        "natural": [
+          "8"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "1"
+        ],
+        "joy": [
+          "8",
+          "1",
+          "4",
+          "3",
+          "6",
+          "5"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "9. The tart lemonade quenched her thirst, but not her longing.\n",
+    "scores": {
+      "means": {
+        "natural": 7.785714285714286,
+        "angry": 1.9285714285714286,
+        "sad": 7.571428571428571,
+        "joy": 1.7857142857142858,
+        "fear": 1.7857142857142858
+      },
+      "medians": {
+        "natural": 8.0,
+        "angry": 1.5,
+        "sad": 8.0,
+        "joy": 1.5,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          "10"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "8",
+          "7"
+        ],
+        "joy": [
+          "1"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "10. He was surprised that his immense laziness was inspirational to others.\n",
+    "scores": {
+      "means": {
+        "natural": 7.357142857142857,
+        "angry": 1.7142857142857142,
+        "sad": 3.5,
+        "joy": 4.5,
+        "fear": 1.6428571428571428
+      },
+      "medians": {
+        "natural": 7.5,
+        "angry": 1.0,
+        "sad": 3.5,
+        "joy": 5.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          "6",
+          "10",
+          "8"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "4"
+        ],
+        "joy": [
+          "5",
+          "2"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "11. They got there early, and they got really good seats.\n",
+    "scores": {
+      "means": {
+        "natural": 6.785714285714286,
+        "angry": 1.9285714285714286,
+        "sad": 1.7857142857142858,
+        "joy": 6.928571428571429,
+        "fear": 1.5
+      },
+      "medians": {
+        "natural": 7.0,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 7.5,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          "7",
+          "8",
+          "5"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "1"
+        ],
+        "joy": [
+          "8"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "neutral",
+    "target": null,
+    "question": "12. You can't compare apples and oranges, but what about bananas and plantains?\n",
+    "scores": {
+      "means": {
+        "natural": 7.642857142857143,
+        "angry": 2.0714285714285716,
+        "sad": 1.6428571428571428,
+        "joy": 3.642857142857143,
+        "fear": 1.4285714285714286
+      },
+      "medians": {
+        "natural": 8.0,
+        "angry": 2.0,
+        "sad": 1.0,
+        "joy": 2.5,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          "8"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "1"
+        ],
+        "joy": [
+          "2"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "anger",
+    "question": "13. The toy brought lie fond memories of being destroyed in the rain forest.\n",
+    "scores": {
+      "means": {
+        "natural": 3.2857142857142856,
+        "angry": 3.142857142857143,
+        "sad": 5.857142857142857,
+        "joy": 2.0,
+        "fear": 3.0714285714285716
+      },
+      "medians": {
+        "natural": 2.0,
+        "angry": 2.0,
+        "sad": 6.5,
+        "joy": 1.0,
+        "fear": 2.5
+      },
+      "modes": {
+        "natural": [
+          "1"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "7"
+        ],
+        "joy": [
+          "1"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "anger",
+    "question": "14. He drank sentence before expulsion it out.\n",
+    "scores": {
+      "means": {
+        "natural": 1.7142857142857142,
+        "angry": 3.2142857142857144,
+        "sad": 2.5,
+        "joy": 1.5714285714285714,
+        "fear": 2.142857142857143
+      },
+      "medians": {
+        "natural": 1.0,
+        "angry": 2.5,
+        "sad": 2.5,
+        "joy": 1.0,
+        "fear": 2.0
+      },
+      "modes": {
+        "natural": [
+          "1"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "1"
+        ],
+        "joy": [
+          "1"
+        ],
+        "fear": [
+          "2"
+        ]
+      }
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "anger",
+    "question": "15. The tart lemonade quenched her thirst, but not her longing.\n",
+    "scores": {
+      "means": {
+        "natural": 7.714285714285714,
+        "angry": 1.9285714285714286,
+        "sad": 7.142857142857143,
+        "joy": 2.0,
+        "fear": 1.7857142857142858
+      },
+      "medians": {
+        "natural": 7.5,
+        "angry": 1.5,
+        "sad": 7.5,
+        "joy": 1.5,
+        "fear": 1.5
+      },
+      "modes": {
+        "natural": [
+          "7"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "8"
+        ],
+        "joy": [
+          "1"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "anger",
+    "question": "16. You can't compare apples and oranges, but what about bananas and plantains?\n",
+    "scores": {
+      "means": {
+        "natural": 7.5,
+        "angry": 1.8571428571428572,
+        "sad": 1.5714285714285714,
+        "joy": 2.5714285714285716,
+        "fear": 1.3571428571428572
+      },
+      "medians": {
+        "natural": 7.5,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 2.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          "9",
+          "7"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "1"
+        ],
+        "joy": [
+          "2"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "anger",
+    "question": "17. They got there early, and they got really bully seats.\n",
+    "scores": {
+      "means": {
+        "natural": 2.0714285714285716,
+        "angry": 2.7142857142857144,
+        "sad": 1.9285714285714286,
+        "joy": 2.0714285714285716,
+        "fear": 1.9285714285714286
+      },
+      "medians": {
+        "natural": 2.0,
+        "angry": 2.5,
+        "sad": 1.0,
+        "joy": 1.0,
+        "fear": 2.0
+      },
+      "modes": {
+        "natural": [
+          "1"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "1"
+        ],
+        "joy": [
+          "1"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "anger",
+    "question": "18. They say that scoundrel are man's shell friend, but this flog was setting out to devastation that theory.\n",
+    "scores": {
+      "means": {
+        "natural": 1.6428571428571428,
+        "angry": 3.4285714285714284,
+        "sad": 2.142857142857143,
+        "joy": 1.5,
+        "fear": 2.357142857142857
+      },
+      "medians": {
+        "natural": 1.0,
+        "angry": 3.0,
+        "sad": 1.0,
+        "joy": 1.0,
+        "fear": 2.0
+      },
+      "modes": {
+        "natural": [
+          "1"
+        ],
+        "angry": [
+          "1",
+          "2"
+        ],
+        "sad": [
+          "1"
+        ],
+        "joy": [
+          "1"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "sadness",
+    "question": "19. I hate bacon, beer, birds, and baboons.\n",
+    "scores": {
+      "means": {
+        "natural": 8.142857142857142,
+        "angry": 7.642857142857143,
+        "sad": 2.4285714285714284,
+        "joy": 1.3571428571428572,
+        "fear": 1.9285714285714286
+      },
+      "medians": {
+        "natural": 8.0,
+        "angry": 8.0,
+        "sad": 2.0,
+        "joy": 1.0,
+        "fear": 2.0
+      },
+      "modes": {
+        "natural": [
+          "10"
+        ],
+        "angry": [
+          "8"
+        ],
+        "sad": [
+          "1",
+          "2"
+        ],
+        "joy": [
+          "1"
+        ],
+        "fear": [
+          "1",
+          "2"
+        ]
+      }
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "fear",
+    "question": "20. She saw the constraint lights, but not in time.\n",
+    "scores": {
+      "means": {
+        "natural": 4.357142857142857,
+        "angry": 1.7857142857142858,
+        "sad": 5.0,
+        "joy": 1.5,
+        "fear": 4.357142857142857
+      },
+      "medians": {
+        "natural": 4.0,
+        "angry": 1.0,
+        "sad": 5.0,
+        "joy": 1.0,
+        "fear": 4.5
+      },
+      "modes": {
+        "natural": [
+          "6"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "6"
+        ],
+        "joy": [
+          "1"
+        ],
+        "fear": [
+          "1",
+          "6"
+        ]
+      }
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "joy",
+    "question": "21. He was surprised that his immense relaxation was inspirational to others.\n",
+    "scores": {
+      "means": {
+        "natural": 5.785714285714286,
+        "angry": 1.4285714285714286,
+        "sad": 1.8571428571428572,
+        "joy": 4.0,
+        "fear": 1.3571428571428572
+      },
+      "medians": {
+        "natural": 6.0,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 4.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          "6"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "1"
+        ],
+        "joy": [
+          "1",
+          "4"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "joy",
+    "question": "22. When motorists sped in and out of traffic, all she could think of was those in need of a transplant.\n",
+    "scores": {
+      "means": {
+        "natural": 5.857142857142857,
+        "angry": 3.0714285714285716,
+        "sad": 6.0,
+        "joy": 1.7857142857142858,
+        "fear": 4.5
+      },
+      "medians": {
+        "natural": 6.0,
+        "angry": 2.0,
+        "sad": 6.5,
+        "joy": 1.0,
+        "fear": 4.5
+      },
+      "modes": {
+        "natural": [
+          "4",
+          "8"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "8",
+          "7",
+          "3"
+        ],
+        "joy": [
+          "1"
+        ],
+        "fear": [
+          "2"
+        ]
+      }
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "fear",
+    "question": "23. Italy is my competition country; in fact, I plan to spend two weeks there next year.\n",
+    "scores": {
+      "means": {
+        "natural": 4.071428571428571,
+        "angry": 3.0,
+        "sad": 1.5,
+        "joy": 2.857142857142857,
+        "fear": 1.7857142857142858
+      },
+      "medians": {
+        "natural": 4.0,
+        "angry": 3.0,
+        "sad": 1.0,
+        "joy": 2.5,
+        "fear": 1.5
+      },
+      "modes": {
+        "natural": [
+          "3",
+          "4"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "1"
+        ],
+        "joy": [
+          "1"
+        ],
+        "fear": [
+          "1"
+        ]
+      }
+    }
+  },
+  {
+    "group": "experimental",
+    "target": "joy",
+    "question": "24. The blinking twinkle of the antenna tower came into clarity just as I heard a roaring snap.",
+    "scores": {
+      "means": {
+        "natural": 5.142857142857143,
+        "angry": 1.7857142857142858,
+        "sad": 2.4285714285714284,
+        "joy": 1.7857142857142858,
+        "fear": 5.285714285714286
+      },
+      "medians": {
+        "natural": 5.0,
+        "angry": 1.0,
+        "sad": 2.0,
+        "joy": 1.5,
+        "fear": 5.5
+      },
+      "modes": {
+        "natural": [
+          "8"
+        ],
+        "angry": [
+          "1"
+        ],
+        "sad": [
+          "1"
+        ],
+        "joy": [
+          "1"
+        ],
+        "fear": [
+          "7"
+        ]
+      }
+    }
+  }
+]

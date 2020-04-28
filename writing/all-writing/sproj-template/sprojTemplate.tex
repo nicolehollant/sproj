@@ -420,59 +420,657 @@ As of Go 1.11, the \texttt{go} command enables the use of modules when the curre
 
 Thus, with the introduction of module mode, we are able to develop Go outside of our GOPATH. We get a bundle of versioned dependencies (respecting semantic import versioning), which allows for... modular code. There's a similar notion of reproducibility with Go modules as there is with containerization: the \texttt{go.mod} specifies the module root—everything is self contained.
 
+\chapter{Models}
+
+\section{Our Different Models}
+
+We have multiple models for this project with various purposes. Our control model is that of arbitrary replacement. We have a model for scoring text input on the basis of our emotion categories. We have an experimental model for targeted replacement, and we have another scoring model that uses a latent dirichlet allocation (LDA) model, leaving an LDA-based replacement model for future work.
+
+All of the models are written in Python, which necessitates another web server so that we can interact with them. For this, we are using \href{https://flask.palletsprojects.com/en/1.1.x/}{Flask}, which is a pretty minimal web framework for Python. It handles routing rather in a friendly way with a route singleton that registers endpoints with decorators, and the Flask instance itself is a WSGI (Web Server Gateway Interface) server; their documentation suggests that this server is not for production due to it's poor scalability, but given the limited scale of this application, we should be able to get by with a development server here.
+
+\begin{quote}
+While lightweight and easy to use, \textbf{Flask’s built-in server is not suitable for production} as it doesn’t scale well. Some of the options available for properly running Flask in production are documented here. — \href{https://flask.palletsprojects.com/en/1.1.x/}{Flask documentation}
+\end{quote}
+
+\subsection{Model Application Structure}
+
+We have a rather similar structure for our model API as we do for our CRUD-wrapper API in Golang. Everything is contained to one module and is served from the main script. We have a \texttt{config} submodule to initialize our singletons and other data to be used across the application; this includes loading our \texttt{.env} file contents, initializing the Flask instance, initializing the route instance, applying middleware (just wildcard CORS), loading our LDA model, and initializing some word processing utilities. Then, we have a submodule for our models and one for our endpoints. The core of the work lies within the \texttt{models} module, where we go through the actual text processing. The \texttt{endpoints} module simply serves to receive requests, interface with the corresponding logic within \texttt{models} and send responses.
+
+\subsection{Control Model (Arbitrary Replacement)}
+
+Our control model is one of arbitrary replacement. This makes use of our thesaurus collection, where we replace a word in the input with one of it's synonyms. There's one key method to control this replacement that belongs to a \texttt{Control} class that extends a base class of \texttt{Model}.
+
+The base \texttt{Model} class contains some important attributes and methods for the \texttt{Control} and \texttt{Score} models. We pass the base url for the CRUD-wrapper API, a list of stop words and whether or not to ignore them, and provide some utilities for processing the input. There is a method to determine if a word is in a collection—which takes into account the stop words—and will return the response from requesting the word from the collection. This goes hand-in-hand with a \texttt{requestWord} method that takes a collection string and a word in order to ease the interfacing with the other API. Outside of request utilities, there are methods to strip and replace punctuation, which allows for a wider array of valid input once split on whitespace.
+
+For arbitrary replacement, we copy the input string before stripping the punctuation. We loop over all the words in the input string, and collect the output string along with a list of words that were encountered but not present in the database, the number of words that were replaced, and the stop words that were skipped. For each word, we assume it is unchanged by default, then strip the punctuation on the token, and with a passed probability, attempt to replace the word. For a replacement attempt, we call the \texttt{entryExists} method of the base class to return whether or not the word exists, as well as the response; should the word exist in the thesaurus collection, we select a random synonym from the response for the output and then replace the original punctuation. This punctuation replacement is a little cute: we pass the original word with punctuation and the replacement word, and we replace the original word stripped of punctuation with the new word. Should the word not exist or belong to the list of stop words, then the word remains unchanged and is added to either the list of words not present or the stop words skipped, and the word is added to the output. This ultimately gives output \textit{similar} to the original input on the basis of synonym bag membership.
+
+The purpose of this model is to give a baseline for how natural a sentence can sound after being passed through the model, as well as giving insight on underlying emotional scores. With the control model, we can more appropriately look into the output of something like our targetted replacement model, in that we can determine if scores are innate to the bag of synonyms, or if targetted replacement has a tangible effect.
+
+\subsubsection{\textbf{Control Model Endpoints}}
+
+Each set of endpoints has a basic \texttt{GET} endpoint to return some healthcheck response. This is convenient for some quick debugging to make sure that the routes are registered at a glance. Then, there is some \texttt{POST} handler to interface with the actual model. For the control model, we accept parameters for the probability of replacement as well as a switch for whether or not to ignore stop words. We throw an empty input message if there was no text passed, and otherwise return the replacement result.
+
+\subsection{Base Scoring Model}
+
+The base scoring model also extends the base \texttt{Model} class, and gives way to our targetted replacement model. We score on a subset of emotions—sadness, joy, fear, and anger—as the affect-intensity lexicon is limited to these emotions, whereas the sense-level lexicon has the following emotion list: anticipation, anger, positive, surprise, disgust, joy, trust, fear, sadness, negative. For our purposes, we went with the intersection of the two emotion-category sets.
+
+As any score is ultimately arbitrary, the important aspect in scoring is consistency. For our scoring, we construct a list of elligible words by filtering in a similar way to the processing in the control model: we split on white space, remove stop words, and remove punctuation. Then we loop over the elligible words, and average the score across each affect dimension. For an individual score, we must consider a word within both the affect intensity collection and the sense level collection. We construct a dictionary with keys for the response by collection if it exists, and then determine the score based off of this dictionary. The score will be a dictionary mapping affect to score (with score between 0 and 1). For each affect within the affect associations from the sense level collection, we increase the corresponding score by one half. Similarly, we add one half of the score from each affect dimension from the affect intensity collection to the corresponding score. This gives a minimum score of zero if the word is not present in either collection (or if it is only present in the affect intensity collection with a score of zero) and a maximum score of one if the word is present in both collections with a score of one in the affect intensity collection.
+
+\subsubsection{\textbf{Basic Scoring Model Endpoints}}
+
+This also has a basic \texttt{GET} handler as a healthcheck. The \texttt{POST} handler interacts with the scoring model almost identically to the way the control model endpoint does, but here we only accept a parameter for a switch on the consideration of stop words.
+
+\subsection{Targeted Replacement Model}
+
+This model utilizes both the scoring model and the thesaurus collection to search for a nearby maximization of the score in one of the affect categories. In order to maximize an affect score, we iterate over the input text in the usual way, and we score all synonyms of each word and replace the original with the synonym that achieves maximum score in the given affect.
+
+One can imagine that this is a dreadfully slow process given the number of requests that we have to make. The most synonyms of any word in our thesaurus collection is for ``cardinal'' which has 406 synonyms (mostly numbers as per the cardinal numbers), the least is, naturally, zero synonyms. Thus the maximum number of requests we would ever have to make would be assuming every word is ``cardinal,'' in which we would make $406 \cdot 2 \cdot n + n$ requests: one request for the affect intensity one for sense level associations for each of the 406 synonyms for each occurence, and one request to get this list of synonyms. This translates to a long time twiddling one's thumbs while waiting for their output. Luckily, most input will not be an onslaught of ``cardinal,'' and the average number of synonyms for a word is roughly 7.66 with the $\frac{\text{total synonyms}}{\text{number of entries}} = \frac{553539}{72285}$. The median number of synonyms is 14, and the mode is 2. This translates to a more manageable request time, although it still isn't too glamorous. Luckily we can eliminate any cycles if we were to choose to branch to the synonyms of a word's synonyms (and so on) by keeping track of the requests we have made for each word; although, in the interests of remaining close to the original word and saving computation time, we limit requests to immediate synonyms.
+
+\subsubsection{\textbf{Targeted Replacement Model Endpoints}}
+
+This also has a basic \texttt{GET} handler as a healthcheck. The \texttt{POST} handler here takes a switch for the consideration of stop words as well as a route parameter for the affect to be targetted.
+
+\subsection{LDA Overview}
+
+Latent Dirichlet Allocation is a generative probabilistic unsupervised learning model popular in natural language processing (nlp). It is a generalization of ``probabilistic latent semantic analysis,'' and was created by David Blei, Andrew Ng, and Michael Jordon, and published as ``Latent Dirichlet Allocation'' in January 2003. As with some of their usage, we will be using this for text classification. In this sense, we can see the ideas behind LDA in its application to text classification with documents, topics, and words. A real document may discuss multiple topics, where related topics are likely to use similar words; this translates to the model where documents are assigned a topic mixture, where each topic is a distribution over the given corpus.
+
+\subsubsection{Assumptions}
+
+An LDA model naively assumes that documents are unordered lists (bags) of words, and that documents are unordered within a corpus, that is that word position nor document position affects output.
+
+\subsubsection{Terminology}
+
+We shall adopt the language of the original paper regarding the terms ``word,'' ``document,'' and ``corpus.'' A word is an item from a dictionary/vocabulary of words indexed by location; this allows for a word to be represented as a one-hot vector. For the dictionary $D = \left\{ \text{cat}, \text{dog}, \text{elephant} \right\}$, we would encode 'cat' as $\left[ 1, 0, 0 \right]$. A document is a sequence of words indexed by position, and a corpus is a bag of documents. As per LDA as a \textit{probabilistic model}, we view topics as hidden random variables. The following variables are relevant to LDA:
+
+- $\alpha$: topic distribution by document, such that $\alpha_{ij}$ describes the probability of topic $j$ occurring within document $i$. A higher $\alpha$ corresponds to documents being comprised of more topics, as alpha approaches 0, we see this mixed membership model (document belongs to many topics) approach a mixture model (document belongs to one topic)
+
+- $\beta$: word distribution by topic, such that $\beta_{ij}$ describes the probability of word $j$ belonging to topic $i$. A higher $\beta$ corresponds to topics being comprised of more words
+
+- $\theta$: topic distribution for a given document, such that each $\theta_i > 0$  and $\sum_{i=0}^{k} \theta_i=1$
+
+- $z$: topic for a given word within a given document
+
+- $w$: word within a given document
+
+\subsubsection{A Graphical Representation}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm, height=6cm, keepaspectratio]{/Users/colehollant/Projects/sproj/resources/lda-not-verbose.png}
+    
+    \href{https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Latent_Dirichlet_allocation.svg/593px-Latent_Dirichlet_allocation.svg.png}{Plate diagram for LDA}
+\end{figure}
+
+
+Within the classic plate diagram for LDA, we have $M$ documents, $N$ topics, and an unlabelled vocabulary $V$. We take the topic distribution $\theta$, a $K$-dimensional random variable, as drawn from a Dirichlet distribution, $\alpha$. On the other end, $\beta$ is a $K \times V$ matrix for a vocabulary of size $V$ that defines the word-topic probabilities. Arrows between nodes represent dependency, and $w$ is the sole darkened node as it is the only observed variable, all others are latent.
+
+With probabalistic latent semantic indexing, an occurence of a word is modeled as a sample from a topic mixture, leading to a probability distribution on a set of topics. Ng, Blei, and Jordan sought to extend this to account for document-level probabilities. Documents are mixtures with latent topics that are defined by a distribution of words.
+
+With LDA, we are able to fix some number of topics, $K$, of which to determine; we can do this via collapsed Gibbs sampling. We begin with a random assignment of words in each document to topics $Z_{0\dots K}$ from a Dirichlet distribution as some initial document-topic representation and as some defined word-distribution for each topic.
+
+From here, we fall into a training loop. We consider each document $d$, and each word $w$ within each document, we must compute $p(t | d)$ as well as $p(w | t)$ for each topic $t$. Then we will reassign $w$ to a topic, $t$, with probability $p(t | d) \cdot p(w | t)$, or the probability that $t$ has generated $w$. Note that the reassignment step assumes all word-topic distributions to be correct except for that of $w$. Once we reach convergence, or exhaust a defined number of epochs, we hope to see reasonable word-topic and document-topic distributions, which we can use to infer topic mixtures of documents.
+
+Determining the probability of a topic given a word is an application of Bayes theorem:
+
+$$p(t | w) = \frac{p(w | t)\cdot p(t)}{p(w)}$$
+
+where we know the probability of a word (as informed by our corpus), the probability of a topic being chosen, and the probability of a word given a topic (as informed by the model state). Bear in mind, this has been glossed over as we did not focus on the implementation, for further reading, one should read \href{http://www.ccs.neu.edu/home/vip/teach/DMcourse/5_topicmodel_summ/notes_slides/sampling/darling-lda.pdf}{Darling}, or \href{http://jmlr.csail.mit.edu/papers/v3/blei03a.html}{Blei et al.}.
+
+\subsection{Latent Dirichlet Allocation Scoring Model}
+
+\subsubsection{\textbf{Building the model}}
+
+For the LDA scoring model, we are to construct an LDA model and then determine some score from the output. We are using \texttt{gensim} for our implementation, and thus are almost exclusively concerned with determining the corpus to feed it. For this, we have grouped all entries in both the affect-intensity and senselevel lexicons by affect and gave all words by affect as our four seed documents.
+
+$$\text{corpus} = \left\{\text{anger}, \text{fear}, \text{joy}, \text{sadness}\right\}\\\text{anger} = \left\{\text{word}\mid \text{word has affect score for angry}\right\}$$
+
+This grouping was relatively painless, for affect intensity, we looked for non-zero scores in a given affect as criteria for membership, and we looked for affect existence within the senselevel lexicon; from here, we just combine them.
+
+It is worth noting that this is an unusual means of gathering a corpus. Typically, a corpus is some large collection of documents, which would lend itself to repeated words with various frequencies throughout the documents. Our usage, on the other hand, holds that a word has a maximum document frequency of one. This then has implications on the model that uses things like \href{http://jmlr.csail.mit.edu/papers/v3/blei03a.html}{tf-idf} as a means of determining topic likelihood: with such strong limitations on intra-document frequency, uniqueness becomes more important. As a nicety for our model, we are stemming all tokens within our corpus. This maps words onto their root (i.e. $\left\{ \text{stem}, \text{stems}, \text{stemmed} \right\} \rightarrow \text{stem} $), and it allows for removing an inconsistency in the scoring of similar words. With stemming, all words sharing a root are given the same score, which is the average score of entries mapping to the stem. We also remove stop words from the tokens if present.
+
+From here, building our model is as simple as passing our corpus and vocabulary along with some $K$ for number of topics and some number of epochs to gensim's \texttt{LdaModel} and save the model to disk. Note, we must save the model once and load it for all future use for the sake of consistency.
+
+\subsubsection{\textbf{Using the model}}
+
+In order to use the model, we ought to give our input the same treatment that our corpus was given. We will case-transform, filter by stop words, and stem the input strings. From here we loop over the inferred topic distribution in order of decreasing probability, and gather a few scores. For each topic with probability greater than a passed threshold, we gather: the topic probability, topic index, the $n$ topic keywords, and a few different means of scoring. We give four scores for each topic (and the net scores weighted by respective topic probabilities): the \texttt{input score} is the sum of the product of input token scores and their probability within the topic; the \texttt{topic score} is the sum of the product of vocabulary token scores and their probability within the topic; and there are two forms of \texttt{keyword} scores, one of which takes the topic keywords product with the normalized probability of the keywords, and the other takes the topic keywords product with the whole topic's probabilities.
+
+\subsubsection{\textbf{LDA Model Endpoints}}
+
+This also has a basic \texttt{GET} handler as a healthcheck. The \texttt{POST} handler here takes a float for the topic probability-threshold and an integer for the number of keywords to gather. There is an additional \texttt{GET} with a route parameter for topic number, should one want to observe the word probabilities for a given topic; this is not accessed by the frontend, but is accessible from \href{https://sproj.model.colehollant.com/lda/topic/1}{sproj.model.colehollant.com/lda/topic/<topic-number>}. One of the interesting pieces that arose from the translation from CLI to web server here was that \texttt{numpy}'s \texttt{float32} wasn't serializable; but as this is used within \texttt{gensim}'s model that we use, we have to provide a \href{https://ellisvalentiner.com/post/serializing-numpyfloat32-json/}{means of serialization} which converts to \texttt{float64}. This eases the process of tracking down instances of \texttt{float32}, and lets the \texttt{json} module handle this for us instead.
+
+\subsection{LDA Model On Seeds}
+
+It's worth considering the inferencing of the seed documents to see how they are scored. For this, we will look at the different net scores determined by feeding in each document with a $1\%$ probability threshold, gathering the top 100 keywords (scores will be rounded to 5 places).
+
+\subsubsection{\textbf{Anger}}
+
+\begin{table}[h!]
+    \raggedright
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+    Category & Anger & Fear & Joy & Sadness \\\hline
+    Input Score & \textbf{0.94886} & 0.76935 & 0.03475 & 0.67535 \\\hline
+    Topic Score & 0.59074 & \textbf{0.59339} & 0.03516 & 0.53103 \\\hline
+    Keywords by Keywords & \textbf{0.66098} & 0.65198 & 0.01993 & 0.58062 \\\hline
+    Keywords by Topic & \textbf{0.25617} & 0.24547 & 0.00825 & 0.20950 \\\hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{\textbf{Fear}}
+
+\begin{table}[h!]
+    \raggedright
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+    Category & Anger & Fear & Joy & Sadness \\\hline
+    Input Score & 0.65673 & \textbf{0.87143} & 0.01797 & 0.76317 \\\hline
+    Topic Score & 0.51107 & 0.59343 & 0.04255 & \textbf{0.60067} \\\hline
+    Keywords by Keywords & 0.58840 & 0.64486 & 0.03415 & \textbf{0.64810} \\\hline
+    Keywords by Topic & 0.20910 & \textbf{0.22217} & 0.01214 & 0.21510 \\\hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{\textbf{Joy}}
+
+\begin{table}[h!]
+    \raggedright
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+    Category & Anger & Fear & Joy & Sadness \\\hline
+    Input Score & 0.04641 & 0.06371 & \textbf{0.97432} & 0.07960 \\\hline
+    Topic Score & 0.05247 & 0.07051 & \textbf{0.51985} & 0.06841 \\\hline
+    Keywords by Keywords & 0.05356 & 0.07832 & \textbf{0.61078} & 0.08025 \\\hline
+    Keywords by Topic & 0.01923 & 0.02722 & \textbf{0.20237} & 0.02747 \\\hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{\textbf{Sadness}}
+
+\begin{table}[h!]
+    \raggedright
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+    Category & Anger & Fear & Joy & Sadness \\\hline
+    Input Score & 0.62026 & 0.80163 & 0.01106 & \textbf{0.99642} \\\hline
+    Topic Score & 0.47046 & 0.60619 & 0.03291 & \textbf{0.66378} \\\hline
+    Keywords by Keywords & 0.55249 & 0.64956 & 0.02865 & \textbf{0.70967} \\\hline
+    Keywords by Topic & 0.18193 & 0.20938 & 0.00980 & \textbf{0.22397} \\\hline
+    \end{tabular}
+\end{table}
+
+% \begin{table}[h!]
+%     \raggedright
+%     \begin{tabular}{|l|l|l|l|l|}
+%     \hline
+%         Category & Anger & Fear & Joy & Sadness \\ \hline
+%         Input Score & 0.62026 & 0.80163 & 0.01106 & **0.99642** \\ \hline
+%         Topic Score & 0.47046 & 0.60619 & 0.03291 & **0.66378** \\ \hline
+%         Keywords by Keywords & 0.55249 & 0.64956 & 0.02865 & **0.70967** \\ \hline
+%         Keywords by Topic & 0.18193 & 0.20938 & 0.00980 & **0.22397** \\ \hline
+%     \end{tabular}
+% \end{table}
+
+This may make some sort of intuitive sense. The input scores for each affect category are championed by their affect. The other scores are affected by the topic definition and keywords without direct scoring of the input, leading to greater fluctuation, although they tend to follow the trends of the input scores. We may notice the tendency of ``anger,'' ``fear,'' and ``sadness'' sharing similar scores that seem to oppose that of ``joy.'' This can be infered to be a similarity between those emotions, but additional data may give further insight. We'll consider the mean Valence Arousal Dominance (VAD) scores for each document.
+
+\begin{table}[h!]
+    \raggedright
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+        Category & Valence & Arousal & Dominance \\ \hline
+        Anger & 0.25627 & 0.66386 & 0.46530 \\ \hline
+        Fear & 0.28537 & 0.65718 & 0.47638 \\ \hline
+        Joy & 0.7726 & 0.51821 & 0.59808 \\ \hline
+        Sadness & 0.23668 & 0.58389 & 0.38429 \\ \hline
+    \end{tabular}
+\end{table}
+
+Here we can see a tangible difference in valence scores between the group of ``anger,'' ``fear,'' and ``sadness'' having rather low mean valence scores, whereas ``joy'' has a rather high mean valence score. All the arousal and dominance scores across the affect categories have far less extreme values. We can use this as a means of understanding the uneven groupings of our affect categories as a latent bias regarding valence. This correlation also held for the most prevelant color associations across each document with ``anger'' and ``fear'' having ``black, red, gray;'' ``sadness'' having ``black, grey, red;'' and ``joy'' having ``white, yellow, pink'' as the top three most prevalent color associations.
+
+
+
 \chapter{Frontend}
 
-\section{In defense of the GUI}
+\section{Why make a frontend?}
 
-The client is often looked over within academic computer science, save for the developer as the end user. Running on the command line becomes a norm, and a repl becomes a coveted avenue in terms of UX so long as we are out of the realm of image processing. When we must focus on approachability, we tend to veer in a more interactive avenue: OOP with robots or using processing, intro web classes, games courses, Twine workshops in our orientation program, even languages like Scratch providing a gateway into programming. Then, after this introduction, we often lose the visual side of programming in favor of command-line-centered programming—the old bait and switch, as they say. Yet, visualization still rears its head every once in a while—the occasional GUI lab, rendering of search algorithms, and so on.
+There's a certain challenge to making your work accessible. Building and deploying a web application necessitates a different skill set than that required by the implementation of algorithms. There are layers added and layers complexified in shifting from a command line based program to a UI. A common practice of reading/writing from local files translates to managing some sort of data store, be it a proper database or some sort of browser storage like cookies, local storage, IndexedDB, or whatnot. We made a portal to accompany our APIs in order to have our work accessible to whoever may wish to use it regardless of their background in programming.
 
-I, for one, am a lover of the visual interface. Why limit usability through negligence? Standard applications are comprised of sets of inputs and outputs, whether it's a social media platform, a file server, email client, even a calculator.
+\subsection{Overview of our frontend}
 
-\begin{quote}
-Also Caleb is right apps are forms :thumbs-up: most information systems are just friendly tuned UIs on top of a database. I think of something like Highrise as the prototypical web app.
-\end{quote}
+Our webapp is a Single Page Application (SPA) built using \href{https://vuejs.org/}{VueJS}. Vue is one of big players in terms of frontend frameworks along with Facebook's \href{https://reactjs.org/}{ReactJS} and Google's \href{https://angular.io/}{Angular}, and is reknowned for it's simplicity, scalability, and speed. We used the Vue CLI tool for development and building, although there is alternatively a library for the view layer via \href{https://cdn.jsdelivr.net/npm/vue/dist/vue.js}{jsdeliver}. As such, we have largely kept to the structure of the scaffolding, keeping top level directories for assets, components, composables, and views. Composables were added later with the adoption of Vue's new composition API—in RFC (request for comments) at the time of use—which gives a fundamentally different way to interact with the Vue instance, giving a hook-oriented/function-based approach as opposed to the previous options API (an approach based off of certain properties in an object). Outside of Vue, we have several dependencies for the odd piece here and there, the largest part of the workflow would be \href{https://tailwindcss.com/}{tailwindcss}: a utility-based CSS framework. Tailwind ultimately gives a wide array of low-level utility classes that make for more concise CSS, and more flexible in-template stylings.
 
-\begin{quote}
-- Adam Wathan (@adamwathan), 5:58 PM · Oct 18, 2019
-\end{quote}
-% <!--
-% <blockquote class="twitter-tweet"><p lang="en" dir="ltr">I would say GitHub is not the perfect example if only because most apps are honestly simpler, and don’t have complexity like doing all this crazy stuff on top of git servers.<br><br>Even like Dribbble is just forms when it comes to what makes it a real “app”.</p>&mdash; Adam Wathan (@adamwathan) <a href="https://twitter.com/adamwathan/status/1185314152425897985?ref_src=twsrc%5Etfw">October 18, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-% -->
+Our project is a SPA, although it has many views. Traditional websites may have several files that are served per URL, the rise of web applications led to a need for routers that mount and unmount components based on \texttt{window.location}. The Vue-Router takes an array of objects that specify path and may specify other aspects, including the component to mount, name, redirect location, and props. We strictly specified path, name, and component for our routes, and we left the router in hash mode to save on some server config for associated with history mode; we have routes for the home page, the thesaurus, the models, writing, documentation, and presentations. As per the likeness in characteristics, we will use ``routes'' and ``pages'' interchangably.
 
-
-There's something remarkable about having a usable product, despite the associated challenge. There's also a certain gain in implementing what is client-facing in terms of access and security. If we are to implement something usable, and potentially public, there's more to security than a slap on the wrist—via grade reduction—for using all public variables; there could be tangible risks in being public facing. To use myself as an example, in just the past year I've pushed up my personal AWS keys (they were scraped and a few hundred dollars of EC2 instances were run up overnight), even this project was hacked (before adding admin credentials to my Mongo instance, my collections were all dropped and a ransom note was left as a new document requesting bitcoin to be sent in exchange for my data). The whole world of security changes when making something real, hence the heavy load of infrastructure in this project, and all to have a usable frontend.
-
-I love CLI tools. I had my i3wm and polybar, dotfiles-on-github phase. I had meme scripts, and some of them might even be funny to the right people (playing 90's hip-hop through ``mpg123'' and calling it ``G-Unix'' was my personal favorite). I cycled through terminal emulator after terminal emulator (urxvt is the best, of course); I went all in with vim as my editor. And once that chip on my shoulder grew stale (not like the T430's i7-3520M would ever be past its prime), I realized my mother would never quite appreciate what I was doing. The requisite motherly smile and nod is one thing, but she'd never show off my dotfiles to her friends, and thus we have embarked on our journey of making UIs.
-% <!-- This section title is what makes me happy -->
-
-
-\section{Sap Aside / GSAP Inside}
-
-As per Adam Wathan's tweet, we'll more or less wrap our database operations, and our model as our UI. Our whole frontend is conceptually simple: we already have all the data, we just have to display it. Of course, some of this simplicity stems from foresight in the production of our API, but that's neither here nor there.
-
-As with the rest of our project, we'll be going quite in-depth with our UI. That means no external component libraries, no pre-made templates, and, of course, no static site generators; if we are putting in the effort to make a UI, it should be ours, not BootStrap's. Our \texttt{package.json} has quite few dependencies, more or less \texttt{fontawesome} (icons), \texttt{gsap} (animation platform), \texttt{markdown-it} (markdown renderer), \texttt{tailwindcss} (utility-based css framework), and \texttt{vue} (our framework of choice). We aren't all that dependent on any of these dependencies, it wouldn't change too much to go an all-vanilla HTML/CSS/JS route, but these provide us with a bit of a break, and allow for some better performance.
+The home page simply serves as a hub to link to all pages as well as the repository on GitHub, as the main navbar does not span all routes. The thesaurus page gives an input box to query the thesaurus and senselevel collections, and displays synonyms and antonyms by part of speech as well as sense associations by word-sense including synonyms shared between the sense words and the queried word. The model page offers interaction with each of our models; the model is selected through a dropdown menu, and the associated controls are displayed (a textbox, various inputs such as sliders and toggles for targetting the endpoint's parameters, and a submit button); each model has a unique results section. The writing section is very simply an online version of this paper rendered to HTML and injected. The documentation page is a custom renderer for our \href{https://www.postman.com/}{Postman collection}. Postman is the HTTP client we used for development to organize requests and inject variables for things like staging; it also allows for exporting your collection as JSON, which we are using to inform our documentation page. The presentation route holds our HTML presentation rendering which allows for ease of access and navigation.
 
 \subsection{Configuration}
 
-There's not too much configuration to be done here as per the fairly minimal frontend and the niceties that Node has to offer. There are a few config files to edit to get tailwind integrated, and we have to deal with our old friend, webpack, for raw loaders for importing text files as strings. We set a \texttt{NODE\_ENV} within our start scripts to be able to target different URI's for our API / model, and we have a rather simple router that maps from path to component file. This router just informs rendering, as did the Mux router in our Go API and the Flask router for our model, but, rather than giving \texttt{application/json}, we have our beautiful markup.
+There's not too much configuration to be done here as per the fairly minimal frontend and the niceties that Node has to offer. There are a few config files to edit to get tailwind integrated and to add our customizations to it, and there is some tinkering with \href{https://webpack.js.org/}{webpack} to add a loader to import \texttt{.txt} files as strings. We set \texttt{NODE\_ENV} within our start scripts to be able to target different URI's for our APIs.
 
 \section{Creating our Component Library}
+% <!-- some bit on sfc, js modules, lifecycle hooks, functional vs full-featured components  -->
 
-some bit on sfc, js modules, lifecycle hooks, functional vs full-featured components
 
-\subsection{Abstracted renderers}
+Various frameworks take different approaches to organizing the HTML, CSS, and Javascript that make up each component. Some frameworks, like Angular, tend to keep separate files for each piece of the component, whereas frameworks like Vue opt for single file components (SFC). This is simply an organizational difference, and each approach has pros and cons. We need various components to build our frontend, from basic UI components like text inputs and sliders to page components that are associated with each route. As per the options API, each component may take a set of \textit{}props\textit{}, which is specifies data to be passed to them from the parent; this follows Vue's one-way data flow principle—should data have to be passed to a parent, we do so by emitting events and attaching a listener to the parent.
 
-some bit on more complex components that don't inform behavior, but rather display data
+\subsection{Different Kinds of Components}
 
-\section{Overview of Views}
+There are multiple ways to write components within Vue. There are different ways to target the template; one of which is to write all of the markup in HTML with directives and bindings like \texttt{v-if}, \texttt{v-for}, \texttt{v-bind}, \texttt{v-on}, and other way is through the render function. The render function is what is used underneath the hood; Vue compiles the markup templates to a render function that creates a VNode (virtual node), as Vue is based on the virtual DOM. The render function taking some parameter to specify tag or component options, an object that translates to element attributes, and a list of children. There is also a distinction between functional and full-featured components; functional components do not manage their own state, watch state, nor have lifecycle hooks, and thus do not need the same reactivity that full-featured components require. Below is an example of the same UI represented as a render function and as a template for the sake of comparison:
+\begin{lstlisting}[language=C]
+render(h, {props, listeners}) {
+  const hasResults = (obj) => {
+    for(let key of Object.keys(obj)){
+      if(obj[key].length > 0) return true;
+    }
+    return false
+  }
+  let entry = props.entry;
+  return h("div", { staticClass: "my-12" }, [
+    h("div", {
+        staticClass: "thesaurus--results-box",
+      }, [
+      Object.keys(entry).map(key => {
+        return hasResults(entry[key]) ? h("div", {}, [
+          h("h2", {
+            staticClass: "thesaurus--category",
+            domProps: { "innerHTML": key },
+          }),
+          h("div", {
+            staticClass: "thesaurus--pos__wrapper"
+          }, Object.keys(entry[key]).map(pos => {
+            if(entry[key][pos].length > 0) {
+              return h("div", { staticClass: "mx-4 md:mx-8"}, [
+                h("h3", { staticClass: "thesaurus--pos" }, pos),
+                h("ul", { "class": "thesaurus--entry__wrapper" }, 
+                  entry[key][pos].map(word => {
+                    return h("li", {
+                      attrs: { tabindex: 0 },
+                      staticClass: "thesaurus--entry",
+                      domProps: { "innerHTML": word },
+                      on: {
+                        keydown: (e) => {
+                          if(e.key === 'Enter' || e.key === ' ') {
+                            const emit_event = listeners.event_from_child;
+                            emit_event(word);
+                          }
+                        },
+                        click: () => {
+                          const emit_event = listeners.event_from_child;
+                          emit_event(word);
+                        }
+                      }
+                    })
+                  })
+                )
+              ])
+            }
+          }))
+        ]) : null
+      })
+      ] 
+    )
+  ])
+}
+\end{lstlisting}
+\begin{lstlisting}[language=XML]
+<template functional>
+<div class="thesaurus--results-box">
+  <div 
+    v-for="(key, i) in Object.keys(props.entry)" 
+    :key="[key, i].join('-')"
+  >
+    <div v-if="Object.entries(props.entry[key]).map(([k, v]) => v.length > 0).reduce((a, c) => (a || c))">
+      <h2 class="thesaurus--category">
+        {{ key }}
+      </h2>
+      <div class="thesaurus--pos__wrapper">
+        <div 
+          v-for="(pos, j) in Object.keys(props.entry[key])" 
+          :key="[pos, props.entry.key, j].join('-')"
+        >
+          <div 
+            v-if="props.entry[key][pos].length > 0" 
+            class="mx-4 md:mx-8"
+          >
+            <h3 class="thesaurus--pos">
+              {{ pos }}
+            </h3>
+            <ul class="thesaurus--entry__wrapper">
+              <li 
+                class="thesaurus--entry" 
+                v-for="(word, k) in props.entry[key][pos]" 
+                :key="[pos, props.entry.key, word, k].join('-')" 
+                v-on:keydown.enter="() => listeners.event_from_child(word)" 
+                v-on:keydown.space="() => listeners.event_from_child(word)" 
+                v-on:click="() => listeners.event_from_child(word)" 
+                tabindex="0"
+              >
+                {{word}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</template>
+\end{lstlisting}
 
-go into some detail with hitting endpoints, processing responses, translating to UI state
+Ultimately the render function provides greater flexibility with all of Javascript at your disposal rather than relying on the tools provided by Vue through directives. Writing raw render functions is a process somewhere between writing JSX (which render functions support as an alternative through a Babel plugin), and writing vanilla Javascript to manipulate the DOM.
+
+\subsection{Our Components}
+
+We have all basic UI components within a directory with the following components: \texttt{InfoHover}, \texttt{Loading}, \texttt{ProgressBar} \texttt{Slider}, \texttt{TextInput}, \texttt{Toggle}, \texttt{WordList}. \texttt{InfoHover} provides an info icon with a child conditionally rendered on hover or on click via a \texttt{slot}; we have a prop for \texttt{size} that controls the width and height of the icon-button, as \texttt{size} can only take certain values, we add a validator to ensure that valid values are used. \texttt{Loading} is a simple loading spinner that is displayed while a request is being processed, we do this with partial border coloring and infinite-duration CSS animations—this is a component that makes a clear case to be a functional component, as it doesn't even need it's own Javascript to function. \texttt{ProgressBar} gives a rectangle colored proportionally to the \texttt{value} prop and with a color mapped to by the \texttt{color} prop; \texttt{color} also has a validator attached. \texttt{Slider} wraps the default \texttt{type=``range''} input, taking care of data binding, styling, and providing a slot for a label; there are props for \texttt{min}, \texttt{max}, \texttt{step}, and \texttt{value}. \texttt{TextInput} is similar to \texttt{Slider} in that it wraps the default \texttt{type=``range | X''} input, handles data binding and styling, and has props for \texttt{value} and \texttt{error} which is a string that affects style and adds a message to the DOM. \texttt{Toggle} is an wrapper for the default \texttt{type=``checkbox''} input that overhauls the styling in order to target the feel of a switch rather than a checkbox; this only takes a prop for \texttt{value}. \texttt{WordList} eases the process of rendering each word from an array, simply looping over the items in it's \texttt{value} prop and displaying them in order. These are all basic UI building blocks that are used throughout the application, and largely serve to bind date or display pieces of information passed to them.
+
+There are a few other components across the application that don't quite fit within the basic UI group nor the documentation group. These include \texttt{ScoreBars}, \texttt{GroupScores}, \texttt{NetScores}, \texttt{Navbar}, \texttt{SenseLevelResult}, \texttt{ThesaurusResult}, and \texttt{ThesaurusEntry}. \texttt{ScoreBars} displays a group of labelled \texttt{ProgressBar}s or a label signifying that each value was zero; there are props for \texttt{name}, \texttt{size}, and \texttt{value}. \texttt{GroupScores} renders a series of \texttt{ScoreBars} for the output of each topic in the LDA model, and only takes a \texttt{value} prop. \texttt{NetScores} operates similarly to groupscores, but ignores trying to render some properties that do not exist. \texttt{Navbar} only displays a group of \texttt{router-link}s. \texttt{SenseLevelResult} handles the senselevel rendering; it must make a request to our API for the current word and parse the response, finding common synonyms, and organizing by sense. \texttt{ThesaurusResult} takes the response from the thesaurus endpoint and renders the result by synonym/antonym and part of speech; this was a place we wrote our own render function. \texttt{ThesaurusEntry} is a layout component that gives a text input for the current word and renders the \texttt{SenseLevelResult} and \texttt{ThesaurusResult} components upon submission.
+
+\subsection{Creating Our Documentation Renderer}
+
+A large part of using components is to break down monolithic markup into readable/maintainable chunks under the assumption that fifty small files with a narrow focus are easier to grasp than a handful of huge files responsible for a wide range of behavior. The other is to cut down on the copy-pasting of similar markup that will be used multiple times. Both usages appear within our documentation renderer.
+
+We have a layout component, \texttt{DocRenderer}, that receives an object representing the JSON from the documentation and sends appropriate data to its children based off of the current selected folder. \texttt{DocRenderer} provides a navigation bar with a link to \texttt{/home}, buttons for each folder of requests, and buttons for each request within the selected folder. We make use of \href{https://greensock.com/gsap/}{gsap}'s \texttt{ScrollToPlugin} to scroll to the correct page offset once a user selects a request. We pass the selected folder to our \texttt{Folder} component, which displays a header with a name and description, and mounts a series of \texttt{DocRequest} components for each request within the folder; this uses \href{https://www.npmjs.com/package/markdown-it}{markdown-it} as a markdown rendering engine for the description. \texttt{DocRequest} is a component responsible for rendering a single request's information; it displays name, HTTP method, url, description, request headers, request body, and response, the latter three being abstracted to components. \texttt{Headers} renders a table of accepted headers for the current request; \texttt{Body} and \texttt{Response} render the request body and response as preformatted JSON—prettified by re-parsing and stringifying—with the additional status code section for the \texttt{Response} to render. Put together with example responses and targetted requests through Postman, we arrive at an intuitive documentation portal for our API in place of a 3.3M JSON document.
+
+\section{Consuming the composition API}
+
+Analagous to the level of abstraction achievable through separate components comes that of the Vue Composition API. This serves not necessarily to replace the options API, but to compliment it, and to give greater access to the underlying APIs of Vue. It's usage within this project is limited to that of \texttt{useModel}, as it has only come out over the course of this project. While it is limited in its use across our frontend, \texttt{useModel} manages to be used by each of our four model components. \texttt{useModel} serves as a testiment to the use-case of the composition API as we are able to abstract almost all logic from the model components. Rather than binding reactive data via entries within the \texttt{data} property, we are given \texttt{ref} and \texttt{reactive} which can be used \textit{}largely interchangeably\textit{} although \texttt{ref} is moreso for Javascript primitives and \texttt{reactive} is for objects (that is \texttt{ref} calls \texttt{reactive} when given an object and \texttt{reactive} cannot accept primitives), and values are exposed to the template by returning from the \texttt{setup} function.
+
+As such, each model component has various reactive state corresponding to the inputs—a \texttt{ref} for the text input, the probability of changing a word, whether to ignore stopwords, etc—and state returned by the model targeted within \texttt{useModel}. Each model hook exported by \texttt{useModel} calls the \texttt{useModel} function, passing the appropriate endpoint; this is a higher order function wrapping \texttt{responseState}—a \texttt{reactive} object with properties relavent to rendering an HTTP response—and a function called \texttt{postData} that wraps \texttt{window.fetch} to deal with the repeated logic across requests for injecting endpoints and binding data to \texttt{responseState}. This allows for a large reduction in repeated logic across the four model components, in that each component only needs to call \texttt{postData} with the request body.
 
 \section{Making things pretty}
 
-talk about css, you know quite a bit about it
+Much of the frontend is complex purely for the reason of aesthetics. Out of the box, without any CSS, we get a functional, responsive website; it will be black text left justified on a white background, and it will look as though the text content of a website was copied and pasted into a Word document. This is to say, it will work, although it may be significantly harder and less enjoyable to use. User interfaces and user experience (UI/UX) play a large role in web development with UX informing how a site should work and UI informing how it should work.
 
-or save it for comosus, whatever
+We have already seen a decent amount of this with our base UI components, that often served to override the default HTML inputs. Among the simpler examples would be our \texttt{TextInput} component; here we specify that the text should align left and that the element should take the full width of the parent on the wrapper element, and we pass styles to the \texttt{input} element. We apply the classes \texttt{[w-full px-2 font-normal rounded border-2 border-primary-50 text-primary-10 appearance-none]} which are generated by tailwind and translates to:
+\begin{lstlisting}[language=XML]
+{
+  width: 100%;
+  padding-left: 0.5rem; 
+  padding-right: 0.5rem;
+  font-weight: 400;
+  border-radius: 0.25rem;
+  border: 2px solid var(--primary-50);
+  color: var(--primary-10);
+  appearance: none;
+}
+\end{lstlisting}
+
+We also add some variants to the \texttt{input} element. We add focus styles, placeholder styles, and dark mode variants. The associated error message element features orange text, a heavier fontweight, a smaller text size, and a different text alignment to set it off from the styles of the \texttt{input} and to signify that something has gone wrong.
+
+Often, the main pieces of markup are the layout containers and the content elements. The layout container is responsible for the positioning of its children in a general sense: we may have a \texttt{display: flex; flex-direction: row} container that uses \texttt{justify-content: between; align-items: baseline} which places its children evenly across its full extent of the x-axis and are set on the y-axis such that their baselines are even; a layout container with \texttt{display: grid; grid-gap: 1rem} would display its children in a single column with 1rem of space between each item. Content elements tend to set properties like the typography, margin, etc that only affect the element itself.
+
+CSS is a large, tricky, beautiful language. Despite the power behind it, there's little to discuss without getting far into specifics regarding my design choices. Rather than get into why some places have 18pt font and others have 14pt and other similar decisions, I will point to \href{https://www.w3schools.com/css/default.asp}{w3 schools} to learn more on CSS, and leave a line of Javascript that you can put in your browser's developer console to disable the CSS stylesheets for the page you are on (only until you reload):
+\begin{lstlisting}[language=C]
+for (const s of document.styleSheets) s.disabled = true
+\end{lstlisting}
+
+\section{Making things accessible}
+
+Where beautification may not be the most important aspect to discuss, accessibility absolutely warrants a nod. Accessibility is something often overlooked in websites, especially among junior developers; as a junior developer myself, I am not an expert, but there are several easy steps you can take to improve the accessibility of your site.
+
+In creating something navigatable by keyboard, the user will be traversing between elements largely through arrow keys and the tab key. When an element has focus, there is some sort of ring around it, for example \texttt{outline: 5px auto -webkit-focus-ring-color} this stands out to signify which element has focus. This focus ring is not the prettiest in terms of UI, despite being functional, and so as to avoid the focus ring rising when things like buttons are clicked (or other elements that receive focus without dismissing on click), it is unfortunately common to see many elements with \texttt{selector:focus { outline: none }} which leaves keyboard users unable to properly determine what element has focus. In order to achieve a pretty UI while considering accessibility, we create specific focus styles for relevant focusable elements; this can come in the form of tailwind's \texttt{shadow-outline} that applies a solid blue box-shadow around the element (as box-shadow respects border-radius, but outline does not), an underline (although this is rarely sufficient), or changes in background/text/border color.
+
+There are several other key aspects to accessibility; one of which is the use of screen readers. This is something harder to target if you aren't specifically trying to, as it often has no impact for those that are seeing, and many people either do not have a screen reader or are not proficient in using it. That being said, there are several easy pieces that can be addressed to improve the experience of using your site via screen reader: using semantic HTML where applicable rather than creating and styling generic elements (\texttt{div}s and \texttt{span}s) gives more insight as to what the element is; using appropriate headings when applicable helps with navigation; and proper labels for inputs gives insight into the functionality of controls. The latter piece, with labels, is something noteworthy as it is still common to see inputs use placeholder text in place of labels; this may sound reasonable, but screen readers need a label to read as a prompt once there is focus. There \textit{is} a practice, which is commendable, of providing text nodes that are only accessible via screen reader (essentially creating elements that are present but invisible), although providing a screen reader only label may not even be enough! Chrome's auto translation has skipped over translating attributes (including placeholder), which leaves an untranslated label; even beyond this there are accessibility issues at stake with recall such that a user may lose track of the label for an input if it is a placeholder that disappears once it recieves input; there are issues with color contrast ratios of placeholder text, and so on.
+
+On the subject of \texttt{div}s in place of semantic HTML, there is a level of difficulty in replicating certain default behavior of existing tags. In our earlier example of render functions versus templates, there was a list item being used as a button for each word. This is acceptable, although for it to \textit{work} as a button, there are several pieces we must add for a function to be called replicating the \texttt{onclick} attribute of the button, we must add a click event listener and a keydown event listener that calls the function hitting the spacebar or return key; in order to take focus via tab, we must provide \texttt{tabindex=``0''}.
+
+Contrast ratios are one of the most common problems for visually impaired users. There is a formula from the \href{https://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef}{Web Content Accessibility Guidelines (WCAG)} that determines contrast score and ratio, although there are certain aspects of contrast like hue difference that are largely ignored, as well as CSS properties that contribute to contrast like shadows. Regardless of its flaws, it serves as a solid heuristic for accessible typography. Some browsers are able to provide contrast scores from within the developer tools, which helps a developer to determine if their site is meeting minimum contrast ratios.
+
+In terms of browser support for assisting in targetting accessibility issues, there are certain developer features browsers may have to audit a webpage's accessibility features. Chrome does this via \href{https://developers.google.com/web/tools/lighthouse/}{lighthouse}, which again has politics attached in that it is run by Google who targets certain things that make it easier to serve ads, etc. Disclaimer aside, it is a powerful, helpful tool that can automate some (not all) of accessibility checking, checking things including:
+
+\begin{lstlisting}[language=C]
+- [aria-*] attributes match their roles
+- [aria-*] attributes have valid values
+- [aria-*] attributes are valid and not misspelled
+- Buttons have an accessible name
+- The page contains a heading, skip link, or landmark region
+- Background and foreground colors have a sufficient contrast ratio
+- Document has a <title> element
+- [id] attributes on the page are unique
+- <html> element has a [lang] attribute
+- <html> element has a valid value for its [lang] attribute
+- Form elements have associated labels
+- Links have a discernible name
+- Lists contain only <li> elements and script supporting elements (<script> and - <template>).
+- List items (<li>) are contained within <ul> or <ol> parent elements
+- [user-scalable="no"] is not used in the <meta name="viewport"> element and the - [maximum-scale] attribute is not less than 5.
+- No element has a [tabindex] value greater than 0
+\end{lstlisting}
+
+Our frontend is not perfect on every page even by the lighthouse audits—it reports that the documentation page is missing a title page, and there is insufficient contrast on the request method badge, leading to a score of 91/100. It is a per-page audit, and gives clear feedback on what must be done to address the concerns, which is a wonderful nicety in terms of developer experience, and helps to keep people aware of serious concerns with their websites.
+
+
+\chapter{Experiment}
+
+\section{Experimental Design}
+
+\textit{Note: All experimentation was conducted with IRB approval.}
+
+We conducted a survey to determine a baseline of human scores for passages by affect. There were two versions of the survey; both had the same first twelve passages, and a different set of the latter twelve passages. The first twelve passages were gathered by a sentence generator and served as unaltered text. The second set of twelve passages was gathered by feeding the first twelve through one of our replacement models; one version of the survey had all passages go through the arbitrary replacement model, and the other had all passages go through the targeted replacement model. For each passage, we asked the participants to give a score from one to ten in each of the following categories: how natural the passage sounded, how angry the passage sounded, how sad the passage sounded, how joyful the passage sounded, and how fearful the passage sounded.
+
+This was conducted over the internet via Google Forms. As Forms does not support A/B testing, we embedded the surveys in a webpage using a \href{https://github.com/colehollant/quarantine-js}{microframework I built} to programmatically provide one of the two versions with equal probability. We received 30 responses across the two surveys, with an even split of 15 responses for each version.
+
+\section{Results}
+
+We conducted an independent samples t test on the control results for each category (scores for natural, anger, sadness, joy, fear) to gain insight on the difference between the two groups. Each category has a null hypothesis of the two groups having equal means; each category has the same 12 prompts, and we run the t test on each prompt. The ``natural'' category had one out of twelve p values below our $\alpha = 0.05$, thus in all other cases we fail to reject the null hypothesis—we are unable to conclude that the two groups are significantly different. Similarly, the ``anger'' category had one out of twelve, ``sadness'' had two out of twelve, ``joy'' had one out of twelve, and ``fear'' had two out of twelve p values less than $\alpha = 0.05$.
+
+\subsection{Comparison of groups}
+
+
+\subsubsection{\textbf{Neutral Questions}}
+
+\begin{tabular}{|l|}
+\hline
+    question \\ \hline
+    \texttt{01.}\hspace{8pt} When motorists sped in and out of traffic,\\\hspace{24pt} all she could think of was those in need of a transplant. \\ \hline
+    \texttt{02.}\hspace{8pt} He drank life before spitting it out. \\ \hline
+    \texttt{03.}\hspace{8pt} The toy brought back fond memories of being lost in the rain forest. \\ \hline
+    \texttt{04.}\hspace{8pt} Italy is my favorite country; in fact, I plan to spend two weeks there next year. \\ \hline
+    \texttt{05.}\hspace{8pt} The blinking lights of the antenna tower came into focus just as I heard a loud snap. \\ \hline
+    \texttt{06.}\hspace{8pt} I love bacon, beer, birds, and baboons. \\ \hline
+    \texttt{07.}\hspace{8pt} She saw the brake lights, but not in time. \\ \hline
+    \texttt{08.}\hspace{8pt} They say that dogs are man's best friend, \\\hspace{24pt} but this cat was setting out to sabotage that theory. \\ \hline
+    \texttt{09.}\hspace{8pt} The tart lemonade quenched her thirst, but not her longing. \\ \hline
+    \texttt{10.}\hspace{8pt} He was surprised that his immense laziness was inspirational to others. \\ \hline
+    \texttt{11.}\hspace{8pt} They got there early, and they got really good seats. \\ \hline
+    \texttt{12.}\hspace{8pt} You can't compare apples and oranges, but what about bananas and plantains? \\ \hline
+\end{tabular}
+\vspace{16pt}
+
+
+\subsubsection{\textbf{Natural Scores}}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+    question & p value & mean difference & upper CI & lower CI & df & Cohen's d & effect size \\ \hline
+    1. & 0.48079 & 0.57143 & 1.28675 & -0.14389 & 26 & 0.27037 & small \\ \hline
+    2. & 0.94782 & 0.07143 & 0.13751 & 0.00535 & 26 & 0.02498 & small \\ \hline
+    3. & 0.34479 & 0.71429 & 1.67654 & -0.24796 & 26 & 0.3637 & medium  \\ \hline
+    4. & 0.72381 & 0.28571 & 0.64294 & -0.07151 & 26 & 0.13502 & small \\ \hline
+    5. & 0.49097 & -0.5 & -1.19866 & 0.19866 & 26 & -0.26407 & small  \\ \hline
+    6. & 0.71533 & 0.28571 & 0.65443 & -0.083 & 26 & 0.13936 & small \\ \hline
+    7. & 0.50865 & -0.42857 & -1.09875 & 0.2416 & 26 & -0.2533 & small \\ \hline
+    8. & 0.37381 & -0.57143 & -1.47636 & 0.3335 & 26 & -0.34203 & small \\ \hline
+    9. & 0.42139 & -0.78571 & -1.60264 & 0.03122 & 26 & -0.30877 & small \\ \hline
+    10. & 0.70986 & 0.35714 & 0.73329 & -0.01901 & 26 & 0.14217 & small \\ \hline
+    11. & \textbf{0.03027} & 1.57143 & 3.86317 & -0.72031 & 26 & 0.8662 & large \\ \hline
+    12. & 0.30227 & 0.85714 & 1.90961 & -0.19533 & 26 & 0.3978 & medium \\ \hline
+\end{tabular}
+\vspace{16pt}
+
+\subsubsection{\textbf{Anger Scores}}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+    question & p value & mean difference & upper CI & lower CI & df & Cohen's d & effect size  \\ \hline
+    1. & 0.14972 & 1.21429 & 2.69871 & -0.27014 & 26 & 0.56106 & medium \\ \hline
+    2. & 0.07658 & -1.57143 & -3.41563 & 0.27277 & 26 & -0.69704 & small \\ \hline
+    3. & 0.65964 & -0.14286 & -0.58836 & 0.30265 & 26 & -0.16838 & small \\ \hline
+    4. & 0.45892 & -0.14286 & -0.89467 & 0.60895 & 26 & -0.28416 & small \\ \hline
+    5. & 0.13268 & -0.64286 & -2.19515 & 0.90944 & 26 & -0.58671 & small \\ \hline
+    6. & 0.06944 & -0.28571 & -2.17944 & 1.60801 & 26 & -0.71576 & small \\ \hline
+    7. & 0.8948 & -0.07143 & -0.20497 & 0.06211 & 26 & -0.05047 & small \\ \hline
+    8. & 0.45384 & -0.64286 & -1.40329 & 0.11757 & 26 & -0.28742 & small \\ \hline
+    9. & 0.53799 & -0.28571 & -0.90982 & 0.3384 & 26 & -0.23589 & small \\ \hline
+    10. & 0.18126 & -0.42857 & -1.80229 & 0.94514 & 26 & -0.51922 & small \\ \hline
+    11. & 0.14574 & -0.71429 & -2.214 & 0.78543 & 26 & -0.56684 & small \\ \hline
+    12. & \textbf{0.04879} & -0.85714 & -2.9245 & 1.21022 & 26 & -0.78139 & small \\ \hline
+\end{tabular}
+\vspace{16pt}
+
+\subsubsection{\textbf{Sadness Scores}}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+    question & p value & mean difference & upper CI & lower CI & df & Cohen's d & effect size  \\ \hline
+    1. & 0.45453 & -0.5 & -1.25926 & 0.25926 & 26 & -0.28697 & small \\ \hline
+    2. & 0.66341 & -0.35714 & -0.79737 & 0.08308 & 26 & -0.16639 & small  \\ \hline
+    3. & 0.05728 & -1.78571 & -3.77509 & 0.20366 & 26 & -0.75191 & small  \\ \hline
+    4. & 0.14936 & -0.21429 & -1.70007 & 1.2715 & 26 & -0.56157 & small \\ \hline
+    5. & 0.68706 & 0.21429 & 0.62166 & -0.19309 & 26 & 0.15397 & small  \\ \hline
+    6. & 0.7837 & -0.07143 & -0.34878 & 0.20592 & 26 & -0.10483 & small \\ \hline
+    7. & 0.92345 & 0.07143 & 0.16845 & -0.02559 & 26 & 0.03667 & small \\ \hline
+    8. & 0.06638 & -0.71429 & -2.63061 & 1.20204 & 26 & -0.7243 & small \\ \hline
+    9. & 0.08258 & -1.28571 & -3.09128 & 0.51985 & 26 & -0.68244 & small \\ \hline
+    10. & 1.0 & 0.0 & 0.0 & 0.0 & 26 & 0.0 & small  \\ \hline
+    11. & \textbf{0.03373} & -0.78571 & -3.02749 & 1.45606 & 26 & -0.84731 & small \\ \hline
+    12. & \textbf{0.03594} & -0.57143 & -2.78369 & 1.64084 & 26 & -0.83616 & small \\ \hline
+\end{tabular}
+\vspace{16pt}
+
+\subsubsection{\textbf{Joy Scores}}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+    question & p value & mean difference & upper CI & lower CI & df & Cohen's d & effect size  \\ \hline
+    1. & 0.15908 & -0.64286 & -2.09261 & 0.8069 & 26 & -0.54796 & small \\ \hline
+    2. & 0.91834 & 0.07143 & 0.17495 & -0.0321 & 26 & 0.03913 & small  \\ \hline
+    3. & 0.71771 & -0.35714 & -0.72263 & 0.00834 & 26 & -0.13814 & small  \\ \hline
+    4. & 0.73313 & -0.21429 & -0.55893 & 0.13036 & 26 & -0.13026 & small \\ \hline
+    5. & 0.81512 & 0.07143 & 0.30764 & -0.16478 & 26 & 0.08928 & small  \\ \hline
+    6. & 0.86097 & -0.14286 & -0.31974 & 0.03403 & 26 & -0.06686 & small \\ \hline
+    7. & \textbf{0.03103} & -0.28571 & -2.56607 & 1.99464 & 26 & -0.86189 & small \\ \hline
+    8. & 0.57205 & 0.5 & 1.07228 & -0.07228 & 26 & 0.2163 & small \\ \hline
+    9. & 0.06454 & 1.07143 & 3.00174 & -0.85889 & 26 & 0.72959 & large \\ \hline
+    10. & 0.42582 & -0.71429 & -1.52335 & 0.09478 & 26 & -0.3058 & small  \\ \hline
+    11. & 0.93493 & -0.07143 & -0.15386 & 0.01101 & 26 & -0.03116 & small \\ \hline
+    12. & 0.52145 & 0.64286 & 1.29277 & -0.00705 & 26 & 0.24564 & small \\ \hline
+\end{tabular}
+\vspace{16pt}
+
+\subsubsection{\textbf{Fear Scores}}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+    question & p value & mean difference & upper CI & lower CI & df & Cohen's d & effect size  \\ \hline
+    1. & 0.64988 & 0.35714 & 0.81638 & -0.1021 & 26 & 0.17358 & small \\ \hline
+    2. & 0.7244 & 0.21429 & 0.57071 & -0.14214 & 26 & 0.13471 & small  \\ \hline
+    3. & 0.75466 & 0.21429 & 0.53011 & -0.10154 & 26 & 0.11937 & small  \\ \hline
+    4. & \textbf{0.03103} & -0.28571 & -2.56607 & 1.99464 & 26 & -0.86189 & small \\ \hline
+    5. & 0.325 & -0.85714 & -1.86036 & 0.14608 & 26 & -0.37918 & small  \\ \hline
+    6. & 0.13199 & -0.28571 & -1.8409 & 1.26947 & 26 & -0.58781 & small \\ \hline
+    7. & 0.10962 & -1.5 & -3.15662 & 0.15662 & 26 & -0.62614 & small \\ \hline
+    8. & 0.86424 & -0.14286 & -0.31553 & 0.02982 & 26 & -0.06526 & small \\ \hline
+    9. & 0.36909 & -0.35714 & -1.27119 & 0.5569 & 26 & -0.34548 & small \\ \hline
+    10. & 0.61713 & -0.21429 & -0.72027 & 0.2917 & 26 & -0.19124 & small  \\ \hline
+    11. & \textbf{0.02071} & -0.5 & -2.96306 & 1.96306 & 26 & -0.93095 & small \\ \hline
+    12. & 0.21367 & -0.28571 & -1.56047 & 0.98904 & 26 & -0.48181 & small \\ \hline
+\end{tabular}
+\vspace{16pt}
+
+\subsection{Error Analysis}
+
+Then, we chose a subset of scoring metrics (raw score, and LDA net scores for input and topic) to compare to the real scores determined by our participants. We will use relative error as a means of analysis. We will look at relative error averaged by category, and then subdivided by target and group.
+
+\subsubsection{\textbf{LDA Input Score Error}}
+
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+    anger error & sadness error & joy error & fear error & mean error & std dev \\ \hline
+    -0.85802 & -0.76072 & -0.70641 & -0.79792 & -0.78077 & 0.055211 \\ \hline
+\end{tabular}
+\vspace{16pt}
+
+\subsubsection{\textbf{LDA Topic Score Error}}
+
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+    anger error & sadness error & joy error & fear error & mean error & std dev \\ \hline
+    -0.53525 & -0.46815 & -0.36493 & -0.47174 & -0.46002 & 0.061043 \\ \hline
+\end{tabular}
+\vspace{16pt}
+
+\subsubsection{\textbf{Raw Score Error}}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+    anger error & sadness error & joy error & fear error & mean error & std dev \\ \hline
+    -0.85647 & -0.85213 & -0.85312 & -0.8497 & -0.85286 & 0.002430 \\ \hline
+\end{tabular}
+\vspace{16pt}
+
+We can see that the LDA net scores for topic has the least average error across the board, followed by the LDA input scores, with the raw score trailing at the end. This suggests that the LDA topic score may be the most appropriate scoring model that we offer, although it has the highest variance among error scores. We can further look at our results by group and affect target.
+
+\subsubsection{\textbf{LDA Input Score Error}}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+    group & target & anger err & sadness err & joy err & fear err & mean $|\text{err}|$ & std dev \\ \hline
+    neutral &  & -0.96974 & -0.68386 & -0.84701 & -0.77157 & 0.81804 & 0.12113 \\ \hline
+    control &  & -0.95562 & -0.95015 & -0.97787 & -0.79765 & 0.92032 & 0.08266 \\ \hline
+    experimental & anger & -0.43843 & -0.48738 & -0.20712 & -0.98126 & 0.52855 & 0.32562 \\ \hline
+    experimental & sadness & -0.56263 & 0.03343 & 0.67848 & -0.69709 & 0.49291 & 0.31204 \\ \hline
+    experimental & joy & -1.0 & -1.0 & -0.39131 & -0.47553 & 0.71671 & 0.32892 \\ \hline
+    experimental & fear & -0.79571 & -0.94346 & -0.89708 & -0.9416 & 0.89446 & 0.06924 \\ \hline
+\end{tabular}
+\vspace{16pt}
+
+Here, we see that there the LDA input scoring has rather high error with the unaltered (neutral) and random-replacement (control) scores ($>80\%$), and a mix of high and low error among the the targeted replacement scores. We see high average error within the sentences with a target of ``fear'' and ``joy'' ($89\% \text{ and } 72\%$ respectively), with lower mean error for sentences targeting ``anger'' and ``sadness'' ($53\% \text{ and } 49\%$ respectively).
+
+\subsubsection{\textbf{LDA Topic Score Error}}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline
+    group & target & anger err & sadness err & joy err & fear err & mean $|\text{err}|$ & std dev  \\ \hline
+    neutral &  & -0.51351 & -0.65078 & -0.49961 & -0.39885 & 0.51569 & 0.10354  \\ \hline
+    control &  & -0.67275 & -0.45844 & -0.48453 & -0.49215 & 0.52697 & 0.09826  \\ \hline
+    experimental & anger & -0.0917 & 0.13595 & 0.41926 & -0.81972 & 0.36666 & 0.33509  \\ \hline
+    experimental & sadness & -0.67467 & -0.35851 & 0.1114 & 0.45561 & 0.40005 & 0.23349  \\ \hline
+    experimental & joy & -0.93078 & -0.91615 & -0.88804 & -0.6649 & 0.84997 & 0.12465  \\ \hline
+    experimental & fear & -0.5083 & -0.62584 & -0.64535 & 0.08332 & 0.46571 & 0.26201  \\ \hline
+\end{tabular}
+\vspace{16pt}
+
+We see that the LDA topic scores are more consistent, largely hovering close to $40-50\%$, with sentences that targeted ``joy'' having much higher mean error at $\approx85\%$.
+
+\subsubsection{\textbf{Raw Score Error}}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline
+    group & target & anger err & sadness err & joy err & fear err & mean $|\text{err}|$ & std dev  \\ \hline
+    neutral &  & -0.9763 & -0.91245 & -0.96795 & -0.89303 & 0.93743 & 0.04098  \\ \hline
+    control &  & -0.9187 & -0.96874 & -0.98527 & -0.83505 & 0.92694 & 0.06748  \\ \hline
+    experimental & anger & -0.51785 & -0.48804 & -0.3838 & -0.91828 & 0.57699 & 0.23467  \\ \hline
+    experimental & sadness & -0.80069 & -0.43176 & -0.35877 & -0.29939 & 0.47265 & 0.22529  \\ \hline
+    experimental & joy & -1.0 & -1.0 & -1.0 & -0.72623 & 0.93156 & 0.13689  \\ \hline
+    experimental & fear & -0.5926 & -0.8712 & -0.80598 & -0.93233 & 0.80053 & 0.14791  \\ \hline
+\end{tabular}
+\vspace{16pt}
+
+The raw score model gives scores rather similar to that of the LDA input scores, having high error ($>80\%$) for the neutral and control groups as well as the sentences targeting ``joy'' and ``fear,'' with lower levels of error ($40-60\%$) in the sentences targeting ``anger'' and ``sadness.''
+
+\chapter{Discussion}
+
+As per the relative error for each scoring model, we conclude that the LDA topic-scoring model gives the most human-like affect scores. Across all models, we saw a higher error for sentences targeting ``joy'' and ``fear'' as opposed to sentences targeting ``anger'' and ``sadness.'' This may be the result of issues with attempts at changing an underlying tone through word-choice alone, suggesting that theme dominates word-choice in human conceptions; it may also arise from limitations of our lexicons. There may be improvements by constructing our LDA model differently; a comparison between our current model and one based off a large corpus of pre-scored sentences may give more insight as to the appropriateness of our model—this has not been done partially due to the cost of gathering large-scale human data.
+
+\section{Future Work}
+
+Given both the state of the world at the end of this academic year and the scope of this project, there is material left undone. This section serves to address that, both in the sense of acknowledgment and with ideas for implementation if applicable.
+
+There ought to be some LDA replacement model, perhaps targeting a topic with a score closest to the desired output; this could be done by preferring synonyms with high impact on the target topic. Some LDA playground feature could be interesting, such that a user could pass a corpus and vocabulary to receive a model; this would entail a greater degree of automation as well as some database for models, perhaps with some authentication system for saving remotely. Perhaps our model API should maintain a database connection in order to make less HTTP requests. A fuller featured frontend with more information in regards to analysis is in order; a user should be able to see the effect of each word on the output, and to be able to edit input manually with dropdown menus for word suggestions (based on synonyms). Despite having made a REST API as our CRUD wrapper, I think something like GQL may be more fitting so that we can have finer grained control over the requests. The output from the replacement models should have an option to score the generated text directly as opposed to copy-pasting the output, and on a similar note, we should have an option to save results for reference (via \texttt{localStorage}). Then, there should be several other UI niceties: light/dark mode should extend to fully support things like the documentation and the info popovers, there should be more info popovers across the site, we should suggest words in the thesaurus page if no results exist (via edit distance), and—for development—there should be some UI playground for mocking designs (this can be done by registering components globally, providing a textarea for the template, and compiling/rendering the results).
+
+
+
+
+
 
 \begin{appendices}
 \chapter{Title of First Chapter of Appendices}

@@ -27,14 +27,58 @@
 \contentsline {section}{\numberline {4.3}Creating our API}{17}{section.4.3}% 
 \contentsline {section}{\numberline {4.4}Unmarshalling JSON into Nested Structs in Golang}{20}{section.4.4}% 
 \contentsline {section}{\numberline {4.5}Writing Go Modules}{22}{section.4.5}% 
-\contentsline {chapter}{\numberline {5}Frontend}{25}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}In defense of the GUI}{25}{section.5.1}% 
-\contentsline {section}{\numberline {5.2}Sap Aside / GSAP Inside}{26}{section.5.2}% 
-\contentsline {subsection}{\numberline {5.2.1}Configuration}{27}{subsection.5.2.1}% 
-\contentsline {section}{\numberline {5.3}Creating our Component Library}{27}{section.5.3}% 
-\contentsline {subsection}{\numberline {5.3.1}Abstracted renderers}{27}{subsection.5.3.1}% 
-\contentsline {section}{\numberline {5.4}Overview of Views}{27}{section.5.4}% 
-\contentsline {section}{\numberline {5.5}Making things pretty}{27}{section.5.5}% 
-\contentsline {chapter}{Appendices}{29}{section*.3}% 
-\contentsline {chapter}{\numberline {A}Title of First Chapter of Appendices}{29}{Appendix.1.A}% 
-\contentsline {section}{\numberline {A.1}Title of First Section of Appendices}{29}{section.1.A.1}% 
+\contentsline {chapter}{\numberline {5}Models}{25}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Our Different Models}{25}{section.5.1}% 
+\contentsline {subsection}{\numberline {5.1.1}Model Application Structure}{26}{subsection.5.1.1}% 
+\contentsline {subsection}{\numberline {5.1.2}Control Model (Arbitrary Replacement)}{26}{subsection.5.1.2}% 
+\contentsline {subsubsection}{\textbf {Control Model Endpoints}}{27}{section*.3}% 
+\contentsline {subsection}{\numberline {5.1.3}Base Scoring Model}{27}{subsection.5.1.3}% 
+\contentsline {subsubsection}{\textbf {Basic Scoring Model Endpoints}}{28}{section*.4}% 
+\contentsline {subsection}{\numberline {5.1.4}Targeted Replacement Model}{28}{subsection.5.1.4}% 
+\contentsline {subsubsection}{\textbf {Targeted Replacement Model Endpoints}}{29}{section*.5}% 
+\contentsline {subsection}{\numberline {5.1.5}LDA Overview}{29}{subsection.5.1.5}% 
+\contentsline {subsubsection}{Assumptions}{30}{section*.6}% 
+\contentsline {subsubsection}{Terminology}{30}{section*.7}% 
+\contentsline {subsubsection}{A Graphical Representation}{30}{section*.8}% 
+\contentsline {subsection}{\numberline {5.1.6}Latent Dirichlet Allocation Scoring Model}{32}{subsection.5.1.6}% 
+\contentsline {subsubsection}{\textbf {Building the model}}{32}{section*.9}% 
+\contentsline {subsubsection}{\textbf {Using the model}}{33}{section*.10}% 
+\contentsline {subsubsection}{\textbf {LDA Model Endpoints}}{33}{section*.11}% 
+\contentsline {subsection}{\numberline {5.1.7}LDA Model On Seeds}{34}{subsection.5.1.7}% 
+\contentsline {subsubsection}{\textbf {Anger}}{34}{section*.12}% 
+\contentsline {subsubsection}{\textbf {Fear}}{34}{section*.13}% 
+\contentsline {subsubsection}{\textbf {Joy}}{34}{section*.14}% 
+\contentsline {subsubsection}{\textbf {Sadness}}{34}{section*.15}% 
+\contentsline {chapter}{\numberline {6}Frontend}{37}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Why make a frontend?}{37}{section.6.1}% 
+\contentsline {subsection}{\numberline {6.1.1}Overview of our frontend}{37}{subsection.6.1.1}% 
+\contentsline {subsection}{\numberline {6.1.2}Configuration}{39}{subsection.6.1.2}% 
+\contentsline {section}{\numberline {6.2}Creating our Component Library}{39}{section.6.2}% 
+\contentsline {subsection}{\numberline {6.2.1}Different Kinds of Components}{39}{subsection.6.2.1}% 
+\contentsline {subsection}{\numberline {6.2.2}Our Components}{42}{subsection.6.2.2}% 
+\contentsline {subsection}{\numberline {6.2.3}Creating Our Documentation Renderer}{43}{subsection.6.2.3}% 
+\contentsline {section}{\numberline {6.3}Consuming the composition API}{44}{section.6.3}% 
+\contentsline {section}{\numberline {6.4}Making things pretty}{45}{section.6.4}% 
+\contentsline {section}{\numberline {6.5}Making things accessible}{46}{section.6.5}% 
+\contentsline {chapter}{\numberline {7}Experiment}{51}{chapter.7}% 
+\contentsline {section}{\numberline {7.1}Experimental Design}{51}{section.7.1}% 
+\contentsline {section}{\numberline {7.2}Results}{52}{section.7.2}% 
+\contentsline {subsection}{\numberline {7.2.1}Comparison of groups}{52}{subsection.7.2.1}% 
+\contentsline {subsubsection}{\textbf {Neutral Questions}}{52}{section*.16}% 
+\contentsline {subsubsection}{\textbf {Natural Scores}}{53}{section*.17}% 
+\contentsline {subsubsection}{\textbf {Anger Scores}}{53}{section*.18}% 
+\contentsline {subsubsection}{\textbf {Sadness Scores}}{53}{section*.19}% 
+\contentsline {subsubsection}{\textbf {Joy Scores}}{54}{section*.20}% 
+\contentsline {subsubsection}{\textbf {Fear Scores}}{54}{section*.21}% 
+\contentsline {subsection}{\numberline {7.2.2}Error Analysis}{54}{subsection.7.2.2}% 
+\contentsline {subsubsection}{\textbf {LDA Input Score Error}}{54}{section*.22}% 
+\contentsline {subsubsection}{\textbf {LDA Topic Score Error}}{55}{section*.23}% 
+\contentsline {subsubsection}{\textbf {Raw Score Error}}{55}{section*.24}% 
+\contentsline {subsubsection}{\textbf {LDA Input Score Error}}{55}{section*.25}% 
+\contentsline {subsubsection}{\textbf {LDA Topic Score Error}}{55}{section*.26}% 
+\contentsline {subsubsection}{\textbf {Raw Score Error}}{56}{section*.27}% 
+\contentsline {chapter}{\numberline {8}Discussion}{57}{chapter.8}% 
+\contentsline {section}{\numberline {8.1}Future Work}{57}{section.8.1}% 
+\contentsline {chapter}{Appendices}{59}{section*.28}% 
+\contentsline {chapter}{\numberline {A}Title of First Chapter of Appendices}{59}{Appendix.1.A}% 
+\contentsline {section}{\numberline {A.1}Title of First Section of Appendices}{59}{section.1.A.1}% 

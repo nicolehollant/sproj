@@ -8,6 +8,7 @@
       'bg-yellow-500': color === 'joy',
       'bg-red-600': color === 'anger',
       'bg-black': color === 'fear',
+      'bg-primary-50': !['sadness','joy','anger','fear'].includes(color)
     }"
   />
 </div>

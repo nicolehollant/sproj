@@ -1,4 +1,4 @@
-| Cite | Tite | Reference |
+| Cite | Title | Reference |
 |------|------|-----------|
 | FetchAPI36:online | Fetch API - Web APIs \| MDN | https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API |
 | Mohammad13 | Crowdsourcing a Word-Emotion Association Lexicon |  |
@@ -45,3 +45,9 @@
 | book1dvi18:online | book1.dvi | http://i.stanford.edu/~ullman/mmds/ch1.pdf |
 | Pritchard945 | Inference of Population Structure Using Multilocus Genotype Data |  |
 | david m._y._i._1970 | Latent Dirichlet Allocation |  |
+| Welcomet33:online | Welcome to Flask — Flask Documentation (1.1.x) | https://flask.palletsprojects.com/en/1.1.x/ |
+| darlingl99:online | A Theoretical and Practical Implementation
+Tutorial on Topic Modeling and Gibbs Sampling | http://www.ccs.neu.edu/home/vip/teach/DMcourse/5_topicmodel_summ/notes_slides/sampling/darling-lda.pdf |
+| TopicMod43:online | Topic Models - VideoLectures.NET | http://videolectures.net/mlss09uk_blei_tm/ |
+| 593pxLat90:online | 593px-Latent\_Dirichlet\_allocation.svg.png (593×311) | https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Latent_Dirichlet_allocation.svg/593px-Latent_Dirichlet_allocation.svg.png |
+| Howtoser37:online | How to serialize numpy.float32 (and other types) to JSON · Ellis Valentiner | https://ellisvalentiner.com/post/serializing-numpyfloat32-json/ |

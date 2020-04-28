@@ -86,9 +86,9 @@
   </div>
   
   <div class="my-16 text-left text-text" v-else-if="responseState.error">
-    <h1 class="font-bold text-2xl text-secondary-10 mt-4 mb-6">
+    <p class="font-bold text-2xl text-secondary-10 mt-4 mb-6">
       Error
-    </h1>
+    </p>
     <p class="text-lg">
       {{responseState.result}}
     </p>

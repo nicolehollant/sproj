@@ -27,6 +27,12 @@ def post_score():
     "data": out
   }), 200
 
+@routes.route('/make-affect/', methods=["GET"])
+def get_make_affect():
+  return jsonify({
+    "message": "this is a test for the make_affect endpoint"
+  }), 200
+
 @routes.route('/make-affect/<affect>', methods=["POST"])
 def post_make_affect(affect):
   reqbody = request.get_json()

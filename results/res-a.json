@@ -1,0 +1,2992 @@
+[
+  {
+    "question": "1. When motorists sped in and out of traffic, all she could think of was those in need of a transplant.\n",
+    "scores": {
+      "means": {
+        "natural": 4.928571428571429,
+        "angry": 4.428571428571429,
+        "sad": 6.357142857142857,
+        "joy": 1.5714285714285714,
+        "fear": 6.142857142857143
+      },
+      "medians": {
+        "natural": 4.0,
+        "angry": 4.0,
+        "sad": 6.5,
+        "joy": 1.0,
+        "fear": 6.0
+      },
+      "modes": {
+        "natural": [
+          3,
+          4
+        ],
+        "angry": [
+          2,
+          4
+        ],
+        "sad": [
+          7
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          6
+        ]
+      },
+      "data": {
+        "natural": 69,
+        "angry": 62,
+        "sad": 89,
+        "joy": 22,
+        "fear": 86,
+        "NUM": 14,
+        "count_natural": [
+          8,
+          3,
+          4,
+          4,
+          3,
+          6,
+          7,
+          2,
+          3,
+          7,
+          2,
+          4,
+          6,
+          10
+        ],
+        "count_angry": [
+          6,
+          2,
+          5,
+          2,
+          7,
+          7,
+          4,
+          4,
+          4,
+          9,
+          3,
+          2,
+          1,
+          6
+        ],
+        "count_sad": [
+          4,
+          5,
+          7,
+          6,
+          8,
+          6,
+          7,
+          7,
+          9,
+          6,
+          4,
+          5,
+          8,
+          7
+        ],
+        "count_joy": [
+          1,
+          3,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          4
+        ],
+        "count_fear": [
+          7,
+          6,
+          3,
+          4,
+          7,
+          8,
+          8,
+          7,
+          8,
+          6,
+          6,
+          5,
+          6,
+          5
+        ]
+      }
+    }
+  },
+  {
+    "question": "2. He drank life before spitting it out.\n",
+    "scores": {
+      "means": {
+        "natural": 6.142857142857143,
+        "angry": 4.071428571428571,
+        "sad": 5.928571428571429,
+        "joy": 2.4285714285714284,
+        "fear": 2.9285714285714284
+      },
+      "medians": {
+        "natural": 7.0,
+        "angry": 3.5,
+        "sad": 6.0,
+        "joy": 2.0,
+        "fear": 3.0
+      },
+      "modes": {
+        "natural": [
+          7
+        ],
+        "angry": [
+          2
+        ],
+        "sad": [
+          4,
+          8
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          3
+        ]
+      },
+      "data": {
+        "natural": 86,
+        "angry": 57,
+        "sad": 83,
+        "joy": 34,
+        "fear": 41,
+        "NUM": 14,
+        "count_natural": [
+          10,
+          1,
+          7,
+          7,
+          1,
+          7,
+          8,
+          6,
+          2,
+          9,
+          8,
+          9,
+          4,
+          7
+        ],
+        "count_angry": [
+          2,
+          4,
+          6,
+          3,
+          4,
+          1,
+          7,
+          8,
+          5,
+          3,
+          2,
+          1,
+          2,
+          9
+        ],
+        "count_sad": [
+          5,
+          4,
+          6,
+          6,
+          7,
+          10,
+          8,
+          8,
+          8,
+          3,
+          4,
+          1,
+          4,
+          9
+        ],
+        "count_joy": [
+          4,
+          1,
+          4,
+          3,
+          1,
+          1,
+          1,
+          1,
+          3,
+          3,
+          1,
+          7,
+          3,
+          1
+        ],
+        "count_fear": [
+          1,
+          2,
+          2,
+          6,
+          3,
+          7,
+          1,
+          3,
+          4,
+          3,
+          3,
+          3,
+          1,
+          2
+        ]
+      }
+    }
+  },
+  {
+    "question": "3. The toy brought back fond memories of being lost in the rain forest.\n",
+    "scores": {
+      "means": {
+        "natural": 8.285714285714286,
+        "angry": 1.3571428571428572,
+        "sad": 3.642857142857143,
+        "joy": 6.428571428571429,
+        "fear": 2.2857142857142856
+      },
+      "medians": {
+        "natural": 8.5,
+        "angry": 1.0,
+        "sad": 3.0,
+        "joy": 6.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          10
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          3
+        ],
+        "joy": [
+          6
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 116,
+        "angry": 19,
+        "sad": 51,
+        "joy": 90,
+        "fear": 32,
+        "NUM": 14,
+        "count_natural": [
+          10,
+          8,
+          10,
+          6,
+          2,
+          10,
+          8,
+          10,
+          7,
+          9,
+          10,
+          8,
+          8,
+          10
+        ],
+        "count_angry": [
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          4,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_sad": [
+          2,
+          3,
+          5,
+          3,
+          2,
+          10,
+          3,
+          5,
+          5,
+          4,
+          3,
+          1,
+          4,
+          1
+        ],
+        "count_joy": [
+          10,
+          8,
+          6,
+          6,
+          5,
+          1,
+          6,
+          6,
+          8,
+          8,
+          2,
+          10,
+          4,
+          10
+        ],
+        "count_fear": [
+          1,
+          5,
+          1,
+          1,
+          1,
+          9,
+          2,
+          1,
+          4,
+          3,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "4. Italy is my favorite country; in fact, I plan to spend two weeks there next year.\n",
+    "scores": {
+      "means": {
+        "natural": 8.642857142857142,
+        "angry": 1.1428571428571428,
+        "sad": 1.0714285714285714,
+        "joy": 8.0,
+        "fear": 1.0
+      },
+      "medians": {
+        "natural": 9.5,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 8.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          10
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          10
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 121,
+        "angry": 16,
+        "sad": 15,
+        "joy": 112,
+        "fear": 14,
+        "NUM": 14,
+        "count_natural": [
+          10,
+          10,
+          8,
+          8,
+          4,
+          10,
+          7,
+          10,
+          8,
+          7,
+          10,
+          10,
+          9,
+          10
+        ],
+        "count_angry": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_sad": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          10,
+          7,
+          5,
+          5,
+          6,
+          10,
+          9,
+          10,
+          8,
+          8,
+          8,
+          10,
+          9,
+          7
+        ],
+        "count_fear": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "5. The blinking lights of the antenna tower came into focus just as I heard a loud snap.\n",
+    "scores": {
+      "means": {
+        "natural": 7.285714285714286,
+        "angry": 1.5,
+        "sad": 2.0,
+        "joy": 1.6428571428571428,
+        "fear": 6.571428571428571
+      },
+      "medians": {
+        "natural": 8.0,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 1.5,
+        "fear": 6.5
+      },
+      "modes": {
+        "natural": [
+          8
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          9
+        ]
+      },
+      "data": {
+        "natural": 102,
+        "angry": 21,
+        "sad": 28,
+        "joy": 23,
+        "fear": 92,
+        "NUM": 14,
+        "count_natural": [
+          8,
+          9,
+          3,
+          7,
+          2,
+          8,
+          8,
+          6,
+          8,
+          7,
+          9,
+          10,
+          7,
+          10
+        ],
+        "count_angry": [
+          1,
+          2,
+          1,
+          1,
+          1,
+          3,
+          1,
+          2,
+          2,
+          3,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_sad": [
+          6,
+          1,
+          1,
+          1,
+          1,
+          4,
+          1,
+          1,
+          5,
+          3,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          2,
+          1,
+          2,
+          1,
+          1,
+          2,
+          3,
+          1,
+          2,
+          2,
+          1,
+          1,
+          3,
+          1
+        ],
+        "count_fear": [
+          10,
+          4,
+          7,
+          4,
+          6,
+          3,
+          9,
+          10,
+          9,
+          8,
+          9,
+          5,
+          6,
+          2
+        ]
+      }
+    }
+  },
+  {
+    "question": "6. I love bacon, beer, birds, and baboons.\n",
+    "scores": {
+      "means": {
+        "natural": 8.071428571428571,
+        "angry": 1.0714285714285714,
+        "sad": 1.2857142857142858,
+        "joy": 7.5,
+        "fear": 1.0714285714285714
+      },
+      "medians": {
+        "natural": 8.5,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 7.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          10
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          10,
+          7
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 113,
+        "angry": 15,
+        "sad": 18,
+        "joy": 105,
+        "fear": 15,
+        "NUM": 14,
+        "count_natural": [
+          10,
+          8,
+          9,
+          8,
+          2,
+          10,
+          6,
+          7,
+          6,
+          7,
+          10,
+          10,
+          10,
+          10
+        ],
+        "count_angry": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_sad": [
+          1,
+          1,
+          1,
+          1,
+          4,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          10,
+          7,
+          7,
+          6,
+          7,
+          10,
+          6,
+          5,
+          9,
+          7,
+          5,
+          10,
+          10,
+          6
+        ],
+        "count_fear": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "7. She saw the brake lights, but not in time.\n",
+    "scores": {
+      "means": {
+        "natural": 8.5,
+        "angry": 2.2857142857142856,
+        "sad": 7.928571428571429,
+        "joy": 1.0,
+        "fear": 6.714285714285714
+      },
+      "medians": {
+        "natural": 9.0,
+        "angry": 1.5,
+        "sad": 8.0,
+        "joy": 1.0,
+        "fear": 7.0
+      },
+      "modes": {
+        "natural": [
+          10
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          8
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          6,
+          7,
+          10
+        ]
+      },
+      "data": {
+        "natural": 119,
+        "angry": 32,
+        "sad": 111,
+        "joy": 14,
+        "fear": 94,
+        "NUM": 14,
+        "count_natural": [
+          10,
+          10,
+          9,
+          9,
+          3,
+          10,
+          6,
+          9,
+          7,
+          7,
+          10,
+          10,
+          9,
+          10
+        ],
+        "count_angry": [
+          6,
+          1,
+          5,
+          4,
+          2,
+          1,
+          3,
+          1,
+          3,
+          1,
+          1,
+          1,
+          2,
+          1
+        ],
+        "count_sad": [
+          10,
+          8,
+          8,
+          8,
+          9,
+          3,
+          6,
+          10,
+          10,
+          7,
+          8,
+          8,
+          8,
+          8
+        ],
+        "count_joy": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_fear": [
+          6,
+          7,
+          7,
+          5,
+          6,
+          10,
+          6,
+          7,
+          10,
+          9,
+          2,
+          8,
+          10,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "8. They say that dogs are man's best friend, but this cat was setting out to sabotage that theory.\n",
+    "scores": {
+      "means": {
+        "natural": 7.285714285714286,
+        "angry": 2.7142857142857144,
+        "sad": 1.2142857142857142,
+        "joy": 5.142857142857143,
+        "fear": 2.142857142857143
+      },
+      "medians": {
+        "natural": 8.0,
+        "angry": 2.0,
+        "sad": 1.0,
+        "joy": 5.5,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          8
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          6
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 102,
+        "angry": 38,
+        "sad": 17,
+        "joy": 72,
+        "fear": 30,
+        "NUM": 14,
+        "count_natural": [
+          10,
+          8,
+          8,
+          6,
+          2,
+          8,
+          8,
+          5,
+          7,
+          5,
+          8,
+          10,
+          7,
+          10
+        ],
+        "count_angry": [
+          2,
+          5,
+          5,
+          1,
+          2,
+          5,
+          1,
+          1,
+          7,
+          1,
+          1,
+          1,
+          3,
+          3
+        ],
+        "count_sad": [
+          1,
+          1,
+          2,
+          1,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          10,
+          2,
+          6,
+          6,
+          6,
+          3,
+          5,
+          4,
+          6,
+          7,
+          4,
+          6,
+          4,
+          3
+        ],
+        "count_fear": [
+          1,
+          1,
+          2,
+          1,
+          2,
+          8,
+          1,
+          1,
+          8,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "9. The tart lemonade quenched her thirst, but not her longing.\n",
+    "scores": {
+      "means": {
+        "natural": 7.0,
+        "angry": 1.6428571428571428,
+        "sad": 6.285714285714286,
+        "joy": 2.857142857142857,
+        "fear": 1.4285714285714286
+      },
+      "medians": {
+        "natural": 7.5,
+        "angry": 1.0,
+        "sad": 7.0,
+        "joy": 2.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          10,
+          7
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          7
+        ],
+        "joy": [
+          2
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 98,
+        "angry": 23,
+        "sad": 88,
+        "joy": 40,
+        "fear": 20,
+        "NUM": 14,
+        "count_natural": [
+          9,
+          10,
+          8,
+          8,
+          1,
+          10,
+          7,
+          3,
+          4,
+          5,
+          7,
+          9,
+          7,
+          10
+        ],
+        "count_angry": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          5,
+          2,
+          1,
+          1,
+          1,
+          1,
+          3
+        ],
+        "count_sad": [
+          7,
+          8,
+          7,
+          6,
+          8,
+          4,
+          2,
+          7,
+          7,
+          9,
+          8,
+          5,
+          4,
+          6
+        ],
+        "count_joy": [
+          5,
+          2,
+          5,
+          1,
+          2,
+          7,
+          2,
+          1,
+          4,
+          2,
+          2,
+          1,
+          4,
+          2
+        ],
+        "count_fear": [
+          1,
+          1,
+          1,
+          4,
+          1,
+          1,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "10. He was surprised that his immense laziness was inspirational to others.\n",
+    "scores": {
+      "means": {
+        "natural": 7.714285714285714,
+        "angry": 1.2857142857142858,
+        "sad": 3.5,
+        "joy": 3.7857142857142856,
+        "fear": 1.4285714285714286
+      },
+      "medians": {
+        "natural": 8.5,
+        "angry": 1.0,
+        "sad": 3.0,
+        "joy": 4.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          10
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          3,
+          2
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 108,
+        "angry": 18,
+        "sad": 49,
+        "joy": 53,
+        "fear": 20,
+        "NUM": 14,
+        "count_natural": [
+          8,
+          9,
+          10,
+          8,
+          2,
+          10,
+          6,
+          8,
+          1,
+          7,
+          10,
+          10,
+          9,
+          10
+        ],
+        "count_angry": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_sad": [
+          7,
+          3,
+          5,
+          3,
+          4,
+          6,
+          2,
+          6,
+          4,
+          2,
+          1,
+          2,
+          1,
+          3
+        ],
+        "count_joy": [
+          6,
+          3,
+          5,
+          1,
+          7,
+          1,
+          4,
+          5,
+          6,
+          4,
+          7,
+          1,
+          1,
+          2
+        ],
+        "count_fear": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          6,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "11. They got there early, and they got really good seats.\n",
+    "scores": {
+      "means": {
+        "natural": 8.357142857142858,
+        "angry": 1.2142857142857142,
+        "sad": 1.0,
+        "joy": 6.857142857142857,
+        "fear": 1.0
+      },
+      "medians": {
+        "natural": 8.5,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 7.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          10
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          10,
+          7
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 117,
+        "angry": 17,
+        "sad": 14,
+        "joy": 96,
+        "fear": 14,
+        "NUM": 14,
+        "count_natural": [
+          10,
+          9,
+          9,
+          8,
+          5,
+          10,
+          6,
+          7,
+          7,
+          8,
+          10,
+          10,
+          8,
+          10
+        ],
+        "count_angry": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          4,
+          1
+        ],
+        "count_sad": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          10,
+          8,
+          5,
+          3,
+          9,
+          10,
+          6,
+          7,
+          10,
+          7,
+          8,
+          7,
+          5,
+          1
+        ],
+        "count_fear": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "12. You can't compare apples and oranges, but what about bananas and plantains?\n",
+    "scores": {
+      "means": {
+        "natural": 8.5,
+        "angry": 1.2142857142857142,
+        "sad": 1.0714285714285714,
+        "joy": 4.285714285714286,
+        "fear": 1.1428571428571428
+      },
+      "medians": {
+        "natural": 9.5,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 5.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          10
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          1,
+          5
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 119,
+        "angry": 17,
+        "sad": 15,
+        "joy": 60,
+        "fear": 16,
+        "NUM": 14,
+        "count_natural": [
+          10,
+          9,
+          10,
+          9,
+          5,
+          10,
+          7,
+          10,
+          4,
+          9,
+          10,
+          10,
+          6,
+          10
+        ],
+        "count_angry": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_sad": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          8,
+          1,
+          5,
+          7,
+          5,
+          1,
+          5,
+          7,
+          5,
+          4,
+          8,
+          1,
+          2,
+          1
+        ],
+        "count_fear": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "13. The flaming fire up of the transmitting aerial rise came into adjust just as I detected a colourful cracking.\n",
+    "scores": {
+      "means": {
+        "natural": 2.5,
+        "angry": 1.9285714285714286,
+        "sad": 2.0714285714285716,
+        "joy": 2.142857142857143,
+        "fear": 3.857142857142857
+      },
+      "medians": {
+        "natural": 2.0,
+        "angry": 1.0,
+        "sad": 1.5,
+        "joy": 1.0,
+        "fear": 4.0
+      },
+      "modes": {
+        "natural": [
+          2
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          6
+        ]
+      },
+      "data": {
+        "natural": 35,
+        "angry": 27,
+        "sad": 29,
+        "joy": 30,
+        "fear": 54,
+        "NUM": 14,
+        "count_natural": [
+          2,
+          3,
+          3,
+          2,
+          2,
+          4,
+          2,
+          1,
+          2,
+          2,
+          2,
+          3,
+          4,
+          3
+        ],
+        "count_angry": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          5,
+          3,
+          1,
+          4,
+          3,
+          1,
+          1,
+          2,
+          1
+        ],
+        "count_sad": [
+          3,
+          1,
+          1,
+          1,
+          2,
+          3,
+          2,
+          1,
+          7,
+          2,
+          3,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          2,
+          1,
+          7,
+          1,
+          1,
+          1,
+          1,
+          1,
+          5,
+          3,
+          1,
+          2,
+          3,
+          1
+        ],
+        "count_fear": [
+          2,
+          5,
+          5,
+          1,
+          7,
+          6,
+          6,
+          1,
+          3,
+          6,
+          6,
+          2,
+          3,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "14. She locution the pasture brake unstressed, but not in instance.\n",
+    "scores": {
+      "means": {
+        "natural": 1.2857142857142858,
+        "angry": 1.3571428571428572,
+        "sad": 2.2142857142857144,
+        "joy": 1.5714285714285714,
+        "fear": 2.5
+      },
+      "medians": {
+        "natural": 1.0,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 1.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          1
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 18,
+        "angry": 19,
+        "sad": 31,
+        "joy": 22,
+        "fear": 35,
+        "NUM": 14,
+        "count_natural": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1
+        ],
+        "count_angry": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          3,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_sad": [
+          1,
+          1,
+          5,
+          1,
+          6,
+          1,
+          3,
+          1,
+          6,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          1,
+          1,
+          5,
+          1,
+          1,
+          1,
+          1,
+          1,
+          4,
+          1,
+          1,
+          1,
+          2,
+          1
+        ],
+        "count_fear": [
+          1,
+          1,
+          5,
+          1,
+          5,
+          1,
+          4,
+          1,
+          8,
+          4,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "15. Italy is my preferred administrative district; in concept, I think to exhaust ii work time there adjacent time period.\n",
+    "scores": {
+      "means": {
+        "natural": 1.6428571428571428,
+        "angry": 1.3571428571428572,
+        "sad": 1.1428571428571428,
+        "joy": 2.2142857142857144,
+        "fear": 1.2857142857142858
+      },
+      "medians": {
+        "natural": 1.0,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 1.5,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          1
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 23,
+        "angry": 19,
+        "sad": 16,
+        "joy": 31,
+        "fear": 18,
+        "NUM": 14,
+        "count_natural": [
+          1,
+          4,
+          2,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          3
+        ],
+        "count_angry": [
+          1,
+          1,
+          5,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_sad": [
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          1,
+          3,
+          5,
+          1,
+          3,
+          1,
+          4,
+          1,
+          4,
+          3,
+          1,
+          1,
+          1,
+          2
+        ],
+        "count_fear": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          5,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "16. I get it on monastic, brew, skirt, and old world monkey.\n",
+    "scores": {
+      "means": {
+        "natural": 1.8571428571428572,
+        "angry": 1.4285714285714286,
+        "sad": 1.2142857142857142,
+        "joy": 2.4285714285714284,
+        "fear": 1.1428571428571428
+      },
+      "medians": {
+        "natural": 1.0,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 1.5,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          1
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 26,
+        "angry": 20,
+        "sad": 17,
+        "joy": 34,
+        "fear": 16,
+        "NUM": 14,
+        "count_natural": [
+          1,
+          1,
+          4,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          4,
+          2,
+          5
+        ],
+        "count_angry": [
+          1,
+          1,
+          5,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_sad": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          1,
+          2,
+          7,
+          1,
+          6,
+          1,
+          3,
+          1,
+          2,
+          4,
+          1,
+          1,
+          3,
+          1
+        ],
+        "count_fear": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "17. They got there primeval, and they got actually redeeming seats.\n",
+    "scores": {
+      "means": {
+        "natural": 2.2142857142857144,
+        "angry": 1.2142857142857142,
+        "sad": 1.5,
+        "joy": 3.357142857142857,
+        "fear": 1.2142857142857142
+      },
+      "medians": {
+        "natural": 2.0,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 3.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          1
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          2
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 31,
+        "angry": 17,
+        "sad": 21,
+        "joy": 47,
+        "fear": 17,
+        "NUM": 14,
+        "count_natural": [
+          4,
+          2,
+          2,
+          4,
+          1,
+          5,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          3,
+          2
+        ],
+        "count_angry": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          3,
+          1
+        ],
+        "count_sad": [
+          1,
+          1,
+          5,
+          1,
+          1,
+          1,
+          1,
+          1,
+          4,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          7,
+          6,
+          5,
+          2,
+          4,
+          4,
+          3,
+          1,
+          3,
+          2,
+          2,
+          5,
+          1,
+          2
+        ],
+        "count_fear": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          4,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "18. They express that canid are man's beat out friend, but this vomit was scope out to disobey that belief.\n",
+    "scores": {
+      "means": {
+        "natural": 1.4285714285714286,
+        "angry": 2.7857142857142856,
+        "sad": 1.5714285714285714,
+        "joy": 1.1428571428571428,
+        "fear": 1.7142857142857142
+      },
+      "medians": {
+        "natural": 1.0,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 1.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          1
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 20,
+        "angry": 39,
+        "sad": 22,
+        "joy": 16,
+        "fear": 24,
+        "NUM": 14,
+        "count_natural": [
+          1,
+          1,
+          1,
+          3,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          3
+        ],
+        "count_angry": [
+          1,
+          1,
+          7,
+          4,
+          1,
+          1,
+          4,
+          1,
+          9,
+          4,
+          3,
+          1,
+          1,
+          1
+        ],
+        "count_sad": [
+          1,
+          2,
+          2,
+          1,
+          1,
+          4,
+          1,
+          1,
+          3,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1,
+          1
+        ],
+        "count_fear": [
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          7,
+          1,
+          1,
+          1,
+          2,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "19. The move brought backrest adoring memories of being unsaved in the chronological succession woods.\n",
+    "scores": {
+      "means": {
+        "natural": 1.7142857142857142,
+        "angry": 1.7142857142857142,
+        "sad": 2.7142857142857144,
+        "joy": 2.357142857142857,
+        "fear": 2.357142857142857
+      },
+      "medians": {
+        "natural": 1.5,
+        "angry": 1.0,
+        "sad": 1.5,
+        "joy": 2.0,
+        "fear": 1.5
+      },
+      "modes": {
+        "natural": [
+          1
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 24,
+        "angry": 24,
+        "sad": 38,
+        "joy": 33,
+        "fear": 33,
+        "NUM": 14,
+        "count_natural": [
+          3,
+          2,
+          1,
+          2,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "count_angry": [
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1,
+          6,
+          3,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_sad": [
+          6,
+          5,
+          1,
+          2,
+          1,
+          2,
+          4,
+          1,
+          7,
+          5,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          7,
+          2,
+          6,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          1,
+          4,
+          1,
+          2
+        ],
+        "count_fear": [
+          1,
+          5,
+          5,
+          1,
+          1,
+          1,
+          3,
+          1,
+          3,
+          5,
+          1,
+          2,
+          3,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "20. The bawd ade satisfied her ache, but not her desire.\n",
+    "scores": {
+      "means": {
+        "natural": 3.0714285714285716,
+        "angry": 1.5,
+        "sad": 3.7142857142857144,
+        "joy": 1.7142857142857142,
+        "fear": 1.4285714285714286
+      },
+      "medians": {
+        "natural": 3.0,
+        "angry": 1.0,
+        "sad": 4.0,
+        "joy": 1.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          4,
+          3,
+          1,
+          2
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          4
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 43,
+        "angry": 21,
+        "sad": 52,
+        "joy": 24,
+        "fear": 20,
+        "NUM": 14,
+        "count_natural": [
+          4,
+          3,
+          6,
+          4,
+          1,
+          2,
+          2,
+          1,
+          2,
+          3,
+          1,
+          4,
+          3,
+          7
+        ],
+        "count_angry": [
+          1,
+          5,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          2
+        ],
+        "count_sad": [
+          7,
+          3,
+          5,
+          4,
+          4,
+          2,
+          4,
+          1,
+          7,
+          4,
+          2,
+          3,
+          2,
+          4
+        ],
+        "count_joy": [
+          4,
+          1,
+          6,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_fear": [
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          5,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "21. He drank brio before projection it out.\n",
+    "scores": {
+      "means": {
+        "natural": 1.2857142857142858,
+        "angry": 1.7857142857142858,
+        "sad": 1.7857142857142858,
+        "joy": 1.3571428571428572,
+        "fear": 1.7857142857142858
+      },
+      "medians": {
+        "natural": 1.0,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 1.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          1
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 18,
+        "angry": 25,
+        "sad": 25,
+        "joy": 19,
+        "fear": 25,
+        "NUM": 14,
+        "count_natural": [
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        "count_angry": [
+          3,
+          3,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1,
+          6,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_sad": [
+          7,
+          3,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          2,
+          1,
+          5,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_fear": [
+          6,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          6,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "22. You can't similitude apple tree and spectral color, but what about herbaceous plant and banana?\n",
+    "scores": {
+      "means": {
+        "natural": 1.5714285714285714,
+        "angry": 1.5714285714285714,
+        "sad": 1.2857142857142858,
+        "joy": 1.7857142857142858,
+        "fear": 1.0714285714285714
+      },
+      "medians": {
+        "natural": 1.0,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 1.0,
+        "fear": 1
+      },
+      "modes": {
+        "natural": [
+          1
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 22,
+        "angry": 22,
+        "sad": 18,
+        "joy": 25,
+        "fear": 15,
+        "NUM": 14,
+        "count_natural": [
+          1,
+          1,
+          2,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          4,
+          1,
+          2
+        ],
+        "count_angry": [
+          1,
+          1,
+          5,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          4,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_sad": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          5,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          3,
+          3,
+          5,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1,
+          2,
+          1,
+          1
+        ],
+        "count_fear": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "23. When driver sped in and out of commerce, all she could call up of was those in demand of a insert.\n",
+    "scores": {
+      "means": {
+        "natural": 1.5,
+        "angry": 2.357142857142857,
+        "sad": 2.0,
+        "joy": 1.0714285714285714,
+        "fear": 2.142857142857143
+      },
+      "medians": {
+        "natural": 1.0,
+        "angry": 1.5,
+        "sad": 1.0,
+        "joy": 1.0,
+        "fear": 1.5
+      },
+      "modes": {
+        "natural": [
+          1
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 21,
+        "angry": 33,
+        "sad": 28,
+        "joy": 15,
+        "fear": 30,
+        "NUM": 14,
+        "count_natural": [
+          3,
+          3,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1
+        ],
+        "count_angry": [
+          5,
+          3,
+          7,
+          1,
+          1,
+          1,
+          4,
+          1,
+          2,
+          3,
+          1,
+          1,
+          2,
+          1
+        ],
+        "count_sad": [
+          2,
+          1,
+          6,
+          1,
+          3,
+          1,
+          3,
+          1,
+          3,
+          3,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_joy": [
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_fear": [
+          7,
+          2,
+          1,
+          1,
+          1,
+          2,
+          4,
+          1,
+          3,
+          2,
+          1,
+          1,
+          3,
+          1
+        ]
+      }
+    }
+  },
+  {
+    "question": "24. He was dumbstruck that his vast inertia was sacred to unusual.",
+    "scores": {
+      "means": {
+        "natural": 2.2857142857142856,
+        "angry": 2.0,
+        "sad": 2.2142857142857144,
+        "joy": 1.8571428571428572,
+        "fear": 2.0714285714285716
+      },
+      "medians": {
+        "natural": 2.0,
+        "angry": 1.0,
+        "sad": 1.0,
+        "joy": 1.0,
+        "fear": 1.0
+      },
+      "modes": {
+        "natural": [
+          3,
+          1,
+          2
+        ],
+        "angry": [
+          1
+        ],
+        "sad": [
+          1
+        ],
+        "joy": [
+          1
+        ],
+        "fear": [
+          1
+        ]
+      },
+      "data": {
+        "natural": 32,
+        "angry": 28,
+        "sad": 31,
+        "joy": 26,
+        "fear": 29,
+        "NUM": 14,
+        "count_natural": [
+          3,
+          4,
+          4,
+          3,
+          1,
+          2,
+          1,
+          1,
+          1,
+          2,
+          3,
+          2,
+          3,
+          2
+        ],
+        "count_angry": [
+          4,
+          1,
+          5,
+          1,
+          1,
+          1,
+          4,
+          1,
+          4,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "count_sad": [
+          4,
+          1,
+          5,
+          1,
+          1,
+          3,
+          1,
+          1,
+          5,
+          4,
+          1,
+          1,
+          1,
+          2
+        ],
+        "count_joy": [
+          4,
+          3,
+          6,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1
+        ],
+        "count_fear": [
+          1,
+          3,
+          6,
+          1,
+          1,
+          2,
+          4,
+          1,
+          2,
+          4,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  }
+]

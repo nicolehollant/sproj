@@ -203,9 +203,109 @@ def postvad():
             response = requests.post(url + "vad", headers=headers, data=json.dumps(payload))
             logResponse("VAD:", count, response.text, entry)
 
-if __name__ == "__main__":
+
+def avg_nyms():
+    count = 0
+    maxNym = ''
+    maxNyms = 0
+    with open(thesaurusLoc) as f:
+        data = json.load(f)
+        for entry in data:
+            nyms = set()
+            for nym_arr in data[entry]['synonyms'].values():
+                for nym in nym_arr:
+                    nyms.add(nym)
+            maxNyms += len(nyms)
+            count += 1
+    print('AVG NYMS', maxNyms, count, maxNyms / count)
+
+def max_nyms():
+    maxNym = ''
+    maxNyms = 0
+    with open(thesaurusLoc) as f:
+        data = json.load(f)
+        for entry in data:
+            nyms = set()
+            for nym_arr in data[entry]['synonyms'].values():
+                for nym in nym_arr:
+                    nyms.add(nym)
+            if len(nyms) > maxNyms:
+                maxNyms = len(nyms)
+                maxNym = entry
+    print('Max NYMS', maxNyms, maxNym)
+
+
+def median(arr):
+    n = len(arr) 
+    arr.sort() 
+    
+    if n % 2 == 0: 
+        median1 = arr[n//2] 
+        median2 = arr[n//2 - 1] 
+        median = (median1 + median2)/2
+    else: 
+        median = arr[n//2] 
+    print("median is", median)
+
+def mode(arr):
+    from collections import Counter 
+    # list of elements to calculate mode 
+    n = len(arr) 
+    
+    data = Counter(arr) 
+    get_mode = dict(data) 
+    mode = [k for k, v in get_mode.items() if v == max(list(data.values()))] 
+    
+    if len(mode) == n: 
+        get_mode = "No mode found"
+    else: 
+        get_mode = "Mode is / are: " + ', '.join(map(str, mode)) 
+        
+    print(get_mode) 
+
+def median_mode_nyms():
+    numSynonyms = {}
+    with open(thesaurusLoc) as f:
+        data = json.load(f)
+        for entry in data:
+            nyms = set()
+            for nym_arr in data[entry]['synonyms'].values():
+                for nym in nym_arr:
+                    nyms.add(nym)
+            numSynonyms[len(nyms)] = numSynonyms.get(len(nyms), 0) + 1
+    print('Dist NYMS')
+    median(list(numSynonyms.values()))
+    mode(list(numSynonyms.values()))
+
+def min_nyms():
+    maxNym = ''
+    maxNyms = 1000
+    with open(thesaurusLoc) as f:
+        data = json.load(f)
+        for entry in data:
+            nyms = set()
+            for nym_arr in data[entry]['synonyms'].values():
+                for nym in nym_arr:
+                    nyms.add(nym)
+            if len(nyms) < maxNyms:
+                maxNyms = len(nyms)
+                maxNym = entry
+    print('Min NYMS', maxNyms, maxNym)
+
+def main():
     postThesaurus()
     postSenseLevel()
     postaffectintensity()
     postcolor()
     postvad()
+
+if __name__ == "__main__":
+    # main()
+    # max_nyms()
+    # min_nyms()
+    # avg_nyms()
+    median_mode_nyms()
+    
+
+
+    

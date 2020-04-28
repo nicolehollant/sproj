@@ -13,13 +13,14 @@ stopwords = ['ve', 'won', 'more', 'needn', "doesn't", 'most', 'each', 'down', 's
 def check_keys():
   with open(affect_intensity, 'r') as f:
     affect_intensity_data = json.load(f)
-  # with open(senselevel, 'r') as f:
-  #   senselevel_data = json.load(f)
+  with open(senselevel, 'r') as f:
+    senselevel_data = json.load(f)
     
-  # affect_keys = affect_intensity_data.keys()
-  # for key in senselevel_data.keys():
-  #   if key not in affect_keys:
-  #     print(key)
+  affect_keys = affect_intensity_data.keys()
+  for key in senselevel_data.keys():
+    if key not in affect_keys:
+      print(key)
+  print("\nahahahah\n")
   affects = set()
   affect_vals = affect_intensity_data.values()
   for val in affect_vals:
@@ -172,9 +173,8 @@ def score_body(body):
       res[dimension] += score[dimension]
     res[dimension] /= len(words)
   return res
-      
 
-if __name__ == "__main__":
+def main():
   # get_info(sys.argv[1])
   # get_synonyms(sys.argv[1])
   # print(get_sad_score(sys.argv[1]))
@@ -309,4 +309,7 @@ if __name__ == "__main__":
 
   with open('output4.json', "w") as f:
     json.dump(scores, f, indent=2, sort_keys=True)
-  pprint(scores)
+  pprint(scores)    
+
+if __name__ == "__main__":
+  pass
