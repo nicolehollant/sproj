@@ -44,21 +44,10 @@ RUN apt-get install -y tar \
                     net-tools \
                     build-essential
 
-# install Python and pip package manager
 RUN apt-get install -y python3 \
                        python3-dev \
                        python3-pip
 
-# intall useful and/or required Python libraries to run your script
-# RUN pip install matplotlib \
-#                 seaborn \
-#                 pandas \
-#                 numpy \
-#                 scipy \
-#                 sklearn \
-#                 python-dateutil \
-#                 gensim
 RUN pip3 install -r requirements.txt
-# define command to when Docker container starts
 EXPOSE 5000
 CMD ["python3", "-m", "model"]

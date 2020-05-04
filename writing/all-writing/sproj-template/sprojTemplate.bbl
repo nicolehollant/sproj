@@ -1,84 +1,66 @@
 \begin{thebibliography}{10}
 
-\bibitem{Anatomyo22:online}
-Anatomy of a web request.
-\newblock \url{https://robrich.org/slides/anatomy_of_a_web_request/#/}.
-\newblock (Accessed on 11/12/2019).
+\bibitem{593pxLat90:online}
+593px-latent\_dirichlet\_allocation.svg.png (593×311).
+\newblock
+  \url{https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Latent_Dirichlet_allocation.svg/593px-Latent_Dirichlet_allocation.svg.png}.
+\newblock (Accessed on 04/23/2020).
+
+\bibitem{Angular31:online}
+Angular.
+\newblock \url{https://angular.io/}.
+\newblock (Accessed on 04/30/2020).
 
 \bibitem{BigHugeT88:online}
 Big huge thesaurus api.
 \newblock \url{https://words.bighugelabs.com/}.
 \newblock (Accessed on 11/12/2019).
 
-\bibitem{book1dvi18:online}
-book1.dvi.
-\newblock \url{http://i.stanford.edu/~ullman/mmds/ch1.pdf}.
-\newblock (Accessed on 11/12/2019).
+\bibitem{CrossOri30:online}
+Cross-origin resource sharing (cors) - http | mdn.
+\newblock \url{https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS}.
+\newblock (Accessed on 11/16/2019).
 
-\bibitem{CitingWo77:online}
-Citing wordnet | wordnet.
-\newblock \url{https://wordnet.princeton.edu/citing-wordnet}.
-\newblock (Accessed on 11/12/2019).
+\bibitem{CrossOri23:online}
+Cross-origin resource sharing (cors) - http | mdn.
+\newblock \url{https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS}.
+\newblock (Accessed on 04/30/2020).
 
-\bibitem{Cronjobf4:online}
-Cron job for let's encrypt renewal - server fault.
+\bibitem{CSSTutor62:online}
+Css tutorial.
+\newblock \url{https://www.w3schools.com/css/default.asp}.
+\newblock (Accessed on 04/30/2020).
+
+\bibitem{darlingl99:online}
+darling-lda.pdf.
 \newblock
-  \url{https://serverfault.com/questions/790772/cron-job-for-lets-encrypt-renewal}.
-\newblock (Accessed on 11/12/2019).
+  \url{http://www.ccs.neu.edu/home/vip/teach/DMcourse/5_topicmodel_summ/notes_slides/sampling/darling-lda.pdf}.
+\newblock (Accessed on 04/23/2020).
 
 \bibitem{DigitalO1:online}
 Digitalocean – the developer cloud.
 \newblock \url{https://www.digitalocean.com/}.
 \newblock (Accessed on 11/12/2019).
 
-\bibitem{Dirichle42:online}
-Dirichlet distribution - wikipedia.
-\newblock \url{https://en.wikipedia.org/wiki/Dirichlet_distribution}.
-\newblock (Accessed on 11/12/2019).
-
-\bibitem{Dockeran68:online}
-Docker and go: why did we decide to write docker in go?
-\newblock
-  \url{https://www.slideshare.net/jpetazzo/docker-and-go-why-did-we-decide-to-write-docker-in-go}.
-\newblock (Accessed on 11/12/2019).
-
-\bibitem{Effectiv71:online}
-Effective go - the go programming language.
-\newblock \url{https://golang.org/doc/effective_go.html}.
-\newblock (Accessed on 11/12/2019).
-
-\bibitem{ErrorPer49:online}
-Error permission denied (publickey) when i try to ssh | digitalocean.
-\newblock
-  \url{https://www.digitalocean.com/community/questions/error-permission-denied-publickey-when-i-try-to-ssh}.
-\newblock (Accessed on 11/12/2019).
+\bibitem{Empoweri41:online}
+Empowering app development for developers | docker.
+\newblock \url{https://www.docker.com/}.
+\newblock (Accessed on 05/01/2020).
 
 \bibitem{FetchAPI36:online}
 Fetch api - web apis | mdn.
 \newblock \url{https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API}.
 \newblock (Accessed on 11/04/2019).
 
-\bibitem{FromSent98:online}
-From sentiment analysis to emotion recognition: A nlp story.
-\newblock
-  \url{https://medium.com/neuronio/from-sentiment-analysis-to-emotion-recognition-a-nlp-story-bcc9d6ff61ae}.
-\newblock (Accessed on 11/12/2019).
+\bibitem{GitHub86:online}
+Github.
+\newblock \url{https://github.com/}.
+\newblock (Accessed on 05/01/2020).
 
-\bibitem{Function90:online}
-Function word - wikipedia.
-\newblock \url{https://en.wikipedia.org/wiki/Function_word}.
-\newblock (Accessed on 11/12/2019).
-
-\bibitem{Agentlei48:online}
-A gentle introduction to golang modules - ukiah smith.
-\newblock
-  \url{https://ukiahsmith.com/blog/a-gentle-introduction-to-golang-modules/}.
-\newblock (Accessed on 11/12/2019).
-
-\bibitem{Goprogra80:online}
-Go (programming language) - wikipedia.
-\newblock \url{https://en.wikipedia.org/wiki/Go_(programming_language)}.
-\newblock (Accessed on 11/12/2019).
+\bibitem{GSAPGree71:online}
+Gsap - greensock.
+\newblock \url{https://greensock.com/gsap/}.
+\newblock (Accessed on 04/30/2020).
 
 \bibitem{HowToPre29:online}
 How-to-prevent-scraping/readme.md at master · jonascz/how-to-prevent-scraping.
@@ -86,37 +68,31 @@ How-to-prevent-scraping/readme.md at master · jonascz/how-to-prevent-scraping.
   \url{https://github.com/JonasCz/How-To-Prevent-Scraping/blob/master/README.md}.
 \newblock (Accessed on 11/12/2019).
 
+\bibitem{Howtoser37:online}
+How to serialize numpy.float32 (and other types) to json · ellis valentiner.
+\newblock
+  \url{https://ellisvalentiner.com/post/serializing-numpyfloat32-json/}.
+\newblock (Accessed on 04/23/2020).
+
 \bibitem{Idempote58:online}
 Idempotent - mdn web docs glossary: Definitions of web-related terms | mdn.
 \newblock \url{https://developer.mozilla.org/en-US/docs/Glossary/idempotent}.
-\newblock (Accessed on 11/12/2019).
-
-\bibitem{Interfac74:online}
-Interfaces in go (part i) - golangspec - medium.
-\newblock
-  \url{https://medium.com/golangspec/interfaces-in-go-part-i-4ae53a97479c}.
-\newblock (Accessed on 11/12/2019).
-
-\bibitem{AnIntrod64:online}
-An introduction to programming in go | go resources.
-\newblock \url{http://www.golang-book.com/books/intro}.
-\newblock (Accessed on 11/12/2019).
-
-\bibitem{Intuitiv89:online}
-Intuitive guide to latent dirichlet allocation - towards data science.
-\newblock
-  \url{https://towardsdatascience.com/light-on-math-machine-learning-intuitive-guide-to-latent-dirichlet-allocation-437c81220158}.
-\newblock (Accessed on 11/12/2019).
-
-\bibitem{jsonTheG53:online}
-json - the go programming language.
-\newblock \url{https://golang.org/pkg/encoding/json/}.
 \newblock (Accessed on 11/12/2019).
 
 \bibitem{LetsEncr62:online}
 Let's encrypt - free ssl/tls certificates.
 \newblock \url{https://letsencrypt.org/}.
 \newblock (Accessed on 11/12/2019).
+
+\bibitem{Lighthou16:online}
+Lighthouse  |  tools for web developers  |  google developers.
+\newblock \url{https://developers.google.com/web/tools/lighthouse/}.
+\newblock (Accessed on 04/30/2020).
+
+\bibitem{markdown14:online}
+markdown-it - npm.
+\newblock \url{https://www.npmjs.com/package/markdown-it}.
+\newblock (Accessed on 04/30/2020).
 
 \bibitem{MobyThes97:online}
 Moby thesaurus.
@@ -134,10 +110,16 @@ mongo-go-driver/examples.go at master · mongodb/mongo-go-driver.
   \url{https://github.com/mongodb/mongo-go-driver/blob/master/examples/documentation_examples/examples.go}.
 \newblock (Accessed on 11/12/2019).
 
-\bibitem{mongo42a34:online}
-mongo/4.2 at master · docker-library/mongo.
-\newblock \url{https://github.com/docker-library/mongo/tree/master/4.2}.
-\newblock (Accessed on 11/12/2019).
+\bibitem{Themostp65:online}
+The most popular database for modern apps | mongodb.
+\newblock \url{https://www.mongodb.com/}.
+\newblock (Accessed on 05/01/2020).
+
+\bibitem{Multista76:online}
+Multi-stage builds \#2: Python specifics—virtualenv, –user, and other
+  methods.
+\newblock \url{https://pythonspeed.com/articles/multi-stage-docker-python/}.
+\newblock (Accessed on 04/29/2020).
 
 \bibitem{muxGoril57:online}
 mux - gorilla, the golang web toolkit.
@@ -149,84 +131,106 @@ Nginx | high performance load balancer, web server, \& reverse proxy.
 \newblock \url{https://www.nginx.com/}.
 \newblock (Accessed on 11/12/2019).
 
-\bibitem{NLTKstop42:online}
-Nltk stop words - python tutorial.
-\newblock \url{https://pythonspot.com/nltk-stop-words/}.
-\newblock (Accessed on 11/12/2019).
+\bibitem{Plutchik7:online}
+Plutchiks-wheel-of-emotions-with-basic-emotions-and-derivative-emotions-and-cone-like.png
+  (594×625).
+\newblock
+  \url{https://www.researchgate.net/profile/Gerardo_Maupome/publication/258313558/figure/fig1/AS:297350959517696@1447905401049/Plutchiks-wheel-of-emotions-with-basic-emotions-and-derivative-emotions-and-cone-like.png}.
+\newblock (Accessed on 05/01/2020).
 
-\bibitem{optionsG69:online}
-options - godoc.
-\newblock \url{https://godoc.org/go.mongodb.org/mongo-driver/mongo/options}.
-\newblock (Accessed on 11/12/2019).
+\bibitem{PostmanT86:online}
+Postman | the collaboration platform for api development.
+\newblock \url{https://www.postman.com/}.
+\newblock (Accessed on 04/30/2020).
+
+\bibitem{React-AJ42:online}
+React – a javascript library for building user interfaces.
+\newblock \url{https://reactjs.org/}.
+\newblock (Accessed on 04/30/2020).
 
 \bibitem{SafeMDNW66:online}
 Safe - mdn web docs glossary: Definitions of web-related terms | mdn.
 \newblock \url{https://developer.mozilla.org/en-US/docs/Glossary/safe}.
 \newblock (Accessed on 11/12/2019).
 
+\bibitem{ScreenSh29:online}
+Screen-shot-2018-03-20-at-9.24.09-am-1024x548.png (1024×548).
+\newblock
+  \url{https://blog.netapp.com/wp-content/uploads/2016/03/Screen-Shot-2018-03-20-at-9.24.09-AM-1024x548.png}.
+\newblock (Accessed on 04/29/2020).
+
 \bibitem{Selenium25:online}
 Selenium - web browser automation.
 \newblock \url{https://www.seleniumhq.org/}.
 \newblock (Accessed on 11/12/2019).
+
+\bibitem{Tailwind13:online}
+Tailwind css - a utility-first css framework for rapidly building custom
+  designs.
+\newblock \url{https://tailwindcss.com/}.
+\newblock (Accessed on 04/30/2020).
 
 \bibitem{Thesauru2:online}
 Thesaurus.com | synonyms and antonyms of words at thesaurus.com.
 \newblock \url{https://www.thesaurus.com/}.
 \newblock (Accessed on 11/12/2019).
 
-\bibitem{ATourofG8:online}
-A tour of go.
-\newblock \url{https://tour.golang.org/list}.
-\newblock (Accessed on 11/12/2019).
+\bibitem{TopicMod43:online}
+Topic models - videolectures.net.
+\newblock \url{http://videolectures.net/mlss09uk_blei_tm/}.
+\newblock (Accessed on 04/23/2020).
 
 \bibitem{UsingGoM42:online}
 Using go modules - the go blog.
 \newblock \url{https://blog.golang.org/using-go-modules}.
 \newblock (Accessed on 11/12/2019).
 
-\bibitem{WebSocke25:online}
-Websocket vs rest | learn the 8 important differences.
-\newblock \url{https://www.educba.com/websocket-vs-rest/}.
-\newblock (Accessed on 11/12/2019).
+\bibitem{Vuejs17:online}
+Vue.js.
+\newblock \url{https://vuejs.org/}.
+\newblock (Accessed on 04/30/2020).
 
-\bibitem{Whatisth22:online}
-What is the api for google ngram viewer?
-\newblock \url{https://jameshfisher.com/2018/11/25/google-ngram-api/}.
-\newblock (Accessed on 11/12/2019).
-
-\bibitem{YourGuid95:online}
-Your guide to latent dirichlet allocation - lettier - medium.
+\bibitem{WebConte88:online}
+Web content accessibility guidelines (wcag) 2.0.
 \newblock
-  \url{https://medium.com/@lettier/how-does-lda-work-ill-explain-using-emoji-108abf40fa7d}.
-\newblock (Accessed on 11/12/2019).
+  \url{https://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef}.
+\newblock (Accessed on 04/30/2020).
 
-\bibitem{griffiths_steyvers_2004}
-Thomas~L Griffiths and Mark Steyvers.
-\newblock Finding scientific topics, Apr 2004.
+\bibitem{webpack35:online}
+webpack.
+\newblock \url{https://webpack.js.org/}.
+\newblock (Accessed on 04/30/2020).
 
-\bibitem{Miller:1995:WLD:219717.219748}
-George~A. Miller.
-\newblock Wordnet: A lexical database for english.
-\newblock {\em Commun. ACM}, 38(11):39--41, November 1995.
-\newblock
-  \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.83.1823&rep=rep1&type=pdf}.
+\bibitem{Welcomet33:online}
+Welcome to flask — flask documentation (1.1.x).
+\newblock \url{https://flask.palletsprojects.com/en/1.1.x/}.
+\newblock (Accessed on 04/20/2020).
 
-\bibitem{vad-acl2018}
-Saif~M. Mohammad.
-\newblock Obtaining reliable human ratings of valence, arousal, and dominance
-  for 20,000 english words.
-\newblock In {\em Proceedings of The Annual Conference of the Association for
-  Computational Linguistics (ACL)}, Melbourne, Australia, 2018.
-
-\bibitem{LREC18-AIL}
-Saif~M. Mohammad.
-\newblock Word affect intensities.
-\newblock In {\em Proceedings of the 11th Edition of the Language Resources and
-  Evaluation Conference (LREC-2018)}, Miyazaki, Japan, 2018.
+\bibitem{david_m._y._i._1970}
+Ng~David~M., Andrew Y., and Michael I.
+\newblock Latent dirichlet allocation, Jan 1970.
 
 \bibitem{Mohammad13}
 Saif~M. Mohammad and Peter~D. Turney.
 \newblock Crowdsourcing a word-emotion association lexicon.
 \newblock 29(3):436--465, 2013.
+
+\bibitem{10.2307/27857503}
+Robert Plutchik.
+\newblock The nature of emotions: Human emotions have deep evolutionary roots,
+  a fact that may explain their complexity and provide tools for clinical
+  practice.
+\newblock {\em American Scientist}, 89(4):344--350, 2001.
+
+\bibitem{DBLP:journals/corr/abs-1806-00674}
+Armin Seyeditabari, Narges Tabari, and Wlodek Zadrozny.
+\newblock Emotion detection in text: a review.
+\newblock {\em CoRR}, abs/1806.00674, 2018.
+
+\bibitem{httpscdn6:online}
+Evan You.
+\newblock https://cdn.jsdelivr.net/npm/vue/dist/vue.js.
+\newblock \url{https://cdn.jsdelivr.net/npm/vue/dist/vue.js}.
+\newblock (Accessed on 04/30/2020).
 
 \end{thebibliography}

@@ -1,0 +1,70 @@
+\documentclass[11pt, twoside, reqno]{book}
+\usepackage{amssymb, amsthm, amsmath, amsfonts}
+\usepackage[htt]{hyphenat}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{ wasysym }
+\usepackage[toc,page]{appendix}
+\appendixpageoff
+\usepackage[leftmargin = 1in, rightmargin = 0in, vskip = 0in]{quoting}
+\usepackage{microtype}
+\usepackage{bardtex}
+\biboption{amsrefs}
+\styleoption{seniorproject}
+\usepackage{listings}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.98}
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    backgroundcolor=\color{backcolour},
+    frame=lrbt,
+    breakatwhitespace=false,      
+    framexleftmargin=8pt, 
+    framexrightmargin=8pt,   
+    framextopmargin=6pt,
+    framexbottommargin=6pt,
+    breaklines=true,                 
+    keepspaces=false,                 
+    numbersep=0pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=1
+}
+\lstset{style=mystyle}
+\newcommand{\blockquotespacing}{\blockspaced}
+\newcommand{\prose}{.25in}
+\newcommand{\poetry}{0in}
+\newcommand{\singlespaced}{\setstretch{1}\vspace{\baselineskip}}
+\newcommand{\blockspaced}{\setstretch{1.3}\vspace{\baselineskip}}
+\newcommand{\doublespaced}{}
+\newenvironment{blockquote}[1][\prose]{\setlength{\parindent}{#1}\begin{quoting}\blockquotespacing}{\end{quoting}}
+\begin{document}
+\startmain
+\chapter{Introduction}
+
+This project is one encompassing natural language processing (nlp) and full stack web development. Regarding nlp, we are in the realm of emotion analysis as we are seeking to algorithmically discern emotion within text. We largely take our conceptions of emotion from Robert Plutchik:
+
+!\href{plutchikWheel.png}{plutchiks wheel} \cite{Plutchik7:online}
+
+\begin{quote}
+Emotion is a complex chain of loosely connected events that begins with stimulus and includes feelings, psychological changes, impulses to action and specific, goal-directed behavior. \cite{10.2307/27857503}
+\end{quote}
+
+He provides a wheel of emotions related to color theory, such that an emotion can be seen as a mixture of emotions (i.e. ``anticipation'' lays between ``joy'' and ``anger''). Emotion detection within text is a rather difficult problem, although it has grown in popularity recently. As it is an emerging field, there is a lack of available datasets, as described by Seyeditabari et al.. They mention several available datasets, as well as different methods in use, including the affect dataset from  Mohammad and Turney \cite{Mohammad13} that we use. The methods noted fall into the supervised and unsupervised categories: the supervised methods include data collection through Twitter scraping and large surveys, as well as their use within support vector machines (SVM), naive Bayes classifiers, $k$-nearest neighbor (KNN) clustering, and more; the unsupervised methods include Probabilistic Latent Semantic Analysis (PSLA), simple lexical approaches, and point-wise mutual information (PMI) \cite{DBLP:journals/corr/abs-1806-00674}. We will make two unsupervised models for emotion detection based on a subset of emotions from Plutchik's wheel (anger, sadness, joy, and fear); the first model will take a lexical approach, where we take the average token scores for each affect based on Mohammad and Turney's word-affect and affect-intensity lexicons; the second will be based on latent Dirichlet allocation (LDA), a generalization of PSLA by Blei et al. \cite{david\textit{}m.\textit{}y.\textit{}i.\textit{}1970}. In addition to our two emotion-detection models, we look into word replacement models based on a thesaurus \cite{BigHugeT88:online} and our scoring models. One of these models performs arbitrary replacement based on synonyms of tokens; the other seeks to maximize score in one of our affect categories.
+
+A large focus was placed on full-stack web development: dataset creation/consumption, database management, server configuration, creating REST APIs, and creating a web frontend. We leverage several technologies for this, including Python with Flask\cite{Welcomet33:online}, Golang and the mongo-go-driver\cite{mongogod83:online}, HTML/CSS/Javascript via VueJS\cite{Vuejs17:online}, and Docker\cite{Empoweri41:online}.
+
+!\href{architecture.svg}{architecture diagram}
+
+This diagram serves to describe our application. A user requests our site, and our reverse-proxy forwards this request to our frontend server. Then, when the user accesses the thesaurus page, they see results from calling our CRUD-wrapper API that accesses our database. When they use the models on the site, they are making requests to the model API—which then makes requests to the CRUD API. For scalability, ease of deployment, and security benefits, the frontend, model API, CRUD API, and database are all in containers. All of this sits on a virtual machine from DigitalOcean\cite{DigitalO1:online}, with the code available on Github\cite{GitHub86:online}.
+
+We will begin discussing server configuration, move to database construction, then our CRUD API, followed by our models, the frontend, and finishing with results.
+\end{document}
