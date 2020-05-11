@@ -1,41 +1,44 @@
-# sproj
-Senior Project BABYYYYY
+<img alt="logo" src="./resources/sproj.png" width="120">
 
-## Stuff that's live:
-Frontend - http://sproj.colehollant.com
-Backend - http://sproj.api.colehollant.com
+# My Sproj 🤓
+Bard Senior Project 2019-2020
 
+## Where Stuff Is Deployed 🚀
 
-# TODO:
+- Frontend - https://sproj.colehollant.com
+- Backend - https://sproj.api.colehollant.com
+- Model - https://sproj.api.colehollant.com
+- Survey - https://spaces.colehollant.com/thesis-survey/index.html
 
-* move 2 gitlab ( LOL ) ... unless we wait 4 github ci
-* ~~DNS stuff :-(~~
-## Project Model Stages (maybe?)
-  1. Random replacement:
-     * ~~Feed in a body of text, set some probability of word replacement, switch a word~~
-  2. Bayesian replacement (LDA model):
-     * Gather >= 2 categories, gather some probabilities of words belonging to a category (we will ignore words not in my thesaurus, but maybe write them to a file?), calculate probs of word being used given each category, replace with word if prob of belonging to the other category is greater (or lesser)
-  3. Neural Network replacement:
-     * Consider kmc !!!! gotta pretend i know about linalg and separatrices or whatnot
-   4. Maybe just dont do NNs:
-     * look at LDAs and seeded LDAs
-     * I don't like NNs :'-(
+## Running ⛹️‍♀️
 
-## Frontend todo:
-   * ~~interface on site for model~~
-   * fuzzy search for words (maybe publish some edit distance thing on npm)
-   * ~~break up frontend dockerfile so that I can have a dev image (that just runs `yarn serve` and attaches my dirs)~~
-     * ~~read [this](https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093)~~
-   * would also love to break up more things into components and do a design doc
-   * ~~gotta use tailwind better~~
+There's a whole lot going on, unfortunately. Most things are within `/thesaurus` as we are simply not interested in renaming anything. The key bits are `/thesaurus/backend`, `/thesaurus/model`, `/thesaurus/frontend`, and I suppose `/thesaurus/webscrape` (again, largely bad names, but oh well). For convenience sake, we have `/thesaurus/app.sh` to control image building/running, although it's just a lazier way to use `docker-compose`, and you can ignore it in favor of standard commands.
 
-## Backend todo:
-   * ~~deal with go modules (maybe provide the actual git path?)~~
-   * ~~write better / more reusable code~~
-   * ~~post all the things in `db` to separate collections~~
-   * maybe change the admin-words endpoints to take in a collection name?
-   * endpoint to get all available data
+Some sample server blocks are within `/thesaurus/nginxSamples`, as a pointer for setting things up yourself. If you _are_ setting this up yourself, you can populate the database with the script `/thesaurus/webscrape/postentries.py`. If you need to target local endpoints within the frontend `yarn dev` will set the `NODE_ENV` to `dev` which should force localhost.
 
-## Writing todo:
-   * write up frontend/backend for thesaurus
-   * write about the stuff in `db`
+Everything is on a VM, and everything is ran through docker-compose, just need the appropriate environment variables to actually run things. These environment variables are:
+
+```sh
+DBHOST # within /thesaurus/backend/.env
+MONGOPORT # within /thesaurus/backend/.env
+MONGO_USERNAME # within /thesaurus/backend/.env
+MONGO_PASSWORD # within /thesaurus/backend/.env
+MONGO_INITDB_ROOT_USERNAME # within /thesaurus/.env
+MONGO_INITDB_ROOT_PASSWORD # within /thesaurus/.env
+```
+
+I know I'm supposed to have some script to make a db admin and use that, but I haven't done that here 🤷🏼‍♀️ (it's all populated from a script anyways)—something something something left as an exercise to the reader. Outside of that, you can always run things sans-docker if you want! For that, it should all be standard.
+
+```sh
+/thesaurus/backend:$ go run main.go 
+/thesaurus/model:$ python3 -B -m model
+/thesaurus/frontend:$ yarn dev # or yarn serve
+```
+
+If you've gotta train a model, should be able to `python3 -m lda -t`. Then I guess move the files it writes to `/thesaurus/model/model/ldamodel*`
+
+## Architecture 🏗
+
+<img alt="logo" src="./writing/all-writing/sproj-template/architecture.png" width="100%">
+
+Again, everything is on a vm, and everything is in containers. You should be pretty free to plop this wherever you can use containers! I personally used some Ubuntu droplet on Digital Ocean, `sudo apt got` everything I needed, and called it a day. We had some security issues earlier (lol db got ransom-ed before we set up any auth), but ultimately everything is pretty low stakes.

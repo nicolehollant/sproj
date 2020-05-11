@@ -300,11 +300,11 @@ def main():
     postvad()
 
 if __name__ == "__main__":
-    # main()
+    main()
     # max_nyms()
     # min_nyms()
     # avg_nyms()
-    median_mode_nyms()
+    # median_mode_nyms()
     
 
 

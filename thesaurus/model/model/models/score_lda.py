@@ -51,7 +51,12 @@ def score_keywords_given_keywords(keywords, probs):
 
 def score_input(keywords, probs):
   keyword_coefs = normalize_topic(probs)
-  return score_keywords(keywords, keyword_coefs)
+  res = score_keywords(keywords, keyword_coefs)
+  res['anger'] *= (1487 / len(keywords))
+  res['sadness'] *= (1302 / len(keywords))
+  res['fear'] *= (1772 / len(keywords))
+  res['joy'] *= (1269 / len(keywords))
+  return res
 
 def score_topic(probs):
   keyword_coefs = normalize_topic(probs)
